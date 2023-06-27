@@ -192,6 +192,7 @@ Public Class MenuPrincipal
         ContForms.Visible = False
         TableLayoutPanel1.Cursor = Cursors.Arrow
         MenuStrip1.Renderer = New renderer()
+        MenuStrip2.Renderer = New renderer()
         MostrarLibros()
         Dim Img As Image = My.Resources.Logo_2023
         Panel1.BackgroundImage = Img
@@ -206,7 +207,7 @@ Public Class MenuPrincipal
 
     End Sub
     '------------------------------------------
-    Private Sub BibliotecaArchivosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BibliotecaArchivosToolStripMenuItem.Click
+    Private Sub BibliotecaArchivosToolStripMenuItem_Click(sender As Object, e As EventArgs)
         If ContForms.Visible = True Then
             'imagen de recursos
             Panel1.BackColor = Color.Black
@@ -240,7 +241,7 @@ Public Class MenuPrincipal
             CerrarTodoToolStripMenuItem1.Visible = False
         End If
     End Sub
-    Private Sub VerLibrosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerLibrosToolStripMenuItem.Click
+    Private Sub VerLibrosToolStripMenuItem_Click(sender As Object, e As EventArgs)
         If ContForms.Visible = False Then
             ContForms.Visible = True
             'imagen de recursos
@@ -274,7 +275,7 @@ Public Class MenuPrincipal
             Panel1.Visible = True
         End If
     End Sub
-    Private Sub CerrarTodoToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CerrarTodoToolStripMenuItem1.Click
+    Private Sub CerrarTodoToolStripMenuItem1_Click(sender As Object, e As EventArgs)
         Dim resultado As MsgBoxResult
         resultado = CType(MessageBox.Show("¿Desea Cerrar Todo?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
         If resultado = MsgBoxResult.No Then
@@ -439,10 +440,10 @@ Public Class MenuPrincipal
             OpenProblema1()
         End If
     End Sub
-    Private Sub AgregarLibroToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AgregarLibroToolStripMenuItem.Click
+    Private Sub AgregarLibroToolStripMenuItem_Click(sender As Object, e As EventArgs)
         BusquedaRespuesta()
     End Sub
-    Private Sub AbrirForm1_Click(sender As Object, e As EventArgs) 
+    Private Sub AbrirForm1_Click(sender As Object, e As EventArgs)
         BusquedaRespuesta()
     End Sub
     'Eliminar Libros
@@ -472,12 +473,12 @@ Public Class MenuPrincipal
             OpenProblema2()
         End If
     End Sub
-    Private Sub EliminarLibrosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EliminarLibrosToolStripMenuItem.Click
+    Private Sub EliminarLibrosToolStripMenuItem_Click(sender As Object, e As EventArgs)
         BusquedaRespuesta2()
 
     End Sub
 
-    Private Sub BtnEliminarLibro_Click(sender As Object, e As EventArgs) 
+    Private Sub BtnEliminarLibro_Click(sender As Object, e As EventArgs)
         BusquedaRespuesta2()
     End Sub
     'Lista de clientes
@@ -507,34 +508,7 @@ Public Class MenuPrincipal
             OpenProblema3()
         End If
     End Sub
-    Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesToolStripMenuItem.Click
+    Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs)
         BusquedaRespuesta3()
     End Sub
-
-    Private Sub ContForms_SelectedIndexChanged(sender As Object, e As EventArgs) 
-        If ContForms.TabCount >= 1 Then
-            If ContForms.SelectedTab.Text = "Menu Principal" Then
-                ' Llame a su función aquí
-                MostrarLibros()
-            End If
-            'Actualizar CLiente 
-            ' Actualizar Agregar
-            ' Actualizar Eliminar
-        End If
-    End Sub
-
-    Private Sub NosotrosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NosotrosToolStripMenuItem.Click
-        'nosotros visible
-        Panel1.BackgroundImage = Nothing
-        Panel1.BackColor = Color.MediumBlue
-        PictureBox1.Visible = True
-        PictureBox2.Visible = True
-        PictureBox3.Visible = True
-        Label3.Visible = True
-        Label4.Visible = True
-        Label5.Visible = True
-        Label6.Visible = True
-        ContForms.Visible = False
-    End Sub
-
 End Class
