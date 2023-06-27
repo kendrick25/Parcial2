@@ -29,8 +29,8 @@ Partial Class MenuPrincipal
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BtnMin = New System.Windows.Forms.Button()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.NosotrosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InicioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NosotrosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip2 = New System.Windows.Forms.MenuStrip()
         Me.LoginToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.CerrarSessionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -38,9 +38,9 @@ Partial Class MenuPrincipal
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.BtnClose = New System.Windows.Forms.Button()
         Me.BtnMax = New System.Windows.Forms.Button()
+        Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.MenuLogin = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.Border.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.MovForm.SuspendLayout()
@@ -58,8 +58,8 @@ Partial Class MenuPrincipal
         Me.Border.Location = New System.Drawing.Point(0, 0)
         Me.Border.Margin = New System.Windows.Forms.Padding(0)
         Me.Border.Name = "Border"
-        Me.Border.Padding = New System.Windows.Forms.Padding(2)
-        Me.Border.Size = New System.Drawing.Size(920, 500)
+        Me.Border.Padding = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.Border.Size = New System.Drawing.Size(1051, 667)
         Me.Border.TabIndex = 1
         '
         'TableLayoutPanel1
@@ -70,26 +70,26 @@ Partial Class MenuPrincipal
         Me.TableLayoutPanel1.Controls.Add(Me.MovForm, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.SplitContainer1, 0, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(2, 2)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(2, 3)
         Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 2
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(916, 496)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1047, 661)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'MovForm
         '
         Me.MovForm.BackColor = System.Drawing.Color.Blue
         Me.MovForm.ColumnCount = 7
-        Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110.0!))
+        Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126.0!))
         Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100.0!))
-        Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
-        Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
-        Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
-        Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
+        Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114.0!))
+        Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 11.0!))
+        Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57.0!))
+        Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57.0!))
+        Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57.0!))
         Me.MovForm.Controls.Add(Me.Label1, 0, 0)
         Me.MovForm.Controls.Add(Me.BtnMin, 4, 0)
         Me.MovForm.Controls.Add(Me.MenuStrip1, 1, 0)
@@ -102,7 +102,7 @@ Partial Class MenuPrincipal
         Me.MovForm.Name = "MovForm"
         Me.MovForm.RowCount = 1
         Me.MovForm.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.MovForm.Size = New System.Drawing.Size(916, 32)
+        Me.MovForm.Size = New System.Drawing.Size(1047, 43)
         Me.MovForm.TabIndex = 0
         '
         'Label1
@@ -115,7 +115,7 @@ Partial Class MenuPrincipal
         Me.Label1.Location = New System.Drawing.Point(0, 0)
         Me.Label1.Margin = New System.Windows.Forms.Padding(0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(78, 32)
+        Me.Label1.Size = New System.Drawing.Size(99, 43)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "    DK - CODE"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -130,10 +130,10 @@ Partial Class MenuPrincipal
         Me.BtnMin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BtnMin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BtnMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnMin.Location = New System.Drawing.Point(766, 0)
+        Me.BtnMin.Location = New System.Drawing.Point(876, 0)
         Me.BtnMin.Margin = New System.Windows.Forms.Padding(0)
         Me.BtnMin.Name = "BtnMin"
-        Me.BtnMin.Size = New System.Drawing.Size(50, 32)
+        Me.BtnMin.Size = New System.Drawing.Size(57, 43)
         Me.BtnMin.TabIndex = 2
         Me.BtnMin.UseVisualStyleBackColor = False
         '
@@ -144,22 +144,13 @@ Partial Class MenuPrincipal
         Me.MenuStrip1.GripMargin = New System.Windows.Forms.Padding(0, 2, 0, 2)
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InicioToolStripMenuItem, Me.NosotrosToolStripMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(110, 0)
-        Me.MenuStrip1.MinimumSize = New System.Drawing.Size(0, 30)
+        Me.MenuStrip1.Location = New System.Drawing.Point(126, 0)
+        Me.MenuStrip1.MinimumSize = New System.Drawing.Size(0, 40)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(0, 2, 0, 0)
-        Me.MenuStrip1.Size = New System.Drawing.Size(141, 30)
+        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(0, 3, 0, 0)
+        Me.MenuStrip1.Size = New System.Drawing.Size(164, 40)
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'NosotrosToolStripMenuItem
-        '
-        Me.NosotrosToolStripMenuItem.BackColor = System.Drawing.Color.Transparent
-        Me.NosotrosToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.NosotrosToolStripMenuItem.ForeColor = System.Drawing.Color.White
-        Me.NosotrosToolStripMenuItem.Name = "NosotrosToolStripMenuItem"
-        Me.NosotrosToolStripMenuItem.Size = New System.Drawing.Size(82, 28)
-        Me.NosotrosToolStripMenuItem.Text = "Nosotros"
         '
         'InicioToolStripMenuItem
         '
@@ -167,19 +158,29 @@ Partial Class MenuPrincipal
         Me.InicioToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.InicioToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.InicioToolStripMenuItem.Name = "InicioToolStripMenuItem"
-        Me.InicioToolStripMenuItem.Size = New System.Drawing.Size(57, 28)
+        Me.InicioToolStripMenuItem.Size = New System.Drawing.Size(67, 37)
         Me.InicioToolStripMenuItem.Text = "Inicio"
+        '
+        'NosotrosToolStripMenuItem
+        '
+        Me.NosotrosToolStripMenuItem.BackColor = System.Drawing.Color.Transparent
+        Me.NosotrosToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.NosotrosToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.NosotrosToolStripMenuItem.Name = "NosotrosToolStripMenuItem"
+        Me.NosotrosToolStripMenuItem.Size = New System.Drawing.Size(95, 37)
+        Me.NosotrosToolStripMenuItem.Text = "Nosotros"
         '
         'MenuStrip2
         '
         Me.MenuStrip2.BackColor = System.Drawing.Color.Transparent
         Me.MenuStrip2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.MenuStrip2.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.MenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoginToolStripMenuItem2, Me.ToolStripMenuItem2})
-        Me.MenuStrip2.Location = New System.Drawing.Point(656, 0)
+        Me.MenuStrip2.Location = New System.Drawing.Point(751, 0)
         Me.MenuStrip2.Name = "MenuStrip2"
         Me.MenuStrip2.Padding = New System.Windows.Forms.Padding(0)
         Me.MenuStrip2.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.MenuStrip2.Size = New System.Drawing.Size(100, 32)
+        Me.MenuStrip2.Size = New System.Drawing.Size(114, 43)
         Me.MenuStrip2.TabIndex = 5
         Me.MenuStrip2.Text = "MenuStrip2"
         '
@@ -191,7 +192,7 @@ Partial Class MenuPrincipal
         Me.LoginToolStripMenuItem2.ForeColor = System.Drawing.Color.White
         Me.LoginToolStripMenuItem2.Name = "LoginToolStripMenuItem2"
         Me.LoginToolStripMenuItem2.Padding = New System.Windows.Forms.Padding(25, 0, 25, 0)
-        Me.LoginToolStripMenuItem2.Size = New System.Drawing.Size(100, 32)
+        Me.LoginToolStripMenuItem2.Size = New System.Drawing.Size(109, 43)
         Me.LoginToolStripMenuItem2.Text = "Login"
         '
         'CerrarSessionToolStripMenuItem
@@ -199,7 +200,7 @@ Partial Class MenuPrincipal
         Me.CerrarSessionToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.CerrarSessionToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.CerrarSessionToolStripMenuItem.Name = "CerrarSessionToolStripMenuItem"
-        Me.CerrarSessionToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
+        Me.CerrarSessionToolStripMenuItem.Size = New System.Drawing.Size(207, 28)
         Me.CerrarSessionToolStripMenuItem.Text = "Cerrar Session"
         '
         'IniciarSessionToolStripMenuItem
@@ -207,13 +208,13 @@ Partial Class MenuPrincipal
         Me.IniciarSessionToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.IniciarSessionToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.IniciarSessionToolStripMenuItem.Name = "IniciarSessionToolStripMenuItem"
-        Me.IniciarSessionToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
+        Me.IniciarSessionToolStripMenuItem.Size = New System.Drawing.Size(207, 28)
         Me.IniciarSessionToolStripMenuItem.Text = "Iniciar Session"
         '
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(12, 32)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(14, 43)
         '
         'BtnClose
         '
@@ -225,10 +226,10 @@ Partial Class MenuPrincipal
         Me.BtnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BtnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BtnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnClose.Location = New System.Drawing.Point(866, 0)
+        Me.BtnClose.Location = New System.Drawing.Point(990, 0)
         Me.BtnClose.Margin = New System.Windows.Forms.Padding(0)
         Me.BtnClose.Name = "BtnClose"
-        Me.BtnClose.Size = New System.Drawing.Size(50, 32)
+        Me.BtnClose.Size = New System.Drawing.Size(57, 43)
         Me.BtnClose.TabIndex = 4
         Me.BtnClose.UseVisualStyleBackColor = False
         '
@@ -242,12 +243,23 @@ Partial Class MenuPrincipal
         Me.BtnMax.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BtnMax.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BtnMax.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnMax.Location = New System.Drawing.Point(816, 0)
+        Me.BtnMax.Location = New System.Drawing.Point(933, 0)
         Me.BtnMax.Margin = New System.Windows.Forms.Padding(0)
         Me.BtnMax.Name = "BtnMax"
-        Me.BtnMax.Size = New System.Drawing.Size(50, 32)
+        Me.BtnMax.Size = New System.Drawing.Size(57, 43)
         Me.BtnMax.TabIndex = 3
         Me.BtnMax.UseVisualStyleBackColor = False
+        '
+        'SplitContainer1
+        '
+        Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SplitContainer1.Location = New System.Drawing.Point(0, 43)
+        Me.SplitContainer1.Margin = New System.Windows.Forms.Padding(0)
+        Me.SplitContainer1.Name = "SplitContainer1"
+        Me.SplitContainer1.Size = New System.Drawing.Size(1047, 618)
+        Me.SplitContainer1.SplitterDistance = 348
+        Me.SplitContainer1.SplitterWidth = 5
+        Me.SplitContainer1.TabIndex = 1
         '
         'MenuLogin
         '
@@ -264,32 +276,23 @@ Partial Class MenuPrincipal
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(69, 22)
-        '
-        'SplitContainer1
-        '
-        Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainer1.Location = New System.Drawing.Point(0, 32)
-        Me.SplitContainer1.Margin = New System.Windows.Forms.Padding(0)
-        Me.SplitContainer1.Name = "SplitContainer1"
-        Me.SplitContainer1.Size = New System.Drawing.Size(916, 464)
-        Me.SplitContainer1.SplitterDistance = 305
-        Me.SplitContainer1.TabIndex = 1
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(84, 26)
         '
         'MenuPrincipal
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.ClientSize = New System.Drawing.Size(920, 500)
+        Me.ClientSize = New System.Drawing.Size(1051, 667)
         Me.ControlBox = False
         Me.Controls.Add(Me.Border)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.MinimumSize = New System.Drawing.Size(920, 500)
+        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.MinimumSize = New System.Drawing.Size(1051, 667)
         Me.Name = "MenuPrincipal"
         Me.Text = " - CODE"
         Me.Border.ResumeLayout(False)

@@ -511,4 +511,5 @@ Public Class MenuPrincipal
     Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs)
         BusquedaRespuesta3()
     End Sub
+
 End Class
