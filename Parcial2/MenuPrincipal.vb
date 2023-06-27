@@ -247,6 +247,20 @@ Public Class MenuPrincipal
             FinalizarSolicitudToolStripMenuItem.Visible = False
         End If
     End Sub
+    Private Sub FinalizarSolicitudToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FinalizarSolicitudToolStripMenuItem.Click
+        Dim resultado As MsgBoxResult
+        resultado = CType(MessageBox.Show("¿Desea Cerrar Todo?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
+        If resultado = MsgBoxResult.No Then
+        Else
+            Dim newPage As New TabPage("Tikets")
+            newPage.Controls.Add(PanelTikets)
+            ContForms.TabPages.Clear()
+            FinalizarSolicitudToolStripMenuItem.Visible = False
+            'mover tabb
+            ContForms.TabPages.Add(newPage)
+            ContForms.Visible = True
+        End If
+    End Sub
 
     Private Sub TicketToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TicketToolStripMenuItem.Click
         If ContForms.Visible = True Then
@@ -263,20 +277,5 @@ Public Class MenuPrincipal
     End Sub
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles BtnSolicitudTiket.Click
         BusquedaRespuesta()
-    End Sub
-
-    Private Sub FinalizarSolicitudToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FinalizarSolicitudToolStripMenuItem.Click
-        Dim resultado As MsgBoxResult
-        resultado = CType(MessageBox.Show("¿Desea Cerrar Todo?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
-        If resultado = MsgBoxResult.No Then
-        Else
-            Dim newPage As New TabPage("Tikets")
-            newPage.Controls.Add(PanelTikets)
-            ContForms.TabPages.Clear()
-            FinalizarSolicitudToolStripMenuItem.Visible = False
-            'mover tabb
-            ContForms.TabPages.Add(newPage)
-            ContForms.Visible = True
-        End If
     End Sub
 End Class
