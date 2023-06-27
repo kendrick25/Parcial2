@@ -174,12 +174,18 @@ Public Class MenuPrincipal
         TableLayoutPanel1.Cursor = Cursors.Arrow
         MenuStrip1.Renderer = New RenderMenu()
         MenuStrip2.Renderer = New RenderMenu()
+        LabelBienvenidaUsuario.Visible = False
+        BtnSolicitudTiket.Visible = False
+        TicketToolStripMenuItem.Visible = False
+        ContForms.Visible = False
+        FinalizarSolicitudToolStripMenuItem.Visible = False
     End Sub
     '------------------------------------------
     'opens de Problema 1
     Public Sub OpenProblema1()
-        Using mensaje As New Usuario  'Nombre del Form        mensaje.MdiParent = Me
-            If ContForms.TabCount >= 1 Then
+        Dim mensaje As New Usuario  'Nombre del Form
+        mensaje.MdiParent = Me
+        If ContForms.TabCount >= 1 Then
                 FinalizarSolicitudToolStripMenuItem.Visible = True
             End If
             If ContForms.TabCount = 0 Then
@@ -195,8 +201,7 @@ Public Class MenuPrincipal
             newPage.Controls.Add(mensaje)
             ContForms.TabPages.Add(newPage)
             mensaje.Show()
-            ContForms.SelectedTab = newPage
-        End Using
+        ContForms.SelectedTab = newPage
     End Sub
     Public Sub BusquedaRespuesta()
         Dim encontrado As Boolean = False
@@ -206,7 +211,7 @@ Public Class MenuPrincipal
                     ' Respuesta de cerrado
                     encontrado = True
                     Dim resultado As MsgBoxResult
-                    resultado = CType(MessageBox.Show("¿Actualmente esta en uso el modo Agregar, desea finalizar?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
+                    resultado = CType(MessageBox.Show("¿Actualmente se esta realizando una solicitud, desea finalizar?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
                     If resultado = MsgBoxResult.No Then
                         ContForms.SelectedTab = tp
                     Else
@@ -225,14 +230,53 @@ Public Class MenuPrincipal
         End If
     End Sub
     'vista principal de usuario
-    Private Sub bnAcceder_Click(sender As Object, e As EventArgs) Handles bnAcceder.Click
+    Private Sub SolicitarTiketToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SolicitarTiketToolStripMenuItem.Click
         BusquedaRespuesta()
     End Sub
-    Private Sub VerMisTiketsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerMisTiketsToolStripMenuItem.Click
 
+    Private Sub VerMisTiketsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerMisTiketsToolStripMenuItem.Click
+        If VerMisTiketsToolStripMenuItem.Text = "Ocultar Tikets" Then
+            ContForms.Visible = False
+        Else
+            ContForms.Visible = True
+        End If
+        If ContForms.TabCount > 1 Then
+            FinalizarSolicitudToolStripMenuItem.Visible = True
+        End If
+        If ContForms.TabCount = 1 Then
+            FinalizarSolicitudToolStripMenuItem.Visible = False
+        End If
+    End Sub
+
+    Private Sub TicketToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TicketToolStripMenuItem.Click
+        If ContForms.Visible = True Then
+            VerMisTiketsToolStripMenuItem.Text = "Ocultar Tikets"
+        Else
+            VerMisTiketsToolStripMenuItem.Text = "Ver Tikets"
+        End If
+    End Sub
+    Private Sub bnAcceder_Click(sender As Object, e As EventArgs) Handles bnAcceder.Click
+        LabelBienvenidaUsuario.Visible = True
+        LabelBienvenidaUsuario.Text = "Bienvenido Dilan"  'aqui pones el nombre del usuario
+        BtnSolicitudTiket.Visible = True
+        TicketToolStripMenuItem.Visible = True
+    End Sub
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles BtnSolicitudTiket.Click
+        BusquedaRespuesta()
     End Sub
 
     Private Sub FinalizarSolicitudToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FinalizarSolicitudToolStripMenuItem.Click
-
+        Dim resultado As MsgBoxResult
+        resultado = CType(MessageBox.Show("¿Desea Cerrar Todo?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
+        If resultado = MsgBoxResult.No Then
+        Else
+            Dim newPage As New TabPage("Tikets")
+            newPage.Controls.Add(PanelTikets)
+            ContForms.TabPages.Clear()
+            FinalizarSolicitudToolStripMenuItem.Visible = False
+            'mover tabb
+            ContForms.TabPages.Add(newPage)
+            ContForms.Visible = True
+        End If
     End Sub
 End Class

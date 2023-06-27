@@ -45,12 +45,13 @@ Partial Class MenuPrincipal
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.PanelMain = New System.Windows.Forms.Panel()
         Me.tablaContenedoraForms = New System.Windows.Forms.TableLayoutPanel()
-        Me.ContForms = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.ContForms = New System.Windows.Forms.TabControl()
+        Me.TabPage = New System.Windows.Forms.TabPage()
+        Me.LabelBienvenidaUsuario = New System.Windows.Forms.Label()
+        Me.BtnSolicitudTiket = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -71,6 +72,7 @@ Partial Class MenuPrincipal
         Me.tbUser = New System.Windows.Forms.TextBox()
         Me.MenuLogin = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PanelTikets = New System.Windows.Forms.Panel()
         Me.Border.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.MovForm.SuspendLayout()
@@ -79,15 +81,16 @@ Partial Class MenuPrincipal
         Me.TableLayoutPanel2.SuspendLayout()
         Me.PanelMain.SuspendLayout()
         Me.tablaContenedoraForms.SuspendLayout()
-        Me.ContForms.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
         Me.Panel6.SuspendLayout()
+        Me.ContForms.SuspendLayout()
+        Me.TabPage.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         Me.gbDatos.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelTikets.SuspendLayout()
         Me.SuspendLayout()
         '
         'Border
@@ -155,9 +158,9 @@ Partial Class MenuPrincipal
         Me.Label1.Location = New System.Drawing.Point(0, 0)
         Me.Label1.Margin = New System.Windows.Forms.Padding(0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(78, 32)
+        Me.Label1.Size = New System.Drawing.Size(73, 32)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "    DK - CODE"
+        Me.Label1.Text = " Empresa JK"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'BtnMin
@@ -350,8 +353,8 @@ Partial Class MenuPrincipal
         '
         Me.tablaContenedoraForms.ColumnCount = 1
         Me.tablaContenedoraForms.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tablaContenedoraForms.Controls.Add(Me.ContForms, 0, 1)
         Me.tablaContenedoraForms.Controls.Add(Me.Panel6, 0, 0)
+        Me.tablaContenedoraForms.Controls.Add(Me.ContForms, 0, 1)
         Me.tablaContenedoraForms.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tablaContenedoraForms.Location = New System.Drawing.Point(0, 0)
         Me.tablaContenedoraForms.Margin = New System.Windows.Forms.Padding(0)
@@ -361,40 +364,6 @@ Partial Class MenuPrincipal
         Me.tablaContenedoraForms.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.tablaContenedoraForms.Size = New System.Drawing.Size(636, 464)
         Me.tablaContenedoraForms.TabIndex = 2
-        '
-        'ContForms
-        '
-        Me.ContForms.AllowDrop = True
-        Me.ContForms.Controls.Add(Me.TabPage1)
-        Me.ContForms.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.ContForms.Location = New System.Drawing.Point(0, 30)
-        Me.ContForms.Margin = New System.Windows.Forms.Padding(0)
-        Me.ContForms.Multiline = True
-        Me.ContForms.Name = "ContForms"
-        Me.ContForms.SelectedIndex = 0
-        Me.ContForms.Size = New System.Drawing.Size(636, 434)
-        Me.ContForms.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
-        Me.ContForms.TabIndex = 1
-        '
-        'TabPage1
-        '
-        Me.TabPage1.Controls.Add(Me.Label7)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 26)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(628, 404)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Tikects"
-        Me.TabPage1.UseVisualStyleBackColor = True
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(273, 202)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(158, 19)
-        Me.Label7.TabIndex = 0
-        Me.Label7.Text = "Vacio por el momento"
         '
         'Panel6
         '
@@ -432,6 +401,47 @@ Partial Class MenuPrincipal
         Me.Label6.Size = New System.Drawing.Size(278, 15)
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "Hay cambios en la solicitudes, actualiza para verlos." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'ContForms
+        '
+        Me.ContForms.Controls.Add(Me.TabPage)
+        Me.ContForms.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ContForms.Location = New System.Drawing.Point(0, 30)
+        Me.ContForms.Margin = New System.Windows.Forms.Padding(0)
+        Me.ContForms.Name = "ContForms"
+        Me.ContForms.SelectedIndex = 0
+        Me.ContForms.Size = New System.Drawing.Size(636, 434)
+        Me.ContForms.TabIndex = 3
+        '
+        'TabPage
+        '
+        Me.TabPage.Controls.Add(Me.PanelTikets)
+        Me.TabPage.Location = New System.Drawing.Point(4, 24)
+        Me.TabPage.Name = "TabPage"
+        Me.TabPage.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage.Size = New System.Drawing.Size(628, 406)
+        Me.TabPage.TabIndex = 0
+        Me.TabPage.Text = "Tikets"
+        Me.TabPage.UseVisualStyleBackColor = True
+        '
+        'LabelBienvenidaUsuario
+        '
+        Me.LabelBienvenidaUsuario.AutoSize = True
+        Me.LabelBienvenidaUsuario.Font = New System.Drawing.Font("Segoe UI", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.LabelBienvenidaUsuario.Location = New System.Drawing.Point(36, 16)
+        Me.LabelBienvenidaUsuario.Name = "LabelBienvenidaUsuario"
+        Me.LabelBienvenidaUsuario.Size = New System.Drawing.Size(23, 30)
+        Me.LabelBienvenidaUsuario.TabIndex = 1
+        Me.LabelBienvenidaUsuario.Text = "*"
+        '
+        'BtnSolicitudTiket
+        '
+        Me.BtnSolicitudTiket.Location = New System.Drawing.Point(20, 73)
+        Me.BtnSolicitudTiket.Name = "BtnSolicitudTiket"
+        Me.BtnSolicitudTiket.Size = New System.Drawing.Size(141, 23)
+        Me.BtnSolicitudTiket.TabIndex = 0
+        Me.BtnSolicitudTiket.Text = "Solicitud de tiket"
+        Me.BtnSolicitudTiket.UseVisualStyleBackColor = True
         '
         'Panel5
         '
@@ -694,6 +704,17 @@ Partial Class MenuPrincipal
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(69, 22)
         '
+        'PanelTikets
+        '
+        Me.PanelTikets.Controls.Add(Me.LabelBienvenidaUsuario)
+        Me.PanelTikets.Controls.Add(Me.BtnSolicitudTiket)
+        Me.PanelTikets.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelTikets.Location = New System.Drawing.Point(3, 3)
+        Me.PanelTikets.Margin = New System.Windows.Forms.Padding(0)
+        Me.PanelTikets.Name = "PanelTikets"
+        Me.PanelTikets.Size = New System.Drawing.Size(622, 400)
+        Me.PanelTikets.TabIndex = 2
+        '
         'MenuPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -721,11 +742,10 @@ Partial Class MenuPrincipal
         Me.TableLayoutPanel2.ResumeLayout(False)
         Me.PanelMain.ResumeLayout(False)
         Me.tablaContenedoraForms.ResumeLayout(False)
-        Me.ContForms.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage1.PerformLayout()
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
+        Me.ContForms.ResumeLayout(False)
+        Me.TabPage.ResumeLayout(False)
         Me.TableLayoutPanel3.ResumeLayout(False)
         Me.TableLayoutPanel3.PerformLayout()
         Me.gbDatos.ResumeLayout(False)
@@ -734,6 +754,8 @@ Partial Class MenuPrincipal
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelTikets.ResumeLayout(False)
+        Me.PanelTikets.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -769,8 +791,6 @@ Partial Class MenuPrincipal
     Friend WithEvents tbUser As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents PanelMain As Panel
-    Friend WithEvents ContForms As TabControl
-    Friend WithEvents TabPage1 As TabPage
     Friend WithEvents Panel5 As Panel
     Friend WithEvents TicketToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VerMisTiketsToolStripMenuItem As ToolStripMenuItem
@@ -785,5 +805,9 @@ Partial Class MenuPrincipal
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents Label5 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents Label7 As Label
+    Friend WithEvents ContForms As TabControl
+    Friend WithEvents TabPage As TabPage
+    Friend WithEvents LabelBienvenidaUsuario As Label
+    Friend WithEvents BtnSolicitudTiket As Button
+    Friend WithEvents PanelTikets As Panel
 End Class
