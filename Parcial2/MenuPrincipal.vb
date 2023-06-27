@@ -1,11 +1,10 @@
 ﻿Imports System.Runtime.InteropServices
 Imports System.Drawing
 Imports System.Data.SqlClient
-Imports TallerPráctico3
 
 Public Class MenuPrincipal
     'conexion kendrick
-    Public conex As New SqlConnection("Data Source=DESKTOP-GQPJ6BS;Initial Catalog=Biblioteca;Integrated Security=True")
+    'Public conex As New SqlConnection("Data Source=DESKTOP-GQPJ6BS;Initial Catalog=Biblioteca;Integrated Security=True")
     'Conexion dilan
     'Public conex As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=Biblioteca;Integrated Security=True")
 
@@ -104,15 +103,17 @@ Public Class MenuPrincipal
     <DllImport("user32.dll")>
     Public Shared Function ReleaseCapture() As Boolean
     End Function
+#Disable Warning CA1401 ' Los elementos P/Invoke no deben estar visibles
     <DllImport("user32.dll")>
-    Public Shared Function SendMessage(ByVal hWnd As IntPtr, ByVal Msg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
+    Public Shared Function SendMessage(hWnd As IntPtr, Msg As Integer, wParam As Integer, lParam As Integer) As Integer
+#Enable Warning CA1401 ' Los elementos P/Invoke no deben estar visibles
     End Function
     Private Const WM_NCLBUTTONDOWN As Integer = &HA1
     Private Const HTCAPTION As Integer = 2
 
     Private Sub MoveForm()
         ReleaseCapture()
-        SendMessage(Me.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0)
+        Dim unused = SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0)
     End Sub
     Private Sub MovFom_MouseDown(sender As Object, e As MouseEventArgs) Handles MovForm.MouseDown
         If e.Button = Windows.Forms.MouseButtons.Left And Me.WindowState <> FormWindowState.Maximized Then
@@ -126,299 +127,82 @@ Public Class MenuPrincipal
         MovForm.Cursor = Cursors.Arrow
     End Sub
     ' ------------------colores de menu strip
-    Private Class renderer
+    Private Class RenderMenu
         Inherits ToolStripProfessionalRenderer
         Public Sub New()
-            MyBase.New(New cols())
+            MyBase.New(New Cols())
         End Sub
     End Class
-    Private Class cols
+    Private Class Cols
         Inherits ProfessionalColorTable
 
         'over de menu
         Public Overrides ReadOnly Property MenuItemSelected As Color
             ' cuando el menú está seleccionado
             Get
-                Return System.Drawing.Color.FromArgb(64, 64, 64) 'Elige el color que desees para el fondo del menú seleccionado
+                Return System.Drawing.Color.FromArgb(0, 0, 192) 'Elige el color que desees para el fondo del menú seleccionado
             End Get
         End Property
         Public Overrides ReadOnly Property MenuItemSelectedGradientBegin As Color
             Get
-                Return System.Drawing.Color.FromArgb(64, 64, 64) 'Elige el color que desees para el inicio del gradiente del menú seleccionado
+                Return System.Drawing.Color.FromArgb(0, 0, 192) 'Elige el color que desees para el inicio del gradiente del menú seleccionado
             End Get
         End Property
         'sub menu
         Public Overrides ReadOnly Property MenuItemSelectedGradientEnd As Color
             Get
-                Return Color.FromArgb(64, 64, 64) 'Elige el color que desees para el final del gradiente del menú seleccionado
+                Return System.Drawing.Color.FromArgb(0, 0, 192) 'Elige el color que desees para el final del gradiente del menú seleccionado
             End Get
         End Property
         'Seleccion de menu
 
         Public Overrides ReadOnly Property MenuItemPressedGradientBegin As Color
             Get
-                Return Color.FromArgb(64, 64, 64) 'Elige el color que desees para el inicio del gradiente del submenú seleccionado
+                Return System.Drawing.Color.FromArgb(0, 0, 192) 'Elige el color que desees para el inicio del gradiente del submenú seleccionado
             End Get
         End Property
 
         Public Overrides ReadOnly Property MenuItemPressedGradientEnd As Color
             Get
-                Return Color.FromArgb(64, 64, 64)  'Elige el color que desees para el final del gradiente del submenú seleccionado
+                Return System.Drawing.Color.FromArgb(0, 0, 192)  'Elige el color que desees para el final del gradiente del submenú seleccionado
             End Get
         End Property
     End Class
     '---------------------------------------LOAD-------------------------------------------
-    Public Sub MostrarLibros()
-        conex.Open()
-        Dim consulta As String = "select Title,estadoLibro from Books WHERE estadoLibro='Libre'"
-        Dim ejecutar As New SqlCommand(consulta, conex)
-        Try
-            Dim tabla As New SqlDataAdapter(ejecutar)
-            Dim dss As New DataSet
-            tabla.Fill(dss, "Books")
-            Me.DataGridView1.DataSource = dss.Tables("Books")
-            DataGridView1.Columns("Title").HeaderText = "Título del Libro"
-            DataGridView1.Columns("estadoLibro").HeaderText = "Estado del Libro"
-        Catch ex As Exception
-            Console.WriteLine(ex.Message)
-        Finally
-            conex.Close()
-        End Try
-
-    End Sub
     Private Sub MenuPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'colores de menu
-        CerrarTodoToolStripMenuItem1.Visible = False
-        ContForms.Visible = False
         TableLayoutPanel1.Cursor = Cursors.Arrow
-        MenuStrip1.Renderer = New renderer()
-        MenuStrip2.Renderer = New renderer()
-        MostrarLibros()
-        Dim Img As Image = My.Resources.Logo_2023
-        Panel1.BackgroundImage = Img
-        'nosotros visible
-        PictureBox1.Visible = False
-        PictureBox2.Visible = False
-        PictureBox3.Visible = False
-        Label3.Visible = False
-        Label4.Visible = False
-        Label5.Visible = False
-        Label6.Visible = False
-
+        MenuStrip1.Renderer = New RenderMenu()
+        MenuStrip2.Renderer = New RenderMenu()
     End Sub
     '------------------------------------------
-    Private Sub BibliotecaArchivosToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        If ContForms.Visible = True Then
-            'imagen de recursos
-            Panel1.BackColor = Color.Black
-            Panel1.BackgroundImage = Nothing
-        Else
-            'imagen de recursos
-            Panel1.BackColor = Color.White
-            Dim Img As Image = My.Resources.Logo_2023
-            Panel1.BackgroundImage = Img
-            Panel1.BackgroundImageLayout = ImageLayout.Zoom
-        End If
-        'nosotros visible
-        PictureBox1.Visible = False
-        PictureBox2.Visible = False
-        PictureBox3.Visible = False
-        Label3.Visible = False
-        Label4.Visible = False
-        Label5.Visible = False
-        Label6.Visible = False
-        Panel1.Visible = True
-        If ContForms.Visible = True Then
-            VerLibrosToolStripMenuItem.Text = "Ocultar Menu"
-
-        Else
-            VerLibrosToolStripMenuItem.Text = "Ver Libros"
-        End If
-        If ContForms.TabCount > 1 Then
-            CerrarTodoToolStripMenuItem1.Visible = True
-        End If
-        If ContForms.TabCount = 1 Then
-            CerrarTodoToolStripMenuItem1.Visible = False
-        End If
-    End Sub
-    Private Sub VerLibrosToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        If ContForms.Visible = False Then
-            ContForms.Visible = True
-            'imagen de recursos
-            Panel1.BackColor = Color.Black
-
-            Panel1.BackgroundImage = Nothing
-            'nosotros visible
-            PictureBox1.Visible = False
-            PictureBox2.Visible = False
-            PictureBox3.Visible = False
-            Label3.Visible = False
-            Label4.Visible = False
-            Label5.Visible = False
-            Label6.Visible = False
-            Panel1.Visible = True
-        Else
-            ContForms.Visible = False
-            'imagen de recursos
-            Panel1.BackColor = Color.White
-            Dim Img As Image = My.Resources.Logo_2023
-            Panel1.BackgroundImage = Img
-            Panel1.BackgroundImageLayout = ImageLayout.Zoom
-            'nosotros visible
-            PictureBox1.Visible = False
-            PictureBox2.Visible = False
-            PictureBox3.Visible = False
-            Label3.Visible = False
-            Label4.Visible = False
-            Label5.Visible = False
-            Label6.Visible = False
-            Panel1.Visible = True
-        End If
-    End Sub
-    Private Sub CerrarTodoToolStripMenuItem1_Click(sender As Object, e As EventArgs)
-        Dim resultado As MsgBoxResult
-        resultado = CType(MessageBox.Show("¿Desea Cerrar Todo?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
-        If resultado = MsgBoxResult.No Then
-        Else
-            ContForms.TabPages.Clear()
-            CerrarTodoToolStripMenuItem1.Visible = False
-            Dim newPage As New TabPage("Menu Principal")
-            'mover tabb
-            newPage.Controls.Add(ContenidoMenuPrincipal)
-            ContForms.TabPages.Add(newPage)
-            ContForms.Visible = True
-            If ContForms.Visible = True Then
-                'imagen de recursos
-                Panel1.BackColor = Color.Black
-                Panel1.BackgroundImage = Nothing
-            Else
-                'imagen de recursos
-                Panel1.BackColor = Color.White
-                Dim Img As Image = My.Resources.Logo_2023
-                Panel1.BackgroundImage = Img
-                Panel1.BackgroundImageLayout = ImageLayout.Zoom
-            End If
-            'nosotros visible
-            PictureBox1.Visible = False
-            PictureBox2.Visible = False
-            PictureBox3.Visible = False
-            Label3.Visible = False
-            Label4.Visible = False
-            Label5.Visible = False
-            Label6.Visible = False
-            Panel1.Visible = True
-        End If
-    End Sub
     'opens de Problema 1
     Public Sub OpenProblema1()
-        Dim mensaje As New AgregarLibros1  'Nombre del Form
-        mensaje.MdiParent = Me
-        If ContForms.TabCount >= 1 Then
-            CerrarTodoToolStripMenuItem1.Visible = True
-        End If
-        If ContForms.TabCount = 0 Then
-            CerrarTodoToolStripMenuItem1.Visible = False
-        End If
-        ' Si no hay nada abierto
-        ContForms.Visible = True
-        mensaje.Dock = DockStyle.Fill ' Hace que el formulario se ajuste al tamaño del TabPage
-        ' Agrega el formulario al primer TabPage
-        'titulo de pagina
-        Dim newPage As New TabPage("Agregar Libros")
-        'mover tabb
-        newPage.Controls.Add(mensaje)
-        ContForms.TabPages.Add(newPage)
-        mensaje.Show()
-        ContForms.SelectedTab = newPage
-        'nosotros visible
-        PictureBox1.Visible = False
-        PictureBox2.Visible = False
-        PictureBox3.Visible = False
-        Label3.Visible = False
-        Label4.Visible = False
-        Label5.Visible = False
-        Label6.Visible = False
-        Panel1.Visible = True
-        Panel1.BackgroundImage = Nothing
-        Panel1.BackColor = Color.Black
+        Using mensaje As New Usuario  'Nombre del Form        mensaje.MdiParent = Me
+            If ContForms.TabCount >= 1 Then
+                FinalizarSolicitudToolStripMenuItem.Visible = True
+            End If
+            If ContForms.TabCount = 0 Then
+                FinalizarSolicitudToolStripMenuItem.Visible = False
+            End If
+            ' Si no hay nada abierto
+            ContForms.Visible = True
+            mensaje.Dock = DockStyle.Fill ' Hace que el formulario se ajuste al tamaño del TabPage
+            ' Agrega el formulario al primer TabPage
+            'titulo de pagina
+            Dim newPage As New TabPage("Solicitud de Tikect")
+            'mover tabb
+            newPage.Controls.Add(mensaje)
+            ContForms.TabPages.Add(newPage)
+            mensaje.Show()
+            ContForms.SelectedTab = newPage
+        End Using
     End Sub
-    'open 2 eliminar libros
-    Public Sub OpenProblema2()
-        Dim mensaje As New EliminarLibros1   'Nombre del Form
-        mensaje.MdiParent = Me
-        If ContForms.TabCount >= 1 Then
-            CerrarTodoToolStripMenuItem1.Visible = True
-        End If
-        If ContForms.TabCount = 0 Then
-            CerrarTodoToolStripMenuItem1.Visible = False
-        End If
-        ' Si no hay nada abierto
-        ContForms.Visible = True
-        mensaje.Dock = DockStyle.Fill ' Hace que el formulario se ajuste al tamaño del TabPage
-        ' Agrega el formulario al primer TabPage
-        'borrar pagina
-        'titulo de pagina
-        Dim newPage As New TabPage("Eliminar Libros")
-        'mover tabb
-        newPage.Controls.Add(mensaje)
-        ContForms.TabPages.Add(newPage)
-        mensaje.Show()
-        ContForms.SelectedTab = newPage
-        'nosotros visible
-        PictureBox1.Visible = False
-        PictureBox2.Visible = False
-        PictureBox3.Visible = False
-        Label3.Visible = False
-        Label4.Visible = False
-        Label5.Visible = False
-        Label6.Visible = False
-        Panel1.Visible = True
-        Panel1.BackgroundImage = Nothing
-        Panel1.BackColor = Color.Black
-    End Sub
-    'Abrir Lista de Clientes
-    Public Sub OpenProblema3()
-        Dim mensaje As New Clientes  'Nombre del Form
-        mensaje.MdiParent = Me
-        If ContForms.TabCount >= 1 Then
-            CerrarTodoToolStripMenuItem1.Visible = True
-        End If
-        If ContForms.TabCount = 0 Then
-            CerrarTodoToolStripMenuItem1.Visible = False
-        End If
-        ' Si no hay nada abierto
-        ContForms.Visible = True
-        mensaje.Dock = DockStyle.Fill ' Hace que el formulario se ajuste al tamaño del TabPage
-        ' Agrega el formulario al primer TabPage
-        'borrar pagina
-        'titulo de pagina
-        Dim newPage As New TabPage("Clientes")
-        'mover tabb
-        newPage.Controls.Add(mensaje)
-
-        ContForms.TabPages.Add(newPage)
-
-        mensaje.Show()
-        ContForms.SelectedTab = newPage
-        'nosotros visible
-        PictureBox1.Visible = False
-        PictureBox2.Visible = False
-        PictureBox3.Visible = False
-        Label3.Visible = False
-        Label4.Visible = False
-        Label5.Visible = False
-        Label6.Visible = False
-        Panel1.Visible = True
-        Panel1.BackgroundImage = Nothing
-        Panel1.BackColor = Color.Black
-    End Sub
-    'opcion de barra de menu
-    'Agregar Libros
     Public Sub BusquedaRespuesta()
         Dim encontrado As Boolean = False
         If ContForms.TabCount > 1 Then
             For Each tp As TabPage In ContForms.TabPages
-                If tp.Text = "Agregar Libros" Then
+                If tp.Text = "Solicitud de Tikect" Then
                     ' Respuesta de cerrado
                     encontrado = True
                     Dim resultado As MsgBoxResult
@@ -440,76 +224,15 @@ Public Class MenuPrincipal
             OpenProblema1()
         End If
     End Sub
-    Private Sub AgregarLibroToolStripMenuItem_Click(sender As Object, e As EventArgs)
+    'vista principal de usuario
+    Private Sub bnAcceder_Click(sender As Object, e As EventArgs) Handles bnAcceder.Click
         BusquedaRespuesta()
     End Sub
-    Private Sub AbrirForm1_Click(sender As Object, e As EventArgs)
-        BusquedaRespuesta()
-    End Sub
-    'Eliminar Libros
-    Public Sub BusquedaRespuesta2()
-        Dim encontrado As Boolean = False
-        If ContForms.TabCount > 1 Then
-            For Each tp As TabPage In ContForms.TabPages
-                If tp.Text = "Eliminar Libros" Then
-                    encontrado = True
-                    ' Respuesta de cerrado
-                    Dim resultado As MsgBoxResult
-                    resultado = CType(MessageBox.Show("¿Actualmente esta en uso el modo Eliminar, desea finalizar?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
-                    If resultado = MsgBoxResult.No Then
-                        ContForms.SelectedTab = tp
-                    Else
-                        'cierras el form agregar libro
-                        ContForms.TabPages.Remove(tp)
-                        OpenProblema2()
-                    End If
-                    Exit For
-                End If
-            Next
-            If encontrado = False Then
-                OpenProblema2()
-            End If
-        Else
-            OpenProblema2()
-        End If
-    End Sub
-    Private Sub EliminarLibrosToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        BusquedaRespuesta2()
+    Private Sub VerMisTiketsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerMisTiketsToolStripMenuItem.Click
 
     End Sub
 
-    Private Sub BtnEliminarLibro_Click(sender As Object, e As EventArgs)
-        BusquedaRespuesta2()
-    End Sub
-    'Lista de clientes
-    Public Sub BusquedaRespuesta3()
-        Dim encontrado As Boolean = False
-        If ContForms.TabCount > 1 Then
-            For Each tp As TabPage In ContForms.TabPages
-                If tp.Text = "Clientes" Then
-                    ' Respuesta de cerrado
-                    encontrado = True
-                    Dim resultado As MsgBoxResult
-                    resultado = CType(MessageBox.Show("¿Actualmente esta en uso el modo Agregar, desea finalizar?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
-                    If resultado = MsgBoxResult.No Then
-                        ContForms.SelectedTab = tp
-                    Else
-                        'cierras el form agregar libro
-                        ContForms.TabPages.Remove(tp)
-                        OpenProblema3()
-                    End If
-                    Exit For
-                End If
-            Next
-            If encontrado = False Then
-                OpenProblema3()
-            End If
-        Else
-            OpenProblema3()
-        End If
-    End Sub
-    Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        BusquedaRespuesta3()
-    End Sub
+    Private Sub FinalizarSolicitudToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FinalizarSolicitudToolStripMenuItem.Click
 
+    End Sub
 End Class
