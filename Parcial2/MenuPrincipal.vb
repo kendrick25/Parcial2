@@ -186,21 +186,21 @@ Public Class MenuPrincipal
         Dim mensaje As New Usuario  'Nombre del Form
         mensaje.MdiParent = Me
         If ContForms.TabCount >= 1 Then
-                FinalizarSolicitudToolStripMenuItem.Visible = True
-            End If
-            If ContForms.TabCount = 0 Then
-                FinalizarSolicitudToolStripMenuItem.Visible = False
-            End If
-            ' Si no hay nada abierto
-            ContForms.Visible = True
-            mensaje.Dock = DockStyle.Fill ' Hace que el formulario se ajuste al tamaño del TabPage
-            ' Agrega el formulario al primer TabPage
-            'titulo de pagina
-            Dim newPage As New TabPage("Solicitud de Tikect")
-            'mover tabb
-            newPage.Controls.Add(mensaje)
-            ContForms.TabPages.Add(newPage)
-            mensaje.Show()
+            FinalizarSolicitudToolStripMenuItem.Visible = True
+        End If
+        If ContForms.TabCount = 0 Then
+            FinalizarSolicitudToolStripMenuItem.Visible = False
+        End If
+        ' Si no hay nada abierto
+        ContForms.Visible = True
+        mensaje.Dock = DockStyle.Fill ' Hace que el formulario se ajuste al tamaño del TabPage
+        ' Agrega el formulario al primer TabPage
+        'titulo de pagina
+        Dim newPage As New TabPage("Solicitud de Tikect")
+        'mover tabb
+        newPage.Controls.Add(mensaje)
+        ContForms.TabPages.Add(newPage)
+        mensaje.Show()
         ContForms.SelectedTab = newPage
     End Sub
     Public Sub BusquedaRespuesta()
@@ -274,8 +274,15 @@ Public Class MenuPrincipal
         LabelBienvenidaUsuario.Text = "Bienvenido Dilan"  'aqui pones el nombre del usuario
         BtnSolicitudTiket.Visible = True
         TicketToolStripMenuItem.Visible = True
+        nombreUsuario.Text = tbUser.Text
+        Funciones.UserLoginName = nombreUsuario.Text
     End Sub
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles BtnSolicitudTiket.Click
         BusquedaRespuesta()
     End Sub
+
+    Private Sub PanelTikets_Paint(sender As Object, e As PaintEventArgs) Handles PanelTikets.Paint
+
+    End Sub
+
 End Class
