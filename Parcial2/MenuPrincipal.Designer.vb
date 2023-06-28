@@ -50,6 +50,7 @@ Partial Class MenuPrincipal
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ContForms = New System.Windows.Forms.TabControl()
         Me.TabPage = New System.Windows.Forms.TabPage()
+        Me.PanelTikets = New System.Windows.Forms.Panel()
         Me.LabelBienvenidaUsuario = New System.Windows.Forms.Label()
         Me.BtnSolicitudTiket = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
@@ -72,7 +73,6 @@ Partial Class MenuPrincipal
         Me.tbUser = New System.Windows.Forms.TextBox()
         Me.MenuLogin = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PanelTikets = New System.Windows.Forms.Panel()
         Me.Border.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.MovForm.SuspendLayout()
@@ -84,13 +84,13 @@ Partial Class MenuPrincipal
         Me.Panel6.SuspendLayout()
         Me.ContForms.SuspendLayout()
         Me.TabPage.SuspendLayout()
+        Me.PanelTikets.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         Me.gbDatos.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelTikets.SuspendLayout()
         Me.SuspendLayout()
         '
         'Border
@@ -424,11 +424,22 @@ Partial Class MenuPrincipal
         Me.TabPage.Text = "Tikets"
         Me.TabPage.UseVisualStyleBackColor = True
         '
+        'PanelTikets
+        '
+        Me.PanelTikets.Controls.Add(Me.LabelBienvenidaUsuario)
+        Me.PanelTikets.Controls.Add(Me.BtnSolicitudTiket)
+        Me.PanelTikets.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelTikets.Location = New System.Drawing.Point(3, 3)
+        Me.PanelTikets.Margin = New System.Windows.Forms.Padding(0)
+        Me.PanelTikets.Name = "PanelTikets"
+        Me.PanelTikets.Size = New System.Drawing.Size(622, 400)
+        Me.PanelTikets.TabIndex = 2
+        '
         'LabelBienvenidaUsuario
         '
         Me.LabelBienvenidaUsuario.AutoSize = True
         Me.LabelBienvenidaUsuario.Font = New System.Drawing.Font("Segoe UI", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.LabelBienvenidaUsuario.Location = New System.Drawing.Point(36, 16)
+        Me.LabelBienvenidaUsuario.Location = New System.Drawing.Point(20, 27)
         Me.LabelBienvenidaUsuario.Name = "LabelBienvenidaUsuario"
         Me.LabelBienvenidaUsuario.Size = New System.Drawing.Size(23, 30)
         Me.LabelBienvenidaUsuario.TabIndex = 1
@@ -704,17 +715,6 @@ Partial Class MenuPrincipal
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(69, 22)
         '
-        'PanelTikets
-        '
-        Me.PanelTikets.Controls.Add(Me.LabelBienvenidaUsuario)
-        Me.PanelTikets.Controls.Add(Me.BtnSolicitudTiket)
-        Me.PanelTikets.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelTikets.Location = New System.Drawing.Point(3, 3)
-        Me.PanelTikets.Margin = New System.Windows.Forms.Padding(0)
-        Me.PanelTikets.Name = "PanelTikets"
-        Me.PanelTikets.Size = New System.Drawing.Size(622, 400)
-        Me.PanelTikets.TabIndex = 2
-        '
         'MenuPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -746,6 +746,8 @@ Partial Class MenuPrincipal
         Me.Panel6.PerformLayout()
         Me.ContForms.ResumeLayout(False)
         Me.TabPage.ResumeLayout(False)
+        Me.PanelTikets.ResumeLayout(False)
+        Me.PanelTikets.PerformLayout()
         Me.TableLayoutPanel3.ResumeLayout(False)
         Me.TableLayoutPanel3.PerformLayout()
         Me.gbDatos.ResumeLayout(False)
@@ -754,8 +756,6 @@ Partial Class MenuPrincipal
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelTikets.ResumeLayout(False)
-        Me.PanelTikets.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
