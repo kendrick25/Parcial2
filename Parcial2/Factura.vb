@@ -19,66 +19,225 @@ Public Class Factura
         xlApp = New Excel.Application
         xlWorkBook = xlApp.Workbooks.Add()
         xlWorkSheet = CType(xlWorkBook.Sheets("Hoja1"), Excel.Worksheet)
-
+        'Personaliza el tipo de letra.
+        xlWorkSheet.Range("B2:F24").Font.Name = "Arial"
+        'Personaliza el tamaño de letra de las celdas.
+        xlWorkSheet.Range("B2").Font.Size = 72
+        xlWorkSheet.Range("D2:F8").Font.Size = 10
+        xlWorkSheet.Range("B9:F23").Font.Size = 10
+        xlWorkSheet.Range("B4:F24").Font.Size = 12
+        xlWorkSheet.Range("D4:F4").Font.Size = 22
+        ' Cambiar el color de letra de¡ las celdas
+        xlWorkSheet.Range("B2:F10").Font.Color = Color.White
+        xlWorkSheet.Range("B11:B16").Font.Color = Color.White
+        xlWorkSheet.Range("B17:F17").Font.Color = Color.White
+        xlWorkSheet.Range("B19:F21").Font.Color = Color.White
+        xlWorkSheet.Range("B23:F24").Font.Color = Color.White
+        ' Hace que el texto sea negrita.
+        xlWorkSheet.Range("B2:F8").Font.Bold = True
+        xlWorkSheet.Range("B9:B16").Font.Bold = True
+        xlWorkSheet.Range("C9:F10").Font.Bold = True
+        xlWorkSheet.Range("B17:F17").Font.Bold = True
+        xlWorkSheet.Range("B19:F19").Font.Bold = True
+        xlWorkSheet.Range("B20").Font.Bold = True
+        xlWorkSheet.Range("B21:F21").Font.Bold = True
+        xlWorkSheet.Range("B23").Font.Bold = True
+        xlWorkSheet.Range("B24:F24").Font.Bold = True
+        ' Establecer el ancho y la altura de las celdas
+        'columnas
+        xlWorkSheet.Range("B1").ColumnWidth = 28.57
+        xlWorkSheet.Range("C1").ColumnWidth = 28.14
+        xlWorkSheet.Range("D1").ColumnWidth = 14.14
+        xlWorkSheet.Range("E1").ColumnWidth = 31.43
+        xlWorkSheet.Range("F1").ColumnWidth = 22.57
+        'filas
+        xlWorkSheet.Range("G2:G16").RowHeight = 16
+        xlWorkSheet.Range("G4").RowHeight = 36
+        xlWorkSheet.Range("G17").RowHeight = 23
+        xlWorkSheet.Range("G18").RowHeight = 52
+        xlWorkSheet.Range("G19").RowHeight = 23
+        xlWorkSheet.Range("G20:G23").RowHeight = 19
+        xlWorkSheet.Range("G24").RowHeight = 50
+        ' Personaliza el color de  fondo.
+        'color black
+        xlWorkSheet.Range("B2:C8").Interior.Color = Color.Black
+        xlWorkSheet.Range("D2:F2").Interior.Color = Color.Black
+        xlWorkSheet.Range("D4:F4").Interior.Color = Color.Black
+        xlWorkSheet.Range("D6:F6").Interior.Color = Color.Black
+        xlWorkSheet.Range("D8:F8").Interior.Color = Color.Black
+        xlWorkSheet.Range("D10:F10").Interior.Color = Color.Black
+        xlWorkSheet.Range("B11:B16").Interior.Color = Color.Black
+        xlWorkSheet.Range("B19:F19").Interior.Color = Color.Black
+        xlWorkSheet.Range("B24:F24").Interior.Color = Color.Black
+        xlWorkSheet.Range("B24:F24").Interior.Color = Color.Black
+        'color darkgray
+        xlWorkSheet.Range("D3:F3").Interior.Color = Color.DarkGray
+        xlWorkSheet.Range("D5:F5").Interior.Color = Color.DarkGray
+        xlWorkSheet.Range("D7:F7").Interior.Color = Color.DarkGray
+        xlWorkSheet.Range("B9:B10").Interior.Color = Color.DarkGray
+        xlWorkSheet.Range("D9").Interior.Color = Color.DarkGray
+        xlWorkSheet.Range("B17:F17").Interior.Color = Color.DarkGray
+        xlWorkSheet.Range("B21:F21").Interior.Color = Color.DarkGray
+        xlWorkSheet.Range("B20").Interior.Color = Color.DarkGray
+        xlWorkSheet.Range("B23").Interior.Color = Color.DarkGray
+        'color gray
+        xlWorkSheet.Range("E9:F9").Interior.Color = Color.Gray
+        xlWorkSheet.Range("C9:C10").Interior.Color = Color.Gray
+        xlWorkSheet.Range("C20:F20").Interior.Color = Color.Gray
+        xlWorkSheet.Range("C23:F23").Interior.Color = Color.Gray
+        'color white
+        xlWorkSheet.Range("D11:F11").Interior.Color = Color.White
+        xlWorkSheet.Range("D13:F13").Interior.Color = Color.White
+        xlWorkSheet.Range("D15:F15").Interior.Color = Color.White
+        xlWorkSheet.Range("B18:F18").Interior.Color = Color.White
+        'color smoke white
+        xlWorkSheet.Range("D12:F12").Interior.Color = Color.WhiteSmoke
+        xlWorkSheet.Range("D14:F14").Interior.Color = Color.WhiteSmoke
+        xlWorkSheet.Range("D16:F16").Interior.Color = Color.WhiteSmoke
+        xlWorkSheet.Range("B22:F22").Interior.Color = Color.WhiteSmoke
         ' Agrega datos a la hoja de trabajo.           Formato de tabla
         'fila , columna
-        xlWorkSheet.Cells(1, 1) = "JK"
-        xlWorkSheet.Cells(6, 1) = "1"
-        xlWorkSheet.Cells(8, 1) = "1" & "1"
-        xlWorkSheet.Cells(9, 1) = "1" & "2"
-        xlWorkSheet.Cells(10, 1) = "1" & "3"
-
-        ' Personaliza el tipo de letra y tamaño.
-        xlWorkSheet.Range("A1:A4").Font.Name = "Arial"
-        xlWorkSheet.Range("A2:A4").Font.Size = 12
-        xlWorkSheet.Range("A1").Font.Size = 30
-
-        ' Cambiar el color de letra de una celda
-        xlWorkSheet.Range("A1").Font.Color = Color.White
-        ' Personaliza el fondo.
-        xlWorkSheet.Range("A2:A4").Interior.ColorIndex = 6
-        xlWorkSheet.Range("A1").Interior.Color = RGB(64, 64, 64)
-
-        ' Hace que el texto sea negrita.
-        xlWorkSheet.Range("A1:A4").Font.Bold = True
+        '--------------------------------------------------
+        'Logo JK
+        xlWorkSheet.Cells(2, 2) = "JK"
+        '--------------------------------------------------------------
+        'info de RUC
+        'fila, columna
+        xlWorkSheet.Cells(2, 4) = "DGI"
+        xlWorkSheet.Cells(3, 4) = "Comprobante de Factura Electronica"
+        xlWorkSheet.Cells(4, 4) = "EMPRESA JK"
+        xlWorkSheet.Cells(5, 4) = "R.U.C 12425-224-951050 D.V. 101"
+        xlWorkSheet.Cells(6, 4) = "DAVID, AV. 3RA, ENTRE AV. OBALDIA Y AV. BALBOA"
+        xlWorkSheet.Cells(7, 4) = "Telefono: 775 -1034  o 6592-1274"
+        xlWorkSheet.Cells(8, 4) = "FACTURA"
+        '--------------------------------------------------------------
+        'info del cliente
+        'fila, columna
+        xlWorkSheet.Cells(9, 2) = "No.Cliente"
+        xlWorkSheet.Cells(11, 2) = "Cliente"
+        xlWorkSheet.Cells(12, 2) = "Cedula"
+        xlWorkSheet.Cells(13, 2) = "Telefono"
+        xlWorkSheet.Cells(14, 2) = "Empleado Encargado"
+        xlWorkSheet.Cells(15, 2) = "Administrador a Cargo"
+        xlWorkSheet.Cells(16, 2) = "Fecha"
+        '-------------------------------------------------------------
+        'tabla de costos
+        'fila, columna
+        xlWorkSheet.Cells(9, 4) = "No.Factura"
+        xlWorkSheet.Cells(10, 4) = "Cantidad"
+        xlWorkSheet.Cells(10, 5) = "Descripcion"
+        xlWorkSheet.Cells(10, 6) = "Precio"
+        xlWorkSheet.Cells(14, 5) = "Sub total"
+        xlWorkSheet.Cells(15, 5) = "Impuesto (7%)"
+        xlWorkSheet.Cells(16, 5) = "Total"
+        '----------------------------------------------------------
+        'informacion adicional
+        xlWorkSheet.Cells(17, 2) = "Observacion de Costos Extras"
+        xlWorkSheet.Cells(19, 2) = "Forma de Pago"
+        xlWorkSheet.Cells(20, 2) = "Efectivo"
+        xlWorkSheet.Cells(21, 2) = "Consulta tu Comprobante en"
+        xlWorkSheet.Cells(22, 2) = "https://dgi-fep-test.mef.gob.pa:40001/Consultas"
+        xlWorkSheet.Cells(23, 2) = "Cufe"
+        xlWorkSheet.Cells(23, 3) = "FE012000012867-224-17267-3600022023062800000670565001011451232476"
+        xlWorkSheet.Cells(24, 2) = "GRACIAS POR PREFERIRNOS"
+        '*********************************************************
+        'centrar y combinar 
+        ' Combinar celdas
+        'logo
+        xlWorkSheet.Range("B2:C8").Merge()
+        'encabezado
+        xlWorkSheet.Range("D2:F2").Merge()
+        xlWorkSheet.Range("D3:F3").Merge()
+        xlWorkSheet.Range("D4:F4").Merge()
+        xlWorkSheet.Range("D5:F5").Merge()
+        xlWorkSheet.Range("D6:F6").Merge()
+        xlWorkSheet.Range("D7:F7").Merge()
+        xlWorkSheet.Range("D8:F8").Merge()
+        'datos de cliente
+        xlWorkSheet.Range("B9:B10").Merge()
+        xlWorkSheet.Range("C9:C10").Merge()
+        'Tabla Precios
+        xlWorkSheet.Range("E9:F9").Merge()
+        'otros Datos
+        xlWorkSheet.Range("B17:F17").Merge()
+        xlWorkSheet.Range("B18:F18").Merge()
+        xlWorkSheet.Range("B19:F19").Merge()
+        xlWorkSheet.Range("C20:F20").Merge()
+        xlWorkSheet.Range("B21:F21").Merge()
+        xlWorkSheet.Range("B22:F22").Merge()
+        xlWorkSheet.Range("C23:F23").Merge()
+        xlWorkSheet.Range("B24:F24").Merge()
 
 
         ' Centra el contenido de cada celda.
-        xlWorkSheet.Range("A1:A4").HorizontalAlignment = Excel.Constants.xlCenter
+        xlWorkSheet.Range("B2:F8").HorizontalAlignment = Excel.Constants.xlCenter
+        xlWorkSheet.Range("B9:B16").HorizontalAlignment = Excel.Constants.xlCenter
+        xlWorkSheet.Range("D9").HorizontalAlignment = Excel.Constants.xlCenter
+        xlWorkSheet.Range("D10:F10").HorizontalAlignment = Excel.Constants.xlCenter
+        xlWorkSheet.Range("D11:D16").HorizontalAlignment = Excel.Constants.xlCenter
+        xlWorkSheet.Range("E11:E13").HorizontalAlignment = Excel.Constants.xlCenter
+        xlWorkSheet.Range("E14:E16").HorizontalAlignment = Excel.Constants.xlRight
+        xlWorkSheet.Range("B17:F17").HorizontalAlignment = Excel.Constants.xlCenter
+        xlWorkSheet.Range("B19:F19").HorizontalAlignment = Excel.Constants.xlCenter
+        xlWorkSheet.Range("B20").HorizontalAlignment = Excel.Constants.xlCenter
+        xlWorkSheet.Range("B21:F21").HorizontalAlignment = Excel.Constants.xlCenter
+        xlWorkSheet.Range("B22:F22").HorizontalAlignment = Excel.Constants.xlCenter
+        xlWorkSheet.Range("B23").HorizontalAlignment = Excel.Constants.xlCenter
+        xlWorkSheet.Range("B24:F24").HorizontalAlignment = Excel.Constants.xlCenter
+        ' Alinear el texto en el medio de la celda
+        xlWorkSheet.Range("B2:F8").VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        xlWorkSheet.Range("B9:B16").VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        xlWorkSheet.Range("D9").VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        xlWorkSheet.Range("D10:F10").VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        xlWorkSheet.Range("D11:D16").VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        xlWorkSheet.Range("E11:E13").VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        xlWorkSheet.Range("D10:F10").VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        xlWorkSheet.Range("E14:E16").VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        xlWorkSheet.Range("B17:F17").VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        xlWorkSheet.Range("B19:F19").VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        xlWorkSheet.Range("B20:F24").VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
 
-        ' Establecer el ancho y la altura de las celdas
-        xlWorkSheet.Range("A1").ColumnWidth = 20
-        xlWorkSheet.Range("A1").RowHeight = 30
-        ' Combinar celdas
-        xlWorkSheet.Range("A1:B1").Merge()
+        ' Autoajustar contenido
+        ' Autoajustar el alto de la fila 1
 
-        ' Agregar bordes a las celdas
+        xlWorkSheet.Range("C11").WrapText = True
+        xlWorkSheet.Range("C14").WrapText = True
+        xlWorkSheet.Range("C15").WrapText = True
+        xlWorkSheet.Range("E11").WrapText = True
+        xlWorkSheet.Range("E12").WrapText = True
+        xlWorkSheet.Range("B18:F18").WrapText = True
         'todos los bordes
-        xlWorkSheet.Range("A1:A4").Borders.LineStyle = Excel.XlLineStyle.xlContinuous
-        xlWorkSheet.Range("A1:A4").Borders.Weight = Excel.XlBorderWeight.xlThin
-        'arriba
-        xlWorkSheet.Range("C2:C4").Borders.Item(Excel.XlBordersIndex.xlEdgeTop).LineStyle = Excel.XlLineStyle.xlContinuous
-        xlWorkSheet.Range("C2:C4").Borders.Item(Excel.XlBordersIndex.xlEdgeTop).Weight = Excel.XlBorderWeight.xlThin
-        'abajo
-        xlWorkSheet.Range("D1:D4").Borders.Item(Excel.XlBordersIndex.xlEdgeBottom).LineStyle = Excel.XlLineStyle.xlContinuous
-        xlWorkSheet.Range("D1:D4").Borders.Item(Excel.XlBordersIndex.xlEdgeBottom).Weight = Excel.XlBorderWeight.xlThin
-        'izquierda
-        xlWorkSheet.Range("F1:F4").Borders.Item(Excel.XlBordersIndex.xlEdgeLeft).LineStyle = Excel.XlLineStyle.xlContinuous
-        xlWorkSheet.Range("F1:F4").Borders.Item(Excel.XlBordersIndex.xlEdgeLeft).Weight = Excel.XlBorderWeight.xlThin
-        'derecha
-        xlWorkSheet.Range("H1:H4").Borders.Item(Excel.XlBordersIndex.xlEdgeRight).LineStyle = Excel.XlLineStyle.xlContinuous
-        xlWorkSheet.Range("H1:H4").Borders.Item(Excel.XlBordersIndex.xlEdgeRight).Weight = Excel.XlBorderWeight.xlThin
+        'xlWorkSheet.Range("A1:A4").Borders.LineStyle = Excel.XlLineStyle.xlContinuous
+        'xlWorkSheet.Range("A1:A4").Borders.Weight = Excel.XlBorderWeight.xlThin
+
+        'borde de arriba en una sola celda
+        'xlWorkSheet.Range("C2").Borders.Item(Excel.XlBordersIndex.xlEdgeTop).LineStyle = Excel.XlLineStyle.xlContinuous
+        'xlWorkSheet.Range("C2").Borders.Item(Excel.XlBordersIndex.xlEdgeTop).Weight = Excel.XlBorderWeight.xlThin
+
+        'Borde de abajo en varias celdas
+        'xlWorkSheet.Range("D1:D4").Borders.Item(Excel.XlBordersIndex.xlEdgeBottom).LineStyle = Excel.XlLineStyle.xlContinuous
+        'xlWorkSheet.Range("D1:D4").Borders.Item(Excel.XlBordersIndex.xlEdgeBottom).Weight = Excel.XlBorderWeight.xlThin
+
+        'Borde de izquierda en varias celdas
+        xlWorkSheet.Range("B2:B24").Borders.Item(Excel.XlBordersIndex.xlEdgeLeft).LineStyle = Excel.XlLineStyle.xlContinuous
+        xlWorkSheet.Range("B2:B24").Borders.Item(Excel.XlBordersIndex.xlEdgeLeft).Weight = Excel.XlBorderWeight.xlThin
+        'Borde de derecha en varias celdas
+        xlWorkSheet.Range("F2:F24").Borders.Item(Excel.XlBordersIndex.xlEdgeRight).LineStyle = Excel.XlLineStyle.xlContinuous
+        xlWorkSheet.Range("F2:F24").Borders.Item(Excel.XlBordersIndex.xlEdgeRight).Weight = Excel.XlBorderWeight.xlThin
+
         ' Guarda el libro de trabajo en la ruta especificada.
         If File.Exists(TextBoxRuta.Text & "\Factura.xlsx") Then
+            'Pregunta si el archivo exite para reemplazarlo y si no crea un archivo nuevo
             Dim result As Integer = MessageBox.Show("Este archivo ya exite. Quieres reemplazarlo?", "File Exists", MessageBoxButtons.YesNoCancel)
             If result = DialogResult.Yes Then
+                'falta arreglar si el archivo esta en uso 
                 File.Delete(TextBoxRuta.Text & "\Factura.xlsx")
                 xlWorkBook.SaveAs(TextBoxRuta.Text & "\Factura.xlsx")
             ElseIf result = DialogResult.No Then
                 Dim encotrado As Boolean = False
-                ' Check if the file exists.
+                ' Verifica si el archivo existe
                 Dim i As Integer = 1
-                ' If the file exists, add a number to the end of the file name.
+                'Si existe le pone el mism nombre pero con copia 
                 While encotrado = False
                     If File.Exists(TextBoxRuta.Text & "\Factura_Copia(" & i & ").xlsx") Then
                     Else
@@ -97,14 +256,6 @@ Public Class Factura
         System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkSheet)
         System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkBook)
         System.Runtime.InteropServices.Marshal.ReleaseComObject(xlApp)
-    End Sub
-
-    Private Sub Factura_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
-    Private Sub Label37_Click(sender As Object, e As EventArgs) Handles Label37.Click
-
     End Sub
 End Class
 

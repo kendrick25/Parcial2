@@ -1091,7 +1091,7 @@ Partial Class Administracion
         Me.GroupBox4.Size = New System.Drawing.Size(927, 62)
         Me.GroupBox4.TabIndex = 7
         Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "Reporte"
+        Me.GroupBox4.Text = "Factura"
         '
         'Button5
         '
@@ -1102,7 +1102,7 @@ Partial Class Administracion
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(183, 33)
         Me.Button5.TabIndex = 0
-        Me.Button5.Text = "Generar Reporte"
+        Me.Button5.Text = "Generar Factura"
         Me.Button5.UseVisualStyleBackColor = False
         '
         'Administracion
