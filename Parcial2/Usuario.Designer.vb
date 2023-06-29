@@ -22,18 +22,27 @@ Partial Class Usuario
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Usuario))
         Me.BtnFinalizar = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btConfirm2 = New System.Windows.Forms.Button()
+        Me.lbPrioridad = New System.Windows.Forms.Label()
+        Me.btConfirm4 = New System.Windows.Forms.Button()
+        Me.btConfirm1 = New System.Windows.Forms.Button()
+        Me.btConfirm3 = New System.Windows.Forms.Button()
+        Me.bnCrearTicket = New System.Windows.Forms.Button()
         Me.lbExtras = New System.Windows.Forms.Label()
         Me.gbDetalleTicket2 = New System.Windows.Forms.GroupBox()
+        Me.lbDias = New System.Windows.Forms.Label()
+        Me.limiteChar = New System.Windows.Forms.Label()
+        Me.lbFechaEstimada = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.tbDescripcion = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.gbDetalleTicket1 = New System.Windows.Forms.GroupBox()
-        Me.btConfirm2 = New System.Windows.Forms.Button()
-        Me.btConfirm1 = New System.Windows.Forms.Button()
         Me.lbFechaActual = New System.Windows.Forms.Label()
         Me.cbComponente = New System.Windows.Forms.ComboBox()
         Me.lbComponente = New System.Windows.Forms.Label()
@@ -42,12 +51,6 @@ Partial Class Usuario
         Me.cbEquipo = New System.Windows.Forms.ComboBox()
         Me.lbEquipo = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.lbFechaEstimada = New System.Windows.Forms.Label()
-        Me.bnConfirm3 = New System.Windows.Forms.Button()
-        Me.btConfirm4 = New System.Windows.Forms.Button()
-        Me.bnCrearTicket = New System.Windows.Forms.Button()
-        Me.lbPrioridad = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -84,6 +87,7 @@ Partial Class Usuario
         '
         'Panel1
         '
+        Me.Panel1.BackColor = System.Drawing.Color.CornflowerBlue
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.BtnFinalizar)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -96,6 +100,7 @@ Partial Class Usuario
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.Label1.Location = New System.Drawing.Point(682, 31)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(53, 20)
@@ -104,7 +109,13 @@ Partial Class Usuario
         '
         'Panel2
         '
+        Me.Panel2.BackgroundImage = CType(resources.GetObject("Panel2.BackgroundImage"), System.Drawing.Image)
+        Me.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Panel2.Controls.Add(Me.btConfirm2)
         Me.Panel2.Controls.Add(Me.lbPrioridad)
+        Me.Panel2.Controls.Add(Me.btConfirm4)
+        Me.Panel2.Controls.Add(Me.btConfirm1)
+        Me.Panel2.Controls.Add(Me.btConfirm3)
         Me.Panel2.Controls.Add(Me.bnCrearTicket)
         Me.Panel2.Controls.Add(Me.lbExtras)
         Me.Panel2.Controls.Add(Me.gbDetalleTicket2)
@@ -116,9 +127,75 @@ Partial Class Usuario
         Me.Panel2.Size = New System.Drawing.Size(871, 527)
         Me.Panel2.TabIndex = 2
         '
+        'btConfirm2
+        '
+        Me.btConfirm2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btConfirm2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btConfirm2.Image = CType(resources.GetObject("btConfirm2.Image"), System.Drawing.Image)
+        Me.btConfirm2.Location = New System.Drawing.Point(248, 360)
+        Me.btConfirm2.Name = "btConfirm2"
+        Me.btConfirm2.Size = New System.Drawing.Size(53, 38)
+        Me.btConfirm2.TabIndex = 8
+        Me.btConfirm2.UseVisualStyleBackColor = True
+        '
+        'lbPrioridad
+        '
+        Me.lbPrioridad.AutoSize = True
+        Me.lbPrioridad.ForeColor = System.Drawing.Color.Red
+        Me.lbPrioridad.Location = New System.Drawing.Point(72, 424)
+        Me.lbPrioridad.Name = "lbPrioridad"
+        Me.lbPrioridad.Size = New System.Drawing.Size(289, 20)
+        Me.lbPrioridad.TabIndex = 5
+        Me.lbPrioridad.Text = "Nota: se dará una prioridad alta a tu ticket"
+        '
+        'btConfirm4
+        '
+        Me.btConfirm4.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btConfirm4.Image = CType(resources.GetObject("btConfirm4.Image"), System.Drawing.Image)
+        Me.btConfirm4.Location = New System.Drawing.Point(635, 361)
+        Me.btConfirm4.Name = "btConfirm4"
+        Me.btConfirm4.Size = New System.Drawing.Size(53, 38)
+        Me.btConfirm4.TabIndex = 5
+        Me.btConfirm4.UseVisualStyleBackColor = True
+        '
+        'btConfirm1
+        '
+        Me.btConfirm1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btConfirm1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btConfirm1.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btConfirm1.Image = CType(resources.GetObject("btConfirm1.Image"), System.Drawing.Image)
+        Me.btConfirm1.Location = New System.Drawing.Point(159, 360)
+        Me.btConfirm1.Name = "btConfirm1"
+        Me.btConfirm1.Size = New System.Drawing.Size(53, 38)
+        Me.btConfirm1.TabIndex = 7
+        Me.btConfirm1.UseVisualStyleBackColor = True
+        '
+        'btConfirm3
+        '
+        Me.btConfirm3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btConfirm3.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btConfirm3.Image = CType(resources.GetObject("btConfirm3.Image"), System.Drawing.Image)
+        Me.btConfirm3.Location = New System.Drawing.Point(556, 361)
+        Me.btConfirm3.Name = "btConfirm3"
+        Me.btConfirm3.Size = New System.Drawing.Size(53, 38)
+        Me.btConfirm3.TabIndex = 4
+        Me.btConfirm3.UseVisualStyleBackColor = True
+        '
+        'bnCrearTicket
+        '
+        Me.bnCrearTicket.BackColor = System.Drawing.Color.SkyBlue
+        Me.bnCrearTicket.FlatAppearance.BorderColor = System.Drawing.Color.Lime
+        Me.bnCrearTicket.Location = New System.Drawing.Point(389, 445)
+        Me.bnCrearTicket.Name = "bnCrearTicket"
+        Me.bnCrearTicket.Size = New System.Drawing.Size(99, 51)
+        Me.bnCrearTicket.TabIndex = 4
+        Me.bnCrearTicket.Text = "ENVIAR"
+        Me.bnCrearTicket.UseVisualStyleBackColor = False
+        '
         'lbExtras
         '
         Me.lbExtras.AutoSize = True
+        Me.lbExtras.ForeColor = System.Drawing.Color.Blue
         Me.lbExtras.Location = New System.Drawing.Point(590, 65)
         Me.lbExtras.Name = "lbExtras"
         Me.lbExtras.Size = New System.Drawing.Size(208, 20)
@@ -127,8 +204,9 @@ Partial Class Usuario
         '
         'gbDetalleTicket2
         '
-        Me.gbDetalleTicket2.Controls.Add(Me.btConfirm4)
-        Me.gbDetalleTicket2.Controls.Add(Me.bnConfirm3)
+        Me.gbDetalleTicket2.BackColor = System.Drawing.Color.Transparent
+        Me.gbDetalleTicket2.Controls.Add(Me.lbDias)
+        Me.gbDetalleTicket2.Controls.Add(Me.limiteChar)
         Me.gbDetalleTicket2.Controls.Add(Me.lbFechaEstimada)
         Me.gbDetalleTicket2.Controls.Add(Me.Label8)
         Me.gbDetalleTicket2.Controls.Add(Me.tbDescripcion)
@@ -136,10 +214,50 @@ Partial Class Usuario
         Me.gbDetalleTicket2.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.gbDetalleTicket2.Location = New System.Drawing.Point(449, 88)
         Me.gbDetalleTicket2.Name = "gbDetalleTicket2"
-        Me.gbDetalleTicket2.Size = New System.Drawing.Size(377, 339)
+        Me.gbDetalleTicket2.Size = New System.Drawing.Size(377, 266)
         Me.gbDetalleTicket2.TabIndex = 3
         Me.gbDetalleTicket2.TabStop = False
         Me.gbDetalleTicket2.Text = "Detalles extras"
+        '
+        'lbDias
+        '
+        Me.lbDias.AutoSize = True
+        Me.lbDias.Location = New System.Drawing.Point(269, 40)
+        Me.lbDias.Name = "lbDias"
+        Me.lbDias.Size = New System.Drawing.Size(63, 25)
+        Me.lbDias.TabIndex = 7
+        Me.lbDias.Text = "Label3"
+        '
+        'limiteChar
+        '
+        Me.limiteChar.AutoSize = True
+        Me.limiteChar.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.limiteChar.Location = New System.Drawing.Point(269, 169)
+        Me.limiteChar.Name = "limiteChar"
+        Me.limiteChar.Size = New System.Drawing.Size(13, 17)
+        Me.limiteChar.TabIndex = 6
+        Me.limiteChar.Text = "-"
+        '
+        'lbFechaEstimada
+        '
+        Me.lbFechaEstimada.AutoSize = True
+        Me.lbFechaEstimada.Font = New System.Drawing.Font("Gadugi", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lbFechaEstimada.ForeColor = System.Drawing.Color.Black
+        Me.lbFechaEstimada.Location = New System.Drawing.Point(215, 215)
+        Me.lbFechaEstimada.Name = "lbFechaEstimada"
+        Me.lbFechaEstimada.Size = New System.Drawing.Size(67, 24)
+        Me.lbFechaEstimada.TabIndex = 3
+        Me.lbFechaEstimada.Text = "Label9"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label8.Location = New System.Drawing.Point(6, 190)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(220, 23)
+        Me.Label8.TabIndex = 2
+        Me.Label8.Text = "Fecha estimada de solución"
         '
         'tbDescripcion
         '
@@ -163,8 +281,7 @@ Partial Class Usuario
         '
         'gbDetalleTicket1
         '
-        Me.gbDetalleTicket1.Controls.Add(Me.btConfirm2)
-        Me.gbDetalleTicket1.Controls.Add(Me.btConfirm1)
+        Me.gbDetalleTicket1.BackColor = System.Drawing.Color.Transparent
         Me.gbDetalleTicket1.Controls.Add(Me.lbFechaActual)
         Me.gbDetalleTicket1.Controls.Add(Me.cbComponente)
         Me.gbDetalleTicket1.Controls.Add(Me.lbComponente)
@@ -175,27 +292,10 @@ Partial Class Usuario
         Me.gbDetalleTicket1.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.gbDetalleTicket1.Location = New System.Drawing.Point(44, 65)
         Me.gbDetalleTicket1.Name = "gbDetalleTicket1"
-        Me.gbDetalleTicket1.Size = New System.Drawing.Size(377, 362)
+        Me.gbDetalleTicket1.Size = New System.Drawing.Size(377, 289)
         Me.gbDetalleTicket1.TabIndex = 1
         Me.gbDetalleTicket1.TabStop = False
         Me.gbDetalleTicket1.Text = "Detalles"
-        '
-        'btConfirm2
-        '
-        Me.btConfirm2.Location = New System.Drawing.Point(204, 303)
-        Me.btConfirm2.Name = "btConfirm2"
-        Me.btConfirm2.Size = New System.Drawing.Size(53, 38)
-        Me.btConfirm2.TabIndex = 8
-        Me.btConfirm2.UseVisualStyleBackColor = True
-        '
-        'btConfirm1
-        '
-        Me.btConfirm1.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.btConfirm1.Location = New System.Drawing.Point(124, 303)
-        Me.btConfirm1.Name = "btConfirm1"
-        Me.btConfirm1.Size = New System.Drawing.Size(53, 38)
-        Me.btConfirm1.TabIndex = 7
-        Me.btConfirm1.UseVisualStyleBackColor = True
         '
         'lbFechaActual
         '
@@ -247,6 +347,7 @@ Partial Class Usuario
         'cbEquipo
         '
         Me.cbEquipo.FormattingEnabled = True
+        Me.cbEquipo.Items.AddRange(New Object() {"Laptop Dell", "Laptop HP", "Laptop Acer", "Laptop Asus", "Laptop Lenovo", "Mac", "PC"})
         Me.cbEquipo.Location = New System.Drawing.Point(134, 84)
         Me.cbEquipo.Name = "cbEquipo"
         Me.cbEquipo.Size = New System.Drawing.Size(221, 33)
@@ -271,64 +372,6 @@ Partial Class Usuario
         Me.Label2.Size = New System.Drawing.Size(370, 29)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Bienvenido, especifica tu problema"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label8.Location = New System.Drawing.Point(6, 190)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(220, 23)
-        Me.Label8.TabIndex = 2
-        Me.Label8.Text = "Fecha estimada de solución"
-        '
-        'lbFechaEstimada
-        '
-        Me.lbFechaEstimada.AutoSize = True
-        Me.lbFechaEstimada.Font = New System.Drawing.Font("Gadugi", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lbFechaEstimada.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.lbFechaEstimada.Location = New System.Drawing.Point(35, 224)
-        Me.lbFechaEstimada.Name = "lbFechaEstimada"
-        Me.lbFechaEstimada.Size = New System.Drawing.Size(67, 24)
-        Me.lbFechaEstimada.TabIndex = 3
-        Me.lbFechaEstimada.Text = "Label9"
-        '
-        'bnConfirm3
-        '
-        Me.bnConfirm3.Location = New System.Drawing.Point(128, 279)
-        Me.bnConfirm3.Name = "bnConfirm3"
-        Me.bnConfirm3.Size = New System.Drawing.Size(53, 38)
-        Me.bnConfirm3.TabIndex = 4
-        Me.bnConfirm3.UseVisualStyleBackColor = True
-        '
-        'btConfirm4
-        '
-        Me.btConfirm4.Location = New System.Drawing.Point(203, 280)
-        Me.btConfirm4.Name = "btConfirm4"
-        Me.btConfirm4.Size = New System.Drawing.Size(53, 38)
-        Me.btConfirm4.TabIndex = 5
-        Me.btConfirm4.UseVisualStyleBackColor = True
-        '
-        'bnCrearTicket
-        '
-        Me.bnCrearTicket.BackColor = System.Drawing.Color.SkyBlue
-        Me.bnCrearTicket.FlatAppearance.BorderColor = System.Drawing.Color.Lime
-        Me.bnCrearTicket.Location = New System.Drawing.Point(389, 445)
-        Me.bnCrearTicket.Name = "bnCrearTicket"
-        Me.bnCrearTicket.Size = New System.Drawing.Size(99, 51)
-        Me.bnCrearTicket.TabIndex = 4
-        Me.bnCrearTicket.Text = "ENVIAR"
-        Me.bnCrearTicket.UseVisualStyleBackColor = False
-        '
-        'lbPrioridad
-        '
-        Me.lbPrioridad.AutoSize = True
-        Me.lbPrioridad.ForeColor = System.Drawing.Color.Red
-        Me.lbPrioridad.Location = New System.Drawing.Point(62, 460)
-        Me.lbPrioridad.Name = "lbPrioridad"
-        Me.lbPrioridad.Size = New System.Drawing.Size(289, 20)
-        Me.lbPrioridad.TabIndex = 5
-        Me.lbPrioridad.Text = "Nota: se dará una prioridad alta a tu ticket"
         '
         'Usuario
         '
@@ -381,7 +424,9 @@ Partial Class Usuario
     Friend WithEvents lbFechaEstimada As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents btConfirm4 As Button
-    Friend WithEvents bnConfirm3 As Button
+    Friend WithEvents btConfirm3 As Button
     Friend WithEvents lbPrioridad As Label
     Friend WithEvents bnCrearTicket As Button
+    Friend WithEvents limiteChar As Label
+    Friend WithEvents lbDias As Label
 End Class

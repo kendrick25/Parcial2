@@ -287,4 +287,12 @@ Public Class MenuPrincipal
 
     End Sub
 
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        Dim newUserForm As New Registrarse()
+
+        newUserForm.StartPosition = FormStartPosition.CenterScreen
+
+        newUserForm.Show()
+
+    End Sub
 End Class
