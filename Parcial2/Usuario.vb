@@ -21,7 +21,7 @@ Public Class Usuario
         Dim usuarioName As String = Funciones.UserLoginName
 
         'Variable para almacenar la Id de usuario cuyo nombre coincida con el de arriba
-        Dim idUsuario As Integer = ""
+        Dim idUsuario As Integer
 
         'Establecer conexion con la DB
 

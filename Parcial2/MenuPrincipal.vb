@@ -100,8 +100,10 @@ Public Class MenuPrincipal
         Bottom = 7
         BottomLeft = 8
     End Enum
+#Disable Warning CA1401 ' Los elementos P/Invoke no deben estar visibles
     <DllImport("user32.dll")>
     Public Shared Function ReleaseCapture() As Boolean
+#Enable Warning CA1401 ' Los elementos P/Invoke no deben estar visibles
     End Function
 #Disable Warning CA1401 ' Los elementos P/Invoke no deben estar visibles
     <DllImport("user32.dll")>
@@ -183,7 +185,7 @@ Public Class MenuPrincipal
     '------------------------------------------
     'opens de Problema 1
     Public Sub OpenProblema1()
-        Dim mensaje As New Usuario  'Nombre del Form
+        Dim mensaje As New Usuario
         mensaje.MdiParent = Me
         If ContForms.TabCount >= 1 Then
             FinalizarSolicitudToolStripMenuItem.Visible = True
@@ -269,7 +271,7 @@ Public Class MenuPrincipal
             VerMisTiketsToolStripMenuItem.Text = "Ver Tikets"
         End If
     End Sub
-    Private Sub bnAcceder_Click(sender As Object, e As EventArgs) Handles bnAcceder.Click
+    Private Sub BtnAcceder_Click(sender As Object, e As EventArgs) Handles BtnAcceder.Click
         LabelBienvenidaUsuario.Visible = True
         LabelBienvenidaUsuario.Text = "Bienvenido Dilan"  'aqui pones el nombre del usuario
         BtnSolicitudTiket.Visible = True
