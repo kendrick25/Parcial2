@@ -22,6 +22,9 @@ Partial Class Empleados
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.tbTipoDano = New System.Windows.Forms.TextBox()
@@ -47,7 +50,7 @@ Partial Class Empleados
         Me.BtnFinalizar = New System.Windows.Forms.Button()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.Label29 = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.DGtareasEmp = New System.Windows.Forms.DataGridView()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
@@ -73,7 +76,7 @@ Partial Class Empleados
         Me.GroupBox2.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DGtareasEmp, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
         Me.TableLayoutPanel4.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -89,7 +92,7 @@ Partial Class Empleados
         Me.TableLayoutPanel1.Controls.Add(Me.GroupBox2, 0, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.Panel2, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel3, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.DataGridView1, 0, 6)
+        Me.TableLayoutPanel1.Controls.Add(Me.DGtareasEmp, 0, 6)
         Me.TableLayoutPanel1.Controls.Add(Me.Label7, 0, 5)
         Me.TableLayoutPanel1.Controls.Add(Me.GroupBox3, 0, 4)
         Me.TableLayoutPanel1.Controls.Add(Me.Panel1, 0, 3)
@@ -433,16 +436,48 @@ Partial Class Empleados
         Me.Label29.Text = "  JK"
         Me.Label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'DataGridView1
+        'DGtareasEmp
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 724)
-        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(0)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersWidth = 51
-        Me.DataGridView1.Size = New System.Drawing.Size(815, 171)
-        Me.DataGridView1.TabIndex = 1
+        Me.DGtareasEmp.AllowUserToAddRows = False
+        Me.DGtareasEmp.AllowUserToDeleteRows = False
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.LightCyan
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft New Tai Lue", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.DodgerBlue
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Azure
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.DodgerBlue
+        Me.DGtareasEmp.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        Me.DGtareasEmp.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DGtareasEmp.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DGtareasEmp.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.DGtareasEmp.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.CornflowerBlue
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft New Tai Lue", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGtareasEmp.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        Me.DGtareasEmp.ColumnHeadersHeight = 29
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Menu
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft New Tai Lue", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.DodgerBlue
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.DodgerBlue
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGtareasEmp.DefaultCellStyle = DataGridViewCellStyle6
+        Me.DGtareasEmp.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DGtareasEmp.Location = New System.Drawing.Point(0, 724)
+        Me.DGtareasEmp.Margin = New System.Windows.Forms.Padding(0)
+        Me.DGtareasEmp.Name = "DGtareasEmp"
+        Me.DGtareasEmp.ReadOnly = True
+        Me.DGtareasEmp.RowHeadersVisible = False
+        Me.DGtareasEmp.RowHeadersWidth = 51
+        Me.DGtareasEmp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DGtareasEmp.Size = New System.Drawing.Size(815, 171)
+        Me.DGtareasEmp.TabIndex = 1
         '
         'Label7
         '
@@ -723,7 +758,7 @@ Partial Class Empleados
         Me.Panel2.PerformLayout()
         Me.TableLayoutPanel3.ResumeLayout(False)
         Me.TableLayoutPanel3.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DGtareasEmp, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.TableLayoutPanel4.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
@@ -768,7 +803,7 @@ Partial Class Empleados
     Friend WithEvents BtnFinalizar As Button
     Friend WithEvents Label28 As Label
     Friend WithEvents Label29 As Label
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents DGtareasEmp As DataGridView
     Friend WithEvents Label7 As Label
     Friend WithEvents btRevisionEmpleado As Button
     Friend WithEvents Panel1 As Panel

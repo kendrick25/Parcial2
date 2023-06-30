@@ -207,5 +207,67 @@ Public Class Empleados
         btRevisionEmpleado.Enabled = False
         Label24.Visible = False
         Label20.Visible = False
+        vistaEmpleadoTable()
+
     End Sub
+
+    Public Sub vistaEmpleadoTable()
+
+        Dim consultaEmpleado As String = "SELECT idTicket, equipo, modelo, tipodeDano FROM Ticket where responsable = @nomEmple;"
+
+
+        Dim ejecutar As New SqlCommand(consultaEmpleado, conex)
+
+        ejecutar.Parameters.AddWithValue("@nomEmple", "Tyler Blue")
+
+        Try
+            Dim tabla As New SqlDataAdapter(ejecutar)
+            Dim dss As New DataSet
+            tabla.Fill(dss, "Ticket")
+
+            Me.DGtareasEmp.DataSource = dss.Tables("Ticket")
+            DGtareasEmp.Columns("idTicket").HeaderText = "ID"
+            DGtareasEmp.Columns("equipo").HeaderText = "EQUIPO"
+            DGtareasEmp.Columns("modelo").HeaderText = "MODELO"
+            DGtareasEmp.Columns("tipodeDano").HeaderText = "DAÑO"
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+        Finally
+            conex.Close()
+        End Try
+    End Sub
+
+    Private Sub tbObsEmpl_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbObsEmpl.KeyPress
+        Dim allowedChars As String = "áéíóúabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ., " ' Agrega los caracteres permitidos aquí
+        If Not allowedChars.Contains(e.KeyChar) AndAlso e.KeyChar <> ChrW(Keys.Back) Then
+            e.Handled = True
+        End If
+
+        Dim maxLength As Integer = 255
+
+        ' Verificar si se ha alcanzado el límite de caracteres permitidos
+        If tbObsEmpl.TextLength >= maxLength AndAlso e.KeyChar <> ControlChars.Back Then
+            ' Si se ha alcanzado el límite y no es una tecla de retroceso, cancelar el evento KeyPress
+            e.Handled = True
+        End If
+
+    End Sub
+
+    Private Sub tbCostosExtras_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbCostosExtras.KeyPress
+        Dim allowedChars As String = "1234567890." ' Agrega los caracteres permitidos aquí
+        If Not allowedChars.Contains(e.KeyChar) AndAlso e.KeyChar <> ChrW(Keys.Back) Then
+            e.Handled = True
+        End If
+
+        Dim maxLength As Integer = 6
+
+        ' Verificar si se ha alcanzado el límite de caracteres permitidos
+        If tbCostosExtras.TextLength >= maxLength AndAlso e.KeyChar <> ControlChars.Back Then
+            ' Si se ha alcanzado el límite y no es una tecla de retroceso, cancelar el evento KeyPress
+            e.Handled = True
+        End If
+
+    End Sub
+
+
 End Class

@@ -2,6 +2,7 @@
 Module Funciones
 
     Public UserLoginName As String
+    Public userID As String
 
     Function GenerarID() As String
         ' Configuración
