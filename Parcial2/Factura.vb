@@ -257,6 +257,8 @@ Public Class Factura
         System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkBook)
         System.Runtime.InteropServices.Marshal.ReleaseComObject(xlApp)
     End Sub
+
+
 End Class
 
 
