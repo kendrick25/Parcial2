@@ -29,21 +29,20 @@ Partial Class Administracion
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.ComboBoxOpciones = New System.Windows.Forms.ComboBox()
         Me.BtnAcction = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBoxIdTicket = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.Label23 = New System.Windows.Forms.Label()
-        Me.ComboBox6 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox5 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox4 = New System.Windows.Forms.ComboBox()
+        Me.ComboBoxTipoDano = New System.Windows.Forms.ComboBox()
+        Me.ComboBoxModelo = New System.Windows.Forms.ComboBox()
+        Me.ComboBoxEquipo = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.TextBoxDescripcionCliente = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -62,13 +61,13 @@ Partial Class Administracion
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
-        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
+        Me.DateTimePickerFechaIngreso = New System.Windows.Forms.DateTimePicker()
+        Me.DateTimePickerFechaEstimacion = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePicker3 = New System.Windows.Forms.DateTimePicker()
         Me.Label22 = New System.Windows.Forms.Label()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.ComboBoxEmpleados = New System.Windows.Forms.ComboBox()
         Me.Label21 = New System.Windows.Forms.Label()
-        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
+        Me.ComboBoxEstado = New System.Windows.Forms.ComboBox()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
@@ -85,11 +84,12 @@ Partial Class Administracion
         Me.Label29 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
+        Me.LabelComplete = New System.Windows.Forms.Label()
+        Me.RadioButtonPrioridadAlta = New System.Windows.Forms.RadioButton()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.RadioButtonPrioridadMedia = New System.Windows.Forms.RadioButton()
+        Me.RadioButtonPrioridadBaja = New System.Windows.Forms.RadioButton()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.Button5 = New System.Windows.Forms.Button()
@@ -143,10 +143,9 @@ Partial Class Administracion
         Me.Panel2.Controls.Add(Me.Label20)
         Me.Panel2.Controls.Add(Me.Button2)
         Me.Panel2.Controls.Add(Me.Label5)
-        Me.Panel2.Controls.Add(Me.ComboBox1)
-        Me.Panel2.Controls.Add(Me.Button1)
+        Me.Panel2.Controls.Add(Me.ComboBoxOpciones)
         Me.Panel2.Controls.Add(Me.BtnAcction)
-        Me.Panel2.Controls.Add(Me.TextBox1)
+        Me.Panel2.Controls.Add(Me.TextBoxIdTicket)
         Me.Panel2.Controls.Add(Me.Label1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 35)
@@ -206,7 +205,7 @@ Partial Class Administracion
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(174, 34)
         Me.Button2.TabIndex = 19
-        Me.Button2.Text = "Descargar Reporte"
+        Me.Button2.Text = "Modificar"
         Me.Button2.UseVisualStyleBackColor = False
         '
         'Label5
@@ -221,36 +220,17 @@ Partial Class Administracion
         Me.Label5.TabIndex = 16
         Me.Label5.Text = "Opciones :"
         '
-        'ComboBox1
+        'ComboBoxOpciones
         '
-        Me.ComboBox1.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ComboBox1.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"        Agendar", "         Buscar", "    Cancelar Pago", "Historial de Pagos"})
-        Me.ComboBox1.Location = New System.Drawing.Point(13, 33)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 25)
-        Me.ComboBox1.TabIndex = 15
-        '
-        'Button1
-        '
-        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(276, 33)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Button1.MaximumSize = New System.Drawing.Size(126, 25)
-        Me.Button1.MinimumSize = New System.Drawing.Size(126, 25)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(126, 25)
-        Me.Button1.TabIndex = 14
-        Me.Button1.Text = "Ver Información"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.ComboBoxOpciones.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.ComboBoxOpciones.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxOpciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ComboBoxOpciones.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.ComboBoxOpciones.FormattingEnabled = True
+        Me.ComboBoxOpciones.Location = New System.Drawing.Point(13, 33)
+        Me.ComboBoxOpciones.Name = "ComboBoxOpciones"
+        Me.ComboBoxOpciones.Size = New System.Drawing.Size(121, 25)
+        Me.ComboBoxOpciones.TabIndex = 15
         '
         'BtnAcction
         '
@@ -271,15 +251,15 @@ Partial Class Administracion
         Me.BtnAcction.Text = "Accion"
         Me.BtnAcction.UseVisualStyleBackColor = False
         '
-        'TextBox1
+        'TextBoxIdTicket
         '
-        Me.TextBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox1.Location = New System.Drawing.Point(160, 35)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(0)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 23)
-        Me.TextBox1.TabIndex = 3
+        Me.TextBoxIdTicket.BackColor = System.Drawing.Color.White
+        Me.TextBoxIdTicket.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TextBoxIdTicket.Location = New System.Drawing.Point(160, 35)
+        Me.TextBoxIdTicket.Margin = New System.Windows.Forms.Padding(0)
+        Me.TextBoxIdTicket.Name = "TextBoxIdTicket"
+        Me.TextBoxIdTicket.Size = New System.Drawing.Size(100, 23)
+        Me.TextBoxIdTicket.TabIndex = 3
         '
         'Label1
         '
@@ -316,11 +296,11 @@ Partial Class Administracion
         Me.GroupBox2.Controls.Add(Me.Label25)
         Me.GroupBox2.Controls.Add(Me.Label24)
         Me.GroupBox2.Controls.Add(Me.Label23)
-        Me.GroupBox2.Controls.Add(Me.ComboBox6)
-        Me.GroupBox2.Controls.Add(Me.ComboBox5)
-        Me.GroupBox2.Controls.Add(Me.ComboBox4)
+        Me.GroupBox2.Controls.Add(Me.ComboBoxTipoDano)
+        Me.GroupBox2.Controls.Add(Me.ComboBoxModelo)
+        Me.GroupBox2.Controls.Add(Me.ComboBoxEquipo)
         Me.GroupBox2.Controls.Add(Me.Label6)
-        Me.GroupBox2.Controls.Add(Me.TextBox5)
+        Me.GroupBox2.Controls.Add(Me.TextBoxDescripcionCliente)
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Controls.Add(Me.Label4)
@@ -370,41 +350,41 @@ Partial Class Administracion
         Me.Label23.TabIndex = 23
         Me.Label23.Text = "*"
         '
-        'ComboBox6
+        'ComboBoxTipoDano
         '
-        Me.ComboBox6.BackColor = System.Drawing.Color.White
-        Me.ComboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ComboBox6.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.ComboBox6.FormattingEnabled = True
-        Me.ComboBox6.Location = New System.Drawing.Point(372, 43)
-        Me.ComboBox6.Name = "ComboBox6"
-        Me.ComboBox6.Size = New System.Drawing.Size(148, 25)
-        Me.ComboBox6.TabIndex = 20
+        Me.ComboBoxTipoDano.BackColor = System.Drawing.Color.White
+        Me.ComboBoxTipoDano.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxTipoDano.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ComboBoxTipoDano.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.ComboBoxTipoDano.FormattingEnabled = True
+        Me.ComboBoxTipoDano.Location = New System.Drawing.Point(372, 43)
+        Me.ComboBoxTipoDano.Name = "ComboBoxTipoDano"
+        Me.ComboBoxTipoDano.Size = New System.Drawing.Size(148, 25)
+        Me.ComboBoxTipoDano.TabIndex = 20
         '
-        'ComboBox5
+        'ComboBoxModelo
         '
-        Me.ComboBox5.BackColor = System.Drawing.Color.White
-        Me.ComboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ComboBox5.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.ComboBox5.FormattingEnabled = True
-        Me.ComboBox5.Location = New System.Drawing.Point(193, 43)
-        Me.ComboBox5.Name = "ComboBox5"
-        Me.ComboBox5.Size = New System.Drawing.Size(150, 25)
-        Me.ComboBox5.TabIndex = 19
+        Me.ComboBoxModelo.BackColor = System.Drawing.Color.White
+        Me.ComboBoxModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxModelo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ComboBoxModelo.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.ComboBoxModelo.FormattingEnabled = True
+        Me.ComboBoxModelo.Location = New System.Drawing.Point(193, 43)
+        Me.ComboBoxModelo.Name = "ComboBoxModelo"
+        Me.ComboBoxModelo.Size = New System.Drawing.Size(150, 25)
+        Me.ComboBoxModelo.TabIndex = 19
         '
-        'ComboBox4
+        'ComboBoxEquipo
         '
-        Me.ComboBox4.BackColor = System.Drawing.Color.White
-        Me.ComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ComboBox4.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.ComboBox4.FormattingEnabled = True
-        Me.ComboBox4.Location = New System.Drawing.Point(13, 43)
-        Me.ComboBox4.Name = "ComboBox4"
-        Me.ComboBox4.Size = New System.Drawing.Size(150, 25)
-        Me.ComboBox4.TabIndex = 18
+        Me.ComboBoxEquipo.BackColor = System.Drawing.Color.White
+        Me.ComboBoxEquipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxEquipo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ComboBoxEquipo.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.ComboBoxEquipo.FormattingEnabled = True
+        Me.ComboBoxEquipo.Location = New System.Drawing.Point(13, 43)
+        Me.ComboBoxEquipo.Name = "ComboBoxEquipo"
+        Me.ComboBoxEquipo.Size = New System.Drawing.Size(150, 25)
+        Me.ComboBoxEquipo.TabIndex = 18
         '
         'Label6
         '
@@ -418,17 +398,17 @@ Partial Class Administracion
         Me.Label6.TabIndex = 12
         Me.Label6.Text = "Descripcion :"
         '
-        'TextBox5
+        'TextBoxDescripcionCliente
         '
-        Me.TextBox5.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.TextBox5.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TextBox5.ForeColor = System.Drawing.Color.Black
-        Me.TextBox5.Location = New System.Drawing.Point(3, 96)
-        Me.TextBox5.Margin = New System.Windows.Forms.Padding(5, 0, 5, 5)
-        Me.TextBox5.Multiline = True
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(548, 95)
-        Me.TextBox5.TabIndex = 13
+        Me.TextBoxDescripcionCliente.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.TextBoxDescripcionCliente.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TextBoxDescripcionCliente.ForeColor = System.Drawing.Color.Black
+        Me.TextBoxDescripcionCliente.Location = New System.Drawing.Point(3, 96)
+        Me.TextBoxDescripcionCliente.Margin = New System.Windows.Forms.Padding(5, 0, 5, 5)
+        Me.TextBoxDescripcionCliente.Multiline = True
+        Me.TextBoxDescripcionCliente.Name = "TextBoxDescripcionCliente"
+        Me.TextBoxDescripcionCliente.Size = New System.Drawing.Size(548, 95)
+        Me.TextBoxDescripcionCliente.TabIndex = 13
         '
         'Label2
         '
@@ -665,13 +645,13 @@ Partial Class Administracion
         '
         'Panel3
         '
-        Me.Panel3.Controls.Add(Me.DateTimePicker1)
-        Me.Panel3.Controls.Add(Me.DateTimePicker2)
+        Me.Panel3.Controls.Add(Me.DateTimePickerFechaIngreso)
+        Me.Panel3.Controls.Add(Me.DateTimePickerFechaEstimacion)
         Me.Panel3.Controls.Add(Me.DateTimePicker3)
         Me.Panel3.Controls.Add(Me.Label22)
-        Me.Panel3.Controls.Add(Me.ComboBox2)
+        Me.Panel3.Controls.Add(Me.ComboBoxEmpleados)
         Me.Panel3.Controls.Add(Me.Label21)
-        Me.Panel3.Controls.Add(Me.ComboBox3)
+        Me.Panel3.Controls.Add(Me.ComboBoxEstado)
         Me.Panel3.Controls.Add(Me.Label19)
         Me.Panel3.Controls.Add(Me.Label16)
         Me.Panel3.Controls.Add(Me.Label17)
@@ -684,29 +664,29 @@ Partial Class Administracion
         Me.Panel3.Size = New System.Drawing.Size(730, 89)
         Me.Panel3.TabIndex = 0
         '
-        'DateTimePicker1
+        'DateTimePickerFechaIngreso
         '
-        Me.DateTimePicker1.CustomFormat = ""
-        Me.DateTimePicker1.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(6, 50)
-        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(0)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(129, 25)
-        Me.DateTimePicker1.TabIndex = 0
-        Me.DateTimePicker1.Value = New Date(2023, 6, 28, 0, 0, 0, 0)
+        Me.DateTimePickerFechaIngreso.CustomFormat = ""
+        Me.DateTimePickerFechaIngreso.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.DateTimePickerFechaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePickerFechaIngreso.Location = New System.Drawing.Point(6, 50)
+        Me.DateTimePickerFechaIngreso.Margin = New System.Windows.Forms.Padding(0)
+        Me.DateTimePickerFechaIngreso.Name = "DateTimePickerFechaIngreso"
+        Me.DateTimePickerFechaIngreso.Size = New System.Drawing.Size(129, 25)
+        Me.DateTimePickerFechaIngreso.TabIndex = 0
+        Me.DateTimePickerFechaIngreso.Value = New Date(2023, 6, 28, 0, 0, 0, 0)
         '
-        'DateTimePicker2
+        'DateTimePickerFechaEstimacion
         '
-        Me.DateTimePicker2.CustomFormat = ""
-        Me.DateTimePicker2.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker2.Location = New System.Drawing.Point(141, 50)
-        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(0)
-        Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(151, 25)
-        Me.DateTimePicker2.TabIndex = 13
-        Me.DateTimePicker2.Value = New Date(2023, 6, 28, 0, 0, 0, 0)
+        Me.DateTimePickerFechaEstimacion.CustomFormat = ""
+        Me.DateTimePickerFechaEstimacion.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.DateTimePickerFechaEstimacion.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePickerFechaEstimacion.Location = New System.Drawing.Point(141, 50)
+        Me.DateTimePickerFechaEstimacion.Margin = New System.Windows.Forms.Padding(0)
+        Me.DateTimePickerFechaEstimacion.Name = "DateTimePickerFechaEstimacion"
+        Me.DateTimePickerFechaEstimacion.Size = New System.Drawing.Size(151, 25)
+        Me.DateTimePickerFechaEstimacion.TabIndex = 13
+        Me.DateTimePickerFechaEstimacion.Value = New Date(2023, 6, 28, 0, 0, 0, 0)
         '
         'DateTimePicker3
         '
@@ -732,17 +712,17 @@ Partial Class Administracion
         Me.Label22.TabIndex = 22
         Me.Label22.Text = "*"
         '
-        'ComboBox2
+        'ComboBoxEmpleados
         '
-        Me.ComboBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ComboBox2.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(424, 50)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(148, 25)
-        Me.ComboBox2.TabIndex = 17
+        Me.ComboBoxEmpleados.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.ComboBoxEmpleados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxEmpleados.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ComboBoxEmpleados.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.ComboBoxEmpleados.FormattingEnabled = True
+        Me.ComboBoxEmpleados.Location = New System.Drawing.Point(424, 50)
+        Me.ComboBoxEmpleados.Name = "ComboBoxEmpleados"
+        Me.ComboBoxEmpleados.Size = New System.Drawing.Size(148, 25)
+        Me.ComboBoxEmpleados.TabIndex = 17
         '
         'Label21
         '
@@ -756,17 +736,17 @@ Partial Class Administracion
         Me.Label21.TabIndex = 21
         Me.Label21.Text = "*"
         '
-        'ComboBox3
+        'ComboBoxEstado
         '
-        Me.ComboBox3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ComboBox3.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Location = New System.Drawing.Point(578, 50)
-        Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(141, 25)
-        Me.ComboBox3.TabIndex = 20
+        Me.ComboBoxEstado.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.ComboBoxEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ComboBoxEstado.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.ComboBoxEstado.FormattingEnabled = True
+        Me.ComboBoxEstado.Location = New System.Drawing.Point(578, 50)
+        Me.ComboBoxEstado.Name = "ComboBoxEstado"
+        Me.ComboBoxEstado.Size = New System.Drawing.Size(141, 25)
+        Me.ComboBoxEstado.TabIndex = 20
         '
         'Label19
         '
@@ -978,11 +958,12 @@ Partial Class Administracion
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Black
-        Me.Panel1.Controls.Add(Me.RadioButton3)
+        Me.Panel1.Controls.Add(Me.LabelComplete)
+        Me.Panel1.Controls.Add(Me.RadioButtonPrioridadAlta)
         Me.Panel1.Controls.Add(Me.Button4)
         Me.Panel1.Controls.Add(Me.Button3)
-        Me.Panel1.Controls.Add(Me.RadioButton2)
-        Me.Panel1.Controls.Add(Me.RadioButton1)
+        Me.Panel1.Controls.Add(Me.RadioButtonPrioridadMedia)
+        Me.Panel1.Controls.Add(Me.RadioButtonPrioridadBaja)
         Me.Panel1.Controls.Add(Me.Label18)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 485)
@@ -991,20 +972,33 @@ Partial Class Administracion
         Me.Panel1.Size = New System.Drawing.Size(933, 45)
         Me.Panel1.TabIndex = 6
         '
-        'RadioButton3
+        'LabelComplete
         '
-        Me.RadioButton3.AutoSize = True
-        Me.RadioButton3.FlatAppearance.BorderSize = 0
-        Me.RadioButton3.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.RadioButton3.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.RadioButton3.ForeColor = System.Drawing.Color.Red
-        Me.RadioButton3.Location = New System.Drawing.Point(243, 11)
-        Me.RadioButton3.Name = "RadioButton3"
-        Me.RadioButton3.Size = New System.Drawing.Size(53, 23)
-        Me.RadioButton3.TabIndex = 25
-        Me.RadioButton3.TabStop = True
-        Me.RadioButton3.Text = "Alta"
-        Me.RadioButton3.UseVisualStyleBackColor = True
+        Me.LabelComplete.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.LabelComplete.AutoSize = True
+        Me.LabelComplete.BackColor = System.Drawing.Color.Transparent
+        Me.LabelComplete.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.LabelComplete.ForeColor = System.Drawing.Color.Blue
+        Me.LabelComplete.Location = New System.Drawing.Point(418, 15)
+        Me.LabelComplete.Name = "LabelComplete"
+        Me.LabelComplete.Size = New System.Drawing.Size(64, 19)
+        Me.LabelComplete.TabIndex = 23
+        Me.LabelComplete.Text = "Mensaje"
+        '
+        'RadioButtonPrioridadAlta
+        '
+        Me.RadioButtonPrioridadAlta.AutoSize = True
+        Me.RadioButtonPrioridadAlta.FlatAppearance.BorderSize = 0
+        Me.RadioButtonPrioridadAlta.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.RadioButtonPrioridadAlta.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.RadioButtonPrioridadAlta.ForeColor = System.Drawing.Color.Red
+        Me.RadioButtonPrioridadAlta.Location = New System.Drawing.Point(243, 11)
+        Me.RadioButtonPrioridadAlta.Name = "RadioButtonPrioridadAlta"
+        Me.RadioButtonPrioridadAlta.Size = New System.Drawing.Size(53, 23)
+        Me.RadioButtonPrioridadAlta.TabIndex = 25
+        Me.RadioButtonPrioridadAlta.TabStop = True
+        Me.RadioButtonPrioridadAlta.Text = "Alta"
+        Me.RadioButtonPrioridadAlta.UseVisualStyleBackColor = True
         '
         'Button4
         '
@@ -1038,35 +1032,35 @@ Partial Class Administracion
         Me.Button3.Text = "Borrar Todo"
         Me.Button3.UseVisualStyleBackColor = False
         '
-        'RadioButton2
+        'RadioButtonPrioridadMedia
         '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.FlatAppearance.BorderSize = 0
-        Me.RadioButton2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.RadioButton2.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.RadioButton2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.RadioButton2.Location = New System.Drawing.Point(164, 11)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(68, 23)
-        Me.RadioButton2.TabIndex = 2
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "Media"
-        Me.RadioButton2.UseVisualStyleBackColor = True
+        Me.RadioButtonPrioridadMedia.AutoSize = True
+        Me.RadioButtonPrioridadMedia.FlatAppearance.BorderSize = 0
+        Me.RadioButtonPrioridadMedia.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.RadioButtonPrioridadMedia.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.RadioButtonPrioridadMedia.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.RadioButtonPrioridadMedia.Location = New System.Drawing.Point(164, 11)
+        Me.RadioButtonPrioridadMedia.Name = "RadioButtonPrioridadMedia"
+        Me.RadioButtonPrioridadMedia.Size = New System.Drawing.Size(68, 23)
+        Me.RadioButtonPrioridadMedia.TabIndex = 2
+        Me.RadioButtonPrioridadMedia.TabStop = True
+        Me.RadioButtonPrioridadMedia.Text = "Media"
+        Me.RadioButtonPrioridadMedia.UseVisualStyleBackColor = True
         '
-        'RadioButton1
+        'RadioButtonPrioridadBaja
         '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.FlatAppearance.BorderSize = 0
-        Me.RadioButton1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.RadioButton1.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.RadioButton1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.RadioButton1.Location = New System.Drawing.Point(103, 11)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(55, 23)
-        Me.RadioButton1.TabIndex = 1
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "Baja"
-        Me.RadioButton1.UseVisualStyleBackColor = True
+        Me.RadioButtonPrioridadBaja.AutoSize = True
+        Me.RadioButtonPrioridadBaja.FlatAppearance.BorderSize = 0
+        Me.RadioButtonPrioridadBaja.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.RadioButtonPrioridadBaja.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.RadioButtonPrioridadBaja.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.RadioButtonPrioridadBaja.Location = New System.Drawing.Point(103, 11)
+        Me.RadioButtonPrioridadBaja.Name = "RadioButtonPrioridadBaja"
+        Me.RadioButtonPrioridadBaja.Size = New System.Drawing.Size(55, 23)
+        Me.RadioButtonPrioridadBaja.TabIndex = 1
+        Me.RadioButtonPrioridadBaja.TabStop = True
+        Me.RadioButtonPrioridadBaja.Text = "Baja"
+        Me.RadioButtonPrioridadBaja.UseVisualStyleBackColor = True
         '
         'Label18
         '
@@ -1095,6 +1089,7 @@ Partial Class Administracion
         '
         'Button5
         '
+        Me.Button5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.Button5.BackColor = System.Drawing.Color.Blue
         Me.Button5.FlatAppearance.BorderSize = 0
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -1144,16 +1139,15 @@ Partial Class Administracion
     Friend WithEvents BtnFinalizar As Button
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents TextBoxDescripcionCliente As TextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents BtnAcction As Button
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TextBoxIdTicket As TextBox
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents ComboBoxOpciones As ComboBox
     Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents GroupBox1 As GroupBox
@@ -1171,28 +1165,28 @@ Partial Class Administracion
     Friend WithEvents Label7 As Label
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents Button2 As Button
-    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents ComboBoxEmpleados As ComboBox
     Friend WithEvents Label17 As Label
     Friend WithEvents DateTimePicker3 As DateTimePicker
     Friend WithEvents Label16 As Label
     Friend WithEvents TextBox6 As TextBox
     Friend WithEvents Label15 As Label
-    Friend WithEvents DateTimePicker2 As DateTimePicker
+    Friend WithEvents DateTimePickerFechaEstimacion As DateTimePicker
     Friend WithEvents Label14 As Label
     Friend WithEvents Label13 As Label
-    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents DateTimePickerFechaIngreso As DateTimePicker
     Friend WithEvents Label27 As Label
     Friend WithEvents Label26 As Label
     Friend WithEvents Label20 As Label
     Friend WithEvents Label25 As Label
     Friend WithEvents Label24 As Label
     Friend WithEvents Label23 As Label
-    Friend WithEvents ComboBox6 As ComboBox
-    Friend WithEvents ComboBox5 As ComboBox
-    Friend WithEvents ComboBox4 As ComboBox
+    Friend WithEvents ComboBoxTipoDano As ComboBox
+    Friend WithEvents ComboBoxModelo As ComboBox
+    Friend WithEvents ComboBoxEquipo As ComboBox
     Friend WithEvents Label22 As Label
     Friend WithEvents Label21 As Label
-    Friend WithEvents ComboBox3 As ComboBox
+    Friend WithEvents ComboBoxEstado As ComboBox
     Friend WithEvents Label19 As Label
     Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
     Friend WithEvents Label28 As Label
@@ -1200,15 +1194,16 @@ Partial Class Administracion
     Friend WithEvents LabelPrioridad As Label
     Friend WithEvents Label30 As Label
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents RadioButton3 As RadioButton
+    Friend WithEvents RadioButtonPrioridadAlta As RadioButton
     Friend WithEvents Button4 As Button
     Friend WithEvents Button3 As Button
-    Friend WithEvents RadioButton2 As RadioButton
-    Friend WithEvents RadioButton1 As RadioButton
+    Friend WithEvents RadioButtonPrioridadMedia As RadioButton
+    Friend WithEvents RadioButtonPrioridadBaja As RadioButton
     Friend WithEvents Label18 As Label
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents Button5 As Button
     Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
     Friend WithEvents Panel3 As Panel
     Friend WithEvents TableLayoutPanel5 As TableLayoutPanel
+    Friend WithEvents LabelComplete As Label
 End Class
