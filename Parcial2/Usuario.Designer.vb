@@ -26,7 +26,7 @@ Partial Class Usuario
         Me.BtnFinalizar = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lbDimeID = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.btConfirm2 = New System.Windows.Forms.Button()
         Me.lbPrioridad = New System.Windows.Forms.Label()
@@ -88,7 +88,6 @@ Partial Class Usuario
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.CornflowerBlue
-        Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.BtnFinalizar)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
@@ -97,15 +96,15 @@ Partial Class Usuario
         Me.Panel1.Size = New System.Drawing.Size(877, 67)
         Me.Panel1.TabIndex = 1
         '
-        'Label1
+        'lbDimeID
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Label1.Location = New System.Drawing.Point(682, 31)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(53, 20)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Label1"
+        Me.lbDimeID.AutoSize = True
+        Me.lbDimeID.ForeColor = System.Drawing.Color.Black
+        Me.lbDimeID.Location = New System.Drawing.Point(20, 219)
+        Me.lbDimeID.Name = "lbDimeID"
+        Me.lbDimeID.Size = New System.Drawing.Size(63, 25)
+        Me.lbDimeID.TabIndex = 2
+        Me.lbDimeID.Text = "Label1"
         '
         'Panel2
         '
@@ -205,6 +204,7 @@ Partial Class Usuario
         'gbDetalleTicket2
         '
         Me.gbDetalleTicket2.BackColor = System.Drawing.Color.Transparent
+        Me.gbDetalleTicket2.Controls.Add(Me.lbDimeID)
         Me.gbDetalleTicket2.Controls.Add(Me.lbDias)
         Me.gbDetalleTicket2.Controls.Add(Me.limiteChar)
         Me.gbDetalleTicket2.Controls.Add(Me.lbFechaEstimada)
@@ -390,7 +390,6 @@ Partial Class Usuario
         Me.Text = "Form1"
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.gbDetalleTicket2.ResumeLayout(False)
@@ -404,7 +403,7 @@ Partial Class Usuario
     Friend WithEvents BtnFinalizar As Button
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lbDimeID As Label
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Label2 As Label
     Friend WithEvents lbExtras As Label

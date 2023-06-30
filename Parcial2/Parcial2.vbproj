@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <RootNamespace>Parcial2</RootNamespace>
-    <StartupObject>Parcial2.Empleados</StartupObject>
+    <StartupObject>Parcial2.MenuPrincipal</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
   </PropertyGroup>

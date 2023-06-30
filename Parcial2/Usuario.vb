@@ -1,6 +1,17 @@
 ﻿Imports System.Data.SqlClient
 Public Class Usuario
 
+    Public conex As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True")
+
+
+    'Variables publicas que van a contener el id y nombre de usuario para cuando hago el load de nuevo ticket 
+    'Estas ya traen valor del modulo "Funciones"
+    'No se ha controlado que si se ingresan valores que no estan en la base de datos tanto de user como pass... mando estos valores
+    'asumiendo que son correctos tanto pass como user y que existen en la base de datos...
+
+
+    Public idUsuario As String = ""
+    Public usuarioName As String = ""
 
     Private Sub BtnFinalizar_Click(sender As Object, e As EventArgs) Handles BtnFinalizar.Click
         Dim resultado As MsgBoxResult
@@ -29,37 +40,17 @@ Public Class Usuario
 
         'Obtiene la cadena nombre_de_usuario proveniente del login
 
-        Dim usuarioName As String = Funciones.UserLoginName
+        usuarioName = Funciones.UserLoginName
+
+
 
         'Variable para almacenar la Id de usuario cuyo nombre coincida con el de arriba
-        Dim idUsuario As String = ""
+        'Esta variable globar se le asigna el valor de ID que trae del inicio de sesion
+        idUsuario = Funciones.userID
 
-        'Establecer conexion con la DB
 
-        Dim conexion As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True")
-
-        Try
-            conexion.Open()
-            'Consulta para obtener el ID y tener la relacion entre el ticket que se esta abriendo
-            'y el usuario que lo abre. Se realiza con parámetro para la ejecución.
-
-            Dim consultaId As String = "select idUser From Usuario where nombre = @NombreUsuario"
-
-            Dim comando As New SqlCommand(consultaId, conexion)
-
-            comando.Parameters.AddWithValue("@NombreUsuario", usuarioName)
-
-            'Obtener finalmente la id del usuario que inicio sesión. Corta la bocha.
-
-            Dim dimeLaId As Object = comando.ExecuteScalar()
-
-            If dimeLaId IsNot Nothing AndAlso Not DBNull.Value.Equals(dimeLaId) Then
-                idUsuario = Convert.ToBase64String(dimeLaId)
-            End If
-
-        Catch ex As Exception
-            MsgBox(ex.Message.ToString)
-        End Try
+        'La asigno al texbox que contendrá la id para poder mandar el ticket con el procedimiento
+        lbDimeID.Text = idUsuario
 
     End Sub
 
@@ -307,7 +298,48 @@ Public Class Usuario
     End Sub
 
     Private Sub bnCrearTicket_Click(sender As Object, e As EventArgs) Handles bnCrearTicket.Click
+
+        conex.Open()
+
+        'Procedimiento para enviar ticket
+
+        Dim NewTicket As New SqlCommand()
+        'Procedimiento almacenado para eliminar el libro seleccionado del combo
+        NewTicket.Connection = conex
+
+        NewTicket.CommandType = CommandType.StoredProcedure
+
+        NewTicket.CommandText = "NuevoTicket"
+
+        NewTicket.Parameters.AddWithValue("@idRequest", lbDimeID.Text)
+        NewTicket.Parameters.AddWithValue("@equipo", cbEquipo.SelectedItem)
+        NewTicket.Parameters.AddWithValue("@modeloEq", cbModelo.SelectedItem)
+        NewTicket.Parameters.AddWithValue("@TipodeDano", cbComponente.SelectedItem)
+        NewTicket.Parameters.AddWithValue("@prio", "Alta")
+        NewTicket.Parameters.AddWithValue("@descrip", tbDescripcion.Text)
+        NewTicket.Parameters.AddWithValue("@FechaCreac", lbFechaActual.Text)
+        NewTicket.Parameters.AddWithValue("@FechaEsti", lbFechaEstimada.Text)
+        NewTicket.Parameters.AddWithValue("@estado", "En revisión")
+
+
+
+        'Ejecutar procedimiento
+
+        Dim answer5 As Integer
+
+        answer5 = MsgBox("¿DESEAS ENVIAR EL TICKET? ", vbYesNo)
+        If answer5 = vbYes Then
+            NewTicket.ExecuteNonQuery()
+        Else
+            'Devuelve a la pantalla
+        End If
+
+        conex.Close()
+
+
         'Crear ticket con los datos suministrados y agregarlos a la data base. PENDIENTE
     End Sub
+
+
 
 End Class
