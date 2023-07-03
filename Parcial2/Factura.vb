@@ -2,7 +2,10 @@
 Imports System.IO
 
 Public Class Factura
-
+    Public xlWorkBook As Excel.Workbook
+    Public xlWorkSheet As Excel.Worksheet
+    Public xlApp As Excel.Application
+    Const Revision As Double = 20.0 'costos de revision
     Private Sub BtnExaminar_Click(sender As Object, e As EventArgs) Handles BtnExaminar.Click
         Dim folderBrowserDialog1 As New FolderBrowserDialog()
 
@@ -12,13 +15,79 @@ Public Class Factura
     End Sub
 
     Private Sub BtnFactura_Click(sender As Object, e As EventArgs) Handles BtnEnviar.Click
-        Dim xlWorkBook As Excel.Workbook
-        Dim xlWorkSheet As Excel.Worksheet
+        If TextBoxRuta.Text = "" Or Not Directory.Exists(TextBoxRuta.Text) Then
+            If Not Directory.Exists(TextBoxRuta.Text) Then
+                MessageBox.Show("Especifique una ruta valida del ordenador antes de continuar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                MessageBox.Show("Especifique una ruta en el ordenador antes de continuar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+        Else
+            xlApp = New Excel.Application
+            xlWorkBook = xlApp.Workbooks.Add()
+            xlWorkSheet = CType(xlWorkBook.Sheets("Hoja1"), Excel.Worksheet)
+            ' Guarda el libro de trabajo en la ruta especificada.
+            If File.Exists(TextBoxRuta.Text & "\Factura.xlsx") Then
+                'Pregunta si el archivo exite para reemplazarlo y si no crea un archivo nuevo
+                Dim result As Integer = MessageBox.Show("Este archivo ya exite. Quieres reemplazarlo?", "File Exists", MessageBoxButtons.YesNoCancel)
+                If result = DialogResult.Yes Then
+                    '//////////////////////////////////////////////////
+                    If Not IsExcelFileOpen(TextBoxRuta.Text & "\Factura.xlsx") Then
+                        FormatoExcelJK()
+                        ' Hacer algo con el archivo aquí
+                        ' Guardar archivo aquí
+                        File.Delete(TextBoxRuta.Text & "\Factura.xlsx")
+                        xlWorkSheet.SaveAs(TextBoxRuta.Text & "\Factura.xlsx", Microsoft.Office.Interop.Excel.XlFileFormat.xlOpenXMLWorkbook)
+                    Else
+                        MessageBox.Show("El archivo está abierto. Cierre el archivo y vuelva a intentarlo.", "Archivo abierto")
+                    End If
+                    '/////////////////////////////////////////////////////
+                ElseIf result = DialogResult.No Then
+                    FormatoExcelJK()
+                    Dim encotrado As Boolean = False
+                    ' Verifica si el archivo existe
+                    Dim i As Integer = 1
+                    'Si existe le pone el mism nombre pero con copia 
+                    While encotrado = False
+                        If File.Exists(TextBoxRuta.Text & "\Factura_Copia(" & i & ").xlsx") Then
+                        Else
+                            xlWorkBook.SaveAs(TextBoxRuta.Text & "\Factura_Copia(" & i & ").xlsx")
+                            encotrado = True
+                        End If
+                        i += 1
+                    End While
+                End If
+            Else
+                FormatoExcelJK()
+                xlWorkBook.SaveAs(TextBoxRuta.Text & "\Factura.xlsx")
+            End If
+            xlWorkBook.Close()
+            xlApp.Quit()
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkSheet)
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkBook)
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlApp)
+        End If
+    End Sub
 
-        Dim xlApp As Excel.Application
-        xlApp = New Excel.Application
-        xlWorkBook = xlApp.Workbooks.Add()
-        xlWorkSheet = CType(xlWorkBook.Sheets("Hoja1"), Excel.Worksheet)
+    Private Sub Factura_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Label22.Text = DateTime.Now.ToString("yyyy/MM/dd hh:mm tt")
+    End Sub
+    Private Function IsExcelFileOpen(ByVal fileName As String) As Boolean
+        Dim fileInUse As Boolean = False
+        Dim fs As FileStream = Nothing
+        Try
+            fs = File.Open(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None)
+        Catch ex As Exception
+            fileInUse = True
+        Finally
+            If fs IsNot Nothing Then
+                fs.Close()
+            End If
+        End Try
+        Return fileInUse
+    End Function
+
+
+    Public Sub FormatoExcelJK()
         'Personaliza el tipo de letra.
         xlWorkSheet.Range("B2:F24").Font.Name = "Arial"
         'Personaliza el tamaño de letra de las celdas.
@@ -29,6 +98,7 @@ Public Class Factura
         xlWorkSheet.Range("D4:F4").Font.Size = 22
         ' Cambiar el color de letra de¡ las celdas
         xlWorkSheet.Range("B2:F10").Font.Color = Color.White
+        xlWorkSheet.Range("B10:C10").Font.Color = Color.Black
         xlWorkSheet.Range("B11:B16").Font.Color = Color.White
         xlWorkSheet.Range("B17:F17").Font.Color = Color.White
         xlWorkSheet.Range("B19:F21").Font.Color = Color.White
@@ -66,15 +136,17 @@ Public Class Factura
         xlWorkSheet.Range("D6:F6").Interior.Color = Color.Black
         xlWorkSheet.Range("D8:F8").Interior.Color = Color.Black
         xlWorkSheet.Range("D10:F10").Interior.Color = Color.Black
+        xlWorkSheet.Range("B10").Interior.Color = Color.Black
         xlWorkSheet.Range("B11:B16").Interior.Color = Color.Black
         xlWorkSheet.Range("B19:F19").Interior.Color = Color.Black
         xlWorkSheet.Range("B24:F24").Interior.Color = Color.Black
         xlWorkSheet.Range("B24:F24").Interior.Color = Color.Black
+
         'color darkgray
         xlWorkSheet.Range("D3:F3").Interior.Color = Color.DarkGray
         xlWorkSheet.Range("D5:F5").Interior.Color = Color.DarkGray
         xlWorkSheet.Range("D7:F7").Interior.Color = Color.DarkGray
-        xlWorkSheet.Range("B9:B10").Interior.Color = Color.DarkGray
+        xlWorkSheet.Range("B9").Interior.Color = Color.DarkGray
         xlWorkSheet.Range("D9").Interior.Color = Color.DarkGray
         xlWorkSheet.Range("B17:F17").Interior.Color = Color.DarkGray
         xlWorkSheet.Range("B21:F21").Interior.Color = Color.DarkGray
@@ -82,7 +154,7 @@ Public Class Factura
         xlWorkSheet.Range("B23").Interior.Color = Color.DarkGray
         'color gray
         xlWorkSheet.Range("E9:F9").Interior.Color = Color.Gray
-        xlWorkSheet.Range("C9:C10").Interior.Color = Color.Gray
+        xlWorkSheet.Range("C9").Interior.Color = Color.Gray
         xlWorkSheet.Range("C20:F20").Interior.Color = Color.Gray
         xlWorkSheet.Range("C23:F23").Interior.Color = Color.Gray
         'color white
@@ -114,12 +186,20 @@ Public Class Factura
         'info del cliente
         'fila, columna
         xlWorkSheet.Cells(9, 2) = "No.Cliente"
-        xlWorkSheet.Cells(11, 2) = "Cliente"
-        xlWorkSheet.Cells(12, 2) = "Cedula"
-        xlWorkSheet.Cells(13, 2) = "Telefono"
+        xlWorkSheet.Cells(10, 2) = "Cliente"
+        xlWorkSheet.Cells(11, 2) = "Cedula"
+        xlWorkSheet.Cells(12, 2) = "Telefono"
+        xlWorkSheet.Cells(13, 2) = "Correo"
         xlWorkSheet.Cells(14, 2) = "Empleado Encargado"
-        xlWorkSheet.Cells(15, 2) = "Administrador a Cargo"
         xlWorkSheet.Cells(16, 2) = "Fecha"
+        'datos mandado del cliente
+        xlWorkSheet.Cells(9, 3) = LabelNCliente.Text
+        xlWorkSheet.Cells(10, 3) = LabelNombreCliente.Text
+        xlWorkSheet.Cells(11, 3) = LabelCedula.Text
+        xlWorkSheet.Cells(12, 3) = LabelTelefono.Text
+        xlWorkSheet.Cells(13, 3) = Labelcorreo.Text
+        xlWorkSheet.Cells(14, 3) = LabelEmpleadoEncargado.Text
+        xlWorkSheet.Cells(16, 3) = Label22.Text 'fecha actual
         '-------------------------------------------------------------
         'tabla de costos
         'fila, columna
@@ -130,9 +210,23 @@ Public Class Factura
         xlWorkSheet.Cells(14, 5) = "Sub total"
         xlWorkSheet.Cells(15, 5) = "Impuesto (7%)"
         xlWorkSheet.Cells(16, 5) = "Total"
+        xlWorkSheet.Cells(11, 4) = "1"
+        xlWorkSheet.Cells(12, 4) = "1"
+        xlWorkSheet.Cells(13, 4) = "1"
+        xlWorkSheet.Cells(13, 5) = "Costos Adicionales"
+        'datos de envio de tabla
+        xlWorkSheet.Cells(9, 5) = LabelNFactura.Text
+        xlWorkSheet.Cells(11, 5) = LabelRevision.Text
+        xlWorkSheet.Cells(11, 6) = Revision.ToString("C")
+        xlWorkSheet.Cells(12, 5) = LabelTipoReparacion.Text
+        xlWorkSheet.Cells(12, 6) = LabelCostosReparacion.Text
+        xlWorkSheet.Cells(14, 6) = LabelSubTotal.Text
+        xlWorkSheet.Cells(15, 6) = LabelImpuestos.Text
+        xlWorkSheet.Cells(16, 6) = LabelTotalPagar.Text
+        xlWorkSheet.Cells(20, 3) = LabelTotalPagar.Text
         '----------------------------------------------------------
         'informacion adicional
-        xlWorkSheet.Cells(17, 2) = "Observacion de Costos Extras"
+        xlWorkSheet.Cells(17, 2) = "Reporte de Trazabilidad"
         xlWorkSheet.Cells(19, 2) = "Forma de Pago"
         xlWorkSheet.Cells(20, 2) = "Efectivo"
         xlWorkSheet.Cells(21, 2) = "Consulta tu Comprobante en"
@@ -140,6 +234,8 @@ Public Class Factura
         xlWorkSheet.Cells(23, 2) = "Cufe"
         xlWorkSheet.Cells(23, 3) = "FE012000012867-224-17267-3600022023062800000670565001011451232476"
         xlWorkSheet.Cells(24, 2) = "GRACIAS POR PREFERIRNOS"
+        'Indormacion adiciona
+        xlWorkSheet.Cells(18, 2) = TextBoxObservacion.Text
         '*********************************************************
         'centrar y combinar 
         ' Combinar celdas
@@ -154,8 +250,6 @@ Public Class Factura
         xlWorkSheet.Range("D7:F7").Merge()
         xlWorkSheet.Range("D8:F8").Merge()
         'datos de cliente
-        xlWorkSheet.Range("B9:B10").Merge()
-        xlWorkSheet.Range("C9:C10").Merge()
         'Tabla Precios
         xlWorkSheet.Range("E9:F9").Merge()
         'otros Datos
@@ -206,6 +300,7 @@ Public Class Factura
         xlWorkSheet.Range("E11").WrapText = True
         xlWorkSheet.Range("E12").WrapText = True
         xlWorkSheet.Range("B18:F18").WrapText = True
+
         'todos los bordes
         'xlWorkSheet.Range("A1:A4").Borders.LineStyle = Excel.XlLineStyle.xlContinuous
         'xlWorkSheet.Range("A1:A4").Borders.Weight = Excel.XlBorderWeight.xlThin
@@ -224,41 +319,11 @@ Public Class Factura
         'Borde de derecha en varias celdas
         xlWorkSheet.Range("F2:F24").Borders.Item(Excel.XlBordersIndex.xlEdgeRight).LineStyle = Excel.XlLineStyle.xlContinuous
         xlWorkSheet.Range("F2:F24").Borders.Item(Excel.XlBordersIndex.xlEdgeRight).Weight = Excel.XlBorderWeight.xlThin
-
-        ' Guarda el libro de trabajo en la ruta especificada.
-        If File.Exists(TextBoxRuta.Text & "\Factura.xlsx") Then
-            'Pregunta si el archivo exite para reemplazarlo y si no crea un archivo nuevo
-            Dim result As Integer = MessageBox.Show("Este archivo ya exite. Quieres reemplazarlo?", "File Exists", MessageBoxButtons.YesNoCancel)
-            If result = DialogResult.Yes Then
-                'falta arreglar si el archivo esta en uso 
-                File.Delete(TextBoxRuta.Text & "\Factura.xlsx")
-                xlWorkBook.SaveAs(TextBoxRuta.Text & "\Factura.xlsx")
-            ElseIf result = DialogResult.No Then
-                Dim encotrado As Boolean = False
-                ' Verifica si el archivo existe
-                Dim i As Integer = 1
-                'Si existe le pone el mism nombre pero con copia 
-                While encotrado = False
-                    If File.Exists(TextBoxRuta.Text & "\Factura_Copia(" & i & ").xlsx") Then
-                    Else
-                        xlWorkBook.SaveAs(TextBoxRuta.Text & "\Factura_Copia(" & i & ").xlsx")
-
-                        encotrado = True
-                    End If
-                    i += 1
-                End While
-            End If
-        Else
-            xlWorkBook.SaveAs(TextBoxRuta.Text & "\Factura.xlsx")
-        End If
-        xlWorkBook.Close()
-        xlApp.Quit()
-        System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkSheet)
-        System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkBook)
-        System.Runtime.InteropServices.Marshal.ReleaseComObject(xlApp)
     End Sub
 
-
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Close()
+    End Sub
 End Class
 
 

@@ -24,20 +24,16 @@ Partial Class Administracion
     Private Sub InitializeComponent()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label27 = New System.Windows.Forms.Label()
-        Me.Label26 = New System.Windows.Forms.Label()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.LabelErrorID = New System.Windows.Forms.Label()
+        Me.BtnModificar = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.ComboBoxOpciones = New System.Windows.Forms.ComboBox()
         Me.BtnAcction = New System.Windows.Forms.Button()
         Me.TextBoxIdTicket = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.LabelIDTikect = New System.Windows.Forms.Label()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Label25 = New System.Windows.Forms.Label()
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.Label23 = New System.Windows.Forms.Label()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.ComboBoxTipoDano = New System.Windows.Forms.ComboBox()
         Me.ComboBoxModelo = New System.Windows.Forms.ComboBox()
         Me.ComboBoxEquipo = New System.Windows.Forms.ComboBox()
@@ -47,32 +43,43 @@ Partial Class Administracion
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.LabeIDusers = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.LabelCorreo = New System.Windows.Forms.Label()
         Me.LabelCelular = New System.Windows.Forms.Label()
         Me.LabelCedula = New System.Windows.Forms.Label()
         Me.LabelName = New System.Windows.Forms.Label()
-        Me.LabelNameUsers = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.MonthCalendar1 = New System.Windows.Forms.MonthCalendar()
-        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.BtnAgregarComponentes = New System.Windows.Forms.Button()
+        Me.LabelTareas = New System.Windows.Forms.Label()
+        Me.LabelTextTarea = New System.Windows.Forms.Label()
+        Me.LabelTime = New System.Windows.Forms.Label()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.ComboBoxTipoReparacion = New System.Windows.Forms.ComboBox()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.LabelFechaEstimacion = New System.Windows.Forms.Label()
+        Me.LabelFechaInicio = New System.Windows.Forms.Label()
         Me.ComboBoxEmpleados = New System.Windows.Forms.ComboBox()
-        Me.Label21 = New System.Windows.Forms.Label()
         Me.ComboBoxEstado = New System.Windows.Forms.ComboBox()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel5 = New System.Windows.Forms.TableLayoutPanel()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.TextBoxObservacion = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
+        Me.LabelContMultiline = New System.Windows.Forms.Label()
         Me.LabelPrioridad = New System.Windows.Forms.Label()
         Me.Label30 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
@@ -83,19 +90,23 @@ Partial Class Administracion
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ComboBoxMostrar = New System.Windows.Forms.ComboBox()
         Me.LabelComplete = New System.Windows.Forms.Label()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Label18 = New System.Windows.Forms.Label()
+        Me.BtnBorrarRegistro = New System.Windows.Forms.Button()
+        Me.BtnBorrarTodo = New System.Windows.Forms.Button()
+        Me.LabelMostrar = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Label27 = New System.Windows.Forms.Label()
         Me.BtnGenerarFactura = New System.Windows.Forms.Button()
-        Me.Label31 = New System.Windows.Forms.Label()
-        Me.Label32 = New System.Windows.Forms.Label()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.ButtonMostrarOcultar = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel4.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.TableLayoutPanel5.SuspendLayout()
@@ -107,7 +118,7 @@ Partial Class Administracion
         '
         'TableLayoutPanel1
         '
-        Me.TableLayoutPanel1.BackColor = System.Drawing.Color.Transparent
+        Me.TableLayoutPanel1.BackColor = System.Drawing.Color.Black
         Me.TableLayoutPanel1.ColumnCount = 1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.Panel2, 0, 1)
@@ -127,7 +138,7 @@ Partial Class Administracion
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(933, 671)
         Me.TableLayoutPanel1.TabIndex = 2
@@ -135,15 +146,13 @@ Partial Class Administracion
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.Black
-        Me.Panel2.Controls.Add(Me.Label27)
-        Me.Panel2.Controls.Add(Me.Label26)
-        Me.Panel2.Controls.Add(Me.Label20)
-        Me.Panel2.Controls.Add(Me.Button2)
+        Me.Panel2.Controls.Add(Me.LabelErrorID)
+        Me.Panel2.Controls.Add(Me.BtnModificar)
         Me.Panel2.Controls.Add(Me.Label5)
         Me.Panel2.Controls.Add(Me.ComboBoxOpciones)
         Me.Panel2.Controls.Add(Me.BtnAcction)
         Me.Panel2.Controls.Add(Me.TextBoxIdTicket)
-        Me.Panel2.Controls.Add(Me.Label1)
+        Me.Panel2.Controls.Add(Me.LabelIDTikect)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 35)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(0)
@@ -151,59 +160,35 @@ Partial Class Administracion
         Me.Panel2.Size = New System.Drawing.Size(933, 65)
         Me.Panel2.TabIndex = 2
         '
-        'Label27
+        'LabelErrorID
         '
-        Me.Label27.AutoSize = True
-        Me.Label27.BackColor = System.Drawing.Color.Transparent
-        Me.Label27.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label27.ForeColor = System.Drawing.Color.Red
-        Me.Label27.Location = New System.Drawing.Point(444, 37)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(75, 21)
-        Me.Label27.TabIndex = 22
-        Me.Label27.Text = "B/. 00.00"
+        Me.LabelErrorID.AutoSize = True
+        Me.LabelErrorID.BackColor = System.Drawing.Color.Transparent
+        Me.LabelErrorID.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.LabelErrorID.ForeColor = System.Drawing.Color.Red
+        Me.LabelErrorID.Location = New System.Drawing.Point(313, 31)
+        Me.LabelErrorID.Name = "LabelErrorID"
+        Me.LabelErrorID.Size = New System.Drawing.Size(17, 21)
+        Me.LabelErrorID.TabIndex = 20
+        Me.LabelErrorID.Text = "*"
         '
-        'Label26
+        'BtnModificar
         '
-        Me.Label26.AutoSize = True
-        Me.Label26.BackColor = System.Drawing.Color.Transparent
-        Me.Label26.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label26.ForeColor = System.Drawing.Color.White
-        Me.Label26.Location = New System.Drawing.Point(430, 14)
-        Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(130, 21)
-        Me.Label26.TabIndex = 21
-        Me.Label26.Text = "Monto a Pagar :"
-        '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.BackColor = System.Drawing.Color.Transparent
-        Me.Label20.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label20.ForeColor = System.Drawing.Color.Red
-        Me.Label20.Location = New System.Drawing.Point(263, 35)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(17, 21)
-        Me.Label20.TabIndex = 20
-        Me.Label20.Text = "*"
-        '
-        'Button2
-        '
-        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button2.BackColor = System.Drawing.Color.Blue
-        Me.Button2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Button2.ForeColor = System.Drawing.Color.White
-        Me.Button2.Location = New System.Drawing.Point(597, 14)
-        Me.Button2.MaximumSize = New System.Drawing.Size(174, 34)
-        Me.Button2.MinimumSize = New System.Drawing.Size(174, 34)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(174, 34)
-        Me.Button2.TabIndex = 19
-        Me.Button2.Text = "Modificar"
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.BtnModificar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BtnModificar.BackColor = System.Drawing.Color.Blue
+        Me.BtnModificar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnModificar.FlatAppearance.BorderSize = 0
+        Me.BtnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnModificar.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.BtnModificar.ForeColor = System.Drawing.Color.White
+        Me.BtnModificar.Location = New System.Drawing.Point(597, 14)
+        Me.BtnModificar.MaximumSize = New System.Drawing.Size(174, 34)
+        Me.BtnModificar.MinimumSize = New System.Drawing.Size(174, 34)
+        Me.BtnModificar.Name = "BtnModificar"
+        Me.BtnModificar.Size = New System.Drawing.Size(174, 34)
+        Me.BtnModificar.TabIndex = 19
+        Me.BtnModificar.Text = "Modificar"
+        Me.BtnModificar.UseVisualStyleBackColor = False
         '
         'Label5
         '
@@ -211,7 +196,7 @@ Partial Class Administracion
         Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(9, 0)
+        Me.Label5.Location = New System.Drawing.Point(9, 6)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(89, 21)
         Me.Label5.TabIndex = 16
@@ -219,14 +204,15 @@ Partial Class Administracion
         '
         'ComboBoxOpciones
         '
-        Me.ComboBoxOpciones.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.ComboBoxOpciones.BackColor = System.Drawing.Color.White
+        Me.ComboBoxOpciones.Cursor = System.Windows.Forms.Cursors.Hand
         Me.ComboBoxOpciones.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxOpciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ComboBoxOpciones.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.ComboBoxOpciones.FormattingEnabled = True
-        Me.ComboBoxOpciones.Location = New System.Drawing.Point(13, 33)
+        Me.ComboBoxOpciones.Location = New System.Drawing.Point(12, 34)
         Me.ComboBoxOpciones.Name = "ComboBoxOpciones"
-        Me.ComboBoxOpciones.Size = New System.Drawing.Size(121, 25)
+        Me.ComboBoxOpciones.Size = New System.Drawing.Size(143, 25)
         Me.ComboBoxOpciones.TabIndex = 15
         '
         'BtnAcction
@@ -252,27 +238,27 @@ Partial Class Administracion
         '
         Me.TextBoxIdTicket.BackColor = System.Drawing.Color.White
         Me.TextBoxIdTicket.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBoxIdTicket.Location = New System.Drawing.Point(160, 35)
+        Me.TextBoxIdTicket.Location = New System.Drawing.Point(173, 35)
         Me.TextBoxIdTicket.Margin = New System.Windows.Forms.Padding(0)
         Me.TextBoxIdTicket.Name = "TextBoxIdTicket"
-        Me.TextBoxIdTicket.Size = New System.Drawing.Size(100, 23)
+        Me.TextBoxIdTicket.Size = New System.Drawing.Size(125, 23)
         Me.TextBoxIdTicket.TabIndex = 3
         '
-        'Label1
+        'LabelIDTikect
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(160, 0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(35, 21)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "ID :"
+        Me.LabelIDTikect.AutoSize = True
+        Me.LabelIDTikect.BackColor = System.Drawing.Color.Transparent
+        Me.LabelIDTikect.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.LabelIDTikect.ForeColor = System.Drawing.Color.White
+        Me.LabelIDTikect.Location = New System.Drawing.Point(173, 6)
+        Me.LabelIDTikect.Name = "LabelIDTikect"
+        Me.LabelIDTikect.Size = New System.Drawing.Size(116, 21)
+        Me.LabelIDTikect.TabIndex = 0
+        Me.LabelIDTikect.Text = "ID o Nombre :"
         '
         'TableLayoutPanel2
         '
-        Me.TableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.TableLayoutPanel2.BackColor = System.Drawing.Color.Transparent
         Me.TableLayoutPanel2.ColumnCount = 2
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.0!))
@@ -290,9 +276,7 @@ Partial Class Administracion
         'GroupBox2
         '
         Me.GroupBox2.BackColor = System.Drawing.Color.Transparent
-        Me.GroupBox2.Controls.Add(Me.Label25)
-        Me.GroupBox2.Controls.Add(Me.Label24)
-        Me.GroupBox2.Controls.Add(Me.Label23)
+        Me.GroupBox2.Controls.Add(Me.PictureBox2)
         Me.GroupBox2.Controls.Add(Me.ComboBoxTipoDano)
         Me.GroupBox2.Controls.Add(Me.ComboBoxModelo)
         Me.GroupBox2.Controls.Add(Me.ComboBoxEquipo)
@@ -304,57 +288,37 @@ Partial Class Administracion
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.GroupBox2.ForeColor = System.Drawing.Color.White
-        Me.GroupBox2.Location = New System.Drawing.Point(376, 3)
+        Me.GroupBox2.Location = New System.Drawing.Point(383, 10)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(10, 10, 10, 0)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(554, 194)
+        Me.GroupBox2.Size = New System.Drawing.Size(540, 190)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Equipo del Cliente"
         '
-        'Label25
+        'PictureBox2
         '
-        Me.Label25.AutoSize = True
-        Me.Label25.BackColor = System.Drawing.Color.Transparent
-        Me.Label25.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label25.ForeColor = System.Drawing.Color.Red
-        Me.Label25.Location = New System.Drawing.Point(526, 47)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(17, 21)
-        Me.Label25.TabIndex = 25
-        Me.Label25.Text = "*"
-        '
-        'Label24
-        '
-        Me.Label24.AutoSize = True
-        Me.Label24.BackColor = System.Drawing.Color.Transparent
-        Me.Label24.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label24.ForeColor = System.Drawing.Color.Red
-        Me.Label24.Location = New System.Drawing.Point(349, 47)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(17, 21)
-        Me.Label24.TabIndex = 24
-        Me.Label24.Text = "*"
-        '
-        'Label23
-        '
-        Me.Label23.AutoSize = True
-        Me.Label23.BackColor = System.Drawing.Color.Transparent
-        Me.Label23.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label23.ForeColor = System.Drawing.Color.Red
-        Me.Label23.Location = New System.Drawing.Point(169, 45)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(17, 21)
-        Me.Label23.TabIndex = 23
-        Me.Label23.Text = "*"
+        Me.PictureBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.PictureBox2.BackgroundImage = Global.Parcial2.My.Resources.Resources.laptop
+        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox2.Location = New System.Drawing.Point(484, 0)
+        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(0)
+        Me.PictureBox2.MaximumSize = New System.Drawing.Size(79, 59)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(57, 52)
+        Me.PictureBox2.TabIndex = 14
+        Me.PictureBox2.TabStop = False
         '
         'ComboBoxTipoDano
         '
         Me.ComboBoxTipoDano.BackColor = System.Drawing.Color.White
+        Me.ComboBoxTipoDano.Cursor = System.Windows.Forms.Cursors.Hand
         Me.ComboBoxTipoDano.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxTipoDano.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ComboBoxTipoDano.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.ComboBoxTipoDano.FormattingEnabled = True
-        Me.ComboBoxTipoDano.Location = New System.Drawing.Point(372, 43)
+        Me.ComboBoxTipoDano.Location = New System.Drawing.Point(318, 54)
         Me.ComboBoxTipoDano.Name = "ComboBoxTipoDano"
         Me.ComboBoxTipoDano.Size = New System.Drawing.Size(148, 25)
         Me.ComboBoxTipoDano.TabIndex = 20
@@ -362,11 +326,12 @@ Partial Class Administracion
         'ComboBoxModelo
         '
         Me.ComboBoxModelo.BackColor = System.Drawing.Color.White
+        Me.ComboBoxModelo.Cursor = System.Windows.Forms.Cursors.Hand
         Me.ComboBoxModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxModelo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ComboBoxModelo.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.ComboBoxModelo.FormattingEnabled = True
-        Me.ComboBoxModelo.Location = New System.Drawing.Point(193, 43)
+        Me.ComboBoxModelo.Location = New System.Drawing.Point(152, 53)
         Me.ComboBoxModelo.Name = "ComboBoxModelo"
         Me.ComboBoxModelo.Size = New System.Drawing.Size(150, 25)
         Me.ComboBoxModelo.TabIndex = 19
@@ -374,13 +339,14 @@ Partial Class Administracion
         'ComboBoxEquipo
         '
         Me.ComboBoxEquipo.BackColor = System.Drawing.Color.White
+        Me.ComboBoxEquipo.Cursor = System.Windows.Forms.Cursors.Hand
         Me.ComboBoxEquipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxEquipo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ComboBoxEquipo.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.ComboBoxEquipo.FormattingEnabled = True
-        Me.ComboBoxEquipo.Location = New System.Drawing.Point(13, 43)
+        Me.ComboBoxEquipo.Location = New System.Drawing.Point(13, 52)
         Me.ComboBoxEquipo.Name = "ComboBoxEquipo"
-        Me.ComboBoxEquipo.Size = New System.Drawing.Size(150, 25)
+        Me.ComboBoxEquipo.Size = New System.Drawing.Size(121, 25)
         Me.ComboBoxEquipo.TabIndex = 18
         '
         'Label6
@@ -389,7 +355,7 @@ Partial Class Administracion
         Me.Label6.BackColor = System.Drawing.Color.Transparent
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Label6.Location = New System.Drawing.Point(13, 74)
+        Me.Label6.Location = New System.Drawing.Point(14, 81)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(95, 19)
         Me.Label6.TabIndex = 12
@@ -397,14 +363,15 @@ Partial Class Administracion
         '
         'TextBoxDescripcionCliente
         '
+        Me.TextBoxDescripcionCliente.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBoxDescripcionCliente.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.TextBoxDescripcionCliente.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.TextBoxDescripcionCliente.ForeColor = System.Drawing.Color.Black
-        Me.TextBoxDescripcionCliente.Location = New System.Drawing.Point(3, 96)
+        Me.TextBoxDescripcionCliente.Location = New System.Drawing.Point(3, 106)
         Me.TextBoxDescripcionCliente.Margin = New System.Windows.Forms.Padding(5, 0, 5, 5)
         Me.TextBoxDescripcionCliente.Multiline = True
         Me.TextBoxDescripcionCliente.Name = "TextBoxDescripcionCliente"
-        Me.TextBoxDescripcionCliente.Size = New System.Drawing.Size(548, 95)
+        Me.TextBoxDescripcionCliente.Size = New System.Drawing.Size(534, 81)
         Me.TextBoxDescripcionCliente.TabIndex = 13
         '
         'Label2
@@ -413,7 +380,7 @@ Partial Class Administracion
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Label2.Location = New System.Drawing.Point(13, 21)
+        Me.Label2.Location = New System.Drawing.Point(13, 28)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(63, 19)
         Me.Label2.TabIndex = 6
@@ -425,7 +392,7 @@ Partial Class Administracion
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Label3.Location = New System.Drawing.Point(193, 20)
+        Me.Label3.Location = New System.Drawing.Point(152, 28)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(69, 19)
         Me.Label3.TabIndex = 7
@@ -437,7 +404,7 @@ Partial Class Administracion
         Me.Label4.BackColor = System.Drawing.Color.Transparent
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Label4.Location = New System.Drawing.Point(372, 20)
+        Me.Label4.Location = New System.Drawing.Point(318, 29)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(107, 19)
         Me.Label4.TabIndex = 10
@@ -446,26 +413,70 @@ Partial Class Administracion
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox1.Controls.Add(Me.PictureBox1)
+        Me.GroupBox1.Controls.Add(Me.LabeIDusers)
+        Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.LabelCorreo)
         Me.GroupBox1.Controls.Add(Me.LabelCelular)
         Me.GroupBox1.Controls.Add(Me.LabelCedula)
         Me.GroupBox1.Controls.Add(Me.LabelName)
-        Me.GroupBox1.Controls.Add(Me.LabelNameUsers)
         Me.GroupBox1.Controls.Add(Me.Label12)
         Me.GroupBox1.Controls.Add(Me.Label11)
-        Me.GroupBox1.Controls.Add(Me.Label10)
         Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
-        Me.GroupBox1.Location = New System.Drawing.Point(3, 3)
+        Me.GroupBox1.Location = New System.Drawing.Point(10, 10)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(10, 10, 10, 0)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(367, 194)
+        Me.GroupBox1.Size = New System.Drawing.Size(353, 190)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos del Cliente"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.PictureBox1.BackgroundImage = Global.Parcial2.My.Resources.Resources.perfil
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox1.Location = New System.Drawing.Point(281, 0)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(0)
+        Me.PictureBox1.MaximumSize = New System.Drawing.Size(79, 59)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(72, 59)
+        Me.PictureBox1.TabIndex = 13
+        Me.PictureBox1.TabStop = False
+        '
+        'LabeIDusers
+        '
+        Me.LabeIDusers.AutoSize = True
+        Me.LabeIDusers.BackColor = System.Drawing.Color.Transparent
+        Me.LabeIDusers.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabeIDusers.ForeColor = System.Drawing.Color.White
+        Me.LabeIDusers.Location = New System.Drawing.Point(100, 14)
+        Me.LabeIDusers.Margin = New System.Windows.Forms.Padding(0)
+        Me.LabeIDusers.MaximumSize = New System.Drawing.Size(200, 38)
+        Me.LabeIDusers.MinimumSize = New System.Drawing.Size(200, 38)
+        Me.LabeIDusers.Name = "LabeIDusers"
+        Me.LabeIDusers.Size = New System.Drawing.Size(200, 38)
+        Me.LabeIDusers.TabIndex = 12
+        Me.LabeIDusers.Text = "#"
+        Me.LabeIDusers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label1.Location = New System.Drawing.Point(57, 25)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(31, 19)
+        Me.Label1.TabIndex = 11
+        Me.Label1.Text = "ID :"
         '
         'LabelCorreo
         '
@@ -473,7 +484,7 @@ Partial Class Administracion
         Me.LabelCorreo.BackColor = System.Drawing.Color.Transparent
         Me.LabelCorreo.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.LabelCorreo.ForeColor = System.Drawing.Color.White
-        Me.LabelCorreo.Location = New System.Drawing.Point(169, 145)
+        Me.LabelCorreo.Location = New System.Drawing.Point(101, 143)
         Me.LabelCorreo.MaximumSize = New System.Drawing.Size(200, 38)
         Me.LabelCorreo.MinimumSize = New System.Drawing.Size(200, 38)
         Me.LabelCorreo.Name = "LabelCorreo"
@@ -488,7 +499,7 @@ Partial Class Administracion
         Me.LabelCelular.BackColor = System.Drawing.Color.Transparent
         Me.LabelCelular.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.LabelCelular.ForeColor = System.Drawing.Color.White
-        Me.LabelCelular.Location = New System.Drawing.Point(169, 120)
+        Me.LabelCelular.Location = New System.Drawing.Point(101, 124)
         Me.LabelCelular.Name = "LabelCelular"
         Me.LabelCelular.Size = New System.Drawing.Size(117, 19)
         Me.LabelCelular.TabIndex = 9
@@ -500,7 +511,7 @@ Partial Class Administracion
         Me.LabelCedula.BackColor = System.Drawing.Color.Transparent
         Me.LabelCedula.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.LabelCedula.ForeColor = System.Drawing.Color.White
-        Me.LabelCedula.Location = New System.Drawing.Point(169, 86)
+        Me.LabelCedula.Location = New System.Drawing.Point(103, 90)
         Me.LabelCedula.Name = "LabelCedula"
         Me.LabelCedula.Size = New System.Drawing.Size(117, 19)
         Me.LabelCedula.TabIndex = 8
@@ -512,7 +523,7 @@ Partial Class Administracion
         Me.LabelName.BackColor = System.Drawing.Color.Transparent
         Me.LabelName.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.LabelName.ForeColor = System.Drawing.Color.White
-        Me.LabelName.Location = New System.Drawing.Point(169, 45)
+        Me.LabelName.Location = New System.Drawing.Point(100, 43)
         Me.LabelName.MaximumSize = New System.Drawing.Size(200, 38)
         Me.LabelName.MinimumSize = New System.Drawing.Size(200, 38)
         Me.LabelName.Name = "LabelName"
@@ -521,25 +532,13 @@ Partial Class Administracion
         Me.LabelName.Text = "Nombre y Apellido"
         Me.LabelName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'LabelNameUsers
-        '
-        Me.LabelNameUsers.AutoSize = True
-        Me.LabelNameUsers.BackColor = System.Drawing.Color.Transparent
-        Me.LabelNameUsers.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabelNameUsers.ForeColor = System.Drawing.Color.White
-        Me.LabelNameUsers.Location = New System.Drawing.Point(169, 20)
-        Me.LabelNameUsers.Name = "LabelNameUsers"
-        Me.LabelNameUsers.Size = New System.Drawing.Size(79, 19)
-        Me.LabelNameUsers.TabIndex = 6
-        Me.LabelNameUsers.Text = "NameUsers"
-        '
         'Label12
         '
         Me.Label12.AutoSize = True
         Me.Label12.BackColor = System.Drawing.Color.Transparent
         Me.Label12.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Label12.Location = New System.Drawing.Point(100, 156)
+        Me.Label12.Location = New System.Drawing.Point(30, 154)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(64, 19)
         Me.Label12.TabIndex = 5
@@ -551,23 +550,11 @@ Partial Class Administracion
         Me.Label11.BackColor = System.Drawing.Color.Transparent
         Me.Label11.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Label11.Location = New System.Drawing.Point(100, 120)
+        Me.Label11.Location = New System.Drawing.Point(30, 124)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(64, 19)
         Me.Label11.TabIndex = 4
         Me.Label11.Text = "Celular :"
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.BackColor = System.Drawing.Color.Transparent
-        Me.Label10.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label10.ForeColor = System.Drawing.Color.White
-        Me.Label10.Location = New System.Drawing.Point(6, 96)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(86, 21)
-        Me.Label10.TabIndex = 3
-        Me.Label10.Text = "Contactos"
         '
         'Label9
         '
@@ -575,7 +562,7 @@ Partial Class Administracion
         Me.Label9.BackColor = System.Drawing.Color.Transparent
         Me.Label9.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Label9.Location = New System.Drawing.Point(100, 86)
+        Me.Label9.Location = New System.Drawing.Point(30, 90)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(63, 19)
         Me.Label9.TabIndex = 2
@@ -587,7 +574,7 @@ Partial Class Administracion
         Me.Label8.BackColor = System.Drawing.Color.Transparent
         Me.Label8.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Label8.Location = New System.Drawing.Point(90, 56)
+        Me.Label8.Location = New System.Drawing.Point(20, 54)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(73, 19)
         Me.Label8.TabIndex = 1
@@ -601,31 +588,45 @@ Partial Class Administracion
         Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.Label7.Location = New System.Drawing.Point(15, 22)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(149, 19)
+        Me.Label7.Size = New System.Drawing.Size(0, 19)
         Me.Label7.TabIndex = 0
-        Me.Label7.Text = "Nombre de Usuario :"
         '
         'GroupBox3
         '
         Me.GroupBox3.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox3.Controls.Add(Me.PictureBox3)
         Me.GroupBox3.Controls.Add(Me.TableLayoutPanel4)
         Me.GroupBox3.Controls.Add(Me.LabelPrioridad)
         Me.GroupBox3.Controls.Add(Me.Label30)
         Me.GroupBox3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.GroupBox3.ForeColor = System.Drawing.Color.White
-        Me.GroupBox3.Location = New System.Drawing.Point(3, 300)
-        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(3, 0, 3, 3)
+        Me.GroupBox3.Location = New System.Drawing.Point(10, 300)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(10, 0, 10, 3)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(927, 197)
+        Me.GroupBox3.Size = New System.Drawing.Size(913, 197)
         Me.GroupBox3.TabIndex = 4
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Asignar Reparación"
         '
+        'PictureBox3
+        '
+        Me.PictureBox3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox3.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.PictureBox3.BackgroundImage = Global.Parcial2.My.Resources.Resources.Revision
+        Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox3.Location = New System.Drawing.Point(865, 2)
+        Me.PictureBox3.Margin = New System.Windows.Forms.Padding(0)
+        Me.PictureBox3.MaximumSize = New System.Drawing.Size(79, 59)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(49, 40)
+        Me.PictureBox3.TabIndex = 21
+        Me.PictureBox3.TabStop = False
+        '
         'TableLayoutPanel4
         '
         Me.TableLayoutPanel4.ColumnCount = 2
-        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 589.0!))
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 662.0!))
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel4.Controls.Add(Me.Panel3, 0, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.TableLayoutPanel5, 1, 0)
@@ -635,17 +636,23 @@ Partial Class Administracion
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
         Me.TableLayoutPanel4.RowCount = 1
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel4.Size = New System.Drawing.Size(921, 169)
+        Me.TableLayoutPanel4.Size = New System.Drawing.Size(907, 169)
         Me.TableLayoutPanel4.TabIndex = 1
         '
         'Panel3
         '
-        Me.Panel3.Controls.Add(Me.Label32)
-        Me.Panel3.Controls.Add(Me.Label31)
-        Me.Panel3.Controls.Add(Me.MonthCalendar1)
-        Me.Panel3.Controls.Add(Me.Label22)
+        Me.Panel3.Controls.Add(Me.Label10)
+        Me.Panel3.Controls.Add(Me.BtnAgregarComponentes)
+        Me.Panel3.Controls.Add(Me.LabelTareas)
+        Me.Panel3.Controls.Add(Me.LabelTextTarea)
+        Me.Panel3.Controls.Add(Me.LabelTime)
+        Me.Panel3.Controls.Add(Me.Label33)
+        Me.Panel3.Controls.Add(Me.Label16)
+        Me.Panel3.Controls.Add(Me.ComboBoxTipoReparacion)
+        Me.Panel3.Controls.Add(Me.DateTimePicker1)
+        Me.Panel3.Controls.Add(Me.LabelFechaEstimacion)
+        Me.Panel3.Controls.Add(Me.LabelFechaInicio)
         Me.Panel3.Controls.Add(Me.ComboBoxEmpleados)
-        Me.Panel3.Controls.Add(Me.Label21)
         Me.Panel3.Controls.Add(Me.ComboBoxEstado)
         Me.Panel3.Controls.Add(Me.Label19)
         Me.Panel3.Controls.Add(Me.Label17)
@@ -655,61 +662,169 @@ Partial Class Administracion
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(589, 169)
+        Me.Panel3.Size = New System.Drawing.Size(662, 169)
         Me.Panel3.TabIndex = 0
         '
-        'MonthCalendar1
+        'Label10
         '
-        Me.MonthCalendar1.Location = New System.Drawing.Point(6, -2)
-        Me.MonthCalendar1.Name = "MonthCalendar1"
-        Me.MonthCalendar1.TabIndex = 23
+        Me.Label10.AutoSize = True
+        Me.Label10.BackColor = System.Drawing.Color.Transparent
+        Me.Label10.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label10.Location = New System.Drawing.Point(377, 84)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(142, 19)
+        Me.Label10.TabIndex = 33
+        Me.Label10.Text = "Comp. Adicionales :"
         '
-        'Label22
+        'BtnAgregarComponentes
         '
-        Me.Label22.AutoSize = True
-        Me.Label22.BackColor = System.Drawing.Color.Transparent
-        Me.Label22.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label22.ForeColor = System.Drawing.Color.Red
-        Me.Label22.Location = New System.Drawing.Point(548, 94)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(17, 21)
-        Me.Label22.TabIndex = 22
-        Me.Label22.Text = "*"
+        Me.BtnAgregarComponentes.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.BtnAgregarComponentes.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnAgregarComponentes.FlatAppearance.BorderSize = 0
+        Me.BtnAgregarComponentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnAgregarComponentes.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.BtnAgregarComponentes.Location = New System.Drawing.Point(379, 114)
+        Me.BtnAgregarComponentes.Name = "BtnAgregarComponentes"
+        Me.BtnAgregarComponentes.Size = New System.Drawing.Size(148, 25)
+        Me.BtnAgregarComponentes.TabIndex = 32
+        Me.BtnAgregarComponentes.Text = "Agregar"
+        Me.BtnAgregarComponentes.UseVisualStyleBackColor = False
+        '
+        'LabelTareas
+        '
+        Me.LabelTareas.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LabelTareas.AutoSize = True
+        Me.LabelTareas.BackColor = System.Drawing.Color.Transparent
+        Me.LabelTareas.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.LabelTareas.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.LabelTareas.Location = New System.Drawing.Point(571, 42)
+        Me.LabelTareas.MaximumSize = New System.Drawing.Size(50, 19)
+        Me.LabelTareas.MinimumSize = New System.Drawing.Size(50, 19)
+        Me.LabelTareas.Name = "LabelTareas"
+        Me.LabelTareas.Size = New System.Drawing.Size(50, 19)
+        Me.LabelTareas.TabIndex = 31
+        Me.LabelTareas.Text = "---"
+        Me.LabelTareas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'LabelTextTarea
+        '
+        Me.LabelTextTarea.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LabelTextTarea.AutoSize = True
+        Me.LabelTextTarea.BackColor = System.Drawing.Color.Transparent
+        Me.LabelTextTarea.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.LabelTextTarea.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.LabelTextTarea.Location = New System.Drawing.Point(541, 9)
+        Me.LabelTextTarea.Name = "LabelTextTarea"
+        Me.LabelTextTarea.Size = New System.Drawing.Size(101, 19)
+        Me.LabelTextTarea.TabIndex = 30
+        Me.LabelTextTarea.Text = "No. de Tareas"
+        Me.LabelTextTarea.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'LabelTime
+        '
+        Me.LabelTime.AutoSize = True
+        Me.LabelTime.BackColor = System.Drawing.Color.Transparent
+        Me.LabelTime.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.LabelTime.ForeColor = System.Drawing.Color.Red
+        Me.LabelTime.Location = New System.Drawing.Point(170, 84)
+        Me.LabelTime.Name = "LabelTime"
+        Me.LabelTime.Size = New System.Drawing.Size(17, 21)
+        Me.LabelTime.TabIndex = 21
+        Me.LabelTime.Text = "*"
+        '
+        'Label33
+        '
+        Me.Label33.AutoSize = True
+        Me.Label33.BackColor = System.Drawing.Color.Transparent
+        Me.Label33.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label33.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label33.Location = New System.Drawing.Point(12, 84)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(121, 19)
+        Me.Label33.TabIndex = 29
+        Me.Label33.Text = "Fecha de Retiro :"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.BackColor = System.Drawing.Color.Transparent
+        Me.Label16.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label16.Location = New System.Drawing.Point(215, 84)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(144, 19)
+        Me.Label16.TabIndex = 28
+        Me.Label16.Text = "Tipo de Reparación:"
+        '
+        'ComboBoxTipoReparacion
+        '
+        Me.ComboBoxTipoReparacion.BackColor = System.Drawing.Color.White
+        Me.ComboBoxTipoReparacion.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.ComboBoxTipoReparacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxTipoReparacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ComboBoxTipoReparacion.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.ComboBoxTipoReparacion.FormattingEnabled = True
+        Me.ComboBoxTipoReparacion.Location = New System.Drawing.Point(213, 114)
+        Me.ComboBoxTipoReparacion.Name = "ComboBoxTipoReparacion"
+        Me.ComboBoxTipoReparacion.Size = New System.Drawing.Size(148, 25)
+        Me.ComboBoxTipoReparacion.TabIndex = 27
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.CustomFormat = ""
+        Me.DateTimePicker1.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.DateTimePicker1.Location = New System.Drawing.Point(12, 114)
+        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(0)
+        Me.DateTimePicker1.MaximumSize = New System.Drawing.Size(180, 25)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.ShowUpDown = True
+        Me.DateTimePicker1.Size = New System.Drawing.Size(180, 25)
+        Me.DateTimePicker1.TabIndex = 26
+        '
+        'LabelFechaEstimacion
+        '
+        Me.LabelFechaEstimacion.AutoSize = True
+        Me.LabelFechaEstimacion.Location = New System.Drawing.Point(239, 40)
+        Me.LabelFechaEstimacion.Name = "LabelFechaEstimacion"
+        Me.LabelFechaEstimacion.Size = New System.Drawing.Size(96, 21)
+        Me.LabelFechaEstimacion.TabIndex = 25
+        Me.LabelFechaEstimacion.Text = "0000/00/00"
+        '
+        'LabelFechaInicio
+        '
+        Me.LabelFechaInicio.AutoSize = True
+        Me.LabelFechaInicio.Location = New System.Drawing.Point(27, 40)
+        Me.LabelFechaInicio.Name = "LabelFechaInicio"
+        Me.LabelFechaInicio.Size = New System.Drawing.Size(96, 21)
+        Me.LabelFechaInicio.TabIndex = 24
+        Me.LabelFechaInicio.Text = "0000/00/00"
         '
         'ComboBoxEmpleados
         '
-        Me.ComboBoxEmpleados.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.ComboBoxEmpleados.BackColor = System.Drawing.Color.White
+        Me.ComboBoxEmpleados.Cursor = System.Windows.Forms.Cursors.Hand
         Me.ComboBoxEmpleados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxEmpleados.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ComboBoxEmpleados.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.ComboBoxEmpleados.FormattingEnabled = True
-        Me.ComboBoxEmpleados.Location = New System.Drawing.Point(424, 50)
+        Me.ComboBoxEmpleados.Location = New System.Drawing.Point(382, 40)
         Me.ComboBoxEmpleados.Name = "ComboBoxEmpleados"
         Me.ComboBoxEmpleados.Size = New System.Drawing.Size(148, 25)
         Me.ComboBoxEmpleados.TabIndex = 17
         '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.BackColor = System.Drawing.Color.Transparent
-        Me.Label21.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label21.ForeColor = System.Drawing.Color.Red
-        Me.Label21.Location = New System.Drawing.Point(555, 10)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(17, 21)
-        Me.Label21.TabIndex = 21
-        Me.Label21.Text = "*"
-        '
         'ComboBoxEstado
         '
-        Me.ComboBoxEstado.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.ComboBoxEstado.BackColor = System.Drawing.Color.White
+        Me.ComboBoxEstado.Cursor = System.Windows.Forms.Cursors.Hand
         Me.ComboBoxEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ComboBoxEstado.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.ComboBoxEstado.FormattingEnabled = True
-        Me.ComboBoxEstado.Location = New System.Drawing.Point(424, 135)
+        Me.ComboBoxEstado.Location = New System.Drawing.Point(541, 114)
         Me.ComboBoxEstado.Name = "ComboBoxEstado"
-        Me.ComboBoxEstado.Size = New System.Drawing.Size(141, 25)
+        Me.ComboBoxEstado.Size = New System.Drawing.Size(110, 25)
         Me.ComboBoxEstado.TabIndex = 20
         '
         'Label19
@@ -718,7 +833,7 @@ Partial Class Administracion
         Me.Label19.BackColor = System.Drawing.Color.Transparent
         Me.Label19.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label19.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Label19.Location = New System.Drawing.Point(427, 94)
+        Me.Label19.Location = New System.Drawing.Point(541, 87)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(61, 19)
         Me.Label19.TabIndex = 18
@@ -730,7 +845,7 @@ Partial Class Administracion
         Me.Label17.BackColor = System.Drawing.Color.Transparent
         Me.Label17.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label17.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Label17.Location = New System.Drawing.Point(433, 13)
+        Me.Label17.Location = New System.Drawing.Point(382, 10)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(97, 19)
         Me.Label17.TabIndex = 17
@@ -742,7 +857,7 @@ Partial Class Administracion
         Me.Label13.BackColor = System.Drawing.Color.Transparent
         Me.Label13.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label13.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Label13.Location = New System.Drawing.Point(257, 0)
+        Me.Label13.Location = New System.Drawing.Point(12, 10)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(130, 19)
         Me.Label13.TabIndex = 11
@@ -754,7 +869,7 @@ Partial Class Administracion
         Me.Label14.BackColor = System.Drawing.Color.Transparent
         Me.Label14.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Label14.Location = New System.Drawing.Point(257, 77)
+        Me.Label14.Location = New System.Drawing.Point(215, 10)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(151, 19)
         Me.Label14.TabIndex = 12
@@ -764,30 +879,32 @@ Partial Class Administracion
         '
         Me.TableLayoutPanel5.ColumnCount = 1
         Me.TableLayoutPanel5.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel5.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel5.Controls.Add(Me.TextBox6, 0, 1)
+        Me.TableLayoutPanel5.Controls.Add(Me.TextBoxObservacion, 0, 1)
         Me.TableLayoutPanel5.Controls.Add(Me.Label15, 0, 0)
+        Me.TableLayoutPanel5.Controls.Add(Me.LabelContMultiline, 0, 2)
         Me.TableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel5.Location = New System.Drawing.Point(589, 0)
+        Me.TableLayoutPanel5.Location = New System.Drawing.Point(662, 0)
         Me.TableLayoutPanel5.Margin = New System.Windows.Forms.Padding(0)
         Me.TableLayoutPanel5.Name = "TableLayoutPanel5"
-        Me.TableLayoutPanel5.RowCount = 2
+        Me.TableLayoutPanel5.RowCount = 3
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel5.Size = New System.Drawing.Size(332, 169)
+        Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel5.Size = New System.Drawing.Size(245, 169)
         Me.TableLayoutPanel5.TabIndex = 1
         '
-        'TextBox6
+        'TextBoxObservacion
         '
-        Me.TextBox6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TextBox6.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TextBox6.ForeColor = System.Drawing.Color.Black
-        Me.TextBox6.Location = New System.Drawing.Point(0, 20)
-        Me.TextBox6.Margin = New System.Windows.Forms.Padding(0)
-        Me.TextBox6.Multiline = True
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(332, 149)
-        Me.TextBox6.TabIndex = 14
+        Me.TextBoxObservacion.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBoxObservacion.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TextBoxObservacion.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TextBoxObservacion.ForeColor = System.Drawing.Color.Black
+        Me.TextBoxObservacion.Location = New System.Drawing.Point(0, 20)
+        Me.TextBoxObservacion.Margin = New System.Windows.Forms.Padding(0)
+        Me.TextBoxObservacion.Multiline = True
+        Me.TextBoxObservacion.Name = "TextBoxObservacion"
+        Me.TextBoxObservacion.Size = New System.Drawing.Size(245, 129)
+        Me.TextBoxObservacion.TabIndex = 14
         '
         'Label15
         '
@@ -801,6 +918,21 @@ Partial Class Administracion
         Me.Label15.TabIndex = 14
         Me.Label15.Text = "Observación :"
         '
+        'LabelContMultiline
+        '
+        Me.LabelContMultiline.AutoSize = True
+        Me.LabelContMultiline.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.LabelContMultiline.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LabelContMultiline.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.LabelContMultiline.ForeColor = System.Drawing.Color.Silver
+        Me.LabelContMultiline.Location = New System.Drawing.Point(0, 149)
+        Me.LabelContMultiline.Margin = New System.Windows.Forms.Padding(0)
+        Me.LabelContMultiline.Name = "LabelContMultiline"
+        Me.LabelContMultiline.Size = New System.Drawing.Size(245, 20)
+        Me.LabelContMultiline.TabIndex = 30
+        Me.LabelContMultiline.Text = "0/500"
+        Me.LabelContMultiline.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'LabelPrioridad
         '
         Me.LabelPrioridad.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
@@ -808,13 +940,13 @@ Partial Class Administracion
         Me.LabelPrioridad.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.LabelPrioridad.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.LabelPrioridad.ForeColor = System.Drawing.Color.Red
-        Me.LabelPrioridad.Location = New System.Drawing.Point(478, 0)
+        Me.LabelPrioridad.Location = New System.Drawing.Point(456, 6)
         Me.LabelPrioridad.MaximumSize = New System.Drawing.Size(51, 19)
         Me.LabelPrioridad.MinimumSize = New System.Drawing.Size(51, 19)
         Me.LabelPrioridad.Name = "LabelPrioridad"
         Me.LabelPrioridad.Size = New System.Drawing.Size(51, 19)
         Me.LabelPrioridad.TabIndex = 24
-        Me.LabelPrioridad.Text = "Media"
+        Me.LabelPrioridad.Text = "Alta"
         Me.LabelPrioridad.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label30
@@ -823,7 +955,7 @@ Partial Class Administracion
         Me.Label30.AutoSize = True
         Me.Label30.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label30.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label30.Location = New System.Drawing.Point(398, 0)
+        Me.Label30.Location = New System.Drawing.Point(379, 6)
         Me.Label30.MaximumSize = New System.Drawing.Size(81, 19)
         Me.Label30.MinimumSize = New System.Drawing.Size(81, 19)
         Me.Label30.Name = "Label30"
@@ -900,147 +1032,183 @@ Partial Class Administracion
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 625)
+        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DataGridView1.Location = New System.Drawing.Point(0, 615)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(0)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(742, 46)
+        Me.DataGridView1.Size = New System.Drawing.Size(933, 56)
         Me.DataGridView1.TabIndex = 1
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.Black
+        Me.Panel1.BackColor = System.Drawing.Color.Blue
         Me.Panel1.Controls.Add(Me.ComboBoxMostrar)
         Me.Panel1.Controls.Add(Me.LabelComplete)
-        Me.Panel1.Controls.Add(Me.Button4)
-        Me.Panel1.Controls.Add(Me.Button3)
-        Me.Panel1.Controls.Add(Me.Label18)
+        Me.Panel1.Controls.Add(Me.BtnBorrarRegistro)
+        Me.Panel1.Controls.Add(Me.BtnBorrarTodo)
+        Me.Panel1.Controls.Add(Me.LabelMostrar)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 580)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(933, 45)
+        Me.Panel1.Size = New System.Drawing.Size(933, 35)
         Me.Panel1.TabIndex = 6
         '
         'ComboBoxMostrar
         '
-        Me.ComboBoxMostrar.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.ComboBoxMostrar.BackColor = System.Drawing.Color.White
+        Me.ComboBoxMostrar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.ComboBoxMostrar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxMostrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ComboBoxMostrar.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.ComboBoxMostrar.FormattingEnabled = True
-        Me.ComboBoxMostrar.Location = New System.Drawing.Point(82, 9)
+        Me.ComboBoxMostrar.Location = New System.Drawing.Point(82, 5)
         Me.ComboBoxMostrar.Name = "ComboBoxMostrar"
         Me.ComboBoxMostrar.Size = New System.Drawing.Size(148, 25)
         Me.ComboBoxMostrar.TabIndex = 23
         '
         'LabelComplete
         '
-        Me.LabelComplete.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.LabelComplete.AutoSize = True
         Me.LabelComplete.BackColor = System.Drawing.Color.Transparent
         Me.LabelComplete.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.LabelComplete.ForeColor = System.Drawing.Color.Blue
-        Me.LabelComplete.Location = New System.Drawing.Point(430, 15)
+        Me.LabelComplete.ForeColor = System.Drawing.Color.White
+        Me.LabelComplete.Location = New System.Drawing.Point(244, 0)
+        Me.LabelComplete.MaximumSize = New System.Drawing.Size(0, 35)
+        Me.LabelComplete.MinimumSize = New System.Drawing.Size(0, 35)
         Me.LabelComplete.Name = "LabelComplete"
-        Me.LabelComplete.Size = New System.Drawing.Size(64, 19)
+        Me.LabelComplete.Size = New System.Drawing.Size(64, 35)
         Me.LabelComplete.TabIndex = 23
         Me.LabelComplete.Text = "Mensaje"
+        Me.LabelComplete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Button4
+        'BtnBorrarRegistro
         '
-        Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button4.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Button4.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button4.FlatAppearance.BorderSize = 0
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Button4.ForeColor = System.Drawing.Color.White
-        Me.Button4.Location = New System.Drawing.Point(669, 5)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(126, 34)
-        Me.Button4.TabIndex = 24
-        Me.Button4.Text = "Borrar Registro"
-        Me.Button4.UseVisualStyleBackColor = False
+        Me.BtnBorrarRegistro.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BtnBorrarRegistro.BackColor = System.Drawing.Color.Black
+        Me.BtnBorrarRegistro.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnBorrarRegistro.FlatAppearance.BorderSize = 0
+        Me.BtnBorrarRegistro.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnBorrarRegistro.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.BtnBorrarRegistro.ForeColor = System.Drawing.Color.White
+        Me.BtnBorrarRegistro.Location = New System.Drawing.Point(597, 5)
+        Me.BtnBorrarRegistro.Name = "BtnBorrarRegistro"
+        Me.BtnBorrarRegistro.Size = New System.Drawing.Size(174, 25)
+        Me.BtnBorrarRegistro.TabIndex = 24
+        Me.BtnBorrarRegistro.Text = "Borrar Registro"
+        Me.BtnBorrarRegistro.UseVisualStyleBackColor = False
         '
-        'Button3
+        'BtnBorrarTodo
         '
-        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button3.BackColor = System.Drawing.Color.Red
-        Me.Button3.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button3.FlatAppearance.BorderSize = 0
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Button3.ForeColor = System.Drawing.Color.White
-        Me.Button3.Location = New System.Drawing.Point(801, 5)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(126, 34)
-        Me.Button3.TabIndex = 23
-        Me.Button3.Text = "Borrar Todo"
-        Me.Button3.UseVisualStyleBackColor = False
+        Me.BtnBorrarTodo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BtnBorrarTodo.BackColor = System.Drawing.Color.Red
+        Me.BtnBorrarTodo.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnBorrarTodo.FlatAppearance.BorderSize = 0
+        Me.BtnBorrarTodo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnBorrarTodo.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.BtnBorrarTodo.ForeColor = System.Drawing.Color.White
+        Me.BtnBorrarTodo.Location = New System.Drawing.Point(791, 5)
+        Me.BtnBorrarTodo.Name = "BtnBorrarTodo"
+        Me.BtnBorrarTodo.Size = New System.Drawing.Size(132, 25)
+        Me.BtnBorrarTodo.TabIndex = 23
+        Me.BtnBorrarTodo.Text = "Borrar Todo"
+        Me.BtnBorrarTodo.UseVisualStyleBackColor = False
         '
-        'Label18
+        'LabelMostrar
         '
-        Me.Label18.AutoSize = True
-        Me.Label18.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label18.ForeColor = System.Drawing.Color.White
-        Me.Label18.Location = New System.Drawing.Point(9, 12)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(67, 19)
-        Me.Label18.TabIndex = 0
-        Me.Label18.Text = "Mostrar:"
+        Me.LabelMostrar.AutoSize = True
+        Me.LabelMostrar.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.LabelMostrar.ForeColor = System.Drawing.Color.White
+        Me.LabelMostrar.Location = New System.Drawing.Point(9, 8)
+        Me.LabelMostrar.Name = "LabelMostrar"
+        Me.LabelMostrar.Size = New System.Drawing.Size(67, 19)
+        Me.LabelMostrar.TabIndex = 0
+        Me.LabelMostrar.Text = "Mostrar:"
         '
         'GroupBox4
         '
+        Me.GroupBox4.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox4.Controls.Add(Me.Label27)
         Me.GroupBox4.Controls.Add(Me.BtnGenerarFactura)
+        Me.GroupBox4.Controls.Add(Me.Label26)
         Me.GroupBox4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox4.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.GroupBox4.ForeColor = System.Drawing.Color.White
-        Me.GroupBox4.Location = New System.Drawing.Point(3, 500)
-        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(3, 0, 3, 3)
+        Me.GroupBox4.Location = New System.Drawing.Point(10, 500)
+        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(10, 0, 10, 10)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(927, 77)
+        Me.GroupBox4.Size = New System.Drawing.Size(913, 70)
         Me.GroupBox4.TabIndex = 7
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Factura"
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.BackColor = System.Drawing.Color.Transparent
+        Me.Label27.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label27.ForeColor = System.Drawing.Color.Red
+        Me.Label27.Location = New System.Drawing.Point(173, 32)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(75, 21)
+        Me.Label27.TabIndex = 22
+        Me.Label27.Text = "B/. 00.00"
         '
         'BtnGenerarFactura
         '
         Me.BtnGenerarFactura.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.BtnGenerarFactura.BackColor = System.Drawing.Color.Blue
+        Me.BtnGenerarFactura.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnGenerarFactura.FlatAppearance.BorderSize = 0
         Me.BtnGenerarFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnGenerarFactura.Location = New System.Drawing.Point(398, 23)
+        Me.BtnGenerarFactura.Location = New System.Drawing.Point(361, 25)
+        Me.BtnGenerarFactura.Margin = New System.Windows.Forms.Padding(0)
         Me.BtnGenerarFactura.Name = "BtnGenerarFactura"
-        Me.BtnGenerarFactura.Size = New System.Drawing.Size(183, 48)
+        Me.BtnGenerarFactura.Size = New System.Drawing.Size(183, 34)
         Me.BtnGenerarFactura.TabIndex = 0
         Me.BtnGenerarFactura.Text = "Generar Factura"
         Me.BtnGenerarFactura.UseVisualStyleBackColor = False
         '
-        'Label31
+        'Label26
         '
-        Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(295, 36)
-        Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(69, 21)
-        Me.Label31.TabIndex = 24
-        Me.Label31.Text = "Label31"
+        Me.Label26.AutoSize = True
+        Me.Label26.BackColor = System.Drawing.Color.Transparent
+        Me.Label26.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label26.ForeColor = System.Drawing.Color.White
+        Me.Label26.Location = New System.Drawing.Point(15, 32)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(130, 21)
+        Me.Label26.TabIndex = 21
+        Me.Label26.Text = "Monto a Pagar :"
         '
-        'Label32
+        'ButtonMostrarOcultar
         '
-        Me.Label32.AutoSize = True
-        Me.Label32.Location = New System.Drawing.Point(295, 115)
-        Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(69, 21)
-        Me.Label32.TabIndex = 25
-        Me.Label32.Text = "Label32"
+        Me.ButtonMostrarOcultar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.ButtonMostrarOcultar.BackColor = System.Drawing.Color.White
+        Me.ButtonMostrarOcultar.BackgroundImage = Global.Parcial2.My.Resources.Resources.boton_abajo
+        Me.ButtonMostrarOcultar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ButtonMostrarOcultar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.ButtonMostrarOcultar.FlatAppearance.BorderSize = 0
+        Me.ButtonMostrarOcultar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
+        Me.ButtonMostrarOcultar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
+        Me.ButtonMostrarOcultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonMostrarOcultar.Location = New System.Drawing.Point(445, 86)
+        Me.ButtonMostrarOcultar.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonMostrarOcultar.MaximumSize = New System.Drawing.Size(32, 24)
+        Me.ButtonMostrarOcultar.MinimumSize = New System.Drawing.Size(32, 24)
+        Me.ButtonMostrarOcultar.Name = "ButtonMostrarOcultar"
+        Me.ButtonMostrarOcultar.Size = New System.Drawing.Size(32, 24)
+        Me.ButtonMostrarOcultar.TabIndex = 23
+        Me.ButtonMostrarOcultar.UseVisualStyleBackColor = False
         '
         'Administracion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(933, 671)
+        Me.Controls.Add(Me.ButtonMostrarOcultar)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.MinimumSize = New System.Drawing.Size(949, 710)
         Me.Name = "Administracion"
@@ -1051,10 +1219,13 @@ Partial Class Administracion
         Me.TableLayoutPanel2.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel4.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
@@ -1066,13 +1237,14 @@ Partial Class Administracion
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents BtnFinalizar As Button
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents Label1 As Label
+    Friend WithEvents LabelIDTikect As Label
     Friend WithEvents TextBoxDescripcionCliente As TextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents Label4 As Label
@@ -1090,32 +1262,25 @@ Partial Class Administracion
     Friend WithEvents LabelCelular As Label
     Friend WithEvents LabelCedula As Label
     Friend WithEvents LabelName As Label
-    Friend WithEvents LabelNameUsers As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents Label11 As Label
-    Friend WithEvents Label10 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents Button2 As Button
+    Friend WithEvents BtnModificar As Button
     Friend WithEvents ComboBoxEmpleados As ComboBox
     Friend WithEvents Label17 As Label
-    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents TextBoxObservacion As TextBox
     Friend WithEvents Label15 As Label
     Friend WithEvents Label14 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents Label27 As Label
     Friend WithEvents Label26 As Label
-    Friend WithEvents Label20 As Label
-    Friend WithEvents Label25 As Label
-    Friend WithEvents Label24 As Label
-    Friend WithEvents Label23 As Label
+    Friend WithEvents LabelErrorID As Label
     Friend WithEvents ComboBoxTipoDano As ComboBox
     Friend WithEvents ComboBoxModelo As ComboBox
     Friend WithEvents ComboBoxEquipo As ComboBox
-    Friend WithEvents Label22 As Label
-    Friend WithEvents Label21 As Label
     Friend WithEvents ComboBoxEstado As ComboBox
     Friend WithEvents Label19 As Label
     Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
@@ -1124,9 +1289,9 @@ Partial Class Administracion
     Friend WithEvents LabelPrioridad As Label
     Friend WithEvents Label30 As Label
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Label18 As Label
+    Friend WithEvents BtnBorrarRegistro As Button
+    Friend WithEvents BtnBorrarTodo As Button
+    Friend WithEvents LabeIDusers As Label
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents BtnGenerarFactura As Button
     Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
@@ -1134,7 +1299,22 @@ Partial Class Administracion
     Friend WithEvents TableLayoutPanel5 As TableLayoutPanel
     Friend WithEvents LabelComplete As Label
     Friend WithEvents ComboBoxMostrar As ComboBox
-    Friend WithEvents MonthCalendar1 As MonthCalendar
-    Friend WithEvents Label32 As Label
-    Friend WithEvents Label31 As Label
+    Friend WithEvents LabelFechaEstimacion As Label
+    Friend WithEvents LabelFechaInicio As Label
+    Friend WithEvents Label33 As Label
+    Friend WithEvents Label16 As Label
+    Friend WithEvents ComboBoxTipoReparacion As ComboBox
+    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents ButtonMostrarOcultar As Button
+    Friend WithEvents LabelMostrar As Label
+    Friend WithEvents LabelTime As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents PictureBox3 As PictureBox
+    Friend WithEvents LabelContMultiline As Label
+    Friend WithEvents LabelTareas As Label
+    Friend WithEvents LabelTextTarea As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents BtnAgregarComponentes As Button
 End Class

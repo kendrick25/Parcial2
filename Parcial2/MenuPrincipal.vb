@@ -4,9 +4,9 @@ Imports System.Data.SqlClient
 
 Public Class MenuPrincipal
     'conexion kendrick
-    'Public conex As New SqlConnection("Data Source=DESKTOP-GQPJ6BS;Initial Catalog=Biblioteca;Integrated Security=True")
+    Public conexion As New SqlConnection("Data Source=DESKTOP-GQPJ6BS;Initial Catalog=JKEnterprise;Integrated Security=True")
     'Conexion dilan
-    Dim conexion As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True")
+    'Public conexion As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True")
 
     ' Variables para guardar la posición y el tamaño del formulario
     Dim mouseDownm As Boolean = False
@@ -185,7 +185,7 @@ Public Class MenuPrincipal
     '------------------------------------------
     'opens de Problema 1
     Public Sub OpenProblema1()
-        Dim mensaje As New Usuario
+        Dim mensaje As New Usuario 'nombre del form que quieres usar
         mensaje.MdiParent = Me
         If ContForms.TabCount >= 1 Then
             FinalizarSolicitudToolStripMenuItem.Visible = True
@@ -198,7 +198,7 @@ Public Class MenuPrincipal
         mensaje.Dock = DockStyle.Fill ' Hace que el formulario se ajuste al tamaño del TabPage
         ' Agrega el formulario al primer TabPage
         'titulo de pagina
-        Dim newPage As New TabPage("Solicitud de Tikect")
+        Dim newPage As New TabPage("Solicitud de Tikect") 'nombre del tab
         'mover tabb
         newPage.Controls.Add(mensaje)
         ContForms.TabPages.Add(newPage)
@@ -209,7 +209,7 @@ Public Class MenuPrincipal
         Dim encontrado As Boolean = False
         If ContForms.TabCount > 1 Then
             For Each tp As TabPage In ContForms.TabPages
-                If tp.Text = "Solicitud de Tikect" Then
+                If tp.Text = "Solicitud de Tikect" Then  'verificar si el tab esta abierto
                     ' Respuesta de cerrado
                     encontrado = True
                     Dim resultado As MsgBoxResult
@@ -323,12 +323,9 @@ Public Class MenuPrincipal
 
     End Sub
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles BtnSolicitudTiket.Click
-        BusquedaRespuesta()
+        OpenProblema1()
     End Sub
 
-    Private Sub PanelTikets_Paint(sender As Object, e As PaintEventArgs) Handles PanelTikets.Paint
-
-    End Sub
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         Dim newUserForm As New Registrarse()

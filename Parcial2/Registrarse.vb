@@ -190,7 +190,7 @@ Public Class Registrarse
         If carga.Value >= 100 Then
             Timer1.Enabled = False
             MsgBox("Nombre de usuario: " & tbNewUserName.Text & vbNewLine & "Password: " & tbPass.Text _
-                   & vbNewLine & "¡ANÓTALOS!", , "REALIZADO")
+            & vbNewLine & "¡ANÓTALOS!", , "REALIZADO")
             carga.Visible = False
             btAgregarNew.Enabled = False
             Me.Close()
