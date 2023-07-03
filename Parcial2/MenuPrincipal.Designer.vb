@@ -22,10 +22,10 @@ Partial Class MenuPrincipal
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MenuPrincipal))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Border = New System.Windows.Forms.Panel()
         Me.BtnCerrarPanelLogin = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
@@ -34,21 +34,30 @@ Partial Class MenuPrincipal
         Me.BtnMin = New System.Windows.Forms.Button()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.InicioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.NosotrosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TicketToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.VerMisTiketsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TicketToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SolicitarTiketToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VerMisTiketsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FinalizarSolicitudToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdministraciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VerRegistrosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CrearNuevoTiketToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EquipoDeTrabajoToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VerPlantillaDeEmpleadoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AgregarNuevoEmpleadoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DarDeBajaAEmpleadoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CerrarPestañasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TareasPendienteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VerTareasPendientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NosotrosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip2 = New System.Windows.Forms.MenuStrip()
         Me.LoginToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ROLToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.IniciarSessionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CerrarSessionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.BtnClose = New System.Windows.Forms.Button()
         Me.BtnMax = New System.Windows.Forms.Button()
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.TableLayoutPanelLogin = New System.Windows.Forms.TableLayoutPanel()
         Me.PanelMain = New System.Windows.Forms.Panel()
         Me.tablaContenedoraForms = New System.Windows.Forms.TableLayoutPanel()
@@ -93,15 +102,12 @@ Partial Class MenuPrincipal
         Me.tbUser = New System.Windows.Forms.TextBox()
         Me.MenuLogin = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TicketToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CerrarPestañasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.VerRegistrosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EquipoDeTrabajoToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Border.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.MovForm.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.MenuStrip2.SuspendLayout()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanelLogin.SuspendLayout()
         Me.PanelMain.SuspendLayout()
         Me.tablaContenedoraForms.SuspendLayout()
@@ -140,8 +146,8 @@ Partial Class MenuPrincipal
         Me.BtnCerrarPanelLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.BtnCerrarPanelLogin.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnCerrarPanelLogin.FlatAppearance.BorderSize = 0
-        Me.BtnCerrarPanelLogin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
-        Me.BtnCerrarPanelLogin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.BtnCerrarPanelLogin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
+        Me.BtnCerrarPanelLogin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black
         Me.BtnCerrarPanelLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnCerrarPanelLogin.Location = New System.Drawing.Point(254, 48)
         Me.BtnCerrarPanelLogin.Name = "BtnCerrarPanelLogin"
@@ -169,20 +175,22 @@ Partial Class MenuPrincipal
         'MovForm
         '
         Me.MovForm.BackColor = System.Drawing.Color.Blue
-        Me.MovForm.ColumnCount = 7
+        Me.MovForm.ColumnCount = 8
         Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110.0!))
         Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
         Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160.0!))
         Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5.0!))
         Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
         Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
         Me.MovForm.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
         Me.MovForm.Controls.Add(Me.Label1, 0, 0)
-        Me.MovForm.Controls.Add(Me.BtnMin, 4, 0)
+        Me.MovForm.Controls.Add(Me.BtnMin, 5, 0)
         Me.MovForm.Controls.Add(Me.MenuStrip1, 1, 0)
-        Me.MovForm.Controls.Add(Me.MenuStrip2, 2, 0)
-        Me.MovForm.Controls.Add(Me.BtnClose, 6, 0)
-        Me.MovForm.Controls.Add(Me.BtnMax, 5, 0)
+        Me.MovForm.Controls.Add(Me.MenuStrip2, 3, 0)
+        Me.MovForm.Controls.Add(Me.BtnClose, 7, 0)
+        Me.MovForm.Controls.Add(Me.BtnMax, 6, 0)
+        Me.MovForm.Controls.Add(Me.PictureBox4, 2, 0)
         Me.MovForm.Dock = System.Windows.Forms.DockStyle.Fill
         Me.MovForm.Location = New System.Drawing.Point(0, 0)
         Me.MovForm.Margin = New System.Windows.Forms.Padding(0)
@@ -235,7 +243,7 @@ Partial Class MenuPrincipal
         Me.MenuStrip1.MinimumSize = New System.Drawing.Size(0, 30)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(0, 2, 0, 0)
-        Me.MenuStrip1.Size = New System.Drawing.Size(585, 30)
+        Me.MenuStrip1.Size = New System.Drawing.Size(571, 30)
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -248,15 +256,6 @@ Partial Class MenuPrincipal
         Me.InicioToolStripMenuItem.Size = New System.Drawing.Size(57, 28)
         Me.InicioToolStripMenuItem.Text = "Inicio"
         '
-        'NosotrosToolStripMenuItem
-        '
-        Me.NosotrosToolStripMenuItem.BackColor = System.Drawing.Color.Transparent
-        Me.NosotrosToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.NosotrosToolStripMenuItem.ForeColor = System.Drawing.Color.White
-        Me.NosotrosToolStripMenuItem.Name = "NosotrosToolStripMenuItem"
-        Me.NosotrosToolStripMenuItem.Size = New System.Drawing.Size(82, 28)
-        Me.NosotrosToolStripMenuItem.Text = "Nosotros"
-        '
         'TicketToolStripMenuItem
         '
         Me.TicketToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TicketToolStripMenuItem1, Me.SolicitarTiketToolStripMenuItem, Me.VerMisTiketsToolStripMenuItem, Me.FinalizarSolicitudToolStripMenuItem})
@@ -266,67 +265,158 @@ Partial Class MenuPrincipal
         Me.TicketToolStripMenuItem.Size = New System.Drawing.Size(61, 28)
         Me.TicketToolStripMenuItem.Text = "Ticket"
         '
-        'VerMisTiketsToolStripMenuItem
+        'TicketToolStripMenuItem1
         '
-        Me.VerMisTiketsToolStripMenuItem.Name = "VerMisTiketsToolStripMenuItem"
-        Me.VerMisTiketsToolStripMenuItem.Size = New System.Drawing.Size(196, 24)
-        Me.VerMisTiketsToolStripMenuItem.Text = "Ver mis Tikets"
+        Me.TicketToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TicketToolStripMenuItem1.ForeColor = System.Drawing.Color.White
+        Me.TicketToolStripMenuItem1.Name = "TicketToolStripMenuItem1"
+        Me.TicketToolStripMenuItem1.Size = New System.Drawing.Size(196, 24)
+        Me.TicketToolStripMenuItem1.Text = "Ticket"
         '
         'SolicitarTiketToolStripMenuItem
         '
+        Me.SolicitarTiketToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.SolicitarTiketToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.SolicitarTiketToolStripMenuItem.Name = "SolicitarTiketToolStripMenuItem"
         Me.SolicitarTiketToolStripMenuItem.Size = New System.Drawing.Size(196, 24)
         Me.SolicitarTiketToolStripMenuItem.Text = "Solicitar tiket"
         '
+        'VerMisTiketsToolStripMenuItem
+        '
+        Me.VerMisTiketsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.VerMisTiketsToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.VerMisTiketsToolStripMenuItem.Name = "VerMisTiketsToolStripMenuItem"
+        Me.VerMisTiketsToolStripMenuItem.Size = New System.Drawing.Size(196, 24)
+        Me.VerMisTiketsToolStripMenuItem.Text = "Ver mis Tikets"
+        '
         'FinalizarSolicitudToolStripMenuItem
         '
+        Me.FinalizarSolicitudToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.FinalizarSolicitudToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.FinalizarSolicitudToolStripMenuItem.Name = "FinalizarSolicitudToolStripMenuItem"
         Me.FinalizarSolicitudToolStripMenuItem.Size = New System.Drawing.Size(196, 24)
         Me.FinalizarSolicitudToolStripMenuItem.Text = "Finalizar Solicitud"
         '
         'AdministraciónToolStripMenuItem
         '
-        Me.AdministraciónToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VerRegistrosToolStripMenuItem, Me.EquipoDeTrabajoToolStripMenuItem1, Me.CerrarPestañasToolStripMenuItem})
+        Me.AdministraciónToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VerRegistrosToolStripMenuItem, Me.CrearNuevoTiketToolStripMenuItem, Me.EquipoDeTrabajoToolStripMenuItem1, Me.CerrarPestañasToolStripMenuItem})
         Me.AdministraciónToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.AdministraciónToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.AdministraciónToolStripMenuItem.Name = "AdministraciónToolStripMenuItem"
         Me.AdministraciónToolStripMenuItem.Size = New System.Drawing.Size(122, 28)
         Me.AdministraciónToolStripMenuItem.Text = "Administración"
         '
+        'VerRegistrosToolStripMenuItem
+        '
+        Me.VerRegistrosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.VerRegistrosToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.VerRegistrosToolStripMenuItem.Name = "VerRegistrosToolStripMenuItem"
+        Me.VerRegistrosToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
+        Me.VerRegistrosToolStripMenuItem.Text = "Ver Registros"
+        '
+        'CrearNuevoTiketToolStripMenuItem
+        '
+        Me.CrearNuevoTiketToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CrearNuevoTiketToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.CrearNuevoTiketToolStripMenuItem.Name = "CrearNuevoTiketToolStripMenuItem"
+        Me.CrearNuevoTiketToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
+        Me.CrearNuevoTiketToolStripMenuItem.Text = "Crear Nuevo Tiket"
+        '
+        'EquipoDeTrabajoToolStripMenuItem1
+        '
+        Me.EquipoDeTrabajoToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.EquipoDeTrabajoToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VerPlantillaDeEmpleadoToolStripMenuItem, Me.AgregarNuevoEmpleadoToolStripMenuItem, Me.DarDeBajaAEmpleadoToolStripMenuItem})
+        Me.EquipoDeTrabajoToolStripMenuItem1.ForeColor = System.Drawing.Color.White
+        Me.EquipoDeTrabajoToolStripMenuItem1.Name = "EquipoDeTrabajoToolStripMenuItem1"
+        Me.EquipoDeTrabajoToolStripMenuItem1.Size = New System.Drawing.Size(200, 24)
+        Me.EquipoDeTrabajoToolStripMenuItem1.Text = "Equipo de Trabajo"
+        '
+        'VerPlantillaDeEmpleadoToolStripMenuItem
+        '
+        Me.VerPlantillaDeEmpleadoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.VerPlantillaDeEmpleadoToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.VerPlantillaDeEmpleadoToolStripMenuItem.Name = "VerPlantillaDeEmpleadoToolStripMenuItem"
+        Me.VerPlantillaDeEmpleadoToolStripMenuItem.Size = New System.Drawing.Size(250, 24)
+        Me.VerPlantillaDeEmpleadoToolStripMenuItem.Text = "Ver Plantilla de Empleado"
+        '
+        'AgregarNuevoEmpleadoToolStripMenuItem
+        '
+        Me.AgregarNuevoEmpleadoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.AgregarNuevoEmpleadoToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.AgregarNuevoEmpleadoToolStripMenuItem.Name = "AgregarNuevoEmpleadoToolStripMenuItem"
+        Me.AgregarNuevoEmpleadoToolStripMenuItem.Size = New System.Drawing.Size(250, 24)
+        Me.AgregarNuevoEmpleadoToolStripMenuItem.Text = "Agregar nuevo Empleado"
+        '
+        'DarDeBajaAEmpleadoToolStripMenuItem
+        '
+        Me.DarDeBajaAEmpleadoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.DarDeBajaAEmpleadoToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.DarDeBajaAEmpleadoToolStripMenuItem.Name = "DarDeBajaAEmpleadoToolStripMenuItem"
+        Me.DarDeBajaAEmpleadoToolStripMenuItem.Size = New System.Drawing.Size(250, 24)
+        Me.DarDeBajaAEmpleadoToolStripMenuItem.Text = "Dar de Baja a Empleado"
+        '
+        'CerrarPestañasToolStripMenuItem
+        '
+        Me.CerrarPestañasToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CerrarPestañasToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.CerrarPestañasToolStripMenuItem.Name = "CerrarPestañasToolStripMenuItem"
+        Me.CerrarPestañasToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
+        Me.CerrarPestañasToolStripMenuItem.Text = "Cerrar Todo"
+        '
         'TareasPendienteToolStripMenuItem
         '
+        Me.TareasPendienteToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VerTareasPendientesToolStripMenuItem})
         Me.TareasPendienteToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.TareasPendienteToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.TareasPendienteToolStripMenuItem.Name = "TareasPendienteToolStripMenuItem"
         Me.TareasPendienteToolStripMenuItem.Size = New System.Drawing.Size(141, 28)
         Me.TareasPendienteToolStripMenuItem.Text = "Tareas Pendientes"
         '
+        'VerTareasPendientesToolStripMenuItem
+        '
+        Me.VerTareasPendientesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.VerTareasPendientesToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.VerTareasPendientesToolStripMenuItem.Name = "VerTareasPendientesToolStripMenuItem"
+        Me.VerTareasPendientesToolStripMenuItem.Size = New System.Drawing.Size(224, 24)
+        Me.VerTareasPendientesToolStripMenuItem.Text = "Ver Tareas Pendientes"
+        '
+        'NosotrosToolStripMenuItem
+        '
+        Me.NosotrosToolStripMenuItem.BackColor = System.Drawing.Color.Transparent
+        Me.NosotrosToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.NosotrosToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.NosotrosToolStripMenuItem.Name = "NosotrosToolStripMenuItem"
+        Me.NosotrosToolStripMenuItem.Size = New System.Drawing.Size(82, 28)
+        Me.NosotrosToolStripMenuItem.Text = "Nosotros"
+        '
         'MenuStrip2
         '
+        Me.MenuStrip2.AllowMerge = False
         Me.MenuStrip2.BackColor = System.Drawing.Color.Transparent
-        Me.MenuStrip2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.MenuStrip2.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoginToolStripMenuItem2, Me.ToolStripMenuItem2})
+        Me.MenuStrip2.Dock = System.Windows.Forms.DockStyle.None
+        Me.MenuStrip2.ImageScalingSize = New System.Drawing.Size(0, 0)
+        Me.MenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoginToolStripMenuItem2})
+        Me.MenuStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
         Me.MenuStrip2.Location = New System.Drawing.Point(721, 0)
-        Me.MenuStrip2.MinimumSize = New System.Drawing.Size(160, 32)
+        Me.MenuStrip2.MinimumSize = New System.Drawing.Size(0, 32)
         Me.MenuStrip2.Name = "MenuStrip2"
         Me.MenuStrip2.Padding = New System.Windows.Forms.Padding(0)
-        Me.MenuStrip2.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.MenuStrip2.Size = New System.Drawing.Size(160, 32)
+        Me.MenuStrip2.Size = New System.Drawing.Size(158, 32)
         Me.MenuStrip2.TabIndex = 5
-        Me.MenuStrip2.Text = "MenuStrip2"
         '
         'LoginToolStripMenuItem2
         '
-        Me.LoginToolStripMenuItem2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.LoginToolStripMenuItem2.BackColor = System.Drawing.Color.Transparent
+        Me.LoginToolStripMenuItem2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.LoginToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ROLToolStripMenuItem, Me.IniciarSessionToolStripMenuItem, Me.CerrarSessionToolStripMenuItem})
         Me.LoginToolStripMenuItem2.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.LoginToolStripMenuItem2.ForeColor = System.Drawing.Color.White
         Me.LoginToolStripMenuItem2.Name = "LoginToolStripMenuItem2"
-        Me.LoginToolStripMenuItem2.Padding = New System.Windows.Forms.Padding(25, 0, 25, 0)
-        Me.LoginToolStripMenuItem2.Size = New System.Drawing.Size(100, 32)
-        Me.LoginToolStripMenuItem2.Text = "Login"
+        Me.LoginToolStripMenuItem2.Padding = New System.Windows.Forms.Padding(0, 6, 0, 0)
+        Me.LoginToolStripMenuItem2.ShortcutKeyDisplayString = "..."
+        Me.LoginToolStripMenuItem2.Size = New System.Drawing.Size(156, 32)
+        Me.LoginToolStripMenuItem2.Text = "              LOGIN           "
+        Me.LoginToolStripMenuItem2.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay
         '
         'ROLToolStripMenuItem
         '
@@ -334,7 +424,7 @@ Partial Class MenuPrincipal
         Me.ROLToolStripMenuItem.Enabled = False
         Me.ROLToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.ROLToolStripMenuItem.Name = "ROLToolStripMenuItem"
-        Me.ROLToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
+        Me.ROLToolStripMenuItem.Size = New System.Drawing.Size(174, 24)
         Me.ROLToolStripMenuItem.Text = "ROL"
         '
         'IniciarSessionToolStripMenuItem
@@ -342,7 +432,7 @@ Partial Class MenuPrincipal
         Me.IniciarSessionToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.IniciarSessionToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.IniciarSessionToolStripMenuItem.Name = "IniciarSessionToolStripMenuItem"
-        Me.IniciarSessionToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
+        Me.IniciarSessionToolStripMenuItem.Size = New System.Drawing.Size(174, 24)
         Me.IniciarSessionToolStripMenuItem.Text = "Iniciar Session"
         '
         'CerrarSessionToolStripMenuItem
@@ -350,13 +440,8 @@ Partial Class MenuPrincipal
         Me.CerrarSessionToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.CerrarSessionToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.CerrarSessionToolStripMenuItem.Name = "CerrarSessionToolStripMenuItem"
-        Me.CerrarSessionToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
+        Me.CerrarSessionToolStripMenuItem.Size = New System.Drawing.Size(174, 24)
         Me.CerrarSessionToolStripMenuItem.Text = "Cerrar Session"
-        '
-        'ToolStripMenuItem2
-        '
-        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(12, 32)
         '
         'BtnClose
         '
@@ -391,6 +476,17 @@ Partial Class MenuPrincipal
         Me.BtnMax.Size = New System.Drawing.Size(50, 32)
         Me.BtnMax.TabIndex = 3
         Me.BtnMax.UseVisualStyleBackColor = False
+        '
+        'PictureBox4
+        '
+        Me.PictureBox4.BackgroundImage = CType(resources.GetObject("PictureBox4.BackgroundImage"), System.Drawing.Image)
+        Me.PictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox4.Location = New System.Drawing.Point(682, 1)
+        Me.PictureBox4.Margin = New System.Windows.Forms.Padding(1)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(38, 30)
+        Me.PictureBox4.TabIndex = 6
+        Me.PictureBox4.TabStop = False
         '
         'TableLayoutPanelLogin
         '
@@ -536,10 +632,10 @@ Partial Class MenuPrincipal
         Me.Panel4.Controls.Add(Me.lbNombreCaj)
         Me.Panel4.Controls.Add(Me.lbNombreCajero)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel4.Location = New System.Drawing.Point(3, 2)
-        Me.Panel4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Panel4.Location = New System.Drawing.Point(0, 0)
+        Me.Panel4.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(722, 81)
+        Me.Panel4.Size = New System.Drawing.Size(728, 85)
         Me.Panel4.TabIndex = 0
         '
         'Label9
@@ -654,35 +750,35 @@ Partial Class MenuPrincipal
         '
         Me.DGUserPrincipal.AllowUserToAddRows = False
         Me.DGUserPrincipal.AllowUserToDeleteRows = False
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("Microsoft PhagsPa", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.DGUserPrincipal.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft PhagsPa", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.DGUserPrincipal.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DGUserPrincipal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DGUserPrincipal.BackgroundColor = System.Drawing.SystemColors.Control
         Me.DGUserPrincipal.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.DGUserPrincipal.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.DGUserPrincipal.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle17.BackColor = System.Drawing.Color.LightSkyBlue
-        DataGridViewCellStyle17.Font = New System.Drawing.Font("Microsoft PhagsPa", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle17.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.DeepSkyBlue
-        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGUserPrincipal.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSkyBlue
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft PhagsPa", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGUserPrincipal.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DGUserPrincipal.ColumnHeadersHeight = 29
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle18.BackColor = System.Drawing.Color.LightCyan
-        DataGridViewCellStyle18.Font = New System.Drawing.Font("Microsoft PhagsPa", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.Azure
-        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGUserPrincipal.DefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightCyan
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft PhagsPa", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Azure
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGUserPrincipal.DefaultCellStyle = DataGridViewCellStyle3
         Me.DGUserPrincipal.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DGUserPrincipal.Location = New System.Drawing.Point(0, 85)
         Me.DGUserPrincipal.Margin = New System.Windows.Forms.Padding(0)
@@ -970,36 +1066,6 @@ Partial Class MenuPrincipal
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(69, 22)
         '
-        'TicketToolStripMenuItem1
-        '
-        Me.TicketToolStripMenuItem1.Name = "TicketToolStripMenuItem1"
-        Me.TicketToolStripMenuItem1.Size = New System.Drawing.Size(196, 24)
-        Me.TicketToolStripMenuItem1.Text = "Ticket"
-        '
-        'CerrarPestañasToolStripMenuItem
-        '
-        Me.CerrarPestañasToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CerrarPestañasToolStripMenuItem.ForeColor = System.Drawing.Color.White
-        Me.CerrarPestañasToolStripMenuItem.Name = "CerrarPestañasToolStripMenuItem"
-        Me.CerrarPestañasToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
-        Me.CerrarPestañasToolStripMenuItem.Text = "Cerrar Todo"
-        '
-        'VerRegistrosToolStripMenuItem
-        '
-        Me.VerRegistrosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.VerRegistrosToolStripMenuItem.ForeColor = System.Drawing.Color.White
-        Me.VerRegistrosToolStripMenuItem.Name = "VerRegistrosToolStripMenuItem"
-        Me.VerRegistrosToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
-        Me.VerRegistrosToolStripMenuItem.Text = "Ver Registros"
-        '
-        'EquipoDeTrabajoToolStripMenuItem1
-        '
-        Me.EquipoDeTrabajoToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.EquipoDeTrabajoToolStripMenuItem1.ForeColor = System.Drawing.Color.White
-        Me.EquipoDeTrabajoToolStripMenuItem1.Name = "EquipoDeTrabajoToolStripMenuItem1"
-        Me.EquipoDeTrabajoToolStripMenuItem1.Size = New System.Drawing.Size(200, 24)
-        Me.EquipoDeTrabajoToolStripMenuItem1.Text = "Equipo de Trabajo"
-        '
         'MenuPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -1015,7 +1081,7 @@ Partial Class MenuPrincipal
         Me.MainMenuStrip = Me.MenuStrip1
         Me.MinimumSize = New System.Drawing.Size(920, 500)
         Me.Name = "MenuPrincipal"
-        Me.Text = " - EMPRESA"
+        Me.Text = " - EMPRESA-Version 6.0"
         Me.Border.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.MovForm.ResumeLayout(False)
@@ -1024,6 +1090,7 @@ Partial Class MenuPrincipal
         Me.MenuStrip1.PerformLayout()
         Me.MenuStrip2.ResumeLayout(False)
         Me.MenuStrip2.PerformLayout()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanelLogin.ResumeLayout(False)
         Me.PanelMain.ResumeLayout(False)
         Me.tablaContenedoraForms.ResumeLayout(False)
@@ -1064,7 +1131,6 @@ Partial Class MenuPrincipal
     Friend WithEvents LoginToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents CerrarSessionToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents IniciarSessionToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents TableLayoutPanelLogin As TableLayoutPanel
     Friend WithEvents gbDatos As GroupBox
     Friend WithEvents Panel2 As Panel
@@ -1119,4 +1185,10 @@ Partial Class MenuPrincipal
     Friend WithEvents CerrarPestañasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VerRegistrosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EquipoDeTrabajoToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents PictureBox4 As PictureBox
+    Friend WithEvents CrearNuevoTiketToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents VerPlantillaDeEmpleadoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AgregarNuevoEmpleadoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DarDeBajaAEmpleadoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents VerTareasPendientesToolStripMenuItem As ToolStripMenuItem
 End Class

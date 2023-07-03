@@ -1,7 +1,9 @@
 ﻿Imports System.Data.SqlClient
 Public Class Empleados
-
-    Public conex As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True")
+    'Conexion de Kembrish
+    Public conex As New SqlConnection("Data Source=DESKTOP-GQPJ6BS;Initial Catalog=JKEnterprise;Integrated Security=True")
+    'Conexion de Dilan
+    'Public conex As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True")
     Private Sub btRevisionEmpleado_Click(sender As Object, e As EventArgs) Handles btRevisionEmpleado.Click
 
 
@@ -269,5 +271,7 @@ Public Class Empleados
 
     End Sub
 
+    Private Sub BtnFinalizar_Click(sender As Object, e As EventArgs) Handles BtnFinalizar.Click
 
+    End Sub
 End Class

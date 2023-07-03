@@ -1,27 +1,28 @@
 ﻿Imports System.Data.SqlClient
 Public Class Registrarse
-
-    Public conex As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True")
+    'Conexion de Kembrish
+    Public conex As New SqlConnection("Data Source=DESKTOP-GQPJ6BS;Initial Catalog=JKEnterprise;Integrated Security=True")
+    'Conexion de Dilan
+    'Public conex As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True")
 
 
     'Botón para cancelar el progreso de ticket. Cierra el form de los datos del usuario
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles bnCancelRegistro.Click
-
-        Me.Close()
-
-        Dim id As Integer = MenuPrincipal.ContForms.SelectedIndex
-
-        If MenuPrincipal.ContForms.TabPages.Count > 1 AndAlso MenuPrincipal.ContForms.TabPages.Count > 1 Then
-            ' Elimina la pestaña deseada
-            MenuPrincipal.ContForms.TabPages.RemoveAt(id)
-
+        If tbNewUser.Text <> "" Or tbCedula.Text <> "" Or tbTelefono.Text <> "" Or tbNewUserName.Text <> "" Then
+            Dim resultado As MsgBoxResult
+            resultado = CType(MessageBox.Show("Hay campos llenos, ¿Desea finalizar el Registro.?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
+            If resultado = MsgBoxResult.No Then
+            Else
+                'borrar Pagina actual
+                Dim tab As TabPage = MenuPrincipal.ContForms.SelectedTab
+                MenuPrincipal.ContForms.TabPages.Remove(tab)
+                Me.Close()
+            End If
+        Else
+            Dim tab As TabPage = MenuPrincipal.ContForms.SelectedTab
+            MenuPrincipal.ContForms.TabPages.Remove(tab)
+            Me.Close()
         End If
-
-        MenuPrincipal.CerrarTapTicket()
-
-        MenuPrincipal.BtnSolicitudTiket.Enabled = True
-
-
     End Sub
 
 

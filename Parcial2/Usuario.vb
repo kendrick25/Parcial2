@@ -1,7 +1,10 @@
 ﻿Imports System.Data.SqlClient
 Public Class Usuario
 
-    Public conex As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True")
+    'Conexion de Kembrish
+    Public conex As New SqlConnection("Data Source=DESKTOP-GQPJ6BS;Initial Catalog=JKEnterprise;Integrated Security=True")
+    'Conexion de Dilan
+    'Public conex As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True")
 
 
     'Se se finaliza el ticket con botón "cancelar proceso" del form del ticket. Se eliminan el tab actual y el
@@ -442,18 +445,18 @@ Public Class Usuario
         NewTicket.CommandType = CommandType.StoredProcedure
 
         NewTicket.CommandText = "NuevoTicket"
-
+        Dim Fecha As DateTime = lbFechaActual.Text
+        Dim FechaEstimada As DateTime = lbFechaEstimada.Text
         NewTicket.Parameters.AddWithValue("@idRequest", Funciones.idAsig)
         NewTicket.Parameters.AddWithValue("@equipo", cbEquipo.SelectedItem)
         NewTicket.Parameters.AddWithValue("@modeloEq", cbModelo.SelectedItem)
         NewTicket.Parameters.AddWithValue("@TipodeDano", cbComponente.SelectedItem)
         NewTicket.Parameters.AddWithValue("@prio", "Alta")
         NewTicket.Parameters.AddWithValue("@descrip", tbDescripcion.Text)
-        NewTicket.Parameters.AddWithValue("@FechaCreac", lbFechaActual.Text)
-        NewTicket.Parameters.AddWithValue("@FechaEsti", lbFechaEstimada.Text)
+        NewTicket.Parameters.AddWithValue("@FechaCreac", Fecha)
+        NewTicket.Parameters.AddWithValue("@FechaEsti", FechaEstimada)
         NewTicket.Parameters.AddWithValue("@estado", "Enviado")
         NewTicket.Parameters.AddWithValue("@Observacion", Funciones.UserLoginCajero)
-
 
         'Ejecutar procedimiento
 

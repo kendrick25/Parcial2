@@ -16,10 +16,6 @@ Public Class MenuPrincipal
     Dim formWidth As Integer = 0
     Dim formHeight As Integer = 0
 
-    Friend Shared Sub CerrarTapTicket()
-        Throw New NotImplementedException()
-    End Sub
-
     ' Método para detectar cuando se presiona el mouse sobre el borde
     Private Sub Border_MouseDown(sender As Object, e As MouseEventArgs) Handles Border.MouseDown
         mouseDownm = True ' Indica que se presionó el mouse
@@ -206,7 +202,6 @@ Public Class MenuPrincipal
     '------------------------------------------
     'opens de Problema 1
     Public Sub OpenProblema1()
-        ContForms.TabPages(0).Visible = True
         Dim mensaje As New Registrarse
         mensaje.MdiParent = Me
         If ContForms.TabCount >= 1 Then
@@ -224,13 +219,19 @@ Public Class MenuPrincipal
         'mover tabb
         newPage.Controls.Add(mensaje)
         ContForms.TabPages.Add(newPage)
+        'Visualizar Componentes para registro
+        mensaje.tbNewUserName.Visible = True
+        mensaje.tbPass.Visible = True
+        mensaje.faltante4.Visible = True
+        mensaje.faltante5.Visible = True
+        mensaje.Label7.Visible = True
+        mensaje.btMostrarVer.Visible = True
         mensaje.Show()
         Dim idTap As Integer = newPage.TabIndex
         ContForms.SelectedTab = newPage
     End Sub
 
     Public Sub OpenProblema2()
-        ContForms.TabPages(0).Visible = False
         Dim mensaje As New Usuario
         mensaje.MdiParent = Me
         If ContForms.TabCount >= 1 Then
@@ -253,7 +254,6 @@ Public Class MenuPrincipal
     End Sub
 
     Public Sub OpenProblema3()
-        ContForms.TabPages(0).Visible = False
         Dim mensaje As New Administracion
         mensaje.MdiParent = Me
         If ContForms.TabCount >= 1 Then
@@ -276,7 +276,8 @@ Public Class MenuPrincipal
         ContForms.SelectedTab = newPage
     End Sub
     Public Sub OpenProblema4()
-        ContForms.TabPages(0).Visible = False
+        ' Mostrar TabPage
+        'TabPage.Parent = ContFormse
         Dim mensaje As New Empleados
         mensaje.MdiParent = Me
         If ContForms.TabCount >= 1 Then
@@ -303,7 +304,7 @@ Public Class MenuPrincipal
         Dim encontrado As Boolean = False
         If ContForms.TabCount > 0 Then
             For Each tp As TabPage In ContForms.TabPages
-                If tp.Text = "Solicitud de Tikect" Then
+                If tp.Text = "Datos del Cliente" Then
                     ' Respuesta de cerrado
                     encontrado = True
                     Dim resultado As MsgBoxResult
@@ -444,7 +445,7 @@ Public Class MenuPrincipal
         'vista inicial de login
         'tablas
         TableLayoutPanelLogin.ColumnStyles(0).Width = 0 '300
-        LoginToolStripMenuItem2.Text = "LOGIN"
+        LoginToolStripMenuItem2.Text = "           LOGIN           "
         CerrarSessionToolStripMenuItem.Visible = False
         IniciarSessionToolStripMenuItem.Visible = True
         BtnCerrarPanelLogin.Visible = False
@@ -455,9 +456,12 @@ Public Class MenuPrincipal
         EquipoDeTrabajoToolStripMenuItem1.Visible = False
         TicketToolStripMenuItem.Visible = False
         TareasPendienteToolStripMenuItem.Visible = False
-
         'Tablas contenedoras de forms 
         tablaContenedoraForms.RowStyles(0).Height = 0 'opcion de actualizar
+        ' Ocultar Tabpage
+        TabPage.Parent = Nothing
+        ' Mostrar TabPage
+        'TabPage.Parent = ContFormse
 
     End Sub
 
@@ -484,7 +488,7 @@ Public Class MenuPrincipal
         CerrarPanelLogin()
         ROLToolStripMenuItem.Visible = False
         ROLToolStripMenuItem.Text = ""
-        LoginToolStripMenuItem2.Text = "LOGIN"
+        LoginToolStripMenuItem2.Text = "           LOGIN           "
         IniciarSessionToolStripMenuItem.Visible = True
         CerrarSessionToolStripMenuItem.Visible = False
 
@@ -493,7 +497,10 @@ Public Class MenuPrincipal
         EquipoDeTrabajoToolStripMenuItem1.Visible = False
         TicketToolStripMenuItem.Visible = False
         TareasPendienteToolStripMenuItem.Visible = False
-
+        ' Ocultar Tabpage
+        TabPage.Parent = Nothing
+        ' Mostrar TabPage
+        'TabPage.Parent = ContFormse
     End Sub
     Private Sub BtnAcceder_Click(sender As Object, e As EventArgs) Handles BtnAcceder.Click
 
@@ -539,9 +546,14 @@ Public Class MenuPrincipal
 
                 Select Case rol
                     Case "empleado"
+                        ' Ocultar Tabpage
+                        ContForms.TabPages.Clear()
+
+                        ' Mostrar TabPage
+                        'TabPage.Parent = ContFormse
                         'datos de login
                         ROLToolStripMenuItem.Visible = True
-                        ROLToolStripMenuItem.Text = "empleado"
+                        ROLToolStripMenuItem.Text = "Empleado"
                         LoginToolStripMenuItem2.Text = tbUser.Text
                         IniciarSessionToolStripMenuItem.Visible = False
                         CerrarSessionToolStripMenuItem.Visible = True
@@ -551,22 +563,32 @@ Public Class MenuPrincipal
                         TicketToolStripMenuItem.Visible = False
                         TareasPendienteToolStripMenuItem.Visible = True
                     Case "admin"
+                        ' Ocultar Tabpage
+                        ContForms.TabPages.Clear()
+
+                        ' Mostrar TabPage
+                        'TabPage.Parent = ContFormse
                         'datos de login
                         ROLToolStripMenuItem.Visible = True
-                        ROLToolStripMenuItem.Text = "admin"
+                        ROLToolStripMenuItem.Text = "Admin"
                         LoginToolStripMenuItem2.Text = tbUser.Text
                         CerrarSessionToolStripMenuItem.Visible = True
                         IniciarSessionToolStripMenuItem.Visible = False
                         'vista de admin
                         AdministraciónToolStripMenuItem.Visible = True
                         EquipoDeTrabajoToolStripMenuItem1.Visible = True
-                        TicketToolStripMenuItem.Visible = True
+                        TicketToolStripMenuItem.Visible = False
                         TareasPendienteToolStripMenuItem.Visible = True
 
                     Case "cajero"
+                        ' Mostrar TabPage
+                        ContForms.TabPages.Clear()
+
+                        ' Mostrar TabPage
+
                         'datos de login
                         ROLToolStripMenuItem.Visible = True
-                        ROLToolStripMenuItem.Text = "cajero"
+                        ROLToolStripMenuItem.Text = "Cajero"
                         LoginToolStripMenuItem2.Text = tbUser.Text
                         lbDimeIDCorrectUser.Visible = True
                         BtnSolicitudTiket.Visible = True
@@ -599,6 +621,11 @@ Public Class MenuPrincipal
                         'Mostrar la tabla que relaciona los tickets y el empleado que realiza la sesión
                         vistaUsuarioTable()
                     Case Else
+                        ' Ocultar Tabpage
+                        ContForms.TabPages.Clear()
+
+                        ' Mostrar TabPage
+                        'TabPage.Parent = ContFormse
                         CerrarSessionToolStripMenuItem.Visible = False
                         IniciarSessionToolStripMenuItem.Visible = True
                         ROLToolStripMenuItem.Visible = False
@@ -613,9 +640,7 @@ Public Class MenuPrincipal
                 tbPass.Clear()
                 tbUser.Clear()
             End If
-
             conexion.Close()
-
         End Using
     End Sub
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles BtnSolicitudTiket.Click
@@ -775,22 +800,15 @@ Public Class MenuPrincipal
         End Using
     End Sub
 
-    Private Sub AdministraciónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AdministraciónToolStripMenuItem.Click
+    Private Sub VerRegistrosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerRegistrosToolStripMenuItem.Click
         BusquedaRespuesta3()
-
         If ContForms.TabCount >= 1 Then
             CerrarPestañasToolStripMenuItem.Visible = True
         End If
         If ContForms.TabCount = 0 Then
             CerrarPestañasToolStripMenuItem.Visible = False
         End If
-
     End Sub
-
-    Private Sub TareasPendienteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TareasPendienteToolStripMenuItem.Click
-        BusquedaRespuesta4()
-    End Sub
-
     Private Sub CerrarPestañasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CerrarPestañasToolStripMenuItem.Click
         Dim resultado As MsgBoxResult
         resultado = CType(MessageBox.Show("¿Desea Cerrar todas las ventanas?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
@@ -803,8 +821,102 @@ Public Class MenuPrincipal
             FinalizarSolicitudToolStripMenuItem.Visible = False
             'mover tabb
             ContForms.TabPages.Add(newPage)
-            ContForms.TabPages(0).Visible = False
             ContForms.Visible = True
+
+            ' Ocultar Tabpage
+            TabPage.Parent = Nothing
+
+            ' Mostrar TabPage
+            'TabPage.Parent = ContFormse
+
         End If
+    End Sub
+
+    Private Sub TicketToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles TicketToolStripMenuItem1.Click
+        ' Mostrar TabPage
+        TabPage.Parent = ContForms
+        ContForms.Visible = True
+    End Sub
+
+    Private Sub CrearNuevoTiketToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CrearNuevoTiketToolStripMenuItem.Click
+        BusquedaRespuesta()
+    End Sub
+
+    Private Sub VerTareasPendientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerTareasPendientesToolStripMenuItem.Click
+        BusquedaRespuesta4()
+    End Sub
+
+    'agregar nuevos empleados 
+    'opens de Problema 1
+    Public Sub OpenProblema5()
+        ' Ocultar Tabpage
+        TabPage.Parent = Nothing
+
+        ' Mostrar TabPage
+        'TabPage.Parent = ContFormse
+        Dim mensaje As New Registrarse
+        mensaje.MdiParent = Me
+        If ContForms.TabCount >= 1 Then
+            FinalizarSolicitudToolStripMenuItem.Visible = True
+        End If
+        If ContForms.TabCount = 0 Then
+            FinalizarSolicitudToolStripMenuItem.Visible = False
+        End If
+        ' Si no hay nada abierto
+        ContForms.Visible = True
+        mensaje.Dock = DockStyle.Fill ' Hace que el formulario se ajuste al tamaño del TabPage
+        ' Agrega el formulario al primer TabPage
+        'titulo de pagina
+        Dim newPage As New TabPage("Agregar Empleado")
+        'mover tabb
+        newPage.Controls.Add(mensaje)
+        ContForms.TabPages.Add(newPage)
+        'Visualizar Componentes para registro
+        mensaje.tbNewUserName.Visible = False
+        mensaje.tbPass.Visible = False
+        mensaje.faltante4.Visible = False
+        mensaje.faltante5.Visible = False
+        mensaje.Label7.Visible = False
+        mensaje.btMostrarVer.Visible = False
+
+        mensaje.Show()
+
+        Dim idTap As Integer = newPage.TabIndex
+        ContForms.SelectedTab = newPage
+    End Sub
+    Public Sub BusquedaRespuesta5()
+        Dim encontrado As Boolean = False
+        If ContForms.TabCount > 0 Then
+            For Each tp As TabPage In ContForms.TabPages
+                If tp.Text = "Agregar Empleado" Then
+                    ' Respuesta de cerrado
+                    encontrado = True
+                    Dim resultado As MsgBoxResult
+                    resultado = CType(MessageBox.Show("¿Actualmente se esta realizando un Registro de cliente, desea finalizarlo?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
+                    If resultado = MsgBoxResult.No Then
+                        ContForms.SelectedTab = tp
+                    Else
+                        'cierras el form agregar libro
+                        ContForms.TabPages.Remove(tp)
+                        OpenProblema5()
+                    End If
+                    Exit For
+                End If
+            Next
+            If encontrado = False Then
+                OpenProblema5()
+            End If
+        Else
+            OpenProblema5()
+        End If
+    End Sub
+    Private Sub AgregarNuevoEmpleadoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AgregarNuevoEmpleadoToolStripMenuItem.Click
+        BusquedaRespuesta5()
+    End Sub
+
+    Private Sub AdministraciónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AdministraciónToolStripMenuItem.Click
+        ' Ocultar Tabpage
+        ' Mostrar TabPage
+        'TabPage.Parent = ContFormse
     End Sub
 End Class
