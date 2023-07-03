@@ -561,6 +561,26 @@ Public Class MenuPrincipal
                         EquipoDeTrabajoToolStripMenuItem1.Visible = False
                         TicketToolStripMenuItem.Visible = False
                         TareasPendienteToolStripMenuItem.Visible = True
+
+                        Dim userEmpleado As String = ""
+                        Dim nombreEmpleado As String = ""
+
+                        Dim consultaNombre As String = "select nombre From Usuario where nombreUser = @Nombre"
+
+                        Dim comando As New SqlCommand(consultaNombre, conexion)
+
+                        userEmpleado = tbUser.Text
+
+                        comando.Parameters.AddWithValue("@Nombre", userEmpleado)
+
+                        Dim dimeElNombre As Object = comando.ExecuteScalar()
+
+                        If dimeElNombre IsNot Nothing AndAlso Not DBNull.Value.Equals(dimeElNombre) Then
+                            nombreEmpleado = Convert.ToString(dimeElNombre)
+                        End If
+
+                        Funciones.inicioSesionEmpl = nombreEmpleado
+
                     Case "admin"
                         ' Ocultar Tabpage
                         ContForms.TabPages.Clear()
@@ -578,6 +598,26 @@ Public Class MenuPrincipal
                         EquipoDeTrabajoToolStripMenuItem1.Visible = True
                         TicketToolStripMenuItem.Visible = False
                         TareasPendienteToolStripMenuItem.Visible = True
+
+
+                        Dim userAdmin As String = ""
+                        Dim nombreadmin As String = ""
+
+                        Dim consultaNombre As String = "select nombre From Usuario where nombreUser = @Nombre"
+
+                        Dim comando As New SqlCommand(consultaNombre, conexion)
+
+                        userAdmin = tbUser.Text
+
+                        comando.Parameters.AddWithValue("@Nombre", userAdmin)
+
+                        Dim dimeElNombre As Object = comando.ExecuteScalar()
+
+                        If dimeElNombre IsNot Nothing AndAlso Not DBNull.Value.Equals(dimeElNombre) Then
+                            nombreadmin = Convert.ToString(dimeElNombre)
+                        End If
+
+                        Funciones.inicioSesionEmpl = nombreadmin
 
                     Case "cajero"
                         ' Mostrar TabPage

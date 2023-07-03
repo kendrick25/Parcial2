@@ -115,11 +115,12 @@ Public Class Empleados
 
             conexion.Open()
 
-            Dim VerificaTarea As String = "SELECT COUNT(*) FROM Ticket WHERE idTicket = @ID"
+            Dim VerificaTarea As String = "SELECT COUNT(*) FROM Ticket WHERE idTicket = @ID and responsable = @nombre"
 
             Dim Command As New SqlCommand(VerificaTarea, conexion)
 
             Command.Parameters.AddWithValue("@ID", Val(tbIdForTarea.Text))
+            Command.Parameters.AddWithValue("@nombre", Funciones.inicioSesionEmpl)
 
             Dim count As Integer = CInt(command.ExecuteScalar())
 
@@ -179,7 +180,6 @@ Public Class Empleados
                 'MsgBox("La ID existe en la tabla")
             Else
                 'Si no existe la id que se introdujo, manda mensaje de error. 
-
                 MessageBox.Show("SELECCIONA UNA ID QUE SE ENCUENTRE EN LA TABLA", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 tbIdForTarea.Text = Nothing
             End If
@@ -218,7 +218,7 @@ Public Class Empleados
 
         Dim ejecutar As New SqlCommand(consultaEmpleado, conexion)
 
-        ejecutar.Parameters.AddWithValue("@nomEmple", "Tyler Blue")
+        ejecutar.Parameters.AddWithValue("@nomEmple", Funciones.inicioSesionEmpl)
 
         Try
             Dim tabla As New SqlDataAdapter(ejecutar)

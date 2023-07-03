@@ -5,9 +5,9 @@ Friend Module Funciones
     'Funcion para conexion de base de datos
     Public Function Conexion() As String
         'Conexion Kembrish
-        Dim cadenaconexion As String = "Data Source=DESKTOP-GQPJ6BS;Initial Catalog=JKEnterprise;Integrated Security=True"
+        'Dim cadenaconexion As String = "Data Source=DESKTOP-GQPJ6BS;Initial Catalog=JKEnterprise;Integrated Security=True"
         'Conexion de Dilan
-        'Dim cadenaconexion As String = "Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True"
+        Dim cadenaconexion As String = "Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True"
 
         Return cadenaconexion
     End Function
@@ -17,6 +17,8 @@ Friend Module Funciones
     Public UserLoginCajero As String 'Almacena el nombre del cajero que inicia sesión
 
     Public inicioSesionId As String 'Almacena el id del cajero que inicia sesión
+
+    Public inicioSesionEmpl As String ''Almacena el nombre del empleado que inicia sesión
 
     'Public userID As String
 
