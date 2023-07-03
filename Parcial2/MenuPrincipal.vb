@@ -1,12 +1,13 @@
 ﻿Imports System.Runtime.InteropServices
 Imports System.Drawing
 Imports System.Data.SqlClient
+Imports System.Data
 
 Public Class MenuPrincipal
     'conexion kendrick
     'Public conex As New SqlConnection("Data Source=DESKTOP-GQPJ6BS;Initial Catalog=Biblioteca;Integrated Security=True")
     'Conexion dilan
-    Dim conexion As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True")
+    Public conexion As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True")
 
     ' Variables para guardar la posición y el tamaño del formulario
     Dim mouseDownm As Boolean = False
@@ -14,6 +15,10 @@ Public Class MenuPrincipal
     Dim mouseY As Integer = 0
     Dim formWidth As Integer = 0
     Dim formHeight As Integer = 0
+
+    Friend Shared Sub CerrarTapTicket()
+        Throw New NotImplementedException()
+    End Sub
 
     ' Método para detectar cuando se presiona el mouse sobre el borde
     Private Sub Border_MouseDown(sender As Object, e As MouseEventArgs) Handles Border.MouseDown
@@ -176,15 +181,40 @@ Public Class MenuPrincipal
         TableLayoutPanel1.Cursor = Cursors.Arrow
         MenuStrip1.Renderer = New RenderMenu()
         MenuStrip2.Renderer = New RenderMenu()
-        LabelBienvenidaUsuario.Visible = False
+        lbDimeIDCorrectUser.Visible = False
         BtnSolicitudTiket.Visible = False
         TicketToolStripMenuItem.Visible = False
         ContForms.Visible = False
         FinalizarSolicitudToolStripMenuItem.Visible = False
+        LlenarComboBox()
     End Sub
     '------------------------------------------
     'opens de Problema 1
     Public Sub OpenProblema1()
+        Dim mensaje As New Registrarse
+        mensaje.MdiParent = Me
+        If ContForms.TabCount >= 1 Then
+            FinalizarSolicitudToolStripMenuItem.Visible = True
+        End If
+        If ContForms.TabCount = 0 Then
+            FinalizarSolicitudToolStripMenuItem.Visible = False
+        End If
+        ' Si no hay nada abierto
+        ContForms.Visible = True
+        mensaje.Dock = DockStyle.Fill ' Hace que el formulario se ajuste al tamaño del TabPage
+        ' Agrega el formulario al primer TabPage
+        'titulo de pagina
+        Dim newPage As New TabPage("Datos del Cliente")
+        'mover tabb
+        newPage.Controls.Add(mensaje)
+        ContForms.TabPages.Add(newPage)
+        mensaje.Show()
+        Dim idTap As Integer = newPage.TabIndex
+        ContForms.SelectedTab = newPage
+    End Sub
+
+    Public Sub OpenProblema2()
+
         Dim mensaje As New Usuario
         mensaje.MdiParent = Me
         If ContForms.TabCount >= 1 Then
@@ -198,13 +228,16 @@ Public Class MenuPrincipal
         mensaje.Dock = DockStyle.Fill ' Hace que el formulario se ajuste al tamaño del TabPage
         ' Agrega el formulario al primer TabPage
         'titulo de pagina
-        Dim newPage As New TabPage("Solicitud de Tikect")
+        Dim newPage As New TabPage("Detalles del Tikect")
         'mover tabb
         newPage.Controls.Add(mensaje)
         ContForms.TabPages.Add(newPage)
         mensaje.Show()
         ContForms.SelectedTab = newPage
     End Sub
+
+
+
     Public Sub BusquedaRespuesta()
         Dim encontrado As Boolean = False
         If ContForms.TabCount > 1 Then
@@ -272,93 +305,144 @@ Public Class MenuPrincipal
         End If
     End Sub
     Private Sub BtnAcceder_Click(sender As Object, e As EventArgs) Handles BtnAcceder.Click
-        LabelBienvenidaUsuario.Visible = True
-        LabelBienvenidaUsuario.Text = "Bienvenido Dilan"  'aqui pones el nombre del usuario
-        BtnSolicitudTiket.Visible = True
-        TicketToolStripMenuItem.Visible = True
 
-        'Asigna al label que aparece cuando inicias sesion texto con el nombre de usuario que se ingreso al textbox
-        nombreUsuario.Text = tbUser.Text
+        Dim usuario As String = tbUser.Text
+        Dim contraseña As String = tbPass.Text
 
-        'Asigna el valor capturado a la variable de tipo global del modulo "Funciones"
-        Funciones.UserLoginName = nombreUsuario.Text
+        Dim consultaExiste As String = "SELECT COUNT(*) FROM Usuario WHERE nombreUser = @Usuario AND passUser = @Contraseña"
 
+        Using command As New SqlCommand(consultaExiste, conexion)
+            command.Parameters.AddWithValue("@Usuario", usuario)
+            command.Parameters.AddWithValue("@Contraseña", contraseña)
 
-        conexion.Open()
-        'Consulta para obtener el ID y tener la relacion entre el ticket que se esta abriendo
-        'y el usuario que lo abre. Se realiza con parámetro para la ejecución.
+            conexion.Open()
 
-        'Agarra el nombre del textboc del login
-        Dim consultaId As String = "select idUser From Usuario where nombreUser = @NombreUsuario"
+            ' Ejecuta la consulta y obtén el resultado
+            Dim resultado As Integer = Convert.ToInt32(command.ExecuteScalar())
 
-        Dim comando As New SqlCommand(consultaId, conexion)
+            ' Verifica si el resultado es igual a 1 (usuario y contraseña válidos)
+            If resultado = 1 Then
 
-        'Utiliza lo que se capturó en el label que contiene el nombre de usuario
-        comando.Parameters.AddWithValue("@NombreUsuario", nombreUsuario.Text)
+                'Realizar las acciones necesarias después del inicio de sesión exitoso
+                MessageBox.Show("Inicio de sesión exitoso")
 
-        'Obtener finalmente la id del usuario que inicio sesión. Corta la bocha.
+                Dim idUsuarioCorrecto As String = ""
+                Dim rolUsuarioEnter As String = ""
 
-        'Funcion que toma el primer resultado arrojado como un objeto
-        Dim dimeLaId As Object = comando.ExecuteScalar()
+                Dim consultaId As String = "SELECT idUser FROM Usuario WHERE nombreUser = @NombreUsuario"
 
-        'Convierte el objeto a un String para posteriormente ir al procedimiento con una ID
+                Dim comando4 As New SqlCommand(consultaId, conexion)
 
-        If dimeLaId IsNot Nothing AndAlso Not DBNull.Value.Equals(dimeLaId) Then
-            lbId.Text = Convert.ToString(dimeLaId)
-        End If
+                comando4.Parameters.AddWithValue("NombreUsuario", tbUser.Text)
 
-        'Asigna el valor capturado a la variable de tipo global del modulo "Funciones"
+                Dim idUsuarioCor As Object = comando4.ExecuteScalar()
 
-        Funciones.userID = lbId.Text
+                If idUsuarioCor IsNot Nothing AndAlso Not DBNull.Value.Equals(idUsuarioCor) Then
+                    lbDimeIDCorrectUser.Text = Convert.ToString(idUsuarioCor)
+                End If
 
-        conexion.Close()
+                Funciones.inicioSesionId = lbDimeIDCorrectUser.Text
 
 
+                Dim rol As String = ObtenerRol(Funciones.inicioSesionId)
 
-        '.........................................................................................
 
-        'Mostrar la tabla que relaciona los tickets y el empleado que realiza la sesión
-        vistaUsuarioTable()
+                Select Case rol
+                    Case "empleado"
+
+
+
+                        MsgBox("Soy empleado")
+                    Case "admin"
+                        MsgBox("Soy admin")
+
+                    Case "cajero"
+
+                        lbDimeIDCorrectUser.Visible = True
+                        BtnSolicitudTiket.Visible = True
+                        TicketToolStripMenuItem.Visible = True
+
+                        lbNombreCajero.Text = tbUser.Text
+
+                        Dim consultaNombre As String = "select nombre From Usuario where nombreUser = @Nombre"
+
+                        Dim comando As New SqlCommand(consultaNombre, conexion)
+
+                        comando.Parameters.AddWithValue("@Nombre", lbNombreCajero.Text)
+
+                        Dim dimeElNombre As Object = comando.ExecuteScalar()
+
+                        If dimeElNombre IsNot Nothing AndAlso Not DBNull.Value.Equals(dimeElNombre) Then
+                            lbNombreCaj.Text = Convert.ToString(dimeElNombre)
+                        End If
+
+                        Funciones.UserLoginCajero = lbNombreCaj.Text
+
+                        conexion.Close()
+
+                        '.........................................................................................
+                        'Mostrar la tabla que relaciona los tickets y el empleado que realiza la sesión
+                        vistaUsuarioTable()
+
+
+                    Case Else
+                        MessageBox.Show("Rol no válido")
+                End Select
+
+                conexion.Close()
+
+            Else
+                'Realizar las acciones necesarias después del inicio de sesión erróneo
+                MessageBox.Show("USUARIO O CONTRASEÑA INCORRECTOS", "TRY AGAIN", MessageBoxButtons.OK)
+                tbPass.Clear()
+                tbUser.Clear()
+            End If
+
+            conexion.Close()
+
+        End Using
 
 
     End Sub
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles BtnSolicitudTiket.Click
         BusquedaRespuesta()
+        BtnSolicitudTiket.Enabled = False
     End Sub
 
-    Private Sub PanelTikets_Paint(sender As Object, e As PaintEventArgs) Handles PanelTikets.Paint
 
-    End Sub
+    'Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
 
-    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
-        Dim newUserForm As New Registrarse()
+    '     Dim newUserForm As New Registrarse()
 
-        newUserForm.StartPosition = FormStartPosition.CenterScreen
+    '    newUserForm.StartPosition = FormStartPosition.CenterScreen
 
-        newUserForm.Show()
+    '   newUserForm.Show()
 
-    End Sub
+    'End Sub
 
 
     'Mostrar la tabla de ticket de x usuario. Como funcion
     Public Sub vistaUsuarioTable()
 
-        Dim consultaCliente As String = "select equipo, modelo, estado, tipoArreglo from Ticket, TicketUser tu where tu.IdsUser = @idUsu
-                                         and tu.IdsTicket = idTicket and estado = 'En revisión';"
+        Dim consultaCliente As String = "SELECT t.idTicket, u.nombre, t.equipo, t.modelo, t.estado
+                                         FROM Usuario u
+                                         JOIN TicketUser tU ON u.idUser = tu.IdsUser
+                                         JOIN Ticket t ON t.idTicket = tu.IdsTicket
+                                         JOIN UserRol uR ON uR.idURer = u.idUser
+                                         WHERE uR.rolUser = 'user' 
+                                         ORDER BY t.idTicket ASC;"
 
-        Dim ejecutar As New SqlCommand(consultaCliente, conexion)
+        Dim ejecutar As New SqlDataAdapter(consultaCliente, conexion)
 
-        ejecutar.Parameters.AddWithValue("@idUsu", lbId.Text)
 
         Try
-            Dim tabla As New SqlDataAdapter(ejecutar)
-            Dim dss As New DataSet
-            tabla.Fill(dss, "Ticket")
 
-            Me.DGUserPrincipal.DataSource = dss.Tables("Ticket")
-            DGUserPrincipal.Columns("equipo").HeaderText = "EQUIPO"
-            DGUserPrincipal.Columns("modelo").HeaderText = "MODELO"
-            DGUserPrincipal.Columns("estado").HeaderText = "ESTADO"
+            Dim dataSet As New DataSet()
+
+            ejecutar.Fill(dataSet)
+
+            DGUserPrincipal.DataSource = dataSet.Tables(0)
+
         Catch ex As Exception
             Console.WriteLine(ex.Message)
         Finally
@@ -394,40 +478,114 @@ Public Class MenuPrincipal
         End Try
     End Sub
 
-    Private Sub eliminarUserSelf_Click(sender As Object, e As EventArgs) Handles eliminarUserSelf.Click
 
-        'Boton que elimina user
-        Dim answer As Integer
-        answer = MsgBox("ESTAS A PUNTO DE ELIMINAR TUS DATOS DEL SISTEMA", vbQuestion + vbYesNo + vbDefaultButton2, "¿DESEA CONTINUAR?")
+    Private Sub PictureBox3_Click(sender As Object, e As EventArgs) Handles PictureBox3.Click
+        If tbPass.PasswordChar = "*" Then
+            tbPass.PasswordChar = ControlChars.NullChar
 
-        If answer = vbYes Then
+        Else
+            tbPass.PasswordChar = "*"
+        End If
+    End Sub
+
+
+    Public Function ObtenerIDUsuario(nombreUsuario As String) As String
+
+        Dim idUsuario As String = ""
+        ' Variable para almacenar la ID del usuario
+
+        Try
             conexion.Open()
 
-            Dim dardeBaja As New SqlCommand()
-            'Procedimiento almacenado para eliminar user 
-            dardeBaja.Connection = conexion
+            Dim consulta As String = "SELECT idUser FROM Usuario WHERE nombreUser = @NombreUsuario"
+            Dim comando As New SqlCommand(consulta, conexion)
+            comando.Parameters.AddWithValue("@NombreUsuario", nombreUsuario)
 
-            dardeBaja.CommandType = CommandType.StoredProcedure
+            Dim resultado As Object = comando.ExecuteScalar()
 
-            dardeBaja.CommandText = "DarDeBaja"
-
-            dardeBaja.Parameters.AddWithValue("@nombreUsu", nombreUsuario.Text)
-
-            'Ejecutar procedimiento
-
-            Dim answer3 As Integer
-
-            answer3 = MsgBox("¿DESEAS BORRAR DEFINITIVAMENTE ", vbYesNo)
-            If answer3 = vbYes Then
-                dardeBaja.ExecuteNonQuery()
-            Else
-                'Devuelve a la pantalla
+            If resultado IsNot Nothing AndAlso Not DBNull.Value.Equals(resultado) Then
+                idUsuario = Convert.ToString(resultado)
             End If
+        Catch ex As Exception
+            ' Manejar la excepción apropiadamente
+        Finally
+            conexion.Close()
+        End Try
 
+        Return idUsuario
+    End Function
+
+
+    Public Function ObtenerRol(nombreUsuario As String) As String
+        Dim rolUser As String = ""
+
+        Dim consultaRol As String = "SELECT rolUser FROM UserRol WHERE idURer = @IdCapturada"
+        Dim commandRol As New SqlCommand(consultaRol, conexion)
+
+        commandRol.Parameters.AddWithValue("@IdCapturada", nombreUsuario)
+
+        Dim resultadoo As Object = commandRol.ExecuteScalar()
+
+        If resultadoo IsNot Nothing AndAlso Not DBNull.Value.Equals(resultadoo) Then
+            rolUser = Convert.ToString(resultadoo)
         End If
 
+        Return rolUser
+
+    End Function
+
+
+    'Filtrar por búsqueda de nombre del cliente 
+    Private Sub tbFiltro_TextChanged(sender As Object, e As EventArgs) Handles tbFiltro.TextChanged
+
+        Dim query As String = "SELECT t.idTicket, u.nombre, t.equipo, t.modelo, t.estado
+                                FROM Usuario u
+                                JOIN TicketUser tU ON u.idUser = tu.IdsUser
+                                JOIN Ticket t ON t.idTicket = tu.IdsTicket
+                                JOIN UserRol uR ON uR.idURer = u.idUser
+                                WHERE uR.rolUser = 'user' and u.nombre LIKE @texto
+                                ORDER BY t.idTicket ASC;"
+
+
+        Using command As New SqlCommand(query, conexion)
+            conexion.Open()
+            command.Parameters.AddWithValue("@texto", "%" & tbFiltro.Text & "%")
+
+            Using adapter As New SqlDataAdapter(command)
+                Dim dataTable As New DataTable()
+                adapter.Fill(dataTable)
+
+                DGUserPrincipal.DataSource = dataTable
+            End Using
+            conexion.Close()
+        End Using
+    End Sub
+
+
+    Private Sub LlenarComboBox()
+        ' Realizar la consulta a la base de datos
+        Dim query As String = "SELECT idTicket FROM Ticket WHERE estado = 'Finalizado';"
+
+        Dim command As New SqlCommand(query, conexion)
+
+        conexion.Open()
+
+        ' Ejecutar la consulta y obtener los resultados
+        Dim reader As SqlDataReader = command.ExecuteReader()
+
+        ' Limpiar el ComboBox
+        cbFinalizados.Items.Clear()
+
+        ' Agregar los elementos al ComboBox
+        While reader.Read()
+            cbFinalizados.Items.Add(reader("idTicket").ToString())
+        End While
+
+        reader.Close()
+
         conexion.Close()
-        'Elimina usuario que quiere salir del sistema
 
     End Sub
+
+
 End Class
