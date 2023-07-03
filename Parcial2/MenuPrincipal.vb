@@ -5,9 +5,9 @@ Imports System.Data
 
 Public Class MenuPrincipal
     'conexion kendrick
-    'Public conex As New SqlConnection("Data Source=DESKTOP-GQPJ6BS;Initial Catalog=Biblioteca;Integrated Security=True")
+    Public conexion As New SqlConnection("Data Source=DESKTOP-GQPJ6BS;Initial Catalog=JKEnterprise;Integrated Security=True")
     'Conexion dilan
-    Public conexion As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True")
+    'Public conexion As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True")
 
     ' Variables para guardar la posición y el tamaño del formulario
     Dim mouseDownm As Boolean = False
@@ -175,22 +175,38 @@ Public Class MenuPrincipal
             End Get
         End Property
     End Class
-    '---------------------------------------LOAD-------------------------------------------
-    Private Sub MenuPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'colores de menu
-        TableLayoutPanel1.Cursor = Cursors.Arrow
-        MenuStrip1.Renderer = New RenderMenu()
-        MenuStrip2.Renderer = New RenderMenu()
-        lbDimeIDCorrectUser.Visible = False
-        BtnSolicitudTiket.Visible = False
-        TicketToolStripMenuItem.Visible = False
-        ContForms.Visible = False
-        FinalizarSolicitudToolStripMenuItem.Visible = False
-        LlenarComboBox()
+    Private Sub LlenarComboBox()
+        conexion.Open()
+        ' Realizar la consulta a la base de datos
+        Dim query As String = "SELECT idTicket FROM Ticket WHERE estado = 'Finalizado'"
+
+        Dim command As New SqlCommand(query, conexion)
+
+        ' Ejecutar la consulta y obtener los resultados
+        Dim reader As SqlDataReader = command.ExecuteReader()
+
+        ' Limpiar el ComboBox
+        cbFinalizados.Items.Clear()
+
+        ' Agregar los elementos al ComboBox
+        Dim foundResults As Boolean = False
+        While reader.Read()
+            cbFinalizados.Items.Add(reader("idTicket").ToString())
+            foundResults = True
+        End While
+
+        reader.Close()
+
+        conexion.Close()
+
+        If Not foundResults Then
+
+        End If
     End Sub
     '------------------------------------------
     'opens de Problema 1
     Public Sub OpenProblema1()
+        ContForms.TabPages(0).Visible = True
         Dim mensaje As New Registrarse
         mensaje.MdiParent = Me
         If ContForms.TabCount >= 1 Then
@@ -214,7 +230,7 @@ Public Class MenuPrincipal
     End Sub
 
     Public Sub OpenProblema2()
-
+        ContForms.TabPages(0).Visible = False
         Dim mensaje As New Usuario
         mensaje.MdiParent = Me
         If ContForms.TabCount >= 1 Then
@@ -236,11 +252,56 @@ Public Class MenuPrincipal
         ContForms.SelectedTab = newPage
     End Sub
 
-
+    Public Sub OpenProblema3()
+        ContForms.TabPages(0).Visible = False
+        Dim mensaje As New Administracion
+        mensaje.MdiParent = Me
+        If ContForms.TabCount >= 1 Then
+            FinalizarSolicitudToolStripMenuItem.Visible = True
+        End If
+        If ContForms.TabCount = 0 Then
+            FinalizarSolicitudToolStripMenuItem.Visible = False
+        End If
+        ' Si no hay nada abierto
+        ContForms.Visible = True
+        mensaje.Dock = DockStyle.Fill ' Hace que el formulario se ajuste al tamaño del TabPage
+        ' Agrega el formulario al primer TabPage
+        'titulo de pagina
+        Dim newPage As New TabPage("Administración")
+        'mover tabb
+        newPage.Controls.Add(mensaje)
+        ContForms.TabPages.Add(newPage)
+        mensaje.Show()
+        Dim idTap As Integer = newPage.TabIndex
+        ContForms.SelectedTab = newPage
+    End Sub
+    Public Sub OpenProblema4()
+        ContForms.TabPages(0).Visible = False
+        Dim mensaje As New Empleados
+        mensaje.MdiParent = Me
+        If ContForms.TabCount >= 1 Then
+            FinalizarSolicitudToolStripMenuItem.Visible = True
+        End If
+        If ContForms.TabCount = 0 Then
+            FinalizarSolicitudToolStripMenuItem.Visible = False
+        End If
+        ' Si no hay nada abierto
+        ContForms.Visible = True
+        mensaje.Dock = DockStyle.Fill ' Hace que el formulario se ajuste al tamaño del TabPage
+        ' Agrega el formulario al primer TabPage
+        'titulo de pagina
+        Dim newPage As New TabPage("Tareas Pendientes")
+        'mover tabb
+        newPage.Controls.Add(mensaje)
+        ContForms.TabPages.Add(newPage)
+        mensaje.Show()
+        Dim idTap As Integer = newPage.TabIndex
+        ContForms.SelectedTab = newPage
+    End Sub
 
     Public Sub BusquedaRespuesta()
         Dim encontrado As Boolean = False
-        If ContForms.TabCount > 1 Then
+        If ContForms.TabCount > 0 Then
             For Each tp As TabPage In ContForms.TabPages
                 If tp.Text = "Solicitud de Tikect" Then
                     ' Respuesta de cerrado
@@ -262,6 +323,58 @@ Public Class MenuPrincipal
             End If
         Else
             OpenProblema1()
+        End If
+    End Sub
+    Public Sub BusquedaRespuesta3()
+        Dim encontrado As Boolean = False
+        If ContForms.TabCount > 0 Then
+            For Each tp As TabPage In ContForms.TabPages
+                If tp.Text = "Administración" Then
+                    ' Respuesta de cerrado
+                    encontrado = True
+                    Dim resultado As MsgBoxResult
+                    resultado = CType(MessageBox.Show("¿Actualmente se esta activo el modo Administración, desea finalizar?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
+                    If resultado = MsgBoxResult.No Then
+                        ContForms.SelectedTab = tp
+                    Else
+                        'cierras el form agregar libro
+                        ContForms.TabPages.Remove(tp)
+                        OpenProblema3()
+                    End If
+                    Exit For
+                End If
+            Next
+            If encontrado = False Then
+                OpenProblema3()
+            End If
+        Else
+            OpenProblema3()
+        End If
+    End Sub
+    Public Sub BusquedaRespuesta4()
+        Dim encontrado As Boolean = False
+        If ContForms.TabCount > 0 Then
+            For Each tp As TabPage In ContForms.TabPages
+                If tp.Text = "Tareas Pendientes" Then
+                    ' Respuesta de cerrado
+                    encontrado = True
+                    Dim resultado As MsgBoxResult
+                    resultado = CType(MessageBox.Show("¿Actualmente se estan realizando Tareas Pendientes, desea finalizar?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
+                    If resultado = MsgBoxResult.No Then
+                        ContForms.SelectedTab = tp
+                    Else
+                        'cierras el form agregar libro
+                        ContForms.TabPages.Remove(tp)
+                        OpenProblema4()
+                    End If
+                    Exit For
+                End If
+            Next
+            If encontrado = False Then
+                OpenProblema4()
+            End If
+        Else
+            OpenProblema4()
         End If
     End Sub
     'vista principal de usuario
@@ -304,6 +417,84 @@ Public Class MenuPrincipal
             VerMisTiketsToolStripMenuItem.Text = "Ver Tikets"
         End If
     End Sub
+
+
+    Public Sub AbrirPanelLogin()
+        TableLayoutPanelLogin.ColumnStyles(0).Width = 300 '300
+        BtnCerrarPanelLogin.Visible = True
+    End Sub
+    Public Sub CerrarPanelLogin()
+        TableLayoutPanelLogin.ColumnStyles(0).Width = 0 '300
+        BtnCerrarPanelLogin.Visible = False
+    End Sub
+
+    '---------------------------------------LOAD-------------------------------------------
+    Private Sub MenuPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'colores de menu
+        TableLayoutPanel1.Cursor = Cursors.Arrow
+        MenuStrip1.Renderer = New RenderMenu()
+        MenuStrip2.Renderer = New RenderMenu()
+        lbDimeIDCorrectUser.Visible = False
+        BtnSolicitudTiket.Visible = False
+        TicketToolStripMenuItem.Visible = False
+        ContForms.Visible = False
+        FinalizarSolicitudToolStripMenuItem.Visible = False
+        LlenarComboBox()
+
+        'vista inicial de login
+        'tablas
+        TableLayoutPanelLogin.ColumnStyles(0).Width = 0 '300
+        LoginToolStripMenuItem2.Text = "LOGIN"
+        CerrarSessionToolStripMenuItem.Visible = False
+        IniciarSessionToolStripMenuItem.Visible = True
+        BtnCerrarPanelLogin.Visible = False
+        ROLToolStripMenuItem.Visible = False
+
+        'vista de Inicio
+        AdministraciónToolStripMenuItem.Visible = False
+        EquipoDeTrabajoToolStripMenuItem1.Visible = False
+        TicketToolStripMenuItem.Visible = False
+        TareasPendienteToolStripMenuItem.Visible = False
+
+        'Tablas contenedoras de forms 
+        tablaContenedoraForms.RowStyles(0).Height = 0 'opcion de actualizar
+
+    End Sub
+
+    Private Sub IniciarSessionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles IniciarSessionToolStripMenuItem.Click
+        AbrirPanelLogin()
+    End Sub
+    Private Sub BtnCerrarPanelLogin_Click(sender As Object, e As EventArgs) Handles BtnCerrarPanelLogin.Click
+        CerrarPanelLogin()
+    End Sub
+    Private Sub CerrarSessionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CerrarSessionToolStripMenuItem.Click
+        Dim resultado As MsgBoxResult
+        resultado = CType(MessageBox.Show("¿Desea Cerrar Session?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
+        If resultado = MsgBoxResult.No Then
+        Else
+            Dim newPage As New TabPage("Tikets")
+            newPage.Controls.Add(PanelTikets)
+            ContForms.TabPages.Clear()
+            FinalizarSolicitudToolStripMenuItem.Visible = False
+            'mover tabb
+            ContForms.TabPages.Add(newPage)
+            ContForms.Visible = False
+        End If
+        'Cierre de session
+        CerrarPanelLogin()
+        ROLToolStripMenuItem.Visible = False
+        ROLToolStripMenuItem.Text = ""
+        LoginToolStripMenuItem2.Text = "LOGIN"
+        IniciarSessionToolStripMenuItem.Visible = True
+        CerrarSessionToolStripMenuItem.Visible = False
+
+        'vista de CierreSession
+        AdministraciónToolStripMenuItem.Visible = False
+        EquipoDeTrabajoToolStripMenuItem1.Visible = False
+        TicketToolStripMenuItem.Visible = False
+        TareasPendienteToolStripMenuItem.Visible = False
+
+    End Sub
     Private Sub BtnAcceder_Click(sender As Object, e As EventArgs) Handles BtnAcceder.Click
 
         Dim usuario As String = tbUser.Text
@@ -324,7 +515,7 @@ Public Class MenuPrincipal
             If resultado = 1 Then
 
                 'Realizar las acciones necesarias después del inicio de sesión exitoso
-                MessageBox.Show("Inicio de sesión exitoso")
+                CerrarPanelLogin()
 
                 Dim idUsuarioCorrecto As String = ""
                 Dim rolUsuarioEnter As String = ""
@@ -346,21 +537,46 @@ Public Class MenuPrincipal
 
                 Dim rol As String = ObtenerRol(Funciones.inicioSesionId)
 
-
                 Select Case rol
                     Case "empleado"
-
-
-
-                        MsgBox("Soy empleado")
+                        'datos de login
+                        ROLToolStripMenuItem.Visible = True
+                        ROLToolStripMenuItem.Text = "empleado"
+                        LoginToolStripMenuItem2.Text = tbUser.Text
+                        IniciarSessionToolStripMenuItem.Visible = False
+                        CerrarSessionToolStripMenuItem.Visible = True
+                        'vista del empleado 
+                        AdministraciónToolStripMenuItem.Visible = False
+                        EquipoDeTrabajoToolStripMenuItem1.Visible = False
+                        TicketToolStripMenuItem.Visible = False
+                        TareasPendienteToolStripMenuItem.Visible = True
                     Case "admin"
-                        MsgBox("Soy admin")
+                        'datos de login
+                        ROLToolStripMenuItem.Visible = True
+                        ROLToolStripMenuItem.Text = "admin"
+                        LoginToolStripMenuItem2.Text = tbUser.Text
+                        CerrarSessionToolStripMenuItem.Visible = True
+                        IniciarSessionToolStripMenuItem.Visible = False
+                        'vista de admin
+                        AdministraciónToolStripMenuItem.Visible = True
+                        EquipoDeTrabajoToolStripMenuItem1.Visible = True
+                        TicketToolStripMenuItem.Visible = True
+                        TareasPendienteToolStripMenuItem.Visible = True
 
                     Case "cajero"
-
+                        'datos de login
+                        ROLToolStripMenuItem.Visible = True
+                        ROLToolStripMenuItem.Text = "cajero"
+                        LoginToolStripMenuItem2.Text = tbUser.Text
                         lbDimeIDCorrectUser.Visible = True
                         BtnSolicitudTiket.Visible = True
                         TicketToolStripMenuItem.Visible = True
+                        CerrarSessionToolStripMenuItem.Visible = True
+                        IniciarSessionToolStripMenuItem.Visible = False
+                        'vista de admin
+                        AdministraciónToolStripMenuItem.Visible = False
+                        EquipoDeTrabajoToolStripMenuItem1.Visible = False
+                        TareasPendienteToolStripMenuItem.Visible = False
 
                         lbNombreCajero.Text = tbUser.Text
 
@@ -379,13 +595,13 @@ Public Class MenuPrincipal
                         Funciones.UserLoginCajero = lbNombreCaj.Text
 
                         conexion.Close()
-
                         '.........................................................................................
                         'Mostrar la tabla que relaciona los tickets y el empleado que realiza la sesión
                         vistaUsuarioTable()
-
-
                     Case Else
+                        CerrarSessionToolStripMenuItem.Visible = False
+                        IniciarSessionToolStripMenuItem.Visible = True
+                        ROLToolStripMenuItem.Visible = False
                         MessageBox.Show("Rol no válido")
                 End Select
 
@@ -393,7 +609,7 @@ Public Class MenuPrincipal
 
             Else
                 'Realizar las acciones necesarias después del inicio de sesión erróneo
-                MessageBox.Show("USUARIO O CONTRASEÑA INCORRECTOS", "TRY AGAIN", MessageBoxButtons.OK)
+                MessageBox.Show("USUARIO O CONTRASEÑA INCORRECTOS", "Intentelo de nuevo.", MessageBoxButtons.OK)
                 tbPass.Clear()
                 tbUser.Clear()
             End If
@@ -401,8 +617,6 @@ Public Class MenuPrincipal
             conexion.Close()
 
         End Using
-
-
     End Sub
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles BtnSolicitudTiket.Click
         BusquedaRespuesta()
@@ -561,31 +775,36 @@ Public Class MenuPrincipal
         End Using
     End Sub
 
+    Private Sub AdministraciónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AdministraciónToolStripMenuItem.Click
+        BusquedaRespuesta3()
 
-    Private Sub LlenarComboBox()
-        ' Realizar la consulta a la base de datos
-        Dim query As String = "SELECT idTicket FROM Ticket WHERE estado = 'Finalizado';"
-
-        Dim command As New SqlCommand(query, conexion)
-
-        conexion.Open()
-
-        ' Ejecutar la consulta y obtener los resultados
-        Dim reader As SqlDataReader = command.ExecuteReader()
-
-        ' Limpiar el ComboBox
-        cbFinalizados.Items.Clear()
-
-        ' Agregar los elementos al ComboBox
-        While reader.Read()
-            cbFinalizados.Items.Add(reader("idTicket").ToString())
-        End While
-
-        reader.Close()
-
-        conexion.Close()
+        If ContForms.TabCount >= 1 Then
+            CerrarPestañasToolStripMenuItem.Visible = True
+        End If
+        If ContForms.TabCount = 0 Then
+            CerrarPestañasToolStripMenuItem.Visible = False
+        End If
 
     End Sub
 
+    Private Sub TareasPendienteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TareasPendienteToolStripMenuItem.Click
+        BusquedaRespuesta4()
+    End Sub
 
+    Private Sub CerrarPestañasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CerrarPestañasToolStripMenuItem.Click
+        Dim resultado As MsgBoxResult
+        resultado = CType(MessageBox.Show("¿Desea Cerrar todas las ventanas?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
+        If resultado = MsgBoxResult.No Then
+        Else
+            Dim newPage As New TabPage("Tikets")
+            newPage.Controls.Add(PanelTikets)
+
+            ContForms.TabPages.Clear()
+            FinalizarSolicitudToolStripMenuItem.Visible = False
+            'mover tabb
+            ContForms.TabPages.Add(newPage)
+            ContForms.TabPages(0).Visible = False
+            ContForms.Visible = True
+        End If
+    End Sub
 End Class

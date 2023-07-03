@@ -140,7 +140,7 @@ Partial Class Administracion
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(933, 671)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(949, 710)
         Me.TableLayoutPanel1.TabIndex = 2
         '
         'Panel2
@@ -157,7 +157,7 @@ Partial Class Administracion
         Me.Panel2.Location = New System.Drawing.Point(0, 35)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(933, 65)
+        Me.Panel2.Size = New System.Drawing.Size(949, 65)
         Me.Panel2.TabIndex = 2
         '
         'LabelErrorID
@@ -181,7 +181,7 @@ Partial Class Administracion
         Me.BtnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnModificar.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.BtnModificar.ForeColor = System.Drawing.Color.White
-        Me.BtnModificar.Location = New System.Drawing.Point(597, 14)
+        Me.BtnModificar.Location = New System.Drawing.Point(613, 14)
         Me.BtnModificar.MaximumSize = New System.Drawing.Size(174, 34)
         Me.BtnModificar.MinimumSize = New System.Drawing.Size(174, 34)
         Me.BtnModificar.Name = "BtnModificar"
@@ -224,7 +224,7 @@ Partial Class Administracion
         Me.BtnAcction.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnAcction.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.BtnAcction.ForeColor = System.Drawing.Color.White
-        Me.BtnAcction.Location = New System.Drawing.Point(787, 15)
+        Me.BtnAcction.Location = New System.Drawing.Point(803, 15)
         Me.BtnAcction.Margin = New System.Windows.Forms.Padding(0)
         Me.BtnAcction.MaximumSize = New System.Drawing.Size(132, 33)
         Me.BtnAcction.MinimumSize = New System.Drawing.Size(132, 33)
@@ -270,7 +270,7 @@ Partial Class Administracion
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 1
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(933, 200)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(949, 200)
         Me.TableLayoutPanel2.TabIndex = 3
         '
         'GroupBox2
@@ -288,10 +288,10 @@ Partial Class Administracion
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.GroupBox2.ForeColor = System.Drawing.Color.White
-        Me.GroupBox2.Location = New System.Drawing.Point(383, 10)
+        Me.GroupBox2.Location = New System.Drawing.Point(389, 10)
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(10, 10, 10, 0)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(540, 190)
+        Me.GroupBox2.Size = New System.Drawing.Size(550, 190)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Equipo del Cliente"
@@ -302,7 +302,7 @@ Partial Class Administracion
         Me.PictureBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.PictureBox2.BackgroundImage = Global.Parcial2.My.Resources.Resources.laptop
         Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox2.Location = New System.Drawing.Point(484, 0)
+        Me.PictureBox2.Location = New System.Drawing.Point(494, 0)
         Me.PictureBox2.Margin = New System.Windows.Forms.Padding(0)
         Me.PictureBox2.MaximumSize = New System.Drawing.Size(79, 59)
         Me.PictureBox2.Name = "PictureBox2"
@@ -371,7 +371,7 @@ Partial Class Administracion
         Me.TextBoxDescripcionCliente.Margin = New System.Windows.Forms.Padding(5, 0, 5, 5)
         Me.TextBoxDescripcionCliente.Multiline = True
         Me.TextBoxDescripcionCliente.Name = "TextBoxDescripcionCliente"
-        Me.TextBoxDescripcionCliente.Size = New System.Drawing.Size(534, 81)
+        Me.TextBoxDescripcionCliente.Size = New System.Drawing.Size(544, 81)
         Me.TextBoxDescripcionCliente.TabIndex = 13
         '
         'Label2
@@ -431,7 +431,7 @@ Partial Class Administracion
         Me.GroupBox1.Location = New System.Drawing.Point(10, 10)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(10, 10, 10, 0)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(353, 190)
+        Me.GroupBox1.Size = New System.Drawing.Size(359, 190)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos del Cliente"
@@ -442,7 +442,7 @@ Partial Class Administracion
         Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.PictureBox1.BackgroundImage = Global.Parcial2.My.Resources.Resources.perfil
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox1.Location = New System.Drawing.Point(281, 0)
+        Me.PictureBox1.Location = New System.Drawing.Point(287, 0)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(0)
         Me.PictureBox1.MaximumSize = New System.Drawing.Size(79, 59)
         Me.PictureBox1.Name = "PictureBox1"
@@ -604,7 +604,7 @@ Partial Class Administracion
         Me.GroupBox3.Location = New System.Drawing.Point(10, 300)
         Me.GroupBox3.Margin = New System.Windows.Forms.Padding(10, 0, 10, 3)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(913, 197)
+        Me.GroupBox3.Size = New System.Drawing.Size(929, 197)
         Me.GroupBox3.TabIndex = 4
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Asignar Reparación"
@@ -615,7 +615,7 @@ Partial Class Administracion
         Me.PictureBox3.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.PictureBox3.BackgroundImage = Global.Parcial2.My.Resources.Resources.Revision
         Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox3.Location = New System.Drawing.Point(865, 2)
+        Me.PictureBox3.Location = New System.Drawing.Point(881, 2)
         Me.PictureBox3.Margin = New System.Windows.Forms.Padding(0)
         Me.PictureBox3.MaximumSize = New System.Drawing.Size(79, 59)
         Me.PictureBox3.Name = "PictureBox3"
@@ -636,7 +636,7 @@ Partial Class Administracion
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
         Me.TableLayoutPanel4.RowCount = 1
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel4.Size = New System.Drawing.Size(907, 169)
+        Me.TableLayoutPanel4.Size = New System.Drawing.Size(923, 169)
         Me.TableLayoutPanel4.TabIndex = 1
         '
         'Panel3
@@ -890,7 +890,7 @@ Partial Class Administracion
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel5.Size = New System.Drawing.Size(245, 169)
+        Me.TableLayoutPanel5.Size = New System.Drawing.Size(261, 169)
         Me.TableLayoutPanel5.TabIndex = 1
         '
         'TextBoxObservacion
@@ -903,7 +903,7 @@ Partial Class Administracion
         Me.TextBoxObservacion.Margin = New System.Windows.Forms.Padding(0)
         Me.TextBoxObservacion.Multiline = True
         Me.TextBoxObservacion.Name = "TextBoxObservacion"
-        Me.TextBoxObservacion.Size = New System.Drawing.Size(245, 129)
+        Me.TextBoxObservacion.Size = New System.Drawing.Size(261, 129)
         Me.TextBoxObservacion.TabIndex = 14
         '
         'Label15
@@ -928,7 +928,7 @@ Partial Class Administracion
         Me.LabelContMultiline.Location = New System.Drawing.Point(0, 149)
         Me.LabelContMultiline.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelContMultiline.Name = "LabelContMultiline"
-        Me.LabelContMultiline.Size = New System.Drawing.Size(245, 20)
+        Me.LabelContMultiline.Size = New System.Drawing.Size(261, 20)
         Me.LabelContMultiline.TabIndex = 30
         Me.LabelContMultiline.Text = "0/500"
         Me.LabelContMultiline.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -940,7 +940,7 @@ Partial Class Administracion
         Me.LabelPrioridad.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.LabelPrioridad.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.LabelPrioridad.ForeColor = System.Drawing.Color.Red
-        Me.LabelPrioridad.Location = New System.Drawing.Point(456, 6)
+        Me.LabelPrioridad.Location = New System.Drawing.Point(464, 6)
         Me.LabelPrioridad.MaximumSize = New System.Drawing.Size(51, 19)
         Me.LabelPrioridad.MinimumSize = New System.Drawing.Size(51, 19)
         Me.LabelPrioridad.Name = "LabelPrioridad"
@@ -955,7 +955,7 @@ Partial Class Administracion
         Me.Label30.AutoSize = True
         Me.Label30.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label30.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label30.Location = New System.Drawing.Point(379, 6)
+        Me.Label30.Location = New System.Drawing.Point(387, 6)
         Me.Label30.MaximumSize = New System.Drawing.Size(81, 19)
         Me.Label30.MinimumSize = New System.Drawing.Size(81, 19)
         Me.Label30.Name = "Label30"
@@ -979,7 +979,7 @@ Partial Class Administracion
         Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
         Me.TableLayoutPanel3.RowCount = 1
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(933, 35)
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(949, 35)
         Me.TableLayoutPanel3.TabIndex = 5
         '
         'BtnFinalizar
@@ -991,7 +991,7 @@ Partial Class Administracion
         Me.BtnFinalizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnFinalizar.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.BtnFinalizar.ForeColor = System.Drawing.Color.White
-        Me.BtnFinalizar.Location = New System.Drawing.Point(853, 0)
+        Me.BtnFinalizar.Location = New System.Drawing.Point(869, 0)
         Me.BtnFinalizar.Margin = New System.Windows.Forms.Padding(0)
         Me.BtnFinalizar.Name = "BtnFinalizar"
         Me.BtnFinalizar.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -1010,7 +1010,7 @@ Partial Class Administracion
         Me.Label28.Location = New System.Drawing.Point(80, 0)
         Me.Label28.Margin = New System.Windows.Forms.Padding(0)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(773, 35)
+        Me.Label28.Size = New System.Drawing.Size(789, 35)
         Me.Label28.TabIndex = 3
         Me.Label28.Text = "Adminitración de Tikects"
         Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1036,7 +1036,7 @@ Partial Class Administracion
         Me.DataGridView1.Location = New System.Drawing.Point(0, 615)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(0)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(933, 56)
+        Me.DataGridView1.Size = New System.Drawing.Size(949, 95)
         Me.DataGridView1.TabIndex = 1
         '
         'Panel1
@@ -1051,7 +1051,7 @@ Partial Class Administracion
         Me.Panel1.Location = New System.Drawing.Point(0, 580)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(933, 35)
+        Me.Panel1.Size = New System.Drawing.Size(949, 35)
         Me.Panel1.TabIndex = 6
         '
         'ComboBoxMostrar
@@ -1091,7 +1091,7 @@ Partial Class Administracion
         Me.BtnBorrarRegistro.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnBorrarRegistro.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.BtnBorrarRegistro.ForeColor = System.Drawing.Color.White
-        Me.BtnBorrarRegistro.Location = New System.Drawing.Point(597, 5)
+        Me.BtnBorrarRegistro.Location = New System.Drawing.Point(613, 5)
         Me.BtnBorrarRegistro.Name = "BtnBorrarRegistro"
         Me.BtnBorrarRegistro.Size = New System.Drawing.Size(174, 25)
         Me.BtnBorrarRegistro.TabIndex = 24
@@ -1107,7 +1107,7 @@ Partial Class Administracion
         Me.BtnBorrarTodo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnBorrarTodo.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.BtnBorrarTodo.ForeColor = System.Drawing.Color.White
-        Me.BtnBorrarTodo.Location = New System.Drawing.Point(791, 5)
+        Me.BtnBorrarTodo.Location = New System.Drawing.Point(807, 5)
         Me.BtnBorrarTodo.Name = "BtnBorrarTodo"
         Me.BtnBorrarTodo.Size = New System.Drawing.Size(132, 25)
         Me.BtnBorrarTodo.TabIndex = 23
@@ -1137,7 +1137,7 @@ Partial Class Administracion
         Me.GroupBox4.Location = New System.Drawing.Point(10, 500)
         Me.GroupBox4.Margin = New System.Windows.Forms.Padding(10, 0, 10, 10)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(913, 70)
+        Me.GroupBox4.Size = New System.Drawing.Size(929, 70)
         Me.GroupBox4.TabIndex = 7
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Factura"
@@ -1161,7 +1161,7 @@ Partial Class Administracion
         Me.BtnGenerarFactura.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnGenerarFactura.FlatAppearance.BorderSize = 0
         Me.BtnGenerarFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnGenerarFactura.Location = New System.Drawing.Point(361, 25)
+        Me.BtnGenerarFactura.Location = New System.Drawing.Point(369, 25)
         Me.BtnGenerarFactura.Margin = New System.Windows.Forms.Padding(0)
         Me.BtnGenerarFactura.Name = "BtnGenerarFactura"
         Me.BtnGenerarFactura.Size = New System.Drawing.Size(183, 34)
@@ -1192,7 +1192,7 @@ Partial Class Administracion
         Me.ButtonMostrarOcultar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
         Me.ButtonMostrarOcultar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.ButtonMostrarOcultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonMostrarOcultar.Location = New System.Drawing.Point(445, 86)
+        Me.ButtonMostrarOcultar.Location = New System.Drawing.Point(453, 86)
         Me.ButtonMostrarOcultar.Margin = New System.Windows.Forms.Padding(0)
         Me.ButtonMostrarOcultar.MaximumSize = New System.Drawing.Size(32, 24)
         Me.ButtonMostrarOcultar.MinimumSize = New System.Drawing.Size(32, 24)
@@ -1207,9 +1207,11 @@ Partial Class Administracion
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(933, 671)
+        Me.ClientSize = New System.Drawing.Size(949, 710)
+        Me.ControlBox = False
         Me.Controls.Add(Me.ButtonMostrarOcultar)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MinimumSize = New System.Drawing.Size(949, 710)
         Me.Name = "Administracion"
         Me.Text = "Administración"
