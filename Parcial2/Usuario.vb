@@ -1,11 +1,8 @@
 ﻿Imports System.Data.SqlClient
+
 Public Class Usuario
 
-    'Conexion de Kembrish
-    Public conex As New SqlConnection("Data Source=DESKTOP-GQPJ6BS;Initial Catalog=JKEnterprise;Integrated Security=True")
-    'Conexion de Dilan
-    'Public conex As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True")
-
+    Public conexion As New SqlConnection(Funciones.Conexion)
 
     'Se se finaliza el ticket con botón "cancelar proceso" del form del ticket. Se eliminan el tab actual y el
     'anterior. Queda pendiente controlar que no se puedan abrir mas tabs en el modo "Abrir Ticket"
@@ -25,11 +22,11 @@ Public Class Usuario
 
 
             'Si se cancela el proceso, los datos que se habian almacenado temporalmente del cliente, se borran
-            conex.Open()
+            conexion.Open()
 
             Dim NewUsuario As New SqlCommand()
 
-            NewUsuario.Connection = conex
+            NewUsuario.Connection = conexion
 
             NewUsuario.CommandType = CommandType.StoredProcedure
 
@@ -39,7 +36,7 @@ Public Class Usuario
 
             NewUsuario.ExecuteNonQuery()
 
-            conex.Close()
+            conexion.Close()
 
         End If
     End Sub
@@ -434,13 +431,13 @@ Public Class Usuario
     'Funcion que agrega ticket con base al cliente que lo solicitó
     Public Sub AgregarDatosTicket()
 
-        conex.Open()
+        conexion.Open()
 
         'Procedimiento para enviar ticket
 
         Dim NewTicket As New SqlCommand()
 
-        NewTicket.Connection = conex
+        NewTicket.Connection = conexion
 
         NewTicket.CommandType = CommandType.StoredProcedure
 
@@ -462,7 +459,7 @@ Public Class Usuario
 
         NewTicket.ExecuteNonQuery()
 
-        conex.Close()
+        conexion.Close()
 
     End Sub
 

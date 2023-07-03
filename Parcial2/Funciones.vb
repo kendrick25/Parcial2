@@ -1,5 +1,16 @@
 ﻿Imports System.Text
-Module Funciones
+Imports System.Data.SqlClient
+
+Friend Module Funciones
+    'Funcion para conexion de base de datos
+    Public Function Conexion() As String
+        'Conexion Kembrish
+        Dim cadenaconexion As String = "Data Source=DESKTOP-GQPJ6BS;Initial Catalog=JKEnterprise;Integrated Security=True"
+        'Conexion de Dilan
+        'Dim cadenaconexion As String = "Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True"
+
+        Return cadenaconexion
+    End Function
 
     'Variables globales que captan datos para pasar de un form a otro
 

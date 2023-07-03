@@ -23,9 +23,9 @@ Partial Class MenuPrincipal
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MenuPrincipal))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Border = New System.Windows.Forms.Panel()
         Me.BtnCerrarPanelLogin = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
@@ -64,6 +64,9 @@ Partial Class MenuPrincipal
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.lbDimeIDCorrectUser = New System.Windows.Forms.Label()
+        Me.lbNombreCaj = New System.Windows.Forms.Label()
+        Me.lbNombreCajero = New System.Windows.Forms.Label()
         Me.ContForms = New System.Windows.Forms.TabControl()
         Me.TabPage = New System.Windows.Forms.TabPage()
         Me.PanelTikets = New System.Windows.Forms.Panel()
@@ -74,9 +77,6 @@ Partial Class MenuPrincipal
         Me.cbFinalizados = New System.Windows.Forms.ComboBox()
         Me.tbFiltro = New System.Windows.Forms.TextBox()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.lbDimeIDCorrectUser = New System.Windows.Forms.Label()
-        Me.lbNombreCaj = New System.Windows.Forms.Label()
-        Me.lbNombreCajero = New System.Windows.Forms.Label()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.BtnSolicitudTiket = New System.Windows.Forms.Button()
         Me.DGUserPrincipal = New System.Windows.Forms.DataGridView()
@@ -243,7 +243,7 @@ Partial Class MenuPrincipal
         Me.MenuStrip1.MinimumSize = New System.Drawing.Size(0, 30)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(0, 2, 0, 0)
-        Me.MenuStrip1.Size = New System.Drawing.Size(571, 30)
+        Me.MenuStrip1.Size = New System.Drawing.Size(465, 30)
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -538,6 +538,9 @@ Partial Class MenuPrincipal
         Me.Panel6.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.Panel6.Controls.Add(Me.Button1)
         Me.Panel6.Controls.Add(Me.Label6)
+        Me.Panel6.Controls.Add(Me.lbDimeIDCorrectUser)
+        Me.Panel6.Controls.Add(Me.lbNombreCaj)
+        Me.Panel6.Controls.Add(Me.lbNombreCajero)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel6.Location = New System.Drawing.Point(0, 0)
         Me.Panel6.Margin = New System.Windows.Forms.Padding(0)
@@ -569,6 +572,43 @@ Partial Class MenuPrincipal
         Me.Label6.Size = New System.Drawing.Size(278, 15)
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "Hay cambios en la solicitudes, actualiza para verlos." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'lbDimeIDCorrectUser
+        '
+        Me.lbDimeIDCorrectUser.AutoSize = True
+        Me.lbDimeIDCorrectUser.BackColor = System.Drawing.Color.Transparent
+        Me.lbDimeIDCorrectUser.Font = New System.Drawing.Font("Segoe UI", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lbDimeIDCorrectUser.ForeColor = System.Drawing.Color.Black
+        Me.lbDimeIDCorrectUser.Location = New System.Drawing.Point(478, 3)
+        Me.lbDimeIDCorrectUser.MaximumSize = New System.Drawing.Size(15, 15)
+        Me.lbDimeIDCorrectUser.Name = "lbDimeIDCorrectUser"
+        Me.lbDimeIDCorrectUser.Size = New System.Drawing.Size(15, 15)
+        Me.lbDimeIDCorrectUser.TabIndex = 1
+        Me.lbDimeIDCorrectUser.Text = "*"
+        '
+        'lbNombreCaj
+        '
+        Me.lbNombreCaj.AutoSize = True
+        Me.lbNombreCaj.BackColor = System.Drawing.Color.Transparent
+        Me.lbNombreCaj.ForeColor = System.Drawing.Color.Black
+        Me.lbNombreCaj.Location = New System.Drawing.Point(393, 7)
+        Me.lbNombreCaj.MaximumSize = New System.Drawing.Size(15, 15)
+        Me.lbNombreCaj.Name = "lbNombreCaj"
+        Me.lbNombreCaj.Size = New System.Drawing.Size(12, 15)
+        Me.lbNombreCaj.TabIndex = 3
+        Me.lbNombreCaj.Text = "**"
+        '
+        'lbNombreCajero
+        '
+        Me.lbNombreCajero.AutoSize = True
+        Me.lbNombreCajero.BackColor = System.Drawing.Color.Transparent
+        Me.lbNombreCajero.ForeColor = System.Drawing.Color.Black
+        Me.lbNombreCajero.Location = New System.Drawing.Point(438, 7)
+        Me.lbNombreCajero.MaximumSize = New System.Drawing.Size(15, 15)
+        Me.lbNombreCajero.Name = "lbNombreCajero"
+        Me.lbNombreCajero.Size = New System.Drawing.Size(12, 15)
+        Me.lbNombreCajero.TabIndex = 2
+        Me.lbNombreCajero.Text = "*"
         '
         'ContForms
         '
@@ -628,9 +668,6 @@ Partial Class MenuPrincipal
         Me.Panel4.Controls.Add(Me.cbFinalizados)
         Me.Panel4.Controls.Add(Me.tbFiltro)
         Me.Panel4.Controls.Add(Me.Button2)
-        Me.Panel4.Controls.Add(Me.lbDimeIDCorrectUser)
-        Me.Panel4.Controls.Add(Me.lbNombreCaj)
-        Me.Panel4.Controls.Add(Me.lbNombreCajero)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
         Me.Panel4.Margin = New System.Windows.Forms.Padding(0)
@@ -693,34 +730,6 @@ Partial Class MenuPrincipal
         Me.Button2.Text = "CREAR FACTURA?"
         Me.Button2.UseVisualStyleBackColor = False
         '
-        'lbDimeIDCorrectUser
-        '
-        Me.lbDimeIDCorrectUser.AutoSize = True
-        Me.lbDimeIDCorrectUser.Font = New System.Drawing.Font("Segoe UI", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lbDimeIDCorrectUser.Location = New System.Drawing.Point(697, 0)
-        Me.lbDimeIDCorrectUser.Name = "lbDimeIDCorrectUser"
-        Me.lbDimeIDCorrectUser.Size = New System.Drawing.Size(23, 30)
-        Me.lbDimeIDCorrectUser.TabIndex = 1
-        Me.lbDimeIDCorrectUser.Text = "*"
-        '
-        'lbNombreCaj
-        '
-        Me.lbNombreCaj.AutoSize = True
-        Me.lbNombreCaj.Location = New System.Drawing.Point(689, 28)
-        Me.lbNombreCaj.Name = "lbNombreCaj"
-        Me.lbNombreCaj.Size = New System.Drawing.Size(17, 15)
-        Me.lbNombreCaj.TabIndex = 3
-        Me.lbNombreCaj.Text = "**"
-        '
-        'lbNombreCajero
-        '
-        Me.lbNombreCajero.AutoSize = True
-        Me.lbNombreCajero.Location = New System.Drawing.Point(697, 51)
-        Me.lbNombreCajero.Name = "lbNombreCajero"
-        Me.lbNombreCajero.Size = New System.Drawing.Size(12, 15)
-        Me.lbNombreCajero.TabIndex = 2
-        Me.lbNombreCajero.Text = "*"
-        '
         'Panel7
         '
         Me.Panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
@@ -750,35 +759,35 @@ Partial Class MenuPrincipal
         '
         Me.DGUserPrincipal.AllowUserToAddRows = False
         Me.DGUserPrincipal.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft PhagsPa", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.DGUserPrincipal.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft PhagsPa", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.DGUserPrincipal.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         Me.DGUserPrincipal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DGUserPrincipal.BackgroundColor = System.Drawing.SystemColors.Control
         Me.DGUserPrincipal.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.DGUserPrincipal.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.DGUserPrincipal.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSkyBlue
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft PhagsPa", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGUserPrincipal.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.LightSkyBlue
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft PhagsPa", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DeepSkyBlue
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGUserPrincipal.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.DGUserPrincipal.ColumnHeadersHeight = 29
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightCyan
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft PhagsPa", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Azure
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGUserPrincipal.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.LightCyan
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft PhagsPa", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Azure
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGUserPrincipal.DefaultCellStyle = DataGridViewCellStyle6
         Me.DGUserPrincipal.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DGUserPrincipal.Location = New System.Drawing.Point(0, 85)
         Me.DGUserPrincipal.Margin = New System.Windows.Forms.Padding(0)

@@ -1,9 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Public Class Empleados
-    'Conexion de Kembrish
-    Public conex As New SqlConnection("Data Source=DESKTOP-GQPJ6BS;Initial Catalog=JKEnterprise;Integrated Security=True")
-    'Conexion de Dilan
-    'Public conex As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True")
+
+    Public conexion As New SqlConnection(Funciones.Conexion)
     Private Sub btRevisionEmpleado_Click(sender As Object, e As EventArgs) Handles btRevisionEmpleado.Click
 
 
@@ -27,13 +25,13 @@ Public Class Empleados
                         answer = MsgBox("ESTAS A PUNTO DE NO AGREGAR PRECIO EXTRA. CONTINUAR?", vbQuestion + vbYesNo + vbDefaultButton2, "CUIDADO")
 
                         If answer = vbYes Then
-                            conex.Open()
+                            conexion.Open()
 
                             'Agrega el update al ticket
 
                             Dim ActualizacionEmpl As New SqlCommand()
                             'Procedimiento almacenado para eliminar el libro seleccionado del combo
-                            ActualizacionEmpl.Connection = conex
+                            ActualizacionEmpl.Connection = conexion
 
                             ActualizacionEmpl.CommandType = CommandType.StoredProcedure
 
@@ -57,18 +55,18 @@ Public Class Empleados
                             End If
 
                         End If
-                        conex.Close()
+                        conexion.Close()
 
                     Else
                         Label20.Visible = False
 
-                        conex.Open()
+                        conexion.Open()
 
                         'Agrega el update al ticket
 
                         Dim ActualizacionEmpl As New SqlCommand()
                         'Procedimiento almacenado para eliminar el libro seleccionado del combo
-                        ActualizacionEmpl.Connection = conex
+                        ActualizacionEmpl.Connection = conexion
 
                         ActualizacionEmpl.CommandType = CommandType.StoredProcedure
 
@@ -93,7 +91,7 @@ Public Class Empleados
                             'Devuelve a la pantalla
                         End If
 
-                        conex.Close()
+                        conexion.Close()
                     End If
                 End If
             End If
@@ -115,11 +113,11 @@ Public Class Empleados
 
             'Verificar si lo que se escribe en la cajita de texto existe en la data base
 
-            conex.Open()
+            conexion.Open()
 
             Dim VerificaTarea As String = "SELECT COUNT(*) FROM Ticket WHERE idTicket = @ID"
 
-            Dim Command As New SqlCommand(VerificaTarea, conex)
+            Dim Command As New SqlCommand(VerificaTarea, conexion)
 
             Command.Parameters.AddWithValue("@ID", Val(tbIdForTarea.Text))
 
@@ -135,22 +133,22 @@ Public Class Empleados
 
                 'Capturar el equipo que corresponde con la ID
                 Dim consultaEquipo As String = "select equipo From Ticket where idTicket = @CapturadaID"
-                Dim comando1 As New SqlCommand(consultaEquipo, conex)
+                Dim comando1 As New SqlCommand(consultaEquipo, conexion)
                 comando1.Parameters.AddWithValue("@CapturadaID", idCapturada)
 
                 'Capturar el modelo que corresponda con la ID
                 Dim consultaModelo As String = "select modelo From Ticket where idTicket = @CapturadaID"
-                Dim comando2 As New SqlCommand(consultaModelo, conex)
+                Dim comando2 As New SqlCommand(consultaModelo, conexion)
                 comando2.Parameters.AddWithValue("@CapturadaID", idCapturada)
 
                 'Capturar el componente que corresponda con la ID
                 Dim consultaComponente As String = "select tipodeDano From Ticket where idTicket = @CapturadaID"
-                Dim comando3 As New SqlCommand(consultaComponente, conex)
+                Dim comando3 As New SqlCommand(consultaComponente, conexion)
                 comando3.Parameters.AddWithValue("@CapturadaID", idCapturada)
 
                 'Capturar la descripcion del ticket con esa ID
                 Dim consultaDescrip As String = "select descripcion From Ticket where idTicket = @CapturadaID"
-                Dim comando4 As New SqlCommand(consultaDescrip, conex)
+                Dim comando4 As New SqlCommand(consultaDescrip, conexion)
                 comando4.Parameters.AddWithValue("@CapturadaID", idCapturada)
                 'Obtener finalmente la id del usuario que inicio sesión. Corta la bocha.
 
@@ -187,7 +185,7 @@ Public Class Empleados
             End If
 
         End If
-        conex.Close()
+        conexion.Close()
     End Sub
 
     Private Sub btCancelTarea_Click(sender As Object, e As EventArgs) Handles btCancelTarea.Click
@@ -218,7 +216,7 @@ Public Class Empleados
         Dim consultaEmpleado As String = "SELECT idTicket, equipo, modelo, tipodeDano FROM Ticket where responsable = @nomEmple;"
 
 
-        Dim ejecutar As New SqlCommand(consultaEmpleado, conex)
+        Dim ejecutar As New SqlCommand(consultaEmpleado, conexion)
 
         ejecutar.Parameters.AddWithValue("@nomEmple", "Tyler Blue")
 
@@ -235,7 +233,7 @@ Public Class Empleados
         Catch ex As Exception
             Console.WriteLine(ex.Message)
         Finally
-            conex.Close()
+            conexion.Close()
         End Try
     End Sub
 

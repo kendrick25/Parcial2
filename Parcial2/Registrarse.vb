@@ -1,11 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class Registrarse
-    'Conexion de Kembrish
-    Public conex As New SqlConnection("Data Source=DESKTOP-GQPJ6BS;Initial Catalog=JKEnterprise;Integrated Security=True")
-    'Conexion de Dilan
-    'Public conex As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True")
-
-
+    Public conexion As New SqlConnection(Funciones.Conexion)
     'Botón para cancelar el progreso de ticket. Cierra el form de los datos del usuario
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles bnCancelRegistro.Click
         If tbNewUser.Text <> "" Or tbCedula.Text <> "" Or tbTelefono.Text <> "" Or tbNewUserName.Text <> "" Then
@@ -210,7 +205,7 @@ Public Class Registrarse
     'Procedimiento que almacena los datos del usuario temporalmente o definitivamente si se envia el ticket
     Public Sub AgregarDatosUsuario()
 
-        conex.Open()
+        conexion.Open()
 
         Dim passUsu As String = ""
         Dim userName As String = ""
@@ -226,7 +221,7 @@ Public Class Registrarse
 
         Dim NewUsuario As New SqlCommand()
 
-        NewUsuario.Connection = conex
+        NewUsuario.Connection = conexion
 
         NewUsuario.CommandType = CommandType.StoredProcedure
 
@@ -244,7 +239,7 @@ Public Class Registrarse
 
         NewUsuario.ExecuteNonQuery()
 
-        conex.Close()
+        conexion.Close()
 
     End Sub
 

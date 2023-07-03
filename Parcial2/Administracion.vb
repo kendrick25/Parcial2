@@ -4,8 +4,8 @@ Imports System.Text.RegularExpressions
 
 Public Class Administracion
     Public ContBoton As Boolean = False
-    'conexion  kembrish
-    Public conex As New SqlConnection("Data Source=DESKTOP-GQPJ6BS;Initial Catalog=JKEnterprise;Integrated Security=True")
+    'conexion de  base de datos
+    Public conexion As New SqlConnection(Funciones.Conexion)
     Private Sub BtnFinalizar_Click(sender As Object, e As EventArgs) Handles BtnFinalizar.Click
         Dim resultado As MsgBoxResult
         resultado = CType(MessageBox.Show("¿Desea finalizar la Administracion?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
@@ -19,9 +19,9 @@ Public Class Administracion
     End Sub
     'ver todo los tiketks
     Public Sub VerTodo()
-        conex.Open()
+        conexion.Open()
         ' Crear el comando y asignar el nombre del procedimiento almacenado
-        Dim command As New SqlCommand("ObtenerTodosLosTickets", conex)
+        Dim command As New SqlCommand("ObtenerTodosLosTickets", conexion)
         command.CommandType = CommandType.StoredProcedure
         Dim dataTable As New DataTable()
         ' Crear el adaptador y llenar la tabla
@@ -47,16 +47,16 @@ Public Class Administracion
         DataGridView1.Columns("fechaCreacion").HeaderText = "Fecha de Creación"
         DataGridView1.Columns("fechaEstimacion").HeaderText = "Fecha de Estimación"
         DataGridView1.Columns("fechaCierre").HeaderText = "Fecha de Cierre"
-        conex.Close()
+        conexion.Close()
     End Sub
     'ver tikets Pagados
     Public Sub MostrarPagados()
         Dim dataTable As New DataTable()
 
-        conex.Open()
+        conexion.Open()
 
         ' Crear el comando y asignar el nombre del procedimiento almacenado
-        Dim command As New SqlCommand("VerHistorialPago", conex)
+        Dim command As New SqlCommand("VerHistorialPago", conexion)
         command.CommandType = CommandType.StoredProcedure
 
         ' Crear el adaptador y llenar la tabla
@@ -82,16 +82,16 @@ Public Class Administracion
         DataGridView1.Columns("fechaCreacion").HeaderText = "Fecha de Creación"
         DataGridView1.Columns("fechaEstimacion").HeaderText = "Fecha de Estimación"
         DataGridView1.Columns("fechaCierre").HeaderText = "Fecha de Cierre"
-        conex.Close()
+        conexion.Close()
     End Sub
 
 
     'tiketks Pendientes
     Public Sub MosstrartiketsPendientes()
-        conex.Open()
+        conexion.Open()
 
         Dim consulta As String = "Select idTicket,equipo,modelo,tipodeDano,prioridad,descripcion,fechaCreacion,fechaEstimacion,estado from Ticket where estado='Pendiente'"
-        Dim ejecutar As New SqlCommand(consulta, conex)
+        Dim ejecutar As New SqlCommand(consulta, conexion)
         Dim tabla As New SqlDataAdapter(ejecutar)
         Dim dss As New DataSet
         tabla.Fill(dss, "Ticket")
@@ -106,13 +106,13 @@ Public Class Administracion
         DataGridView1.Columns("descripcion").HeaderText = "Descripción del Cliente"
         DataGridView1.Columns("fechaCreacion").HeaderText = "Fecha de Creación"
         DataGridView1.Columns("fechaEstimacion").HeaderText = "Fecha de Estimacion"
-        conex.Close()
+        conexion.Close()
     End Sub
     'tikets En revision
     Public Sub MosstrartiketsRevision()
-        conex.Open()
+        conexion.Open()
         Dim consulta As String = "Select idTicket,equipo,modelo,tipodeDano,prioridad,descripcion,fechaCreacion,fechaEstimacion,responsable,estado from Ticket where estado='En Revisión'"
-        Dim ejecutar As New SqlCommand(consulta, conex)
+        Dim ejecutar As New SqlCommand(consulta, conexion)
         Dim tabla As New SqlDataAdapter(ejecutar)
         Dim dss As New DataSet
         tabla.Fill(dss, "Ticket")
@@ -127,13 +127,13 @@ Public Class Administracion
         DataGridView1.Columns("descripcion").HeaderText = "Descripcion del Cliente"
         DataGridView1.Columns("fechaCreacion").HeaderText = "Fecha de Creación"
         DataGridView1.Columns("responsable").HeaderText = "Responsable"
-        conex.Close()
+        conexion.Close()
     End Sub
     'tikets En revision
     Public Sub MosstrartiketsFinalizados()
-        conex.Open()
+        conexion.Open()
         Dim consulta As String = "Select idTicket,equipo,modelo,tipodeDano,prioridad,descripcion,fechaCreacion,fechaCierre,observacion,responsable,monto,estado,tipoArreglo,montoArreglo,costosExtras from Ticket where estado='Finalizado'"
-        Dim ejecutar As New SqlCommand(consulta, conex)
+        Dim ejecutar As New SqlCommand(consulta, conexion)
         Dim tabla As New SqlDataAdapter(ejecutar)
         Dim dss As New DataSet
         tabla.Fill(dss, "Ticket")
@@ -147,14 +147,14 @@ Public Class Administracion
         DataGridView1.Columns("descripcion").HeaderText = "Descripcion del Cliente"
         DataGridView1.Columns("fechaCreacion").HeaderText = "Fecha de Creación"
         DataGridView1.Columns("responsable").HeaderText = "Responsable"
-        conex.Close()
+        conexion.Close()
     End Sub
     'Mostrar tikets Pagados
     Public Sub HistorialPagos()
         Dim dataTable As New DataTable()
-        conex.Open()
+        conexion.Open()
         ' Crear el comando y asignar el nombre del procedimiento almacenado
-        Dim command As New SqlCommand("HistorialPagos", conex)
+        Dim command As New SqlCommand("HistorialPagos", conexion)
         command.CommandType = CommandType.StoredProcedure
         ' Crear el adaptador y llenar la tabla
         Dim adapter As New SqlDataAdapter(command)
@@ -173,13 +173,13 @@ Public Class Administracion
         DataGridView1.Columns("costosExtras").HeaderText = "Costos Extras"
         DataGridView1.Columns("fechaCreacion").HeaderText = "Fecha de Creación"
         DataGridView1.Columns("fechaCierre").HeaderText = "Fecha de Cierre"
-        conex.Close()
+        conexion.Close()
     End Sub
     Public Sub AgendarEmpleado()
 
-        conex.Open()
+        conexion.Open()
         Dim consulta As String = "Select numeroTareas from UserRol  where idURer=(select idUser from Usuario  where nombre='" & ComboBoxEmpleados.Text & "')"
-        Dim ejecutar As New SqlCommand(consulta, conex)
+        Dim ejecutar As New SqlCommand(consulta, conexion)
         'Ejecutar comando
         Dim reader As SqlDataReader = ejecutar.ExecuteReader()
         Dim valor As Integer
@@ -190,10 +190,10 @@ Public Class Administracion
         End If
         valor = leervalor + 1
         reader.Close()
-        conex.Close()
-        conex.Open()
+        conexion.Close()
+        conexion.Open()
         Dim procAgendar As New SqlCommand()
-        procAgendar.Connection = conex
+        procAgendar.Connection = conexion
         procAgendar.CommandType = CommandType.StoredProcedure
         procAgendar.CommandText = "AgendarEmpleado"
         procAgendar.Parameters.AddWithValue("@idTicket ", TextBoxIdTicket.Text)
@@ -204,35 +204,35 @@ Public Class Administracion
         procAgendar.Parameters.AddWithValue("@numeroTareas", valor)
         'Ejecutar procedimiento
         procAgendar.ExecuteNonQuery()
-        conex.Close()
+        conexion.Close()
         LabelComplete.Visible = True
         LabelComplete.Text = "Cliente Agendado"
     End Sub
     Public Sub MostrarEmpleadosDisponible()
         ComboBoxEmpleados.Items.Clear()
-        conex.Open()
+        conexion.Open()
         Dim mostrarLibrosDisponibles As String = "select nombre from Usuario i, UserRol u where i.idUser = u.idURer and (u.rolUser = 'empleado' or u.rolUser = 'admin' ) and u.estado = 'Disponible' and u.numeroTareas < 10"
-        Dim llenar As New SqlCommand(mostrarLibrosDisponibles, conex)
+        Dim llenar As New SqlCommand(mostrarLibrosDisponibles, conexion)
         Dim reader As SqlDataReader = llenar.ExecuteReader()
         While reader.Read()
             ComboBoxEmpleados.Items.Add(reader("nombre").ToString())
         End While
         reader.Close()
-        conex.Close()
+        conexion.Close()
     End Sub
     ' label para el numero de tarea de los empleados 
     Public Sub NumeroTareasEmpleado()
-        conex.Open()
+        conexion.Open()
         Dim mostrarLibrosDisponibles As String = "select numeroTareas from Usuario i, UserRol u 
                                                   where i.idUser = u.idURer and (u.rolUser = 'empleado' or u.rolUser = 'admin' ) 
                                                   and u.estado = 'Disponible' and u.numeroTareas < 10 and nombre='" & ComboBoxEmpleados.Text & "'"
-        Dim llenar As New SqlCommand(mostrarLibrosDisponibles, conex)
+        Dim llenar As New SqlCommand(mostrarLibrosDisponibles, conexion)
         Dim reader As SqlDataReader = llenar.ExecuteReader()
         While reader.Read()
             LabelTareas.Text = reader("numeroTareas").ToString()
         End While
         reader.Close()
-        conex.Close()
+        conexion.Close()
     End Sub
     Private Sub Administracion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'datagridview
@@ -503,9 +503,9 @@ Public Class Administracion
     End Sub
 
     Public Sub CancelarPago()
-        conex.Open()
+        conexion.Open()
         Dim procAgendar As New SqlCommand()
-        procAgendar.Connection = conex
+        procAgendar.Connection = conexion
         procAgendar.CommandType = CommandType.StoredProcedure
         procAgendar.CommandText = "CancelarPago"
         procAgendar.Parameters.AddWithValue("@idTicket ", TextBoxIdTicket.Text)
@@ -513,14 +513,14 @@ Public Class Administracion
         procAgendar.Parameters.AddWithValue("@estado", "Pagado")
         'Ejecutar procedimiento
         procAgendar.ExecuteNonQuery()
-        conex.Close()
+        conexion.Close()
         LabelComplete.Visible = Visible
         LabelComplete.Text = "--Monto de Cliente Cancelado--"
     End Sub
     Public Sub ImprimirFactura()
-        conex.Open()
+        conexion.Open()
         Dim procAgendar As New SqlCommand()
-        procAgendar.Connection = conex
+        procAgendar.Connection = conexion
         procAgendar.CommandType = CommandType.StoredProcedure
         procAgendar.CommandText = "ImprimirFactura"
         procAgendar.Parameters.AddWithValue("@idTicket ", TextBoxIdTicket.Text)
@@ -566,7 +566,7 @@ Public Class Administracion
             mensaje.LabelEfectivoPagar.Text = total.ToString("C")
             mensaje.Show()
         End If
-        conex.Close()
+        conexion.Close()
     End Sub
 
     Private Sub BtnGenerarFactura_Click(sender As Object, e As EventArgs) Handles BtnGenerarFactura.Click
@@ -576,9 +576,9 @@ Public Class Administracion
     End Sub
     'funcion de busqueda de datos Agendar
     Public Sub BuscarDatosAgendar()
-        conex.Open()
+        conexion.Open()
         Dim procAgendar As New SqlCommand()
-        procAgendar.Connection = conex
+        procAgendar.Connection = conexion
         procAgendar.CommandType = CommandType.StoredProcedure
         procAgendar.CommandText = "BusquedaDatosAgendar"
         procAgendar.Parameters.AddWithValue("@idTicket ", TextBoxIdTicket.Text)
@@ -624,7 +624,7 @@ Public Class Administracion
             Dim caracteres As Integer = TextBoxObservacion.TextLength
             LabelContMultiline.Text = caracteres.ToString() & "/500"
         End If
-        conex.Close()
+        conexion.Close()
     End Sub
 
     'Control de Busqueda de ID
@@ -708,8 +708,8 @@ Public Class Administracion
             '///////////////////////////////////////////////////////////
             If ComboBoxOpciones.Text = "Agendar" Then
                 'codigo para seleccion de datagridview
-                conex.Open()
-                Dim cmd As New SqlCommand("Select idTicket,equipo,modelo,tipodeDano,prioridad,descripcion,fechaCreacion,fechaEstimacion,estado from Ticket where estado='Pendiente' And idTicket LIKE @myValue", conex)
+                conexion.Open()
+                Dim cmd As New SqlCommand("Select idTicket,equipo,modelo,tipodeDano,prioridad,descripcion,fechaCreacion,fechaEstimacion,estado from Ticket where estado='Pendiente' And idTicket LIKE @myValue", conexion)
                 cmd.Parameters.AddWithValue("@myValue", "%" & TextBoxIdTicket.Text & "%")
                 Dim tabla As New SqlDataAdapter(cmd)
                 Dim dss As New DataSet
@@ -726,7 +726,7 @@ Public Class Administracion
                 DataGridView1.Columns("fechaCreacion").HeaderText = "Fecha de Creación"
                 DataGridView1.Columns("fechaEstimacion").HeaderText = "Fecha de Estimación"
                 DataGridView1.Columns("estado").HeaderText = "Estado"
-                conex.Close()
+                conexion.Close()
                 Dim encotrado1 As Boolean = False
                 For Each row As DataGridViewRow In DataGridView1.Rows
                     If row.Cells("idTicket").Value IsNot Nothing AndAlso row.Cells("idTicket").Value = TextBoxIdTicket.Text Then
@@ -737,9 +737,9 @@ Public Class Administracion
                         If IsNumeric(TextBoxIdTicket.Text) Then
                             Dim valornumerico As Integer
                             Integer.TryParse(TextBoxIdTicket.Text, valornumerico)
-                            conex.Open()
+                            conexion.Open()
                             Dim procAgendar As New SqlCommand()
-                            procAgendar.Connection = conex
+                            procAgendar.Connection = conexion
                             procAgendar.CommandType = CommandType.StoredProcedure
                             procAgendar.CommandText = "BusquedaDatosAgendar"
                             procAgendar.Parameters.AddWithValue("@idTicket ", valornumerico)
@@ -758,10 +758,10 @@ Public Class Administracion
                             Else
                                 ButtonMostrarOcultar.Visible = False
                                 BtnAcction.Visible = False
-                                conex.Close()
+                                conexion.Close()
                                 Exit Sub
                             End If
-                            conex.Close()
+                            conexion.Close()
                             BuscarDatosAgendar()
                         Else
                             ButtonMostrarOcultar.Visible = False
@@ -780,7 +780,7 @@ Public Class Administracion
             'codigo para busqueda en historial de pago
             If ComboBoxOpciones.Text = "Historial de Pagos" Then
                 'codigo para seleccion de datagridview
-                conex.Open()
+                conexion.Open()
                 Dim stringquery As String
                 If IsNumeric(TextBoxIdTicket.Text) Then
                     stringquery = "T.idTicket LIKE " & TextBoxIdTicket.Text
@@ -806,7 +806,7 @@ Public Class Administracion
                                            INNER JOIN Usuario U ON TU.IdsUser = U.idUser
                                            WHERE ISNUMERIC(U.idUser) = 0
                                                  AND PATINDEX('%[a-ñ-zA-Ñ-Z]%', U.idUser) > 0
-                                                 AND T.estado = 'Pagado' AND (" & stringquery & ");", conex)
+                                                 AND T.estado = 'Pagado' AND (" & stringquery & ");", conexion)
                 Dim tabla As New SqlDataAdapter(cmd)
                 Dim dss As New DataSet
                 tabla.Fill(dss, "Ticket")
@@ -825,7 +825,7 @@ Public Class Administracion
                 DataGridView1.Columns("costosExtras").HeaderText = "Costos Extras"
                 DataGridView1.Columns("fechaCreacion").HeaderText = "Fecha de Creación"
                 DataGridView1.Columns("fechaCierre").HeaderText = "Fecha de Cierre"
-                conex.Close()
+                conexion.Close()
                 Dim encontrado As Boolean = False
                 '////////////////////////////////////////////////////////////////////////////////////////////
                 If IsNumeric(TextBoxIdTicket.Text) Then

@@ -4,11 +4,7 @@ Imports System.Data.SqlClient
 Imports System.Data
 
 Public Class MenuPrincipal
-    'conexion kendrick
-    Public conexion As New SqlConnection("Data Source=DESKTOP-GQPJ6BS;Initial Catalog=JKEnterprise;Integrated Security=True")
-    'Conexion dilan
-    'Public conexion As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True")
-
+    Public conexion As New SqlConnection(Funciones.Conexion)
     ' Variables para guardar la posición y el tamaño del formulario
     Dim mouseDownm As Boolean = False
     Dim mouseX As Integer = 0
@@ -172,11 +168,11 @@ Public Class MenuPrincipal
         End Property
     End Class
     Private Sub LlenarComboBox()
-        conexion.Open()
+        Conexion.Open()
         ' Realizar la consulta a la base de datos
         Dim query As String = "SELECT idTicket FROM Ticket WHERE estado = 'Finalizado'"
 
-        Dim command As New SqlCommand(query, conexion)
+        Dim command As New SqlCommand(query, Conexion)
 
         ' Ejecutar la consulta y obtener los resultados
         Dim reader As SqlDataReader = command.ExecuteReader()
@@ -193,7 +189,7 @@ Public Class MenuPrincipal
 
         reader.Close()
 
-        conexion.Close()
+        Conexion.Close()
 
         If Not foundResults Then
 
@@ -459,10 +455,13 @@ Public Class MenuPrincipal
         'Tablas contenedoras de forms 
         tablaContenedoraForms.RowStyles(0).Height = 0 'opcion de actualizar
         ' Ocultar Tabpage
-        TabPage.Parent = Nothing
+        ContForms.TabPages.Clear()
         ' Mostrar TabPage
         'TabPage.Parent = ContFormse
-
+        'ocultar labels
+        lbNombreCaj.ForeColor = Color.FromArgb(224, 224, 224)
+        lbNombreCajero.ForeColor = Color.FromArgb(224, 224, 224)
+        lbDimeIDCorrectUser.ForeColor = Color.FromArgb(224, 224, 224)
     End Sub
 
     Private Sub IniciarSessionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles IniciarSessionToolStripMenuItem.Click
@@ -509,11 +508,11 @@ Public Class MenuPrincipal
 
         Dim consultaExiste As String = "SELECT COUNT(*) FROM Usuario WHERE nombreUser = @Usuario AND passUser = @Contraseña"
 
-        Using command As New SqlCommand(consultaExiste, conexion)
+        Using command As New SqlCommand(consultaExiste, Conexion)
             command.Parameters.AddWithValue("@Usuario", usuario)
             command.Parameters.AddWithValue("@Contraseña", contraseña)
 
-            conexion.Open()
+            Conexion.Open()
 
             ' Ejecuta la consulta y obtén el resultado
             Dim resultado As Integer = Convert.ToInt32(command.ExecuteScalar())
@@ -529,7 +528,7 @@ Public Class MenuPrincipal
 
                 Dim consultaId As String = "SELECT idUser FROM Usuario WHERE nombreUser = @NombreUsuario"
 
-                Dim comando4 As New SqlCommand(consultaId, conexion)
+                Dim comando4 As New SqlCommand(consultaId, Conexion)
 
                 comando4.Parameters.AddWithValue("NombreUsuario", tbUser.Text)
 
@@ -604,7 +603,7 @@ Public Class MenuPrincipal
 
                         Dim consultaNombre As String = "select nombre From Usuario where nombreUser = @Nombre"
 
-                        Dim comando As New SqlCommand(consultaNombre, conexion)
+                        Dim comando As New SqlCommand(consultaNombre, Conexion)
 
                         comando.Parameters.AddWithValue("@Nombre", lbNombreCajero.Text)
 
@@ -616,7 +615,7 @@ Public Class MenuPrincipal
 
                         Funciones.UserLoginCajero = lbNombreCaj.Text
 
-                        conexion.Close()
+                        Conexion.Close()
                         '.........................................................................................
                         'Mostrar la tabla que relaciona los tickets y el empleado que realiza la sesión
                         vistaUsuarioTable()
@@ -632,7 +631,7 @@ Public Class MenuPrincipal
                         MessageBox.Show("Rol no válido")
                 End Select
 
-                conexion.Close()
+                Conexion.Close()
 
             Else
                 'Realizar las acciones necesarias después del inicio de sesión erróneo
@@ -640,7 +639,7 @@ Public Class MenuPrincipal
                 tbPass.Clear()
                 tbUser.Clear()
             End If
-            conexion.Close()
+            Conexion.Close()
         End Using
     End Sub
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles BtnSolicitudTiket.Click
@@ -671,7 +670,7 @@ Public Class MenuPrincipal
                                          WHERE uR.rolUser = 'user' 
                                          ORDER BY t.idTicket ASC;"
 
-        Dim ejecutar As New SqlDataAdapter(consultaCliente, conexion)
+        Dim ejecutar As New SqlDataAdapter(consultaCliente, Conexion)
 
 
         Try
@@ -685,7 +684,7 @@ Public Class MenuPrincipal
         Catch ex As Exception
             Console.WriteLine(ex.Message)
         Finally
-            conexion.Close()
+            Conexion.Close()
         End Try
     End Sub
 
@@ -696,7 +695,7 @@ Public Class MenuPrincipal
         Dim consultaEmpleado As String = "SELECT idTicket, equipo, modelo, tipodeDano FROM Ticket where responsable = @nomEmple;"
 
 
-        Dim ejecutar As New SqlCommand(consultaEmpleado, conexion)
+        Dim ejecutar As New SqlCommand(consultaEmpleado, Conexion)
 
         ejecutar.Parameters.AddWithValue("@nomEmple", "Tyler Blue")
 
@@ -713,7 +712,7 @@ Public Class MenuPrincipal
         Catch ex As Exception
             Console.WriteLine(ex.Message)
         Finally
-            conexion.Close()
+            Conexion.Close()
         End Try
     End Sub
 
@@ -734,10 +733,10 @@ Public Class MenuPrincipal
         ' Variable para almacenar la ID del usuario
 
         Try
-            conexion.Open()
+            Conexion.Open()
 
             Dim consulta As String = "SELECT idUser FROM Usuario WHERE nombreUser = @NombreUsuario"
-            Dim comando As New SqlCommand(consulta, conexion)
+            Dim comando As New SqlCommand(consulta, Conexion)
             comando.Parameters.AddWithValue("@NombreUsuario", nombreUsuario)
 
             Dim resultado As Object = comando.ExecuteScalar()
@@ -748,7 +747,7 @@ Public Class MenuPrincipal
         Catch ex As Exception
             ' Manejar la excepción apropiadamente
         Finally
-            conexion.Close()
+            Conexion.Close()
         End Try
 
         Return idUsuario
@@ -759,7 +758,7 @@ Public Class MenuPrincipal
         Dim rolUser As String = ""
 
         Dim consultaRol As String = "SELECT rolUser FROM UserRol WHERE idURer = @IdCapturada"
-        Dim commandRol As New SqlCommand(consultaRol, conexion)
+        Dim commandRol As New SqlCommand(consultaRol, Conexion)
 
         commandRol.Parameters.AddWithValue("@IdCapturada", nombreUsuario)
 
@@ -786,8 +785,8 @@ Public Class MenuPrincipal
                                 ORDER BY t.idTicket ASC;"
 
 
-        Using command As New SqlCommand(query, conexion)
-            conexion.Open()
+        Using command As New SqlCommand(query, Conexion)
+            Conexion.Open()
             command.Parameters.AddWithValue("@texto", "%" & tbFiltro.Text & "%")
 
             Using adapter As New SqlDataAdapter(command)
@@ -796,7 +795,7 @@ Public Class MenuPrincipal
 
                 DGUserPrincipal.DataSource = dataTable
             End Using
-            conexion.Close()
+            Conexion.Close()
         End Using
     End Sub
 
