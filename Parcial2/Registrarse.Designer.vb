@@ -53,7 +53,9 @@ Partial Class Registrarse
         Me.lbIdAsignada = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.gbDetallesRegistro.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -70,6 +72,7 @@ Partial Class Registrarse
         'gbDetallesRegistro
         '
         Me.gbDetallesRegistro.BackColor = System.Drawing.Color.Transparent
+        Me.gbDetallesRegistro.Controls.Add(Me.PictureBox1)
         Me.gbDetallesRegistro.Controls.Add(Me.faltante6)
         Me.gbDetallesRegistro.Controls.Add(Me.faltante5)
         Me.gbDetallesRegistro.Controls.Add(Me.faltante4)
@@ -183,16 +186,16 @@ Partial Class Registrarse
         Me.bnCancelRegistro.BackColor = System.Drawing.Color.HotPink
         Me.bnCancelRegistro.Font = New System.Drawing.Font("Microsoft New Tai Lue", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.bnCancelRegistro.ForeColor = System.Drawing.Color.Black
-        Me.bnCancelRegistro.Location = New System.Drawing.Point(25, 345)
+        Me.bnCancelRegistro.Location = New System.Drawing.Point(28, 363)
         Me.bnCancelRegistro.Name = "bnCancelRegistro"
-        Me.bnCancelRegistro.Size = New System.Drawing.Size(120, 76)
+        Me.bnCancelRegistro.Size = New System.Drawing.Size(120, 43)
         Me.bnCancelRegistro.TabIndex = 18
-        Me.bnCancelRegistro.Text = "CANCELAR REGISTRO"
+        Me.bnCancelRegistro.Text = "CANCEL"
         Me.bnCancelRegistro.UseVisualStyleBackColor = False
         '
         'carga
         '
-        Me.carga.Location = New System.Drawing.Point(427, 394)
+        Me.carga.Location = New System.Drawing.Point(488, 394)
         Me.carga.Name = "carga"
         Me.carga.Size = New System.Drawing.Size(187, 33)
         Me.carga.TabIndex = 17
@@ -202,11 +205,11 @@ Partial Class Registrarse
         Me.btAgregarNew.BackColor = System.Drawing.Color.MediumSpringGreen
         Me.btAgregarNew.Font = New System.Drawing.Font("Microsoft PhagsPa", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.btAgregarNew.ForeColor = System.Drawing.Color.Black
-        Me.btAgregarNew.Location = New System.Drawing.Point(472, 345)
+        Me.btAgregarNew.Location = New System.Drawing.Point(581, 345)
         Me.btAgregarNew.Name = "btAgregarNew"
-        Me.btAgregarNew.Size = New System.Drawing.Size(94, 43)
+        Me.btAgregarNew.Size = New System.Drawing.Size(67, 43)
         Me.btAgregarNew.TabIndex = 16
-        Me.btAgregarNew.Text = "SIGN IN"
+        Me.btAgregarNew.Text = "NEXT"
         Me.btAgregarNew.UseVisualStyleBackColor = False
         '
         'Panel2
@@ -369,6 +372,17 @@ Partial Class Registrarse
         'Timer1
         '
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox1.Location = New System.Drawing.Point(523, 345)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(52, 43)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.PictureBox1.TabIndex = 26
+        Me.PictureBox1.TabStop = False
+        '
         'Registrarse
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
@@ -383,6 +397,7 @@ Partial Class Registrarse
         Me.Text = "Registrarse"
         Me.gbDetallesRegistro.ResumeLayout(False)
         Me.gbDetallesRegistro.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -417,4 +432,5 @@ Partial Class Registrarse
     Friend WithEvents faltante4 As Label
     Friend WithEvents faltante6 As Label
     Friend WithEvents faltante5 As Label
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

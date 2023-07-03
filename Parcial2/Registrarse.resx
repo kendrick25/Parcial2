@@ -58,10 +58,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="PictureBox1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAAWEAAAFhAfKe8T4AAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
+        AAACtElEQVR4Xu2bQWsTQRiG96L+GxX8Fa3dNFFyKBJUkFY8q1UP0lvBf9CjeBPJRmvTSlrpHgR/gFaT
+        NhpvbSixVBSaQ8d5N0ndjl/cjezObvabgSeEb7+BfZ+dWfYyln8UnxfPTpULt+1y4e2Uk9+TiIyALBt2
+        ZXoOGftxT49JJ3/RdvI7ysQssi0f8oV+7N5AeHnhh9KYZQ5zL3PnvfAT1YlzTJ68SsPbDtjzxEUWXHby
+        s1b/hUc2MGDdkj/7SpETexBwrBQ5cQwB1AU2GAFUkRNGAFXkhBFAFTlhBFBFThgBVJETRgBVTDtztTvi
+        8bsFMbNSIq+PwlgJsJ2CePG5LI66R6Lb7YrOz4645z4ge8MyNgIQ/vXOihfcT32/QfaHZSwEDAsPDn4d
+        kHPCknoB/woPNr+55LywpFpAUPivnZa4Vr1Ozg1LagUg/KvtZTI4aH1viVL1Jjl3FFIpQFd4kDoBOsOD
+        yAQUl2fE0w/PxNqXN2Lx/ROyJ4jenq+SwQH2fGn1Bjn3f4lEwHTlqthqfzp1s3h5IRDVT5FEeBCJgHn3
+        EXnTq801YVeCJehe9n4iEXDffUjeOAiSkGR4ENsW8IOlTW2HpJa9n8hegvggaXaaZBCgroSkn/yAyASA
+        sBLSEh5EKgBgyWLpUsEAlnzSy95P5AJA0EoYhs4nPyAWAWBUCUmEB7EJAGElJBUexCoABElIMjyIXQAY
+        JiHp8ECLAIA3+8f21kl4/Nf5th+GNgEAX4x33XmPXOUK2aMbrQLSiBFAFTlhBFBFThgBVJETRgBV5IQR
+        QBU5YQTIH/YHJtpKkRO7ELChFDlRs3CclLjAApn9Vu+8MI6TEg0Zp35pafaMd3oUZ2ll4VBpyDJ/js4O
+        Rl9CQ2nMIvW/wg8GtgOOk8qmdcmub9K4gyw17PmTZe8Ny/oNO+G18qZMzN8AAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="btMostrarVer.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAB
-        yAAAAcgBs0i2uAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARsSURBVHhe5do9
+        xgAAAcYBF8H6RgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARsSURBVHhe5do9
         rBVFGMbxEyAghAQCNNoaKZSKEAMhklAIobUgliZWFjZ0VDYUaoFGSaigFQoLKiFSIGiMhsJoNDZ+lEYb
         g5qY+HH9Pyc7N++d++w5M7OXa3Te5Ee475l9d87ZPbszs2e2srLSNZvsiU32xCZ7YpM9scme2GRPbLIn
         NtkTm+yJTfbEJntik5uFeETca5vFJjcKsQVP4QVcwof4Gj/gd6iR6P/K6TW1UVtto223uNobxSanIHbg

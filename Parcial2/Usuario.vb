@@ -4,15 +4,8 @@ Public Class Usuario
     Public conex As New SqlConnection("Data Source=DESKTOP-8ELH4DT;Initial Catalog=JKEnterprise;Integrated Security=True")
 
 
-    'Variables publicas que van a contener el id y nombre de usuario para cuando hago el load de nuevo ticket 
-    'Estas ya traen valor del modulo "Funciones"
-    'No se ha controlado que si se ingresan valores que no estan en la base de datos tanto de user como pass... mando estos valores
-    'asumiendo que son correctos tanto pass como user y que existen en la base de datos...
-
-
-    Public idUsuario As String = ""
-    Public usuarioName As String = ""
-
+    'Se se finaliza el ticket con botón "cancelar proceso" del form del ticket. Se eliminan el tab actual y el
+    'anterior. Queda pendiente controlar que no se puedan abrir mas tabs en el modo "Abrir Ticket"
     Private Sub BtnFinalizar_Click(sender As Object, e As EventArgs) Handles BtnFinalizar.Click
         Dim resultado As MsgBoxResult
         resultado = CType(MessageBox.Show("¿Desea finalizar la solicitud de ticktet actual?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
@@ -20,10 +13,65 @@ Public Class Usuario
         Else
             'borrar Pagina actual
             Dim tab As TabPage = MenuPrincipal.ContForms.SelectedTab
+            Dim ids As Integer = MenuPrincipal.ContForms.SelectedIndex
             MenuPrincipal.ContForms.TabPages.Remove(tab)
+            MenuPrincipal.ContForms.TabPages.RemoveAt(ids - 1)
             Me.Close()
+            Registrarse.Close()
+            MenuPrincipal.BtnSolicitudTiket.Enabled = True
+
+
+            'Si se cancela el proceso, los datos que se habian almacenado temporalmente del cliente, se borran
+            conex.Open()
+
+            Dim NewUsuario As New SqlCommand()
+
+            NewUsuario.Connection = conex
+
+            NewUsuario.CommandType = CommandType.StoredProcedure
+
+            NewUsuario.CommandText = "DarDeBaja"
+
+            NewUsuario.Parameters.AddWithValue("@nombreUsu", Funciones.nombreToCancel)
+
+            NewUsuario.ExecuteNonQuery()
+
+            conex.Close()
+
         End If
     End Sub
+
+
+    'Se se confirma otro ticket, se limpia el form para ingresar datos nuevamente
+    Public Sub CleanToOtherTicket()
+
+        gbDetalleTicket2.Enabled = False
+        gbDetalleTicket1.Enabled = True
+        cbEquipo.Text = Nothing
+        cbComponente.Text = Nothing
+        cbModelo.Text = Nothing
+        cbModelo.Items.Clear()
+        cbComponente.Items.Clear()
+
+        lbDias.Text = Nothing
+        tbDescripcion.Text = Nothing
+        lbFechaEstimada.Text = Nothing
+        limiteChar.Visible = True
+        limiteChar.Text = Nothing
+
+        btConfirm1.Enabled = True
+        btConfirm2.Enabled = False
+        btConfirm3.Enabled = False
+        btConfirm4.Enabled = False
+
+        lbPrioridad.Visible = False
+        lbExtras.Visible = False
+
+        lbDias.Visible = False
+        bnCrearTicket.Enabled = False
+
+    End Sub
+
 
     Private Sub Usuario_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -34,26 +82,25 @@ Public Class Usuario
         lbExtras.Visible = False
         lbDias.Visible = False
         bnCrearTicket.Enabled = False
+        btConfirm3.Enabled = False
+        limiteChar.Text = Nothing
+        lbFechaActual.Visible = False
+        lbFechaEstimada.Visible = False
+        lbDimeID.Visible = False
+
         'Establece la fecha actual
-
         lbFechaActual.Text = DateTime.Now.ToString("yyyy-MM-dd")
-
-        'Obtiene la cadena nombre_de_usuario proveniente del login
-
-        usuarioName = Funciones.UserLoginName
+        lbFechaShowLoad.Text = Date.Today
 
 
+        'La asigno al label el valor que contendrá la id para poder mandar el ticket con el procedimiento
+        lbDimeID.Text = Funciones.idAsig
 
-        'Variable para almacenar la Id de usuario cuyo nombre coincida con el de arriba
-        'Esta variable globar se le asigna el valor de ID que trae del inicio de sesion
-        idUsuario = Funciones.userID
-
-
-        'La asigno al texbox que contendrá la id para poder mandar el ticket con el procedimiento
-        lbDimeID.Text = idUsuario
 
     End Sub
 
+
+    'Funciones que llenan los combobox con las opciones
     Private Sub cbEquipo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbEquipo.SelectedIndexChanged
 
         Select Case cbEquipo.SelectedIndex
@@ -154,6 +201,8 @@ Public Class Usuario
 
     End Sub
 
+
+    'Boton verde de confirmacion del primer groupbox
     Private Sub btConfirm1_Click(sender As Object, e As EventArgs) Handles btConfirm1.Click
 
         If cbEquipo.SelectedItem = Nothing Then
@@ -176,6 +225,8 @@ Public Class Usuario
                     lbExtras.Visible = True
                     estableceEstimado()
                     lbFechaEstimada.Text = estableceFechaEstimada(Val(lbDias.Text), lbFechaActual.Text)
+                    btConfirm3.Enabled = True
+                    lbFechaEstimada.Visible = True
                 End If
 
             End If
@@ -183,6 +234,8 @@ Public Class Usuario
 
     End Sub
 
+
+    'Boton verde de cancelacion del primer groupbox
     Private Sub btConfirm2_Click(sender As Object, e As EventArgs) Handles btConfirm2.Click
         btConfirm1.Enabled = True
         gbDetalleTicket1.Enabled = True
@@ -190,7 +243,11 @@ Public Class Usuario
         btConfirm2.Enabled = False
         lbPrioridad.Visible = False
         lbExtras.Visible = False
+        btConfirm3.Enabled = False
+        lbFechaEstimada.Visible = False
     End Sub
+
+
 
     Private Sub tbDescripcion_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbDescripcion.KeyPress
         If e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Enter) Then
@@ -205,9 +262,10 @@ Public Class Usuario
             e.Handled = True
         End If
 
-        limiteChar.Text = tbDescripcion.TextLength.ToString & "/" & maxLength
     End Sub
 
+
+    'Boton verde de confirmacion del segundo groupbox
     Private Sub bnConfirm3_Click(sender As Object, e As EventArgs) Handles btConfirm3.Click
 
         If tbDescripcion.Text = Nothing Then
@@ -220,11 +278,13 @@ Public Class Usuario
             lbExtras.Visible = False
             limiteChar.Visible = False
             bnCrearTicket.Enabled = True
+            btConfirm2.Enabled = False
         End If
 
     End Sub
 
 
+    ''Boton verde de cancelacion del segundo groupbox
     Private Sub btConfirm4_Click(sender As Object, e As EventArgs) Handles btConfirm4.Click
         btConfirm3.Enabled = True
         gbDetalleTicket2.Enabled = True
@@ -233,9 +293,11 @@ Public Class Usuario
         lbExtras.Visible = True
         limiteChar.Visible = True
         bnCrearTicket.Enabled = False
+        btConfirm2.Enabled = True
     End Sub
 
 
+    'Funcion que establece el valor de los dias de estimacion por el componente que se selecciona
     Public Sub estableceEstimado()
         If cbComponente.SelectedItem = "Tarjeta gráfica" Or cbComponente.SelectedItem = "Tarjeta Madre" Then
             lbDias.Text = "10"
@@ -258,16 +320,25 @@ Public Class Usuario
         End If
     End Sub
 
+
+
+    'Función para establecer una fecha estimada de reparación y la hora a partir de la cual se puede visitar el sitio
     Public Function estableceFechaEstimada(dias As Integer, Fecha As String) As String
 
-        Dim fechaEstimada As Date
+        Dim fechaNormal As Date = Fecha
+        Dim fechaHoraEstimada, fechaHora As Date
+        Dim horaAtencion As Date = TimeSerial(9, 0, 0)
+        fechaHora = fechaNormal.Add(horaAtencion.TimeOfDay)
+
         ' Genera la fecha estimada sumando los días a la fecha inicial
-        fechaEstimada = DateAdd("d", dias, Fecha)
+        fechaHoraEstimada = DateAdd("d", dias, fechaHora)
 
         ' Imprime la fecha estimada
-        Return fechaEstimada
+        Return fechaHoraEstimada
     End Function
 
+
+    'Llena los componentes de todas la marcas de laptop
     Public Sub llenarComponentesLaptop()
         cbComponente.Items.Clear()
         cbComponente.Items.Add("Teclado")
@@ -282,10 +353,12 @@ Public Class Usuario
         cbComponente.Items.Add("Puertos USB")
     End Sub
 
+
+    'Llena los componentes de todas la marcas de PC
     Public Sub llenarComponentesPC()
         cbComponente.Items.Clear()
         cbComponente.Items.Add("Placa base")
-        cbComponente.Items.Add("Window")
+        cbComponente.Items.Add("Windows")
         cbComponente.Items.Add("Monitor")
         cbComponente.Items.Add("Disipador y procesador")
         cbComponente.Items.Add("Bahías y discos duros")
@@ -297,21 +370,80 @@ Public Class Usuario
         cbComponente.Items.Add("Puertos USB")
     End Sub
 
+
+    'Botón para enviar el ticket con todos los campos llenos
     Private Sub bnCrearTicket_Click(sender As Object, e As EventArgs) Handles bnCrearTicket.Click
+
+        'AGREGAR PROCEDIMIENTO PARA CREAR LA TABLA CON LOS DATOS DEL USUARIO
+
+        Dim answer5 As Integer
+
+        answer5 = MsgBox("¿DESEAS ENVIAR EL TICKET?. ¡NO SE PODRÁ CANCELAR!", vbYesNo)
+
+        If answer5 = vbYes Then
+
+            'Si se confirma el ticket, se guardan los datos del cliente y se agrega el ticket que esta relacionado con él.
+
+            AgregarDatosTicket()
+
+            MessageBox.Show("TICKET ENVIADO CON EXITO", "GRACIAS", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            Dim resultado As DialogResult = MessageBox.Show("¿DESEA SOLICITAR OTRO TICKET?", "?", MessageBoxButtons.YesNo)
+
+            If resultado = DialogResult.Yes Then
+
+                'Refrescar form
+                Me.Refresh()
+
+                'Limpiar campos
+                CleanToOtherTicket()
+
+            ElseIf resultado = DialogResult.No Then
+
+                Dim tab As TabPage = MenuPrincipal.ContForms.SelectedTab
+                Dim ids As Integer = MenuPrincipal.ContForms.SelectedIndex
+                MenuPrincipal.ContForms.TabPages.Remove(tab)
+                MenuPrincipal.ContForms.TabPages.RemoveAt(ids - 1)
+                Me.Close()
+                Registrarse.Close()
+                MenuPrincipal.BtnSolicitudTiket.Enabled = True
+                MenuPrincipal.vistaUsuarioTable()
+
+            End If
+
+
+        Else
+            'Devuelve a la pantalla
+        End If
+
+    End Sub
+
+
+    'Botón que regresa a tab de datos del cliente (anterior asumiendo que no se puede abrir mas tabs)
+    Private Sub btRegresar_Click(sender As Object, e As EventArgs) Handles btRegresar.Click
+        'Cuando se esta ingresando los datos del ticket puedo regresar al tab de alado
+        Dim id As Integer = MenuPrincipal.ContForms.SelectedIndex
+        MenuPrincipal.ContForms.SelectTab(id - 1)
+    End Sub
+
+
+
+    'Funcion que agrega ticket con base al cliente que lo solicitó
+    Public Sub AgregarDatosTicket()
 
         conex.Open()
 
         'Procedimiento para enviar ticket
 
         Dim NewTicket As New SqlCommand()
-        'Procedimiento almacenado para eliminar el libro seleccionado del combo
+
         NewTicket.Connection = conex
 
         NewTicket.CommandType = CommandType.StoredProcedure
 
         NewTicket.CommandText = "NuevoTicket"
 
-        NewTicket.Parameters.AddWithValue("@idRequest", lbDimeID.Text)
+        NewTicket.Parameters.AddWithValue("@idRequest", Funciones.idAsig)
         NewTicket.Parameters.AddWithValue("@equipo", cbEquipo.SelectedItem)
         NewTicket.Parameters.AddWithValue("@modeloEq", cbModelo.SelectedItem)
         NewTicket.Parameters.AddWithValue("@TipodeDano", cbComponente.SelectedItem)
@@ -319,27 +451,25 @@ Public Class Usuario
         NewTicket.Parameters.AddWithValue("@descrip", tbDescripcion.Text)
         NewTicket.Parameters.AddWithValue("@FechaCreac", lbFechaActual.Text)
         NewTicket.Parameters.AddWithValue("@FechaEsti", lbFechaEstimada.Text)
-        NewTicket.Parameters.AddWithValue("@estado", "En revisión")
-
+        NewTicket.Parameters.AddWithValue("@estado", "Enviado")
+        NewTicket.Parameters.AddWithValue("@Observacion", Funciones.UserLoginCajero)
 
 
         'Ejecutar procedimiento
 
-        Dim answer5 As Integer
-
-        answer5 = MsgBox("¿DESEAS ENVIAR EL TICKET? ", vbYesNo)
-        If answer5 = vbYes Then
-            NewTicket.ExecuteNonQuery()
-        Else
-            'Devuelve a la pantalla
-        End If
+        NewTicket.ExecuteNonQuery()
 
         conex.Close()
 
-
-        'Crear ticket con los datos suministrados y agregarlos a la data base. PENDIENTE
     End Sub
 
 
+    'Para mostrar los límites de caracteres en el textobox descripcion
+    Private Sub tbDescripcion_TextChanged(sender As Object, e As EventArgs) Handles tbDescripcion.TextChanged
+
+        Dim maxLength As Integer = 250
+        limiteChar.Text = tbDescripcion.TextLength.ToString & "/" & maxLength
+
+    End Sub
 
 End Class

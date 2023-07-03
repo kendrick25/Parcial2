@@ -26,8 +26,9 @@ Partial Class Usuario
         Me.BtnFinalizar = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.lbDimeID = New System.Windows.Forms.Label()
+        Me.btRegresar = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lbDimeID = New System.Windows.Forms.Label()
         Me.btConfirm2 = New System.Windows.Forms.Button()
         Me.lbPrioridad = New System.Windows.Forms.Label()
         Me.btConfirm4 = New System.Windows.Forms.Button()
@@ -43,6 +44,7 @@ Partial Class Usuario
         Me.tbDescripcion = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.gbDetalleTicket1 = New System.Windows.Forms.GroupBox()
+        Me.lbFechaShowLoad = New System.Windows.Forms.Label()
         Me.lbFechaActual = New System.Windows.Forms.Label()
         Me.cbComponente = New System.Windows.Forms.ComboBox()
         Me.lbComponente = New System.Windows.Forms.Label()
@@ -61,12 +63,12 @@ Partial Class Usuario
         'BtnFinalizar
         '
         Me.BtnFinalizar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtnFinalizar.Location = New System.Drawing.Point(789, 0)
+        Me.BtnFinalizar.Location = New System.Drawing.Point(707, 21)
         Me.BtnFinalizar.Margin = New System.Windows.Forms.Padding(0)
         Me.BtnFinalizar.Name = "BtnFinalizar"
-        Me.BtnFinalizar.Size = New System.Drawing.Size(86, 31)
+        Me.BtnFinalizar.Size = New System.Drawing.Size(151, 31)
         Me.BtnFinalizar.TabIndex = 0
-        Me.BtnFinalizar.Text = "Finalizar"
+        Me.BtnFinalizar.Text = "Cancelar Proceso"
         Me.BtnFinalizar.UseVisualStyleBackColor = True
         '
         'TableLayoutPanel1
@@ -88,6 +90,7 @@ Partial Class Usuario
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.Panel1.Controls.Add(Me.btRegresar)
         Me.Panel1.Controls.Add(Me.BtnFinalizar)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
@@ -96,20 +99,20 @@ Partial Class Usuario
         Me.Panel1.Size = New System.Drawing.Size(877, 67)
         Me.Panel1.TabIndex = 1
         '
-        'lbDimeID
+        'btRegresar
         '
-        Me.lbDimeID.AutoSize = True
-        Me.lbDimeID.ForeColor = System.Drawing.Color.Black
-        Me.lbDimeID.Location = New System.Drawing.Point(20, 219)
-        Me.lbDimeID.Name = "lbDimeID"
-        Me.lbDimeID.Size = New System.Drawing.Size(63, 25)
-        Me.lbDimeID.TabIndex = 2
-        Me.lbDimeID.Text = "Label1"
+        Me.btRegresar.Location = New System.Drawing.Point(34, 23)
+        Me.btRegresar.Name = "btRegresar"
+        Me.btRegresar.Size = New System.Drawing.Size(94, 29)
+        Me.btRegresar.TabIndex = 1
+        Me.btRegresar.Text = "Regresar"
+        Me.btRegresar.UseVisualStyleBackColor = True
         '
         'Panel2
         '
         Me.Panel2.BackgroundImage = CType(resources.GetObject("Panel2.BackgroundImage"), System.Drawing.Image)
         Me.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Panel2.Controls.Add(Me.lbDimeID)
         Me.Panel2.Controls.Add(Me.btConfirm2)
         Me.Panel2.Controls.Add(Me.lbPrioridad)
         Me.Panel2.Controls.Add(Me.btConfirm4)
@@ -125,6 +128,16 @@ Partial Class Usuario
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(871, 527)
         Me.Panel2.TabIndex = 2
+        '
+        'lbDimeID
+        '
+        Me.lbDimeID.AutoSize = True
+        Me.lbDimeID.ForeColor = System.Drawing.Color.Black
+        Me.lbDimeID.Location = New System.Drawing.Point(745, 397)
+        Me.lbDimeID.Name = "lbDimeID"
+        Me.lbDimeID.Size = New System.Drawing.Size(53, 20)
+        Me.lbDimeID.TabIndex = 2
+        Me.lbDimeID.Text = "Label1"
         '
         'btConfirm2
         '
@@ -204,7 +217,6 @@ Partial Class Usuario
         'gbDetalleTicket2
         '
         Me.gbDetalleTicket2.BackColor = System.Drawing.Color.Transparent
-        Me.gbDetalleTicket2.Controls.Add(Me.lbDimeID)
         Me.gbDetalleTicket2.Controls.Add(Me.lbDias)
         Me.gbDetalleTicket2.Controls.Add(Me.limiteChar)
         Me.gbDetalleTicket2.Controls.Add(Me.lbFechaEstimada)
@@ -282,6 +294,7 @@ Partial Class Usuario
         'gbDetalleTicket1
         '
         Me.gbDetalleTicket1.BackColor = System.Drawing.Color.Transparent
+        Me.gbDetalleTicket1.Controls.Add(Me.lbFechaShowLoad)
         Me.gbDetalleTicket1.Controls.Add(Me.lbFechaActual)
         Me.gbDetalleTicket1.Controls.Add(Me.cbComponente)
         Me.gbDetalleTicket1.Controls.Add(Me.lbComponente)
@@ -297,12 +310,23 @@ Partial Class Usuario
         Me.gbDetalleTicket1.TabStop = False
         Me.gbDetalleTicket1.Text = "Detalles"
         '
+        'lbFechaShowLoad
+        '
+        Me.lbFechaShowLoad.AutoSize = True
+        Me.lbFechaShowLoad.Font = New System.Drawing.Font("Gadugi", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lbFechaShowLoad.ForeColor = System.Drawing.Color.Blue
+        Me.lbFechaShowLoad.Location = New System.Drawing.Point(115, 43)
+        Me.lbFechaShowLoad.Name = "lbFechaShowLoad"
+        Me.lbFechaShowLoad.Size = New System.Drawing.Size(67, 24)
+        Me.lbFechaShowLoad.TabIndex = 7
+        Me.lbFechaShowLoad.Text = "Label6"
+        '
         'lbFechaActual
         '
         Me.lbFechaActual.AutoSize = True
         Me.lbFechaActual.Font = New System.Drawing.Font("Gadugi", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lbFechaActual.ForeColor = System.Drawing.Color.Blue
-        Me.lbFechaActual.Location = New System.Drawing.Point(151, 27)
+        Me.lbFechaActual.Location = New System.Drawing.Point(14, 43)
         Me.lbFechaActual.Name = "lbFechaActual"
         Me.lbFechaActual.Size = New System.Drawing.Size(67, 24)
         Me.lbFechaActual.TabIndex = 6
@@ -428,4 +452,6 @@ Partial Class Usuario
     Friend WithEvents bnCrearTicket As Button
     Friend WithEvents limiteChar As Label
     Friend WithEvents lbDias As Label
+    Friend WithEvents btRegresar As Button
+    Friend WithEvents lbFechaShowLoad As Label
 End Class
