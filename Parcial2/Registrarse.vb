@@ -132,9 +132,13 @@ Public Class Registrarse
 
     'Botón que dice "next" cuando se agregan los datos del usuario
     Private Sub btAgregarNew_Click(sender As Object, e As EventArgs) Handles btAgregarNew.Click
-        bnCancelRegistro.Enabled = False
-        MenuPrincipal.OpenProblema2()
-        btAgregarNew.Enabled = False
+        If btAgregarNew.Text = "REGISTER" Then
+
+        Else
+            bnCancelRegistro.Enabled = False
+            MenuPrincipal.OpenProblema2()
+            btAgregarNew.Enabled = False
+        End If
     End Sub
 
 
