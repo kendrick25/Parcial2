@@ -22,6 +22,7 @@ Partial Class Administracion
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Administracion))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -101,6 +102,7 @@ Partial Class Administracion
         Me.BtnGenerarFactura = New System.Windows.Forms.Button()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.ButtonMostrarOcultar = New System.Windows.Forms.Button()
+        Me.PanelContenedordetabla = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
@@ -117,6 +119,7 @@ Partial Class Administracion
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
+        Me.PanelContenedordetabla.SuspendLayout()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -319,7 +322,7 @@ Partial Class Administracion
         '
         Me.PictureBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PictureBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.PictureBox2.BackgroundImage = Global.Parcial2.My.Resources.Resources.laptop
+        Me.PictureBox2.BackgroundImage = CType(resources.GetObject("PictureBox2.BackgroundImage"), System.Drawing.Image)
         Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PictureBox2.Location = New System.Drawing.Point(494, 0)
         Me.PictureBox2.Margin = New System.Windows.Forms.Padding(0)
@@ -1235,16 +1238,26 @@ Partial Class Administracion
         Me.ButtonMostrarOcultar.TabIndex = 23
         Me.ButtonMostrarOcultar.UseVisualStyleBackColor = False
         '
+        'PanelContenedordetabla
+        '
+        Me.PanelContenedordetabla.Controls.Add(Me.ButtonMostrarOcultar)
+        Me.PanelContenedordetabla.Controls.Add(Me.TableLayoutPanel1)
+        Me.PanelContenedordetabla.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelContenedordetabla.Location = New System.Drawing.Point(0, 0)
+        Me.PanelContenedordetabla.Margin = New System.Windows.Forms.Padding(0)
+        Me.PanelContenedordetabla.Name = "PanelContenedordetabla"
+        Me.PanelContenedordetabla.Size = New System.Drawing.Size(949, 622)
+        Me.PanelContenedordetabla.TabIndex = 24
+        '
         'Administracion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(949, 622)
         Me.ControlBox = False
-        Me.Controls.Add(Me.ButtonMostrarOcultar)
-        Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.Controls.Add(Me.PanelContenedordetabla)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MinimumSize = New System.Drawing.Size(949, 574)
         Me.Name = "Administracion"
         Me.Text = "Administración"
@@ -1273,6 +1286,7 @@ Partial Class Administracion
         Me.Panel1.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
+        Me.PanelContenedordetabla.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -1353,4 +1367,5 @@ Partial Class Administracion
     Friend WithEvents BtnAgregarComponentes As Button
     Friend WithEvents BtnCambiosVerificar As Button
     Friend WithEvents BtnBorrarRegistro As Button
+    Friend WithEvents PanelContenedordetabla As Panel
 End Class

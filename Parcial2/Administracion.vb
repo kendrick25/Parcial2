@@ -225,11 +225,11 @@ Public Class Administracion
                                                     and u.estado = 'Disponible' 
                                                     and (u.numeroTareas < 10 or ISNULL(u.numeroTareas,'') = '' OR LEN(u.numeroTareas) = 0)"
         Dim llenar As New SqlCommand(mostrarLibrosDisponibles, conexion)
-        Dim reader As SqlDataReader = llenar.ExecuteReader()
-        While reader.Read()
-            ComboBoxEmpleados.Items.Add(reader("nombre").ToString())
+        Dim reader2 As SqlDataReader = llenar.ExecuteReader()
+        While reader2.Read()
+            ComboBoxEmpleados.Items.Add(reader2("nombre").ToString())
         End While
-        reader.Close()
+        reader2.Close()
         conexion.Close()
     End Sub
     ' label para el numero de tarea de los empleados 
@@ -544,6 +544,7 @@ Public Class Administracion
         procAgendar.Parameters.AddWithValue("@idTicket ", TextBoxIdTicket.Text)
         procAgendar.Parameters.AddWithValue("@prioridad", "N/D")
         procAgendar.Parameters.AddWithValue("@estado", "Pagado")
+        procAgendar.Parameters.AddWithValue("@observacion", TextBoxObservacion.Text & vbNewLine & "Fecha de Pago" & DateTime.Now.ToString("yyy/MM/dd hh:mm tt"))
         'Ejecutar procedimiento
         procAgendar.ExecuteNonQuery()
         conexion.Close()
@@ -741,9 +742,11 @@ Public Class Administracion
             End If
             LabelComplete.Visible = False
 
+            LabelComplete.Visible = True
+            LabelComplete.Text = "Error: Verifique que  el campo de ID no este vacio."
         Else
             LabelErrorID.Visible = False
-
+            LabelComplete.Visible = False
             '///////////////////////////////////////////////////////////
             If ComboBoxOpciones.Text = "Agendar" Then
                 'codigo para seleccion de datagridview
@@ -1084,15 +1087,11 @@ Public Class Administracion
     End Sub
 
     Private Sub ComboBoxEquipo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxEquipo.SelectedIndexChanged
-        If ComboBoxEquipo.SelectedItem() = "PC" Then
+        If ComboBoxEquipo.SelectedItem = "PC" Then
             Dim Img As Image = My.Resources.Pc
             PictureBox2.BackgroundImage = Img
         End If
-        If ComboBoxEquipo.SelectedItem() = "DELL" Or
-           ComboBoxEquipo.SelectedItem() = "HP" Or
-           ComboBoxEquipo.SelectedItem() = "ACER" Or
-           ComboBoxEquipo.SelectedItem() = "ASUS" Or
-           ComboBoxEquipo.SelectedItem() = "LENOVO" Then
+        If ComboBoxEquipo.SelectedItem = "Laptop DELL" Or ComboBoxEquipo.SelectedItem = "Laptop HP" Or ComboBoxEquipo.SelectedItem = "Laptop ACER" Or ComboBoxEquipo.SelectedItem = "Laptop ASUS" Or ComboBoxEquipo.SelectedItem = "Laptop LENOVO" Then
             Dim Img As Image = My.Resources.laptop
             PictureBox2.BackgroundImage = Img
         End If
@@ -1235,6 +1234,7 @@ Public Class Administracion
     End Sub
 
     Public Sub BuscarDatosTodo()
+        Dim responsble As String
         Dim idticket As Integer = 0
         Dim cadname As String = ""
         If IsNumeric(TextBoxIdTicket.Text) Then
@@ -1261,6 +1261,15 @@ Public Class Administracion
             LabelCorreo.Text = reader("correoUser").ToString()
             LabelPrioridad.Text = reader("prioridad").ToString()
             BtnCambiosVerificar.Visible = True
+            ' Limpiar ComboBox2 y agregar elementos correspondientes a la opción 1
+            ComboBoxEquipo.Items.Clear()
+            ComboBoxEquipo.Items.Add("Laptop Dell")
+            ComboBoxEquipo.Items.Add("Laptop HP")
+            ComboBoxEquipo.Items.Add("Laptop Acer")
+            ComboBoxEquipo.Items.Add("Laptop Asus")
+            ComboBoxEquipo.Items.Add("Laptop Lenovo")
+            ComboBoxEquipo.Items.Add("Mac")
+            ComboBoxEquipo.Items.Add("PC")
             '//////////////////////////////////Prioridad Alta////////////////////////////////////////////////
             If LabelPrioridad.Text = "Alta" Then
                 'datos de equipo
@@ -1371,6 +1380,7 @@ Public Class Administracion
                 End Select
                 '/////////////------------------------------------
                 'descripcion
+                responsble = reader("responsable").ToString()
                 TextBoxDescripcionCliente.Text = reader("descripcion").ToString()
                 ComboBoxEstado.SelectedItem = "Pendiente"
                 TextBoxObservacion.Text = "--Reporte de Trasabilidad--" & vbNewLine &
@@ -1508,7 +1518,16 @@ Public Class Administracion
                                           "Fecha de Estimación de Reparación: " & reader("fechaEstimacion").ToString() & vbNewLine &
                                           "-----Costos Adicionales-----" & vbNewLine &
                                           "Empleado de Reparación a cargo:" & reader("responsable").ToString() & vbNewLine
-
+                'tipo de reparacion
+                responsble = reader("responsable").ToString()
+                ComboBoxTipoReparacion.Items.Clear()
+                ComboBoxTipoReparacion.Items.Add("Solo Revision")
+                ComboBoxTipoReparacion.Items.Add("Limpieza")
+                ComboBoxTipoReparacion.Items.Add("Reparación")
+                ComboBoxTipoReparacion.Items.Add("Actualización de componentes")
+                ComboBoxTipoReparacion.Items.Add(reader("tipoArreglo").ToString())
+                ComboBoxTipoReparacion.SelectedItem = reader("tipoArreglo").ToString()
+                responsble = reader("responsable").ToString()
                 Dim fechaInicio As DateTime = reader("fechaCreacion").ToString()
                 Dim fechaEstimacion As DateTime = reader("fechaEstimacion").ToString()
                 Dim fechaFormateada As String = fechaInicio.ToString("yyyy/MM/dd")
@@ -1645,6 +1664,15 @@ Public Class Administracion
                                            "Costo total de reparacion: " & reader("montoArreglo").ToString() & vbNewLine &
                                            "-----Fecha de Finalizacion de Reparación-----" & vbNewLine &
                                            "2023-05-07 1:22 pm"
+                'tipo de reparacion
+                ComboBoxTipoReparacion.Items.Clear()
+                ComboBoxTipoReparacion.Items.Add("Solo Revision")
+                ComboBoxTipoReparacion.Items.Add("Limpieza")
+                ComboBoxTipoReparacion.Items.Add("Reparación")
+                ComboBoxTipoReparacion.Items.Add("Actualización de componentes")
+                ComboBoxTipoReparacion.Items.Add(reader("tipoArreglo").ToString())
+                ComboBoxTipoReparacion.SelectedItem = reader("tipoArreglo").ToString()
+                responsble = reader("responsable").ToString()
                 MontoFinaAPagar.Text = reader("montoArreglo").ToString()
                 ' Obtén la fecha ingresada en el TextBox
                 Dim fechaString As String = reader("fechaCierre").ToString()
@@ -1774,11 +1802,18 @@ Public Class Administracion
                 End Select
                 '/////////////------------------------------------
 
-                'tipo de daño
-
+                MontoFinaAPagar.Text = reader("montoArreglo").ToString()
+                'tipo de reparacion
+                ComboBoxTipoReparacion.Items.Clear()
+                ComboBoxTipoReparacion.Items.Add("Solo Revision")
+                ComboBoxTipoReparacion.Items.Add("Limpieza")
+                ComboBoxTipoReparacion.Items.Add("Reparación")
+                ComboBoxTipoReparacion.Items.Add("Actualización de componentes")
+                ComboBoxTipoReparacion.Items.Add(reader("tipoArreglo").ToString())
+                ComboBoxTipoReparacion.SelectedItem = reader("tipoArreglo").ToString()
                 'descripcion
                 TextBoxDescripcionCliente.Text = reader("descripcion").ToString()
-                ComboBoxEstado.SelectedItem = "Pagados"
+                ComboBoxEstado.SelectedItem = "Pagado"
                 TextBoxObservacion.Text = "--Reporte de Trasabilidad--" & vbNewLine &
                                           "No. de Tikect: " & TextBoxIdTicket.Text & vbNewLine &
                                           "Nombre de Cliente: " & reader("nombre").ToString() & vbNewLine &
@@ -1797,7 +1832,7 @@ Public Class Administracion
                                            "Costo total de reparacion: " & reader("montoArreglo").ToString() & vbNewLine &
                                            "-----Fecha de Finalizacion de Reparación-----" & vbNewLine &
                                            "2023-05-07 1:22 pm"
-                MontoFinaAPagar.Text = reader("montoArreglo").ToString()
+                responsble = reader("responsable").ToString()
                 ' Obtén la fecha ingresada en el TextBox
                 Dim fechaString As String = reader("fechaCierre").ToString()
                 ' Define el formato de fecha esperado
@@ -1817,16 +1852,36 @@ Public Class Administracion
                 Dim fechaFormateada2 As String = fechaEstimacion.ToString("yyyy/MM/dd")
                 LabelFechaInicio.Text = fechaFormateada
                 LabelFechaEstimacion.Text = fechaFormateada2
+                'conjunto de datos
+                GroupBox1.Enabled = False
+                GroupBox2.Enabled = False
+                GroupBox3.Enabled = False
             End If
             '//////////////////////////////////////////////////////////////////////////////////
             'cantidad de letras de multiline
             Dim caracteres As Integer = TextBoxObservacion.TextLength
             LabelContMultiline.Text = caracteres.ToString() & "/800"
+
+            If ComboBoxEquipo.SelectedItem = "PC" Then
+                Dim Img As Image = My.Resources.Pc
+                PictureBox2.BackgroundImage = Img
+            End If
+            If ComboBoxEquipo.SelectedItem = "Laptop DELL" Or ComboBoxEquipo.SelectedItem = "Laptop HP" Or ComboBoxEquipo.SelectedItem = "Laptop ACER" Or ComboBoxEquipo.SelectedItem = "Laptop ASUS" Or ComboBoxEquipo.SelectedItem = "Laptop LENOVO" Then
+                Dim Img As Image = My.Resources.laptop
+                PictureBox2.BackgroundImage = Img
+            End If
+            If ComboBoxEquipo.SelectedItem = "MAC" Then
+                Dim Img As Image = My.Resources.MAC
+                PictureBox2.BackgroundImage = Img
+            End If
         End If
         If Not encontrado Then
             BtnCambiosVerificar.Visible = False
         End If
         conexion.Close()
+        MostrarEmpleadosDisponible()
+        ComboBoxEmpleados.Items.Add(responsble)
+        ComboBoxEmpleados.SelectedItem = responsble
     End Sub
     Private Sub BtnCambiosVerificar_Click(sender As Object, e As EventArgs) Handles BtnCambiosVerificar.Click
         'equipo
@@ -1836,9 +1891,10 @@ Public Class Administracion
             TableLayoutPanel1.BackColor = Color.FromArgb(64, 64, 64)
             BtnBorrarRegistro.Visible = True
             BtnAcction.Text = "Cancelar Pago"
+            BtnCambiosVerificar.Visible = True
             BtnCambiosVerificar.Text = "Cancelar"
             LabelComplete.Visible = True
-            LabelComplete.Text = "Nota: debe cancelar el modo editar, o completar la modificacion."
+            LabelComplete.Text = "Nota: Debe cancelar el modo editar, o completar la modificacion."
             'componentes 
             TextBoxIdTicket.Enabled = False
             ComboBoxOpciones.Enabled = False
@@ -1853,8 +1909,6 @@ Public Class Administracion
             If LabelPrioridad.Text = "Alta" Then
                 '/////////////////////////////////////////////////////////////
                 MosstrartiketsPendientes()
-                LabelIDTikect.Text = "ID:"
-                TextBoxIdTicket.Text = ""
                 DateTimePicker1.Enabled = False
                 'empleados y estado
                 MostrarEmpleadosDisponible()
@@ -1879,67 +1933,90 @@ Public Class Administracion
                 ComboBoxTipoDano.Enabled = False
                 ComboBoxEstado.Enabled = False
                 ComboBoxTipoReparacion.Enabled = False
-                TextBoxObservacion.Enabled = False
+                TextBoxObservacion.ReadOnly = True
                 TextBoxDescripcionCliente.ReadOnly = True
                 '////////////////////////////////////////////////////////////
                 'tamaño de encabezado
                 TableLayoutPanel1.RowStyles(2).Height = 200 '200
                 TableLayoutPanel1.RowStyles(3).Height = 200 '200
                 TableLayoutPanel1.RowStyles(4).Height = 0 '80
+                ComboBoxEmpleados.Enabled = True
             End If
             If LabelPrioridad.Text = "Media" Then
                 'tamaño de encabezado
                 TableLayoutPanel1.RowStyles(2).Height = 200 '200
                 TableLayoutPanel1.RowStyles(3).Height = 200 '200
                 TableLayoutPanel1.RowStyles(4).Height = 0 '80
+                'mostrar boton
+                ContBoton = False
+                'Btn para agregar componentes
+                BtnAgregarComponentes.Enabled = True
+                ButtonMostrarOcultar.Visible = True
+                'campos de busqueda
+                ComboBoxEquipo.Enabled = True
+                ComboBoxModelo.Enabled = True
+                ComboBoxTipoDano.Enabled = True
+                ComboBoxEstado.Enabled = True
+                ComboBoxTipoReparacion.Enabled = True
+                TextBoxObservacion.ReadOnly = False
+                TextBoxDescripcionCliente.ReadOnly = False
+                DateTimePicker1.Enabled = True
+                ComboBoxEmpleados.Enabled = False
             End If
             If LabelPrioridad.Text = "Baja" Then
                 'tamaño de encabezado
                 TableLayoutPanel1.RowStyles(2).Height = 200 '200
                 TableLayoutPanel1.RowStyles(3).Height = 200 '200
                 TableLayoutPanel1.RowStyles(4).Height = 80 '80
+                'campos de busqueda
+                ComboBoxEquipo.Enabled = True
+                ComboBoxModelo.Enabled = True
+                ComboBoxTipoDano.Enabled = True
+                ComboBoxEstado.Enabled = True
+                ComboBoxTipoReparacion.Enabled = True
+                TextBoxObservacion.ReadOnly = False
+                TextBoxDescripcionCliente.ReadOnly = False
+                DateTimePicker1.Enabled = True
+                ComboBoxEmpleados.Enabled = False
             End If
         Else
             '*****************************************************************************
-            If LabelPrioridad.Text <> "N/D" Then
+            If BtnCambiosVerificar.Text = "Editar" And LabelPrioridad.Text = "N/D" Then
+                BtnCambiosVerificar.Visible = True
                 BtnCambiosVerificar.Text = "Editar"
+
                 LabelComplete.Visible = True
+                LabelComplete.Text = "Error: No se pueden editar los registros pagados desde este modo" & vbNewLine &
+                                     "        escoja la opcion de Ver Historial para modificarlo."
                 'tamaño de encabezado
                 TableLayoutPanel1.RowStyles(2).Height = 200 '200
                 TableLayoutPanel1.RowStyles(3).Height = 200 '200
                 TableLayoutPanel1.RowStyles(4).Height = 80 '80
-                LabelComplete.Text = "Error: No se pueden editar los registros pagados desde este modo" & vbNewLine &
-                                     "        escoja la opcion de ver historial para modificarlo."
-
-
                 Dim Img As Image = My.Resources.boton_arriba
+                ButtonMostrarOcultar.Visible = True
                 ButtonMostrarOcultar.BackgroundImage = Img
                 TableLayoutPanel1.BackColor = Color.FromArgb(64, 64, 64)
                 BtnBorrarRegistro.Visible = True
                 BtnAcction.Text = "Cancelar Pago"
-                BtnCambiosVerificar.Text = "Cancelar"
-                LabelComplete.Visible = True
-                LabelComplete.Text = "Nota: debe cancelar el modo editar, o completar la modificacion."
                 'componentes 
                 TextBoxIdTicket.Enabled = True
                 ComboBoxOpciones.Enabled = True
                 BtnCambiosVerificar.BackColor = Color.Teal
-                ComboBoxMostrar.Enabled =
+                ComboBoxMostrar.Enabled = True
                 BtnAcction.Enabled = False
                 BtnAcction.Visible = False
                 'conjunto de datos
                 GroupBox1.Enabled = False
                 GroupBox2.Enabled = False
                 GroupBox3.Enabled = False
-            Else
-
             End If
-
             If BtnCambiosVerificar.Text = "Cancelar" Then
                 BtnCambiosVerificar.Text = "Editar"
                 TextBoxIdTicket.Enabled = True
                 ComboBoxOpciones.Enabled = True
                 BtnCambiosVerificar.BackColor = Color.Teal
+                LabelMostrar.Visible = True
+                ComboBoxMostrar.Visible = True
                 ComboBoxMostrar.Enabled = True
                 BtnModificar.Enabled = False
                 BtnModificar.Visible = False
@@ -1954,13 +2031,6 @@ Public Class Administracion
                 BtnCambiosVerificar.Text = "Editar"
             End If
         End If
-    End Sub
-
-    Private Sub BtnBorrarTodo_Click(sender As Object, e As EventArgs) Handles BtnBorrarTodo.Click, BtnBorrarRegistro.Click
-
-    End Sub
-
-    Private Sub BtnModificar_Click(sender As Object, e As EventArgs) Handles BtnModificar.Click
 
     End Sub
 
@@ -2002,7 +2072,7 @@ Public Class Administracion
         Dim seEscribioAlgo As Boolean = False
 
         ' Recorre todos los controles dentro del GroupBox
-        For Each control As Control In GroupBox2.Controls
+        For Each control As Control In GroupBox3.Controls
             ' Verifica si el control es un TextBox
             If TypeOf control Is TextBox Then
                 ' Verifica si el TextBox contiene algún valor
@@ -2020,15 +2090,54 @@ Public Class Administracion
             End If
             ' Puedes agregar condiciones adicionales para otros tipos de controles, como ComboBox, etc.
         Next
-
+        For Each control As Control In DateTimePicker1.Controls
+            ' Verifica si el control es un TextBox
+            If TypeOf control Is DateTimePicker Then
+                ' Verifica si el TextBox contiene algún valor
+                If Not String.IsNullOrEmpty(DirectCast(control, DateTimePicker).Text) Then
+                    seEscribioAlgo = True
+                    Exit For
+                End If
+            End If
+            If TypeOf control Is ComboBox Then
+                ' Verifica si el TextBox contiene algún valor
+                If Not String.IsNullOrEmpty(DirectCast(control, ComboBox).Text) Then
+                    seEscribioAlgo = True
+                    Exit For
+                End If
+            End If
+            ' Puedes agregar condiciones adicionales para otros tipos de controles, como ComboBox, etc.
+        Next
         ' Verifica el resultado
         If seEscribioAlgo Then
             BtnModificar.Enabled = True
             BtnModificar.Visible = True
         Else
-
+            BtnModificar.Enabled = False
+            BtnModificar.Visible = False
         End If
 
     End Sub
+    Private Sub BtnModificar_Click(sender As Object, e As EventArgs) Handles BtnModificar.Click
+        conexion.Open()
+        Dim procAgendar As New SqlCommand()
+        procAgendar.Connection = conexion
+        procAgendar.CommandType = CommandType.StoredProcedure
+        procAgendar.CommandText = "ActualizarRegistroTikect"
+        procAgendar.Parameters.AddWithValue("@idTicket ", TextBoxIdTicket.Text)
+        procAgendar.Parameters.AddWithValue("@prioridad", LabelPrioridad.Text)
+        procAgendar.Parameters.AddWithValue("@estado", ComboBoxEstado.Text)
+        procAgendar.Parameters.AddWithValue("@monto", ComboBoxEstado.Text)
+        procAgendar.Parameters.AddWithValue("@monto", ComboBoxEstado.Text)
+        procAgendar.Parameters.AddWithValue("@observacion", TextBoxObservacion.Text & vbNewLine & "Fecha de Pago" & DateTime.Now.ToString("yyy/MM/dd hh:mm tt"))
+        'Ejecutar procedimiento
+        procAgendar.ExecuteNonQuery()
+        conexion.Close()
+        LabelComplete.Visible = Visible
+        LabelComplete.Text = "--Monto de Cliente Cancelado--"
+    End Sub
 
+    Private Sub BtnBorrarTodo_Click(sender As Object, e As EventArgs) Handles BtnBorrarTodo.Click, BtnBorrarRegistro.Click
+
+    End Sub
 End Class

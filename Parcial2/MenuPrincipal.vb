@@ -782,17 +782,9 @@ Public Class MenuPrincipal
         resultado = CType(MessageBox.Show("¿Desea Cerrar todas las ventanas?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
         If resultado = MsgBoxResult.No Then
         Else
-            Dim newPage As New TabPage("Tikets")
-            newPage.Controls.Add(PanelTikets)
-
             ContForms.TabPages.Clear()
-            FinalizarSolicitudToolStripMenuItem.Visible = False
-            'mover tabb
-            ContForms.TabPages.Add(newPage)
+            CerrarPestañasToolStripMenuItem.Visible = False
             ContForms.Visible = True
-
-            ' Ocultar Tabpage
-            TabPage.Parent = Nothing
 
             ' Mostrar TabPage
             'TabPage.Parent = ContFormse
