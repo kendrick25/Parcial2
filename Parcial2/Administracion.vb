@@ -211,7 +211,7 @@ Public Class Administracion
     Public Sub MostrarEmpleadosDisponible()
         ComboBoxEmpleados.Items.Clear()
         conexion.Open()
-        Dim mostrarLibrosDisponibles As String = "select nombre from Usuario i, UserRol u where i.idUser = u.idURer and (u.rolUser = 'empleado' or u.rolUser = 'admin' ) and u.estado = 'Disponible' and u.numeroTareas < 10"
+        Dim mostrarLibrosDisponibles As String = "select nombre from Usuario i, UserRol u where i.idUser = u.idURer and (u.rolUser = 'empleado' or u.rolUser = 'admin' ) and u.estado = 'Disponible' and (u.numeroTareas < 10 or u.numeroTareas =NULL)"
         Dim llenar As New SqlCommand(mostrarLibrosDisponibles, conexion)
         Dim reader As SqlDataReader = llenar.ExecuteReader()
         While reader.Read()

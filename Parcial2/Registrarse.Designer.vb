@@ -63,11 +63,11 @@ Partial Class Registrarse
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft PhagsPa", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label1.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.Label1.Location = New System.Drawing.Point(192, 16)
+        Me.Label1.Location = New System.Drawing.Point(229, 25)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(306, 25)
+        Me.Label1.Size = New System.Drawing.Size(264, 25)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Bienvenido al registro de usuario"
+        Me.Label1.Text = "Registro de Ticket de Cliente"
         '
         'gbDetallesRegistro
         '
@@ -114,7 +114,7 @@ Partial Class Registrarse
         '
         Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox1.Location = New System.Drawing.Point(458, 259)
+        Me.PictureBox1.Location = New System.Drawing.Point(351, 259)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(46, 32)
@@ -220,12 +220,14 @@ Partial Class Registrarse
         'btAgregarNew
         '
         Me.btAgregarNew.BackColor = System.Drawing.Color.MediumSpringGreen
-        Me.btAgregarNew.Font = New System.Drawing.Font("Microsoft PhagsPa", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.btAgregarNew.ForeColor = System.Drawing.Color.Black
-        Me.btAgregarNew.Location = New System.Drawing.Point(508, 259)
+        Me.btAgregarNew.FlatAppearance.BorderSize = 0
+        Me.btAgregarNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btAgregarNew.Font = New System.Drawing.Font("Microsoft PhagsPa", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btAgregarNew.ForeColor = System.Drawing.Color.White
+        Me.btAgregarNew.Location = New System.Drawing.Point(448, 259)
         Me.btAgregarNew.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btAgregarNew.Name = "btAgregarNew"
-        Me.btAgregarNew.Size = New System.Drawing.Size(59, 32)
+        Me.btAgregarNew.Size = New System.Drawing.Size(119, 32)
         Me.btAgregarNew.TabIndex = 16
         Me.btAgregarNew.Text = "NEXT"
         Me.btAgregarNew.UseVisualStyleBackColor = False

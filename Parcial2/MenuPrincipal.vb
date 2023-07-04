@@ -195,37 +195,7 @@ Public Class MenuPrincipal
 
         End If
     End Sub
-    '------------------------------------------
-    'opens de Problema 1
-    Public Sub OpenProblema1()
-        Dim mensaje As New Registrarse
-        mensaje.MdiParent = Me
-        If ContForms.TabCount >= 1 Then
-            FinalizarSolicitudToolStripMenuItem.Visible = True
-        End If
-        If ContForms.TabCount = 0 Then
-            FinalizarSolicitudToolStripMenuItem.Visible = False
-        End If
-        ' Si no hay nada abierto
-        ContForms.Visible = True
-        mensaje.Dock = DockStyle.Fill ' Hace que el formulario se ajuste al tamaño del TabPage
-        ' Agrega el formulario al primer TabPage
-        'titulo de pagina
-        Dim newPage As New TabPage("Datos del Cliente")
-        'mover tabb
-        newPage.Controls.Add(mensaje)
-        ContForms.TabPages.Add(newPage)
-        'Visualizar Componentes para registro
-        mensaje.tbNewUserName.Visible = True
-        mensaje.tbPass.Visible = True
-        mensaje.faltante4.Visible = True
-        mensaje.faltante5.Visible = True
-        mensaje.Label7.Visible = True
-        mensaje.btMostrarVer.Visible = True
-        mensaje.Show()
-        Dim idTap As Integer = newPage.TabIndex
-        ContForms.SelectedTab = newPage
-    End Sub
+    '-----------------------------------------------------------
 
     Public Sub OpenProblema2()
         Dim mensaje As New Usuario
@@ -296,32 +266,6 @@ Public Class MenuPrincipal
         ContForms.SelectedTab = newPage
     End Sub
 
-    Public Sub BusquedaRespuesta()
-        Dim encontrado As Boolean = False
-        If ContForms.TabCount > 0 Then
-            For Each tp As TabPage In ContForms.TabPages
-                If tp.Text = "Datos del Cliente" Then
-                    ' Respuesta de cerrado
-                    encontrado = True
-                    Dim resultado As MsgBoxResult
-                    resultado = CType(MessageBox.Show("¿Actualmente se esta realizando una solicitud, desea finalizar?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
-                    If resultado = MsgBoxResult.No Then
-                        ContForms.SelectedTab = tp
-                    Else
-                        'cierras el form agregar libro
-                        ContForms.TabPages.Remove(tp)
-                        OpenProblema1()
-                    End If
-                    Exit For
-                End If
-            Next
-            If encontrado = False Then
-                OpenProblema1()
-            End If
-        Else
-            OpenProblema1()
-        End If
-    End Sub
     Public Sub BusquedaRespuesta3()
         Dim encontrado As Boolean = False
         If ContForms.TabCount > 0 Then
@@ -427,6 +371,7 @@ Public Class MenuPrincipal
 
     '---------------------------------------LOAD-------------------------------------------
     Private Sub MenuPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        LlenarComboBox()
         'colores de menu
         TableLayoutPanel1.Cursor = Cursors.Arrow
         MenuStrip1.Renderer = New RenderMenu()
@@ -436,8 +381,6 @@ Public Class MenuPrincipal
         TicketToolStripMenuItem.Visible = False
         ContForms.Visible = False
         FinalizarSolicitudToolStripMenuItem.Visible = False
-        LlenarComboBox()
-
         'vista inicial de login
         'tablas
         TableLayoutPanelLogin.ColumnStyles(0).Width = 0 '300
@@ -877,9 +820,6 @@ Public Class MenuPrincipal
         ContForms.Visible = True
     End Sub
 
-    Private Sub CrearNuevoTiketToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CrearNuevoTiketToolStripMenuItem.Click
-        BusquedaRespuesta()
-    End Sub
 
     Private Sub VerTareasPendientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerTareasPendientesToolStripMenuItem.Click
         BusquedaRespuesta4()
@@ -887,12 +827,10 @@ Public Class MenuPrincipal
 
     'agregar nuevos empleados 
     'opens de Problema 1
-    Public Sub OpenProblema5()
-        ' Ocultar Tabpage
-        TabPage.Parent = Nothing
 
-        ' Mostrar TabPage
-        'TabPage.Parent = ContFormse
+    '------------------------------------------
+    'opens de Problema 1
+    Public Sub OpenProblema1()
         Dim mensaje As New Registrarse
         mensaje.MdiParent = Me
         If ContForms.TabCount >= 1 Then
@@ -906,7 +844,67 @@ Public Class MenuPrincipal
         mensaje.Dock = DockStyle.Fill ' Hace que el formulario se ajuste al tamaño del TabPage
         ' Agrega el formulario al primer TabPage
         'titulo de pagina
-        Dim newPage As New TabPage("Agregar Empleado")
+        Dim newPage As New TabPage("Agregar Nuevo Empleado")
+        'mover tabb
+        newPage.Controls.Add(mensaje)
+        ContForms.TabPages.Add(newPage)
+        'Visualizar Componentes para registro
+        mensaje.tbNewUserName.Visible = True
+        mensaje.tbPass.Visible = True
+        mensaje.faltante4.Visible = True
+        mensaje.faltante5.Visible = True
+        mensaje.Label7.Visible = True
+        mensaje.btMostrarVer.Visible = True
+        'botones
+        mensaje.PictureBox1.Visible = False
+        mensaje.carga.Visible = False
+        mensaje.btAgregarNew.Text = "REGISTER"
+        mensaje.Label1.Text = "Registrar Nuevo Empleado"
+        mensaje.Show()
+        Dim idTap As Integer = newPage.TabIndex
+        ContForms.SelectedTab = newPage
+    End Sub
+    Public Sub BusquedaRespuesta()
+        Dim encontrado As Boolean = False
+        If ContForms.TabCount > 0 Then
+            For Each tp As TabPage In ContForms.TabPages
+                If tp.Text = "Agregar Nuevo Empleado" Then
+                    ' Respuesta de cerrado
+                    encontrado = True
+                    Dim resultado As MsgBoxResult
+                    resultado = CType(MessageBox.Show("¿Actualmente se esta realizando un Registro, lo desea finalizar?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
+                    If resultado = MsgBoxResult.No Then
+                        ContForms.SelectedTab = tp
+                    Else
+                        'cierras el form agregar libro
+                        ContForms.TabPages.Remove(tp)
+                        OpenProblema1()
+                    End If
+                    Exit For
+                End If
+            Next
+            If encontrado = False Then
+                OpenProblema1()
+            End If
+        Else
+            OpenProblema1()
+        End If
+    End Sub
+    Public Sub OpenProblema5()
+        Dim mensaje As New Registrarse
+        mensaje.MdiParent = Me
+        If ContForms.TabCount >= 1 Then
+            FinalizarSolicitudToolStripMenuItem.Visible = True
+        End If
+        If ContForms.TabCount = 0 Then
+            FinalizarSolicitudToolStripMenuItem.Visible = False
+        End If
+        ' Si no hay nada abierto
+        ContForms.Visible = True
+        mensaje.Dock = DockStyle.Fill ' Hace que el formulario se ajuste al tamaño del TabPage
+        ' Agrega el formulario al primer TabPage
+        'titulo de pagina
+        Dim newPage As New TabPage("Agregar Datos de Cliente")
         'mover tabb
         newPage.Controls.Add(mensaje)
         ContForms.TabPages.Add(newPage)
@@ -917,9 +915,8 @@ Public Class MenuPrincipal
         mensaje.faltante5.Visible = False
         mensaje.Label7.Visible = False
         mensaje.btMostrarVer.Visible = False
-
+        mensaje.Label4.Visible = False
         mensaje.Show()
-
         Dim idTap As Integer = newPage.TabIndex
         ContForms.SelectedTab = newPage
     End Sub
@@ -927,7 +924,7 @@ Public Class MenuPrincipal
         Dim encontrado As Boolean = False
         If ContForms.TabCount > 0 Then
             For Each tp As TabPage In ContForms.TabPages
-                If tp.Text = "Agregar Empleado" Then
+                If tp.Text = "Agregar Datos de Cliente" Then
                     ' Respuesta de cerrado
                     encontrado = True
                     Dim resultado As MsgBoxResult
@@ -949,10 +946,12 @@ Public Class MenuPrincipal
             OpenProblema5()
         End If
     End Sub
-    Private Sub AgregarNuevoEmpleadoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AgregarNuevoEmpleadoToolStripMenuItem.Click
+    Private Sub CrearNuevoTiketToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CrearNuevoTiketToolStripMenuItem.Click
         BusquedaRespuesta5()
     End Sub
-
+    Private Sub AgregarNuevoEmpleadoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AgregarNuevoEmpleadoToolStripMenuItem.Click
+        BusquedaRespuesta()
+    End Sub
     Private Sub AdministraciónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AdministraciónToolStripMenuItem.Click
         ' Ocultar Tabpage
         ' Mostrar TabPage
