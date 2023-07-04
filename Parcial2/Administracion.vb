@@ -765,7 +765,7 @@ Public Class Administracion
                                 ButtonMostrarOcultar.BackgroundImage = Img
                                 TableLayoutPanel1.BackColor = Color.Transparent
                                 LabelComplete.Visible = True
-                                LabelComplete.Text = "Ticket encuentra"
+                                LabelComplete.Text = "Ticket encontrado"
                             Else
                                 ButtonMostrarOcultar.Visible = False
                                 BtnAcction.Visible = False
@@ -889,6 +889,122 @@ Public Class Administracion
 
             End If
             '/////////////////////////////////////////////////////////
+            'codigo para buscar
+            If ComboBoxOpciones.Text = "Buscar" Then
+                'codigo para seleccion de datagridview
+                conexion.Open()
+                Dim stringquery As String
+                If IsNumeric(TextBoxIdTicket.Text) Then
+                    stringquery = "T.idTicket LIKE " & TextBoxIdTicket.Text
+                ElseIf Char.IsLetter(TextBoxIdTicket.Text) Then
+                    stringquery = "U.nombre LIKE '%" & TextBoxIdTicket.Text & "%'"
+                Else
+                    stringquery = "T.idTicket LIKE '%%'"
+                End If
+                Dim cmd As New SqlCommand("SELECT T.idTicket,
+                                           U.nombre,
+                                           T.estado,
+                                           T.equipo,
+                                           T.modelo,
+										   T.tipodeDano,
+										   T.descripcion,
+										   T.prioridad,
+                                           T.responsable,
+                                           T.tipoArreglo,
+                                           T.observacion,
+										   T.monto,
+										   T.montoArreglo,
+                                           T.costosExtras,
+                                           T.fechaCreacion,
+										   T.fechaEstimacion,
+                                           T.fechaCierre
+
+                                           FROM Ticket T
+                                           INNER JOIN TicketUser TU ON T.idTicket = TU.IdsTicket
+                                           INNER JOIN Usuario U ON TU.IdsUser = U.idUser
+                                           WHERE ISNUMERIC(U.idUser) = 0
+                                                 AND PATINDEX('%[a-ñ-zA-Ñ-Z]%', U.idUser) > 0
+                                                 AND   (" & stringquery & ");", conexion)
+                Dim tabla As New SqlDataAdapter(cmd)
+                Dim dss As New DataSet
+                tabla.Fill(dss, "Ticket")
+                DataGridView1.ClearSelection()
+                DataGridView1.Columns.Clear()
+                DataGridView1.DataSource = dss.Tables("Ticket")
+                'descripcion del cliente
+                DataGridView1.Columns("idTicket").HeaderText = "ID"
+                DataGridView1.Columns("Nombre").HeaderText = "Nombre del CLiente"
+                DataGridView1.Columns("estado").HeaderText = "Estado"
+                DataGridView1.Columns("equipo").HeaderText = "Equipo"
+                DataGridView1.Columns("modelo").HeaderText = "Modelo"
+                DataGridView1.Columns("descripcion").HeaderText = "Descripción del Cliente"
+                'responsable y ttipo de reparacion
+                DataGridView1.Columns("prioridad").HeaderText = "Prioridad"
+                DataGridView1.Columns("tipoArreglo").HeaderText = "Tipo de Reparación"
+                'costos
+                DataGridView1.Columns("monto").HeaderText = "Monto Estimado a Pagar"
+                DataGridView1.Columns("costosExtras").HeaderText = "Costos Extras"
+                DataGridView1.Columns("montoArreglo").HeaderText = "Monto de reparación"
+
+                DataGridView1.Columns("responsable").HeaderText = "Empleado Encargado"
+                DataGridView1.Columns("tipodeDano").HeaderText = "Tipo de Daño"
+                DataGridView1.Columns("observacion").HeaderText = "Observación del Encargado"
+                'fechas
+                DataGridView1.Columns("fechaCreacion").HeaderText = "Fecha de Creación"
+                DataGridView1.Columns("fechaEstimacion").HeaderText = "Fecha de Estimación"
+                DataGridView1.Columns("fechaCierre").HeaderText = "Fecha de Cierre"
+                conexion.Close()
+                Dim encontrado As Boolean = False
+                '////////////////////////////////////////////////////////////////////////////////////////////
+                If IsNumeric(TextBoxIdTicket.Text) Then
+                    For Each row As DataGridViewRow In DataGridView1.Rows
+                        If row.Cells("idTicket").Value IsNot Nothing AndAlso row.Cells("idTicket").Value = TextBoxIdTicket.Text Then
+                            row.Selected = True
+                            encontrado = True
+                            'codigo para busqueda de datos en historia numeros
+                            '--------------------------------------------
+                            ButtonMostrarOcultar.Visible = True
+                            BtnAcction.Visible = True
+                            BtnAcction.Text = "Borrar"
+                            ContBoton = False
+                            Dim Img As Image = My.Resources.boton_abajo
+                            ButtonMostrarOcultar.BackgroundImage = Img
+                            TableLayoutPanel1.BackColor = Color.Transparent
+                            '--------------------------------------------
+                        Else
+                        End If
+                    Next
+                    If Not encontrado Then
+                        ButtonMostrarOcultar.Visible = False
+                        BtnAcction.Visible = False
+                    End If
+                Else
+                    '////////////////////////////////////////////////////////////////////////////////////////////
+                    For Each row As DataGridViewRow In DataGridView1.Rows
+                        If row.Cells("nombre").Value IsNot Nothing AndAlso row.Cells("nombre").Value.ToString().ToLower() = TextBoxIdTicket.Text Or row.Cells("nombre").Value.ToString() = TextBoxIdTicket.Text Then
+                            row.Selected = True
+                            'codigo para busqueda de datos en historia letras
+                            '--------------------------------------------
+                            encontrado = True
+                            '--------------------------------------------
+                            ButtonMostrarOcultar.Visible = True
+                            BtnAcction.Visible = True
+                            BtnAcction.Text = "Borrar"
+                            ContBoton = False
+                            Dim Img As Image = My.Resources.boton_abajo
+                            ButtonMostrarOcultar.BackgroundImage = Img
+                            TableLayoutPanel1.BackColor = Color.Transparent
+                            '--------------------------------------------
+                        Else
+                        End If
+                    Next
+                    If Not encontrado Then
+                        ButtonMostrarOcultar.Visible = False
+                        BtnAcction.Visible = False
+                    End If
+                End If
+
+            End If
         End If
     End Sub
     'Cosas Extras
@@ -948,5 +1064,61 @@ Public Class Administracion
         End If
     End Sub
 
+
+
+
+
+    Public Sub BuscarDatosTodo()
+        conexion.Open()
+        Dim procAgendar As New SqlCommand()
+        procAgendar.Connection = conexion
+        procAgendar.CommandType = CommandType.StoredProcedure
+        procAgendar.CommandText = "BuscarDatosTodo"
+        procAgendar.Parameters.AddWithValue("@idTicket ", TextBoxIdTicket.Text)
+        'Ejecutar procedimiento
+        Dim reader As SqlDataReader = procAgendar.ExecuteReader()
+        If reader.Read() Then
+            'datos de cliente
+            LabeIDusers.Text = reader("idUser").ToString()
+            LabelName.Text = reader("nombre").ToString()
+            LabelCedula.Text = reader("cedula").ToString()
+            LabelCorreo.Text = reader("correoUser").ToString()
+            'datos de equipo
+            'equipo
+            ComboBoxEquipo.Items.Clear()
+            ComboBoxEquipo.Items.Add(reader("equipo").ToString())
+            ComboBoxEquipo.SelectedItem = reader("equipo").ToString()
+            'modelo
+            ComboBoxModelo.Items.Clear()
+            ComboBoxModelo.Items.Add(reader("modelo").ToString())
+            ComboBoxModelo.SelectedItem = reader("modelo").ToString()
+            'tipo de daño
+            ComboBoxTipoDano.Items.Clear()
+            ComboBoxTipoDano.Items.Add(reader("tipodeDano").ToString())
+            ComboBoxTipoDano.SelectedItem = reader("tipodeDano").ToString()
+            'descripcion
+            TextBoxDescripcionCliente.Text = reader("descripcion").ToString()
+            LabelPrioridad.Text = "Alta"
+            ComboBoxEstado.SelectedItem = "Pendiente"
+            TextBoxObservacion.Text = "--Reporte de Trasabilidad--" & vbNewLine &
+                                      "No. de Tikect: " & TextBoxIdTicket.Text & vbNewLine &
+                                      "Nombre de Cliente: " & reader("nombre").ToString() & vbNewLine &
+                                      "Equipo enviado a Revisión: " & reader("equipo").ToString() & "-Modelo-" & reader("modelo").ToString() & vbNewLine &
+                                      "Recibido por Empleado(a) de Caja: " & reader("observacion").ToString() & vbNewLine & 'falta mandar el nombre del empleado de caja
+                                      "Fecha de Inicio: " & reader("fechaCreacion").ToString() & vbNewLine &
+                                      "Fecha de Estimación de Reparación: " & reader("fechaEstimacion").ToString() & vbNewLine &
+                                      "-----Costos Adicionales-----" & vbNewLine
+            Dim fechaInicio As DateTime = reader("fechaCreacion").ToString()
+            Dim fechaEstimacion As DateTime = reader("fechaEstimacion").ToString()
+            Dim fechaFormateada As String = fechaInicio.ToString("yyyy/MM/dd")
+            Dim fechaFormateada2 As String = fechaEstimacion.ToString("yyyy/MM/dd")
+            LabelFechaInicio.Text = fechaFormateada
+            LabelFechaEstimacion.Text = fechaFormateada2
+            'cantidad de letras de multiline
+            Dim caracteres As Integer = TextBoxObservacion.TextLength
+            LabelContMultiline.Text = caracteres.ToString() & "/500"
+        End If
+        conexion.Close()
+    End Sub
 
 End Class

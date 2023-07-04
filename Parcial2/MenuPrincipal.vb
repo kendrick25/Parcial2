@@ -636,7 +636,7 @@ Public Class MenuPrincipal
                                          JOIN TicketUser tU ON u.idUser = tu.IdsUser
                                          JOIN Ticket t ON t.idTicket = tu.IdsTicket
                                          JOIN UserRol uR ON uR.idURer = u.idUser
-                                         WHERE uR.rolUser = 'user' 
+                                         WHERE uR.rolUser = 'user' and t.estado <> 'Pagado' 
                                          ORDER BY t.idTicket ASC;"
 
         Dim ejecutar As New SqlDataAdapter(consultaCliente, Conexion)
@@ -844,6 +844,7 @@ Public Class MenuPrincipal
         'botones
         mensaje.PictureBox1.Visible = False
         mensaje.carga.Visible = False
+        mensaje.btAgregarNew.Enabled = True
         mensaje.btAgregarNew.Text = "REGISTER"
         mensaje.Label1.Text = "Registrar Nuevo Empleado"
         mensaje.Show()
@@ -902,6 +903,7 @@ Public Class MenuPrincipal
         mensaje.Label7.Visible = False
         mensaje.btMostrarVer.Visible = False
         mensaje.Label4.Visible = False
+        mensaje.btAgregarNew.Enabled = False
         mensaje.Show()
         Dim idTap As Integer = newPage.TabIndex
         ContForms.SelectedTab = newPage
@@ -948,7 +950,6 @@ Public Class MenuPrincipal
     End Sub
     Private Sub CrearNuevoTiketToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CrearNuevoTiketToolStripMenuItem.Click
         BusquedaRespuesta5()
-
     End Sub
     Private Sub AgregarNuevoEmpleadoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AgregarNuevoEmpleadoToolStripMenuItem.Click
         BusquedaRespuesta()

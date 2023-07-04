@@ -33,7 +33,6 @@ Public Class Registrarse
         carga.Visible = False
         carga.Minimum = 0
         carga.Maximum = 100
-        btAgregarNew.Enabled = False
     End Sub
 
 
