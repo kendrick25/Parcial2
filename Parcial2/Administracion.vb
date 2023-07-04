@@ -184,9 +184,14 @@ Public Class Administracion
         Dim reader As SqlDataReader = ejecutar.ExecuteReader()
         Dim valor As Integer
         Dim leervalor As Integer
-        If reader.Read() Then
-            'datos de cliente
-            Integer.TryParse(reader("numeroTareas").ToString, leervalor)
+        If reader.Read() <> Nothing Then
+            ' La variable es nula
+            If reader.Read() Then
+                'datos de cliente
+                Integer.TryParse(reader("numeroTareas").ToString, leervalor)
+            End If
+        Else
+            leervalor = 1
         End If
         valor = leervalor + 1
         reader.Close()
@@ -211,7 +216,13 @@ Public Class Administracion
     Public Sub MostrarEmpleadosDisponible()
         ComboBoxEmpleados.Items.Clear()
         conexion.Open()
-        Dim mostrarLibrosDisponibles As String = "select nombre from Usuario i, UserRol u where i.idUser = u.idURer and (u.rolUser = 'empleado' or u.rolUser = 'admin' ) and u.estado = 'Disponible' and u.numeroTareas < 10"
+        Dim mostrarLibrosDisponibles As String = "select nombre
+                                                    from Usuario i, UserRol u 
+                                                    where i.idUser = u.idURer 
+                                                    and (u.rolUser = 'empleado' 
+                                                    or u.rolUser = 'admin' ) 
+                                                    and u.estado = 'Disponible' 
+                                                    and (u.numeroTareas < 10 or ISNULL(u.numeroTareas,'') = '' OR LEN(u.numeroTareas) = 0)"
         Dim llenar As New SqlCommand(mostrarLibrosDisponibles, conexion)
         Dim reader As SqlDataReader = llenar.ExecuteReader()
         While reader.Read()

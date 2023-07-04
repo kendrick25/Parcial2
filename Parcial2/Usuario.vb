@@ -452,7 +452,7 @@ Public Class Usuario
         NewTicket.Parameters.AddWithValue("@descrip", tbDescripcion.Text)
         NewTicket.Parameters.AddWithValue("@FechaCreac", Fecha)
         NewTicket.Parameters.AddWithValue("@FechaEsti", FechaEstimada)
-        NewTicket.Parameters.AddWithValue("@estado", "Enviado")
+        NewTicket.Parameters.AddWithValue("@estado", "Pendiente")
         NewTicket.Parameters.AddWithValue("@Observacion", Funciones.UserLoginCajero)
 
         'Ejecutar procedimiento
