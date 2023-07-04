@@ -54,20 +54,25 @@ Partial Class Registrarse
         Me.lbIdAsignada = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Panel3 = New System.Windows.Forms.Panel()
         Me.gbDetallesRegistro.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
         '
+        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft PhagsPa", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label1.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.Label1.Location = New System.Drawing.Point(229, 25)
+        Me.Label1.Location = New System.Drawing.Point(229, 16)
+        Me.Label1.MaximumSize = New System.Drawing.Size(264, 25)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(264, 25)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Registro de Ticket de Cliente"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'gbDetallesRegistro
         '
@@ -101,11 +106,11 @@ Partial Class Registrarse
         Me.gbDetallesRegistro.Controls.Add(Me.Label2)
         Me.gbDetallesRegistro.Font = New System.Drawing.Font("Microsoft PhagsPa", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.gbDetallesRegistro.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.gbDetallesRegistro.Location = New System.Drawing.Point(67, 52)
-        Me.gbDetallesRegistro.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.gbDetallesRegistro.Location = New System.Drawing.Point(18, 19)
+        Me.gbDetallesRegistro.Margin = New System.Windows.Forms.Padding(0)
         Me.gbDetallesRegistro.Name = "gbDetallesRegistro"
-        Me.gbDetallesRegistro.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.gbDetallesRegistro.Size = New System.Drawing.Size(616, 334)
+        Me.gbDetallesRegistro.Padding = New System.Windows.Forms.Padding(2)
+        Me.gbDetallesRegistro.Size = New System.Drawing.Size(603, 335)
         Me.gbDetallesRegistro.TabIndex = 1
         Me.gbDetallesRegistro.TabStop = False
         Me.gbDetallesRegistro.Text = "Proporciona tus datos"
@@ -114,7 +119,7 @@ Partial Class Registrarse
         '
         Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox1.Location = New System.Drawing.Point(351, 259)
+        Me.PictureBox1.Location = New System.Drawing.Point(267, 259)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(46, 32)
@@ -126,7 +131,7 @@ Partial Class Registrarse
         '
         Me.faltante6.AutoSize = True
         Me.faltante6.ForeColor = System.Drawing.Color.Yellow
-        Me.faltante6.Location = New System.Drawing.Point(564, 200)
+        Me.faltante6.Location = New System.Drawing.Point(563, 200)
         Me.faltante6.Name = "faltante6"
         Me.faltante6.Size = New System.Drawing.Size(17, 21)
         Me.faltante6.TabIndex = 25
@@ -136,7 +141,7 @@ Partial Class Registrarse
         '
         Me.faltante5.AutoSize = True
         Me.faltante5.ForeColor = System.Drawing.Color.Yellow
-        Me.faltante5.Location = New System.Drawing.Point(317, 149)
+        Me.faltante5.Location = New System.Drawing.Point(316, 149)
         Me.faltante5.Name = "faltante5"
         Me.faltante5.Size = New System.Drawing.Size(17, 21)
         Me.faltante5.TabIndex = 24
@@ -146,7 +151,7 @@ Partial Class Registrarse
         '
         Me.faltante4.AutoSize = True
         Me.faltante4.ForeColor = System.Drawing.Color.Yellow
-        Me.faltante4.Location = New System.Drawing.Point(564, 97)
+        Me.faltante4.Location = New System.Drawing.Point(563, 97)
         Me.faltante4.Name = "faltante4"
         Me.faltante4.Size = New System.Drawing.Size(17, 21)
         Me.faltante4.TabIndex = 23
@@ -156,7 +161,7 @@ Partial Class Registrarse
         '
         Me.faltante3.AutoSize = True
         Me.faltante3.ForeColor = System.Drawing.Color.Yellow
-        Me.faltante3.Location = New System.Drawing.Point(9, 200)
+        Me.faltante3.Location = New System.Drawing.Point(8, 200)
         Me.faltante3.Name = "faltante3"
         Me.faltante3.Size = New System.Drawing.Size(17, 21)
         Me.faltante3.TabIndex = 22
@@ -166,7 +171,7 @@ Partial Class Registrarse
         '
         Me.faltante2.AutoSize = True
         Me.faltante2.ForeColor = System.Drawing.Color.Yellow
-        Me.faltante2.Location = New System.Drawing.Point(9, 149)
+        Me.faltante2.Location = New System.Drawing.Point(8, 149)
         Me.faltante2.Name = "faltante2"
         Me.faltante2.Size = New System.Drawing.Size(17, 21)
         Me.faltante2.TabIndex = 21
@@ -176,7 +181,7 @@ Partial Class Registrarse
         '
         Me.faltante1.AutoSize = True
         Me.faltante1.ForeColor = System.Drawing.Color.Yellow
-        Me.faltante1.Location = New System.Drawing.Point(9, 97)
+        Me.faltante1.Location = New System.Drawing.Point(8, 97)
         Me.faltante1.Name = "faltante1"
         Me.faltante1.Size = New System.Drawing.Size(17, 21)
         Me.faltante1.TabIndex = 20
@@ -199,8 +204,10 @@ Partial Class Registrarse
         'bnCancelRegistro
         '
         Me.bnCancelRegistro.BackColor = System.Drawing.Color.HotPink
-        Me.bnCancelRegistro.Font = New System.Drawing.Font("Microsoft New Tai Lue", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.bnCancelRegistro.ForeColor = System.Drawing.Color.Black
+        Me.bnCancelRegistro.FlatAppearance.BorderSize = 0
+        Me.bnCancelRegistro.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.bnCancelRegistro.Font = New System.Drawing.Font("Microsoft New Tai Lue", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.bnCancelRegistro.ForeColor = System.Drawing.Color.White
         Me.bnCancelRegistro.Location = New System.Drawing.Point(24, 261)
         Me.bnCancelRegistro.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.bnCancelRegistro.Name = "bnCancelRegistro"
@@ -211,7 +218,7 @@ Partial Class Registrarse
         '
         'carga
         '
-        Me.carga.Location = New System.Drawing.Point(401, 305)
+        Me.carga.Location = New System.Drawing.Point(208, 295)
         Me.carga.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.carga.Name = "carga"
         Me.carga.Size = New System.Drawing.Size(164, 25)
@@ -295,8 +302,8 @@ Partial Class Registrarse
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft New Tai Lue", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label8.ForeColor = System.Drawing.Color.Black
-        Me.Label8.Location = New System.Drawing.Point(324, 200)
+        Me.Label8.ForeColor = System.Drawing.Color.White
+        Me.Label8.Location = New System.Drawing.Point(323, 200)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(60, 19)
         Me.Label8.TabIndex = 9
@@ -306,8 +313,8 @@ Partial Class Registrarse
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft New Tai Lue", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label7.ForeColor = System.Drawing.Color.Black
-        Me.Label7.Location = New System.Drawing.Point(340, 149)
+        Me.Label7.ForeColor = System.Drawing.Color.White
+        Me.Label7.Location = New System.Drawing.Point(339, 149)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(42, 19)
         Me.Label7.TabIndex = 8
@@ -317,8 +324,8 @@ Partial Class Registrarse
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft New Tai Lue", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(32, 200)
+        Me.Label6.ForeColor = System.Drawing.Color.White
+        Me.Label6.Location = New System.Drawing.Point(31, 200)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(72, 19)
         Me.Label6.TabIndex = 7
@@ -328,8 +335,8 @@ Partial Class Registrarse
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft New Tai Lue", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(24, 149)
+        Me.Label5.ForeColor = System.Drawing.Color.White
+        Me.Label5.Location = New System.Drawing.Point(23, 149)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(77, 19)
         Me.Label5.TabIndex = 6
@@ -349,8 +356,8 @@ Partial Class Registrarse
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft New Tai Lue", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label4.ForeColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(295, 97)
+        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.Location = New System.Drawing.Point(294, 97)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(87, 19)
         Me.Label4.TabIndex = 4
@@ -370,8 +377,8 @@ Partial Class Registrarse
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft New Tai Lue", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(32, 97)
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(31, 97)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(73, 19)
         Me.Label3.TabIndex = 2
@@ -380,7 +387,7 @@ Partial Class Registrarse
         'lbIdAsignada
         '
         Me.lbIdAsignada.AutoSize = True
-        Me.lbIdAsignada.Location = New System.Drawing.Point(137, 42)
+        Me.lbIdAsignada.Location = New System.Drawing.Point(136, 42)
         Me.lbIdAsignada.Name = "lbIdAsignada"
         Me.lbIdAsignada.Size = New System.Drawing.Size(60, 21)
         Me.lbIdAsignada.TabIndex = 1
@@ -391,7 +398,7 @@ Partial Class Registrarse
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft New Tai Lue", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label2.ForeColor = System.Drawing.Color.Yellow
-        Me.Label2.Location = New System.Drawing.Point(32, 46)
+        Me.Label2.Location = New System.Drawing.Point(31, 46)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(95, 19)
         Me.Label2.TabIndex = 0
@@ -400,6 +407,18 @@ Partial Class Registrarse
         'Timer1
         '
         '
+        'Panel3
+        '
+        Me.Panel3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.Panel3.BackColor = System.Drawing.Color.Black
+        Me.Panel3.Controls.Add(Me.gbDetallesRegistro)
+        Me.Panel3.Location = New System.Drawing.Point(40, 33)
+        Me.Panel3.MaximumSize = New System.Drawing.Size(641, 368)
+        Me.Panel3.MinimumSize = New System.Drawing.Size(641, 368)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(641, 368)
+        Me.Panel3.TabIndex = 2
+        '
         'Registrarse
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -407,8 +426,8 @@ Partial Class Registrarse
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(724, 422)
-        Me.Controls.Add(Me.gbDetallesRegistro)
         Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.Panel3)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "Registrarse"
@@ -416,6 +435,7 @@ Partial Class Registrarse
         Me.gbDetallesRegistro.ResumeLayout(False)
         Me.gbDetallesRegistro.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel3.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -451,4 +471,5 @@ Partial Class Registrarse
     Friend WithEvents faltante6 As Label
     Friend WithEvents faltante5 As Label
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Panel3 As Panel
 End Class

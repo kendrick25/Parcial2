@@ -318,10 +318,6 @@ Public Class MenuPrincipal
             OpenProblema4()
         End If
     End Sub
-    'vista principal de usuario
-    Private Sub SolicitarTiketToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SolicitarTiketToolStripMenuItem.Click
-        BusquedaRespuesta()
-    End Sub
 
     Private Sub VerMisTiketsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerMisTiketsToolStripMenuItem.Click
         If VerMisTiketsToolStripMenuItem.Text = "Ocultar Tikets" Then
@@ -418,12 +414,9 @@ Public Class MenuPrincipal
         resultado = CType(MessageBox.Show("¿Desea Cerrar Session?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
         If resultado = MsgBoxResult.No Then
         Else
-            Dim newPage As New TabPage("Tikets")
-            newPage.Controls.Add(PanelTikets)
             ContForms.TabPages.Clear()
             FinalizarSolicitudToolStripMenuItem.Visible = False
             'mover tabb
-            ContForms.TabPages.Add(newPage)
             ContForms.Visible = False
         End If
         'Cierre de session
@@ -440,7 +433,6 @@ Public Class MenuPrincipal
         TicketToolStripMenuItem.Visible = False
         TareasPendienteToolStripMenuItem.Visible = False
         ' Ocultar Tabpage
-        TabPage.Parent = Nothing
         ' Mostrar TabPage
         'TabPage.Parent = ContFormse
     End Sub
@@ -625,12 +617,6 @@ Public Class MenuPrincipal
             Conexion.Close()
         End Using
     End Sub
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles BtnSolicitudTiket.Click
-        BusquedaRespuesta()
-        BtnSolicitudTiket.Enabled = False
-    End Sub
-
-
     'Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
 
     '     Dim newUserForm As New Registrarse()
@@ -924,6 +910,20 @@ Public Class MenuPrincipal
         Dim encontrado As Boolean = False
         If ContForms.TabCount > 0 Then
             For Each tp As TabPage In ContForms.TabPages
+                If tp.Text = "Detalles del Tikect" Then
+                    ' Respuesta de cerrado
+                    encontrado = True
+                    Dim resultado As MsgBoxResult
+                    resultado = CType(MessageBox.Show("¿Actualmente se esta realizando un Registro de cliente, desea finalizarlo?", " Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question), MsgBoxResult)
+                    If resultado = MsgBoxResult.No Then
+                        ContForms.SelectedTab = tp
+                    Else
+                        'cierras el form agregar libro
+                        ContForms.TabPages.Remove(tp)
+                        OpenProblema5()
+                    End If
+                    Exit For
+                End If
                 If tp.Text = "Agregar Datos de Cliente" Then
                     ' Respuesta de cerrado
                     encontrado = True
@@ -948,9 +948,19 @@ Public Class MenuPrincipal
     End Sub
     Private Sub CrearNuevoTiketToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CrearNuevoTiketToolStripMenuItem.Click
         BusquedaRespuesta5()
+
     End Sub
     Private Sub AgregarNuevoEmpleadoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AgregarNuevoEmpleadoToolStripMenuItem.Click
         BusquedaRespuesta()
+    End Sub
+    'vista principal de usuario
+    Private Sub SolicitarTiketToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SolicitarTiketToolStripMenuItem.Click
+        BusquedaRespuesta5()
+        BtnSolicitudTiket.Enabled = False
+    End Sub
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles BtnSolicitudTiket.Click
+        BusquedaRespuesta5()
+        BtnSolicitudTiket.Enabled = False
     End Sub
     Private Sub AdministraciónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AdministraciónToolStripMenuItem.Click
         ' Ocultar Tabpage

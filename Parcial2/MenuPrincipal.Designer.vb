@@ -920,7 +920,7 @@ Partial Class MenuPrincipal
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft PhagsPa", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(23, 111)
+        Me.Label5.Location = New System.Drawing.Point(50, 101)
         Me.Label5.Margin = New System.Windows.Forms.Padding(0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(104, 21)
@@ -933,7 +933,7 @@ Partial Class MenuPrincipal
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft PhagsPa", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(26, 32)
+        Me.Label3.Location = New System.Drawing.Point(50, 32)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(77, 21)
         Me.Label3.TabIndex = 15
@@ -952,7 +952,7 @@ Partial Class MenuPrincipal
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.CornflowerBlue
-        Me.Panel2.Location = New System.Drawing.Point(60, 161)
+        Me.Panel2.Location = New System.Drawing.Point(58, 161)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(184, 2)
@@ -961,7 +961,7 @@ Partial Class MenuPrincipal
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Lime
-        Me.Panel1.Location = New System.Drawing.Point(52, 87)
+        Me.Panel1.Location = New System.Drawing.Point(58, 87)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(184, 2)
@@ -1036,7 +1036,7 @@ Partial Class MenuPrincipal
         'tbPass
         '
         Me.tbPass.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.tbPass.Location = New System.Drawing.Point(50, 135)
+        Me.tbPass.Location = New System.Drawing.Point(58, 135)
         Me.tbPass.Margin = New System.Windows.Forms.Padding(0)
         Me.tbPass.MaximumSize = New System.Drawing.Size(184, 26)
         Me.tbPass.MinimumSize = New System.Drawing.Size(184, 26)
